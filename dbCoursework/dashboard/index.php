@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+  <?php
+$servername = "ibe-database.mysql.database.azure.com"  ;
+$dbname = "ibe_db" ;
+$username =  "team22@ibe-database" ;
+$password =  "ILoveCS17" ;
+
+  ?>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,7 +39,26 @@
 
 
 
-
+  <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
 
 
 
@@ -40,7 +68,18 @@
 
   <body>
 
+  
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
+
+
+    
+      
+  
+
+
+
+
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -97,15 +136,19 @@
           <div class="row placeholders">
             <?php
             $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+            
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail" data-toggle="modal" data-target="#myModal">
+              <a  data-toggle="modal" data-target="#myModal">
+              <h4>HI</h4>
+              <span class="text-muted">Hello world</span>
+              </a>
             </div>';
 
             echo $chaine;
             echo $chaine;
             echo $chaine;
             echo $chaine;
+
             ?>
           </div>
 
@@ -141,7 +184,7 @@
                 <?php
                 try
                 {
-                	$bdd = new PDO("mysql:host=localhost;dbname=ebayMock;charset=utf8", "root", "admin123");
+                  $bdd = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8", "team22@ibe-database", "ILoveCS17");
 }
                 catch (Exception $e)
                 {
@@ -190,6 +233,8 @@
       </div>
     </div>
 
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -200,5 +245,14 @@
     <script src="../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})> </script>
   </body>
+
+
+
+
+
 </html>
+

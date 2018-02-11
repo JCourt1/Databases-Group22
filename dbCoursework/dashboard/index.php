@@ -7,8 +7,20 @@ $servername = "ibe-database.mysql.database.azure.com"  ;
 $dbname = "ibe_db" ;
 $username =  "team22@ibe-database" ;
 $password =  "ILoveCS17" ;
+?>
 
-  ?>
+<?php
+try
+{
+  $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8", "team22@ibe-database", "ILoveCS17");
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
+?>
+
+
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,26 +51,6 @@ $password =  "ILoveCS17" ;
 
 
 
-  <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-  
-    </div>
-  </div>
 
 
 
@@ -135,12 +127,65 @@ $password =  "ILoveCS17" ;
 
           <div class="row placeholders">
             <?php
+            $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items ORDER BY itemViewCount DESC LIMIT 1");
+            $data1 = $querry_result -> fetch();
+            
+
+            $title = $data1['title'];
+            $description = $data1['description'];
+            $photo = $data1['photo'];
+            $date = $data1['endDate'];
+            $startPrice = $data1['startPrice'];
+            
+
+            $querry_result2 = $conn->query( "SELECT bidAmount, bidDate FROM bids WHERE itemID = ".$data1['itemID']." ORDER BY bidAmount LIMIT 1");
+            $data1 = $querry_result2 -> fetch();
+
+            $currentPrice = $data1['bidAmount'];
+            $lastBid = $data1['bidDate'];
+            
+
+
+            
             $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
             
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail" data-toggle="modal" data-target="#myModal">
+            
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h2 class="modal-title">'.$title.'</h4>
+  </div>
+  <div class="modal-body">
+    <img src="'.$photo.'" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"
+    <p>'.$description.'</p>
+    <h2>Bidding ends: '.$date.' </h2>
+    <h2> Start Price: '.$startPrice.' </h2>
+    <h2> Current Price: '.$currentPrice.' </h2>
+    <h2> Last Bid: '.$lastBid.' </h2>
+  </div>
+  <div class="modal-footer">
+  <div class="form-group mx-sm-3 mb-2">
+  <label for="inputPassword2" class="sr-only">Bid price</label>
+  <input type="text" class="form-control" id="inputbid" >
+</div>
+    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Bid</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+</div>
+
+</div>
+</div>
+
+              <img src="'.$photo.'" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail" data-toggle="modal" data-target="#myModal">
               <a  data-toggle="modal" data-target="#myModal">
-              <h4>HI</h4>
-              <span class="text-muted">Hello world</span>
+              <h4>' .$title.'
+              </h4>
+              <span class="text-muted">  '.$description.' </span>
               </a>
             </div>';
 
@@ -159,6 +204,8 @@ $password =  "ILoveCS17" ;
               <h4>Label</h4>
               <span class="text-muted">Something else</span>
             </div>';
+
+            
 
             echo $chaine;
             echo $chaine;
@@ -181,20 +228,11 @@ $password =  "ILoveCS17" ;
               </thead>
               <tbody>
 
-                <?php
-                try
-                {
-                  $bdd = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8", "team22@ibe-database", "ILoveCS17");
-}
-                catch (Exception $e)
-                {
-                        die('Erreur : ' . $e->getMessage());
-                }
-                ?>
+            
 
                 <?php
 
-                    $result = $bdd->query("SELECT title, description, startPrice, categoryID FROM Items");
+                    $result = $conn->query("SELECT title, description, startPrice, categoryID FROM items");
 
                     for ($numLines = 1; $numLines < 4; $numLines++)
                     {

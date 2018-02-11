@@ -102,6 +102,8 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+  width: 200;
+  height: 200;
 }
 
  .sitename {

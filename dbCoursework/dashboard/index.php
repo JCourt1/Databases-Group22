@@ -109,7 +109,7 @@ catch (Exception $e)
           <br>
           <h2> Shopping </h2>
           <ul class="nav nav-sidebar">
-            <li><a href="">Search item</a></li>
+            <li><a href="search_result_page.php">Search item</a></li>
             <li><a href="">Categories</a></li>
             <li><a href="">Vendors</a></li>
             <li><a href="">Another nav item</a></li>

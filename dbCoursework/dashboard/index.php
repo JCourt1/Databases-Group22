@@ -21,7 +21,7 @@ catch (Exception $e)
 ?>
 
 
-    
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,14 +61,14 @@ catch (Exception $e)
 
   <body>
 
-  
+
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
 
 
-    
-      
-  
+
+
+
 
 
 
@@ -136,7 +136,7 @@ catch (Exception $e)
 
             $data3 = $count_result -> fetch();
             $rowcount = $data3['COUNT(itemID)'];
-            
+
             for($rownumber = 0; $rownumber<$rowcount; $rownumber++){
 
             $data1 = $querry_result -> fetch();
@@ -147,7 +147,7 @@ catch (Exception $e)
             $photo = $data1['photo'];
             $date = $data1['endDate'];
             $startPrice = $data1['startPrice'];
-            
+
 
             $querry_result2 = $conn->query( "SELECT bidAmount, bidDate FROM bids WHERE itemID = ".$data1['itemID']." ORDER BY bidAmount LIMIT 1");
 
@@ -155,13 +155,13 @@ catch (Exception $e)
 
             $currentPrice = $data2['bidAmount'];
             $lastBid = $data2['bidDate'];
-            
 
 
-            
+
+
             $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
-            
-            
+
+
   <!-- Modal -->
   <div id="myModal'.$rownumber.'" class="modal fade" role="dialog">
 <div class="modal-dialog">
@@ -204,7 +204,7 @@ catch (Exception $e)
             }
 
 
-         
+
 
 function addBid(){
   if(isset($_POST["bid"]) && $currentPrice<$_POST["bid"]){
@@ -214,7 +214,7 @@ function addBid(){
 
 
             ?>
-            
+
           </div>
 
 
@@ -237,7 +237,7 @@ function addBid(){
             $querry_result -> fetch();
             $querry_result -> fetch();
             $querry_result -> fetch();
-            
+
             for($rownumber = 0; $rownumber<$rowcount; $rownumber++){
 
             $data1 = $querry_result -> fetch();
@@ -248,7 +248,7 @@ function addBid(){
             $photo = $data1['photo'];
             $date = $data1['endDate'];
             $startPrice = $data1['startPrice'];
-            
+
 
             $querry_result2 = $conn->query( "SELECT bidAmount, bidDate FROM bids WHERE itemID = ".$data1['itemID']." ORDER BY bidAmount LIMIT 1");
 
@@ -256,13 +256,13 @@ function addBid(){
 
             $currentPrice = $data2['bidAmount'];
             $lastBid = $data2['bidDate'];
-            
+
             $modalReference = $rownumber + 4;
 
-            
+
             $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
-            
-            
+
+
   <!-- Modal -->
   <div id="myModal'.$modalReference.'" class="modal fade" role="dialog">
 <div class="modal-dialog">
@@ -305,12 +305,12 @@ function addBid(){
             }
 
             ?>
-            
-            
+
+
           </div>
           <button type="button" class="btn btn-default " action ="index.php">Bid</button>
           <div>
-              
+
           </div>
 
           <h2 class="sub-header">Current bids</h2>
@@ -327,7 +327,7 @@ function addBid(){
               </thead>
               <tbody>
 
-            
+
 
                 <?php
 
@@ -392,4 +392,3 @@ function addBid(){
 
 
 </html>
-

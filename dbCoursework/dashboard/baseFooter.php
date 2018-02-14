@@ -13,3 +13,4 @@ $('#myInput').trigger('focus')
 })> </script>
 
 <script src="../dist/js/navbar.js"></script>
+<script src="../dist/js/table.js"></script>

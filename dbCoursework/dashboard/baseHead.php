@@ -47,7 +47,7 @@ catch (Exception $e)
 
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="../dist/css/dashboard.css" rel="stylesheet">
 
 <!-- Have to somewhere have a record of who is currently logged in so we have the userID etc. -->
 

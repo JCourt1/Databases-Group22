@@ -9,8 +9,9 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
 <script  $('#myModal').on('shown.bs.modal', function () {
-$('#myInput').trigger('focus')
-})> </script>
+    $('#myInput').trigger('focus')
+})>
+</script>
 
 <script src="../dist/js/navbar.js"></script>
 <script src="../dist/js/table.js"></script>

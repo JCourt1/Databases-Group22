@@ -86,15 +86,11 @@
             echo $chaine;
             }
 
-
-
-
             function addBid(){
               if(isset($_POST["bid"]) && $currentPrice<$_POST["bid"]){
                 $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount, bidDate) VALUES (".$itemID.",".$buyerID.",".$_POST["bid"].",".date("Y-m-d")." ) ");
               }
             }
-
 
             ?>
 

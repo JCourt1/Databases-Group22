@@ -2,7 +2,6 @@
 
 <body>
 
-
   <?php include('baseHeader.php'); ?>
 
   <?php include('baseBody.php'); ?>

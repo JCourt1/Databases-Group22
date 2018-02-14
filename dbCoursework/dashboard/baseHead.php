@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
 
-  <?php
-$servername = "ibe-database.mysql.database.azure.com"  ;
-$dbname = "ibe_db" ;
-$username =  "team22@ibe-database" ;
-$password =  "ILoveCS17" ;
-?>
+    <?php
+        $servername = "ibe-database.mysql.database.azure.com"  ;
+        $dbname = "ibe_db" ;
+        $username =  "team22@ibe-database" ;
+        $password =  "ILoveCS17" ;
+    ?>
 
-<?php
-try
-{
-  $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8", "team22@ibe-database", "ILoveCS17");
-}
-catch (Exception $e)
-{
+    <?php
+    try {
+        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8", "team22@ibe-database", "ILoveCS17");
+    }
+    catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
-}
-?>
+    }
+    ?>
 
 
 
@@ -49,9 +47,9 @@ catch (Exception $e)
     <!-- Custom styles for this template -->
     <link href="../dist/css/dashboard.css" rel="stylesheet">
 
-<!-- Have to somewhere have a record of who is currently logged in so we have the userID etc. -->
+    <!-- Have to somewhere have a record of who is currently logged in so we have the userID etc. -->
 
 
 
 """
-  </head>
+</head>

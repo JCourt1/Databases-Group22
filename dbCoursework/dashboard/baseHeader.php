@@ -17,8 +17,14 @@
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="submit" class="form-control" placeholder="Search...">
+          <!-- SEARCH BAR -->
+          <form class="navbar-form" method='post' action='search_result_page.php' name='searchBar'>
+              <div class="input-group add-on">
+                  <input class="form-control" placeholder="Search" name="searchTerm" id="searchTerm" type="text">
+                  <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit" value="Search for item"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+              </div>
           </form>
         </div>
       </div>

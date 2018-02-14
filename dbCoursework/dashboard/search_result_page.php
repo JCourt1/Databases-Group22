@@ -3,15 +3,20 @@
 <body>
 
 
-  <?php# include('baseHeader.php'); ?>
+<?php include('baseHeader.php'); ?>
 
-  <?php #include('baseBody.php'); ?>
+<?php include('baseBody.php'); ?>
 
-  <?php
-    $searchTerm = "great"; # PLACEHOLDER SEARCH TERM UNTIL SEARCHBAR WORKS
-    $searchTerm = strtolower($searchTerm); # Convert to lowercase
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header">Search results</h1>
 
-    echo($searchTerm); # FOR TESTING
+    <div class="row placeholders">
+    <?php
+    # Handle the search request:
+    include('handle_search_term.php');
+
+    #$searchTerm = "great"; # PLACEHOLDER SEARCH TERM UNTIL SEARCHBAR WORKS
+    $searchTerm = strtolower($searchTerm['searchTerm']); # Convert to lowercase
 
     $query_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice
                                 FROM items i
@@ -53,7 +58,9 @@
         $lastBid = $bids_on_item['bidDate'];
 
     }
-  ?>
+    ?>
+    </div>
+</div>
 
 </body>
 

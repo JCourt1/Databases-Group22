@@ -28,7 +28,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Ibé</title>
+    <title>Ebay.com</title>
 
 
     <!-- Latest compiled and minified CSS -->

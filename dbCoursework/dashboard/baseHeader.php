@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand sitename" href="#">IBÉ</a>
+        <a class="navbar-brand sitename" a href="index.php" >Ebay</a>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">

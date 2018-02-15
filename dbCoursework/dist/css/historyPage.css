@@ -1,0 +1,26 @@
+
+.historyTableData {
+
+    text-align: center;
+    margin: auto;
+
+}
+
+td.historyTableData {
+    vertical-align: middle !important;
+    horizontal-align: middle !important;
+
+    float: none;
+    position: relative;
+
+    width: 50%;
+    margin: 0 auto !important;
+}
+
+.leftSide {
+    background-color: ghostwhite;
+}
+
+.rightSide {
+    background-color: snow;
+}

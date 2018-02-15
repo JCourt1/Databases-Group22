@@ -1,5 +1,7 @@
 <?php include("../dashboard/baseHead.php"); ?>
 
+<link href="../dist/css/historyPage.css" rel="stylesheet">
+
 
   <body>
 
@@ -15,7 +17,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">History</h1>
 
-          <div class="row placeholders">
+
 
 
             <?php
@@ -31,6 +33,10 @@ WHERE wli.userId = $userID) AS T");
 
             $data3 = $count_result -> fetch();
             $rowcount = $data3['COUNT(itemID)'];
+
+
+            echo "<table class=\"table table-striped\">
+              <tbody>";
 
 
 
@@ -62,7 +68,7 @@ WHERE wli.userId = $userID) AS T");
 
 
 
-            $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
+            $chaine = '<div class="placeholder">
 
 
   <!-- Modal -->
@@ -103,12 +109,24 @@ WHERE wli.userId = $userID) AS T");
               </a>
             </div>';
 
-            echo $chaine;
 
-            echo '<p>'.$mycurrentPrice.'</p>';
-            echo '<p>'.$mylastBidDate.'</p>';
+//                echo "<div class=\"col-xs-6 col-sm-6\">". $chaine . "</div>
+//                        <div class=\"col-xs-6 col-sm-6\">".$mycurrentPrice."<br>".$mylastBidDate."</div>
+//                      ";
 
-            echo '<br><br><br><br><br><br><br><br><br><br><br>';
+                echo "<tr>
+                        <td class='historyTableData leftSide'>" . $chaine . "</td>
+                        <td class='historyTableData rightSide'> My latest bid: ".$mycurrentPrice."<br> Date: ".$mylastBidDate."</td>
+                      </tr>";
+
+
+
+//            echo $chaine;
+//
+//            echo '<p>'.$mycurrentPrice.'</p>';
+//            echo '<p>'.$mylastBidDate.'</p>';
+//
+//            echo '<br><br><br><br><br><br><br><br><br><br><br>';
 
             }
 
@@ -117,6 +135,9 @@ WHERE wli.userId = $userID) AS T");
 
 
             ?>
+
+          </tbody>
+          </table>
 
           </div>
 

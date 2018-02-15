@@ -3,9 +3,9 @@
     <div class="col-sm-3 col-md-2 sidebar">
       <h2> Account </h2>
       <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">Dashboard <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Dashboard <span class="sr-only">(current)</span></a></li>
         <li><a href="#">My current bids</a></li>
-        <li><a href="#">History</a></li>
+        <li><a href="../profile/history.php">History</a></li>
         <li><a href="#">Messages</a></li>
       </ul>
       <br>

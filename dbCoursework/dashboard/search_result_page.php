@@ -15,6 +15,7 @@
     # Handle the search request:
     include('handle_search_term.php');
 
+
     #$searchTerm = "great"; # PLACEHOLDER SEARCH TERM UNTIL SEARCHBAR WORKS
     $searchTerm = strtolower($searchTerm['searchTerm']); # Convert to lowercase
 

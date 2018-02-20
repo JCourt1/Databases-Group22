@@ -56,27 +56,71 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalSearchLabel">New message</h5>
+        <h5 class="modal-title" id="modalSearchLabel">Advanced Search</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form>
-          <div class="form-group">
-            <label for="recipient-name" class="form-control-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="form-control-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select class="form-control" name="parentCat" id="parentCat">
+                    <option value="0" selected>Any</option>
+                        <?php
+                        $res = $conn->query("SELECT DISTINCT parentCategory FROM categories ORDER BY categoryID ASC");
+                        while($data=$res->fetch()) {
+                    ?>
+                    <option value="<?php echo $data['parentCategory'];?>"><?php echo $data['parentCategory'];?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
+
+                <label for="subcategory">Subcategory:</label>
+                <select class="form-control" name="subCat" id="subCat">
+
+
+                </select>
+             </div>
+             <div class="form-group">
+                   <label for="contain">Author</label>
+                   <input class="form-control" type="text" />
+             </div>
+             <div class="form-group">
+               <label for="contain">Contains the words</label>
+               <input class="form-control" type="text" />
+             </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-primary">Search</button>
       </div>
     </div>
   </div>
 </div>
+
+
+
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>-->
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $('#parentCat').on("change",function () {
+        var parentCategory = $(this).find('option:selected').val();
+        $.ajax({
+            url: "subCategorySearch.php",
+            type: "POST",
+            data: "parentCategory="+parentCategory,
+            success: function (response) {
+                console.log(response);
+                console.log(parentCategory);
+                $("#subCat").html(response);
+            },
+        });
+    });
+
+});
+
+</script>

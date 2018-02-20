@@ -14,11 +14,10 @@ echo "<option>Any</option>";
 
 $res= $conn->query("SELECT * FROM categories WHERE parentCategory = '$parentCategory' ORDER BY categoryID ASC;");
 
-        echo "<option>".$parentCategory."</option>";
-        while($data=$res->fetch()) {
+    while($data=$res->fetch()) {
     ?>
-    <option value="<?php echo $data['categoryID'];?>"><?php echo $data['categoryName'];?></option>
+        <option value="<?php echo $data['categoryID'];?>"><?php echo $data['categoryName'];?></option>
     <?php
-        }
+    }
 
 ?>

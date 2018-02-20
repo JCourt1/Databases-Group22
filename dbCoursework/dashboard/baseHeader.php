@@ -33,7 +33,7 @@
 
         </form>
 
-
+        <!-- ADVANCED FILTERS, opens the modal when clicked -->
         <div>
             <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#modalSearch" >
                 <i class="glyphicon glyphicon-filter"  data-target="#modalSearch"></i>
@@ -52,6 +52,7 @@
 
 </nav>
 
+<!-- ADVANCED FILTERS MODAL -->
 <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="modalSearch" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -64,6 +65,7 @@
       <div class="modal-body">
         <form>
             <div class="form-group">
+                <!-- PARENT CATEGORY -->
                 <label for="category">Category:</label>
                 <select class="form-control" name="parentCat" id="parentCat">
                     <option value="0" selected>Any</option>
@@ -76,7 +78,7 @@
                         }
                     ?>
                 </select>
-
+                <!-- SUB CATEGORY -->
                 <label for="subcategory">Subcategory:</label>
                 <select class="form-control" name="subCat" id="subCat">
 
@@ -102,7 +104,7 @@
 </div>
 
 
-
+<!-- Ajax handles the selection of the subcategory -->
 <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>-->
 <script type="text/javascript">
 $(document).ready(function(){

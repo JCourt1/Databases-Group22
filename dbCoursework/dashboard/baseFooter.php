@@ -8,10 +8,14 @@
 <script src="../assets/js/vendor/holder.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
-<script  $('#myModal').on('shown.bs.modal', function () {
+<!-- <script  $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
 })>
-</script>
+</script> -->
+<!-- <script  $('#modalSearch').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+})>
+</script> -->
 
 <script src="../dist/js/navbar.js"></script>
 <script src="../dist/js/table.js"></script>

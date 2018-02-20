@@ -11,7 +11,9 @@
 
     <?php
     try {
-        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8", "team22@ibe-database", "ILoveCS17");
+        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+                        "team22@ibe-database",
+                        "ILoveCS17");
     }
     catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
@@ -28,7 +30,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Ebay.com</title>
+    <title>Ibé</title>
 
 
     <!-- Latest compiled and minified CSS -->
@@ -51,5 +53,5 @@
 
 
 
-"""
+
 </head>

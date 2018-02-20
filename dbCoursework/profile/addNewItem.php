@@ -21,50 +21,54 @@
                     <h3 class="text-center">
                         Adding new Item</h3>
                     <form class="form form-signup" role="form">
+                    <!-- ITEM TITLE -->
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span>
                             </span>
-                            <input type="text" class="form-control" placeholder="Name" />
+                            <input type="text" class="form-control" placeholder="Title" />
                         </div>
                     </div>
-                    
+                    <!-- ITEM DESCRIPTION -->
                     <div class="form-group">
                 
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                            <input type="Text" class="form-control" placeholder="Amount" />
+                            <input type="Text" class="form-control" placeholder="Description" />
                         </div>
                     </div>
+                    <!-- FUCK -->
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
                             <input type="Text" class="form-control" placeholder="Bill" />
-                </div>
-                <div class="form-group">
-                    <label for="category">Category:</label>
-                    <select class="form-control" name="parentCat2" id="parentCat2">
-                    <option value="0" selected>Any</option>
+                        </div>
+                    </div>
+                    <!-- PARENT CATEGORY -->
+                    <div class="form-group">
+                        <label for="category">Category:</label>
+                        <select class="form-control" name="parentCat2" id="parentCat2">
+                        <option value="0" selected>Any</option>
                         <?php
                         $res = $conn->query("SELECT DISTINCT parentCategory FROM categories ORDER BY categoryID ASC");
                         while($data=$res->fetch()) {
                         ?>
-                    <option value="<?php echo $data['parentCategory'];?>"><?php echo $data['parentCategory'];?></option>
-                    <?php
-                        }
-                    ?>
-                    </select>
-
-                    <label for="subcategory">Subcategory:</label>
-                    <select class="form-control" name="subCat2" id="subCat2">
+                            <option value="<?php echo $data['parentCategory'];?>"><?php echo $data['parentCategory'];?></option>
+                        <?php } ?>
+                        </select>
+                        <!-- CHILD CATEGORY -->
+                        <label for="subcategory">Subcategory:</label>
+                        <select class="form-control" name="subCat2" id="subCat2">
 
 
-                    </select>
-                </div>
+                        </select>
+                    </div>
+                <!-- FUCK -->    
                 <div class="form-group">
-                   <label for="contain">Author</label>
+                   <label for="contain">Auction End Date</label>
                    <input class="form-control" type="text" />
                 </div>
+                <!-- FUCK -->
                 <div class="form-group">
                     <label for="contain">Contains the words</label>
                     <input class="form-control" type="text" />

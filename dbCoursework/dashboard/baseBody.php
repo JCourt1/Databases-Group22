@@ -6,7 +6,7 @@
       <h2> Account </h2>
       <ul class="nav nav-sidebar">
         <li><a href="<?php echo $siteroot; ?>dashboard/index.php">Dashboard <span class="sr-only">(current)</span></a></li>
-        <li><a href="<?php echo $siteroot; ?>profile/my_current_bids.php">My current bids</a></li>
+        <li><a href="<?php echo $siteroot; ?>dashboard/myCurrentBids.php">My current bids</a></li>
         <li><a href="<?php echo $siteroot; ?>profile/history.php">History</a></li>
         <li><a href="<?php echo $siteroot; ?>profile/AddNewItem.php">Add New Item</a></li>
       </ul>

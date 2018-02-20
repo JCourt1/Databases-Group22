@@ -10,10 +10,9 @@
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header">Most Popular Items</h1>
 
           <div class="row placeholders">
-
 <?php
 $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items ORDER BY itemViewCount DESC LIMIT 4");
 $count_result = $conn->query("SELECT COUNT(itemID) FROM ( SELECT itemID FROM items ORDER BY itemViewCount DESC LIMIT 4 ) AS count");
@@ -183,63 +182,9 @@ for ($rownumber = 0; $rownumber < $rowcount; $rownumber++) {
 
 
           </div>
-          <button type="button" class="btn btn-default " action ="index.php">Bid</button>
-          <div>
-
-          </div>
-
-          <h2 class="sub-header">Current bids</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th></th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-
-
-
-                <?php
-
-$result = $conn->query("SELECT title, description, startPrice, categoryID FROM items");
-
-for ($numLines = 1; $numLines < 4; $numLines++) {
-    $data = $result->fetch();
-
-    echo "<tr>
-                        <td>" . $data['title'] . "</td>
-                        <td></td>
-                        <td>" . $data['description'] . "</td>
-                        <td>" . $data['startPrice'] . "</td>
-                        <td>" . $data['categoryID'] . "</td>
-                      </tr>";
-}
-?>
-
-                    <!-- $data = $result->fetch();
-                    echo $data['title']; -->
-
-
-
-
-
-
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
+         
+          
+            
         </div>
       </div>
     </div>

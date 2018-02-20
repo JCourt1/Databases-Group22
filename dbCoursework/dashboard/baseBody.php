@@ -1,12 +1,14 @@
+
+<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <h2> Account </h2>
       <ul class="nav nav-sidebar">
-        <li><a href="#">Dashboard <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">My current bids</a></li>
-        <li><a href="../profile/history.php">History</a></li>
-        <li><a href="#">Messages</a></li>
+        <li><a href="<?php echo $siteroot; ?>dashboard/index.php">Dashboard <span class="sr-only">(current)</span></a></li>
+        <li><a href="<?php echo $siteroot; ?>profile/my_current_bids.php">My current bids</a></li>
+        <li><a href="<?php echo $siteroot; ?>profile/history.php">History</a></li>
+        <li><a href="<?php echo $siteroot; ?>profile/messages.php">Messages</a></li>
       </ul>
       <br>
       <h2> Shopping </h2>

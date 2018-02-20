@@ -23,7 +23,7 @@
         </ul>
 
         <!-- SEARCH BAR -->
-        <form class="navbar-form" method='post' action='<?php echo $siteroot; ?>/dashboard/search_result_page.php' name='searchBar'>
+        <form class="navbar-form" method='post' action='<?php echo $siteroot; ?>dashboard/search_result_page.php' name='searchBar'>
             <div class="input-group add-on">
                 <input class="form-control" placeholder="Search" name="searchTerm" id="searchTerm" type="text">
                 <div class="input-group-btn">

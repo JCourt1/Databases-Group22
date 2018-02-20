@@ -12,20 +12,20 @@
 
 
 <div id="fullscreen_bg" class="fullscreen_bg"/>
-<form class="form-signin">
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3 class="text-center"> Adding new Item</h3>
-                    <form class="form form-signup" method="post" role="form">
+
+                    <form class="form form-signup" method="post" action='<?php echo $siteroot; ?>profile/confirmationPage.php' role="form"> 
                         <!-- ITEM TITLE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Title" />
+                                <input type="text" class="form-control" name="itemTitle" id="itemTitle" placeholder="Title" />
                             </div>
                         </div>
                         <!-- ITEM DESCRIPTION -->
@@ -33,7 +33,7 @@
                     
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                <input type="Text" class="form-control" placeholder="Description" />
+                                <input type="Text" class="form-control" name="itemDescription" id="itemDescription" placeholder="Description" />
                             </div>
                         </div>
                     
@@ -41,21 +41,21 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                                <input type="Text" class="form-control" placeholder="Starting Price" />
+                                <input type="Text" class="form-control" name="startingPrice" id="startingPrice" placeholder="Starting Price" />
                             </div>
                         </div>
                         <!-- Reserved Price -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                                <input type="Text" class="form-control" placeholder="Reserved Price" />
+                                <input type="Text" class="form-control" name="reservedPrice" id="reservedPrice" placeholder="Reserved Price" />
                             </div>
                         </div>                        
                         <!-- Photo -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
-                                <input type="Text" class="form-control" placeholder="Photo" />
+                                <input type="Text" class="form-control" name="photoLink" id="photoLink" placeholder="Photo" />
                             </div>
                         </div>                        
                         <!-- Condition -->
@@ -99,14 +99,12 @@
                             </div>
                         </div>                               
                 </div>
-                        <a href="http://www.jquery2dotnet.com" type="submit" class="btn btn-sm btn-primary btn-block" role="button">
-                        Add Item</a>
+                        <button type="submit" class="btn btn-sm btn-primary btn-block" role="button"> Add Item</button>
                     </form>
             </div>
         </div>
     </div>
 </div>
-</form>
 
 
 </div> 
@@ -119,7 +117,7 @@
 
 
 
-<!-- This script dynamically updates the subcatecory field when the parent category has been filled -->
+<!-- This script dynamically updates the subcatecory field when the parent category has been filled. It sends the data to the file:subCategorySearch.php -->
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -140,3 +138,4 @@ $(document).ready(function(){
 });
 
 </script>
+

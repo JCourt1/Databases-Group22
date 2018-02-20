@@ -104,8 +104,7 @@
 </div>
 
 
-<!-- Ajax handles the selection of the subcategory -->
-<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>-->
+<!-- This script dynamically updates the subcatecory field when the parent category has been filled. It sends the data to the file:subCategorySearch.php -->
 <script type="text/javascript">
 $(document).ready(function(){
 

@@ -23,7 +23,7 @@
         </ul>
 
         <!-- SEARCH BAR -->
-        <form class="navbar-form" method='post' action='search_result_page.php' name='searchBar'>
+        <form class="navbar-form" method='post' action='<?php echo $siteroot; ?>/dashboard/search_result_page.php' name='searchBar'>
             <div class="input-group add-on">
                 <input class="form-control" placeholder="Search" name="searchTerm" id="searchTerm" type="text">
                 <div class="input-group-btn">
@@ -110,7 +110,7 @@ $(document).ready(function(){
     $('#parentCat').on("change",function () {
         var parentCategory = $(this).find('option:selected').val();
         $.ajax({
-            url: "subCategorySearch.php",
+            url: "<?php echo $siteroot; ?>dashboard/subCategorySearch.php",
             type: "POST",
             data: "parentCategory="+parentCategory,
             success: function (response) {

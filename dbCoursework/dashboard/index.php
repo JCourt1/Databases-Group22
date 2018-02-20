@@ -13,7 +13,6 @@
           <h1 class="page-header">Dashboard</h1>
 
           <div class="row placeholders">
-
 <?php
 $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items ORDER BY itemViewCount DESC LIMIT 4");
 $count_result = $conn->query("SELECT COUNT(itemID) FROM ( SELECT itemID FROM items ORDER BY itemViewCount DESC LIMIT 4 ) AS count");

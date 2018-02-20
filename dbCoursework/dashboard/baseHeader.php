@@ -1,4 +1,6 @@
 
+<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 
 <div class="container-fluid">
@@ -10,7 +12,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand sitename" a href="index.php" >Ebay</a>
+        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/index.php" >Ebay</a>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">

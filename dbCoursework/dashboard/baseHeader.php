@@ -33,12 +33,18 @@
         <?php } else { ?>
 
 
-
-
-
-
-
-
+            <ul class="nav navbar-nav navbar-right">
+                            			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            			<li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                            				<div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
+                            				<form class="form-horizontal"  method="post" action="test.php" accept-charset="UTF-8">
+                            				  <input id="sp_uname" class="form-control login" type="text" name="sp_uname" placeholder="Username.." />
+                            				  <input id="sp_pass" class="form-control login" type="password" name="sp_pass" placeholder="Password.."/>
+                            				  <input class="btn btn-primary" type="submit" name="submit" value="login" />
+                            				</form>
+                            				</div>
+                            			</li>
+                            </ul>
 
 
 
@@ -86,7 +92,13 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+          <!-- START OF FORM -->
+        <form class="" role="form" method="get" action="">
+            <!-- SEARCH TERMS -->
+            <div class="form-group">
+                <label for="searchTerm">Search for:</label>
+                <input id="searchTerm" name="searchTerm" placeholder="Name or description" class="form-control">
+            </div>
             <div class="form-group">
                 <!-- PARENT CATEGORY -->
                 <label for="category">Category:</label>
@@ -108,19 +120,35 @@
 
                 </select>
              </div>
+             <!-- ITEM CONDITION -->
              <div class="form-group">
-                   <label for="contain">Author</label>
-                   <input class="form-control" type="text" />
+                 <label for="condition">Condition:</label>
+                 <select id="itemCondition" name="itemCondition" class="form-control">
+                     <option value="0" selected>Any</option>
+                     <option value="New">New</option>
+                     <option value="Like new">Like new</option>
+                     <option value="Used">Used</option>
+                 </select>
              </div>
+             <!-- MIN PRICE -->
              <div class="form-group">
-               <label for="contain">Contains the words</label>
-               <input class="form-control" type="text" />
+                 <label for="minPrice">Minimum price:</label>
+                 <input id="minPrice" name="minPrice" placeholder="" class="form-control">
+             </div>
+             <!-- MAX PRICE -->
+             <div class="form-group">
+                 <label for="maxPrice">Maximum price:</label>
+                 <input id="maxPrice" name="maxPrice" placeholder="" class="form-control">
+             </div>
+             <!-- SEARCH BUTTON -->
+             <div class="form-group">
+                 <label for="submit"></label>
+                 <button id="submit" name="filteredSubmit" value="1" type="hidden" class="btn btn-primary">Search</button>
              </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Search</button>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@
 
     <?php include('../dashboard/baseHeader.php'); ?>
 
-    <?php include('../dashboard/baseBody.php'); ?>
+    <?php include('../dashboard/sideMenu.php'); ?>
 
 
 

@@ -4,7 +4,7 @@
 
   <?php include('baseHeader.php'); ?>
 
-  <?php include('baseBody.php'); ?>
+  <?php include('sideMenu.php'); ?>
 
 </body>
 

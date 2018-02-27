@@ -1,6 +1,9 @@
 
 <?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
+<?php session_start(); ?>
+
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 
 <div class="container-fluid">
@@ -16,11 +19,32 @@
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
+
+        <?php
+
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
+            echo '<ul class="nav navbar-nav navbar-right">
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
-        </ul>
+            </ul>';
+        } else {
+
+            echo '<ul class="nav navbar-nav navbar-right">';
+            echo '<li>';
+            include 'login.php';
+            echo '</li>';
+
+
+
+            echo '<li><a href="#">Register</a></li>
+                </ul>
+                    ';
+
+        }
+        ?>
+
 
         <!-- SEARCH BAR -->
         <form class="navbar-form" method='post' action='<?php echo $siteroot; ?>dashboard/search_result_page.php' name='searchBar'>
@@ -31,17 +55,17 @@
                 </div>
             </div>
 
+            <!-- ADVANCED FILTERS, opens the modal when clicked -->
+            <div class="navbar-collapse nav navbar-nav">
+                <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#modalSearch" >
+                    <i class="glyphicon glyphicon-filter"  data-target="#modalSearch"></i>
+                </button>
+            </div>
+
         </form>
-
-        <!-- ADVANCED FILTERS, opens the modal when clicked -->
-        <div>
-            <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#modalSearch" >
-                <i class="glyphicon glyphicon-filter"  data-target="#modalSearch"></i>
-            </button>
-        </div>
-
-
     </div>
+
+
 
 
 </div>

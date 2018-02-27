@@ -12,6 +12,12 @@ body {
 }
 
 
+.page-header {
+  text-align: center;
+}
+
+
+
 /*
  * Global add-ons
  */
@@ -77,6 +83,8 @@ body {
 
 .main {
   padding: 20px;
+  position: relative;
+  top: 60px
 }
 @media (min-width: 768px) {
   .main {

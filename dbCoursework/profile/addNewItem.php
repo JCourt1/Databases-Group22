@@ -8,7 +8,7 @@
 <body>
 
 <?php include("../dashboard/baseHeader.php"); ?>
-<?php include("../dashboard/baseBody.php"); ?>
+<?php include("../dashboard/sideMenu.php"); ?>
 
 
 <div id="fullscreen_bg" class="fullscreen_bg"/>

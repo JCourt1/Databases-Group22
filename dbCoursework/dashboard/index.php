@@ -2,7 +2,7 @@
 
 <?php include "baseHead.php"; ?>
 
-<link href=<?php echo $siteroot; ?>"dist/css/base.css" rel="stylesheet">
+<link href=<?php echo $siteroot; ?>"resources/css/base.css" rel="stylesheet">
 
 
 </head>

@@ -31,16 +31,40 @@
             </ul>';
         } else {
 
-            echo '<ul class="nav navbar-nav navbar-right">';
-            echo '<li>';
+//            echo '<ul class="nav navbar-nav navbar-right">';
+//            echo '<li>';
+//            include 'login.php';
+//            echo '</li>';
+//
+//
+//
+//            echo '<li><a href="#">Register</a></li>
+//                </ul>
+//                    ';
+
+//            <li class="dropdown order-1"></li>
+
+            echo '
+            
+            <div class="btn-group nav navbar-nav navbar-right" data-toggle="buttons">
+              
+            ';
+
             include 'login.php';
-            echo '</li>';
+
+            echo '
+                    
+                  <label class="btn btn-primary">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Register
+                  </label>
+                </div>
+                ';
 
 
 
-            echo '<li><a href="#">Register</a></li>
-                </ul>
-                    ';
+
+
+
 
         }
         ?>

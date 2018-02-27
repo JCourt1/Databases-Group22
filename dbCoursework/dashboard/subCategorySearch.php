@@ -10,7 +10,7 @@ catch (Exception $e) {
 }
 
 $parentCategory = $_POST['parentCategory'];
-echo "<option>Any</option>";
+echo "<option value='0'>Any</option>";
 
 $res= $conn->query("SELECT * FROM categories WHERE parentCategory = '$parentCategory' ORDER BY categoryID ASC;");
 

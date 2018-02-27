@@ -1,33 +1,17 @@
 <?php echo'
 
-    
-                        <button type="btn" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Login <span class="caret"></span></button>
-                        <ul class="dropdown-menu dropdown-menu-right mt-1">
-                          <li class="p-3">
-                                <form class="form" role="form" action ="' . $siteroot . 'dashboard/handle_Login.php" method = "post">
-                                    <div class="form-group">
-                                        <input id="emailInput" placeholder="Username" name="username" class="form-control form-control-sm" type="text" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input id="passwordInput" placeholder="Password" name="password" class="form-control form-control-sm" type="password" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <button id="myButton" type="submit" class="btn btn-primary btn-block">Login</button>
-                                    </div>
-                                    <div class="form-group text-xs-center">
-                                        <small><a href="#">Forgot password?</a></small>
-                                    </div>
-                                </form>
-                            </li>
-                        </ul>
-                    
-                    
-                   
-       
-
-
-    
-   
+    <ul class="nav navbar-nav navbar-right">
+                			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                			<li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                				<div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
+                				<form class="form-horizontal"  method="post" action="test.php" accept-charset="UTF-8">
+                				  <input id="sp_uname" class="form-control login" type="text" name="sp_uname" placeholder="Username.." />
+                				  <input id="sp_pass" class="form-control login" type="password" name="sp_pass" placeholder="Password.."/>
+                				  <input class="btn btn-primary" type="submit" name="submit" value="login" />
+                				</form>
+                				</div>
+                			</li>
+                </ul>
     
 ';?>
 

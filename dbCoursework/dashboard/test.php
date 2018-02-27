@@ -1,11 +1,1 @@
-<?php include('baseHead.php'); ?>
-
-<body>
-
-  <?php include('baseHeader.php'); ?>
-
-  <?php include('sideMenu.php'); ?>
-
-</body>
-
-<?php include('baseFooter.php'); ?>
+<p> caca </p>

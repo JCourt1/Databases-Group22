@@ -4,6 +4,7 @@
 <?php session_start(); ?>
 
 
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 
 <div class="container-fluid">
@@ -22,43 +23,14 @@
 
         <?php
 
-        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
 
             echo '<ul class="nav navbar-nav navbar-right">
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Help</a></li>
             </ul>';
-        } else {
-
-//            echo '<ul class="nav navbar-nav navbar-right">';
-//            echo '<li>';
-//            include 'login.php';
-//            echo '</li>';
-//
-//
-//
-//            echo '<li><a href="#">Register</a></li>
-//                </ul>
-//                    ';
-
-//            <li class="dropdown order-1"></li>
-
-            echo '
-            
-            <div class="btn-group nav navbar-nav navbar-right" data-toggle="buttons">
-              
-            ';
-
-            include 'login.php';
-
-            echo '
-                    
-                  <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> Register
-                  </label>
-                </div>
-                ';
+        <?php } else { ?>
 
 
 
@@ -66,8 +38,11 @@
 
 
 
-        }
-        ?>
+
+
+
+
+        <?php } ?>
 
 
         <!-- SEARCH BAR -->

@@ -28,10 +28,13 @@ if ($query->rowCount()) {
 
  $row = $query->fetch();
 
- $temp = $row['username'];
- $_SESSION['login_user'] = $temp;
+ $uName = $row['username'];
+ $id = $row['userID'];
 
-    if (!isset($temp)) {
+ $_SESSION['user_ID'] = $id;
+ $_SESSION['login_user'] = $uName;
+
+    if (!isset($_SESSION['user_ID'])) {
             throw new Exception('Username is not set. Should not happen.');
     }
 

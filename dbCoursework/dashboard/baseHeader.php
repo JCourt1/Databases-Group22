@@ -108,7 +108,7 @@ try {
       </div>
       <div class="modal-body">
           <!-- START OF FORM -->
-        <form class="" role="form" method="get" action="">
+        <form class="" role="form" method="get" action="<?php echo $siteroot?>search/search_results_page.php">
             <!-- SEARCH TERMS -->
             <div class="form-group">
                 <label for="searchTerm">Search for:</label>

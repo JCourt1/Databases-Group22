@@ -5,6 +5,14 @@
     margin: auto;
 
 }
+.table {
+    background-color: #f9fbff;
+    border-collapse: separate;
+}
+
+.table th {
+   text-align: center;
+}
 
 td.historyTableData {
     vertical-align: middle !important;
@@ -17,10 +25,12 @@ td.historyTableData {
     margin: 0 auto !important;
 }
 
+
+
 .leftSide {
     background-color: ghostwhite;
 }
 
 .rightSide {
-    background-color: snow;
+    background-color: #e8eef0;
 }

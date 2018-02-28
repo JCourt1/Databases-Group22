@@ -34,9 +34,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <!-- Latest compiled JavaScript -->
 
 
@@ -49,9 +52,11 @@
     <!-- Custom styles for this template -->
     <link href="../resources/css/base.css" rel="stylesheet">
 
+
+
     <!-- Have to somewhere have a record of who is currently logged in so we have the userID etc. -->
 
-
+    <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/resources/php/regExs.php";?>
 
 
 

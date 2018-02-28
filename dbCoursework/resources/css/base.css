@@ -8,7 +8,7 @@ body {
 }
 
 .hover_me {
-  background-color: beige !important;
+  background-color: whitesmoke !important;
 }
 
 
@@ -16,7 +16,13 @@ body {
   text-align: center;
 }
 
+.custom-class {
+  padding-top: 8px;
+}
 
+.btn:hover {
+  color: white;
+}
 
 /*
  * Global add-ons

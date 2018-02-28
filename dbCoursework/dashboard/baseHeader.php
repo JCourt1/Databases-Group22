@@ -51,7 +51,14 @@ try {
         <?php } else { ?>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <?php require "../profile/register.php"?>
+                        <li>
+                            <button class="custom-class" style="border:0px solid black; background-color: transparent;" onclick="document.getElementById('id01').style.display='block'">
+
+                            <a class="btn" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                            </button>
+
+                        </li>
                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
                             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
                             <form class="form-horizontal"  method="post" action="handle_Login.php" accept-charset="UTF-8">

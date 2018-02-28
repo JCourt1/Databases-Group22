@@ -1,6 +1,6 @@
 <?php include("../dashboard/baseHead.php"); ?>
 
-<link href="../dist/css/historyPage.css" rel="stylesheet">
+<link href="../resources/css/historyPage.css" rel="stylesheet">
 
 
   <body>
@@ -38,8 +38,8 @@
 
             $rowcount = $itemsOnWatchList->rowCount();
 
-            echo "<table class=\"table table-striped\">
-              <tbody>";
+            echo "<table class='table table-bordered'>
+              <tbody> <th class='info'></th><th class='info'></th><th class='info'></th><th class='info'></th>";
 
 
             for($rownumber = 0; $rownumber<$rowcount; $rownumber++){
@@ -128,13 +128,33 @@ WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
 //                        <div class=\"col-xs-6 col-sm-6\">".$mycurrentPrice."<br>".$mylastBidDate."</div>
 //                      ";
 
-                echo "<tr>
-                        <td class='historyTableData leftSide'>" . $chaine . "</td>
-                        <td class='historyTableData rightSide'> My latest bid: ".$myLatestBid."<br> Status: ".$bidStatus."<br>Date: ".$mylastBidDate."</td>
-                        
-                      </tr>";
-
-
+                echo "<tr><th class='info'></th>
+                                    <td class='historyTableData'>" . $chaine . "</td>
+                                    <td class='historyTableData'> 
+                                    
+                                    <table class=\"table table-bordered\">
+                                    
+                                    <tr>
+                                    <td class='leftSide'>My latest bid:</td>
+                                    <td class='rightSide'>".$myLatestBid."</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                    <td class='leftSide'>Date:</td>
+                                    <td class='rightSide'>".convertDate($mylastBidDate)."</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                    <td class='leftSide'>Time:</td>
+                                    <td class='rightSide'>".convertTime($mylastBidDate)."</td>
+                                    </tr>
+                                    <td class='leftSide'>Status:</td>
+                                    <td class='rightSide'>".$bidStatus."</td>
+                                    </table>
+                                    
+                                    </td>
+                                    <th class='info'></th>
+                                </tr>";
 
 //            echo $chaine;
 //
@@ -151,6 +171,7 @@ WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
 
             ?>
 
+            <th class='info'></th><th class='info'></th><th class='info'></th><th class='info'></th>
           </tbody>
           </table>
 

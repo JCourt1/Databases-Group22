@@ -22,22 +22,22 @@
 
             <?php
 
-            $userID = 1; // hard coded for the moment
-
-            $itemsOnWatchList = $conn->query("SELECT i.itemID, i.title, i.description, i.photo, i.endDate, i.startPrice FROM items as i JOIN watchlist_items as wli ON i.itemID = wli.itemID WHERE wli.userId = $userID");
-            $count_result = $conn -> query("SELECT COUNT(itemID) FROM (
-SELECT i.itemID FROM items as i JOIN watchlist_items as wli ON i.itemID = wli.itemID 
-WHERE wli.userId = $userID) AS T");
+            $userID = $_SESSION['user_ID']; // hard coded for the moment
 
 
 
-            $data3 = $count_result -> fetch();
-            $rowcount = $data3['COUNT(itemID)'];
+            $itemsOnWatchList = $conn->query("SELECT i.itemID, i.title, i.description, i.photo, i.endDate, i.startPrice, max(b.bidAmount) as highestBid, b.bidDate FROM items as i JOIN watchlist_items as wli 
+            ON i.itemID = wli.itemID 
+            JOIN bids as b ON wli.itemID = b.itemID AND wli.userID = b.buyerID
+            WHERE wli.userId = $userID AND i.itemID IN (SELECT items.itemID FROM items JOIN bids ON items.itemID = bids.itemID WHERE bids.bidWon = 1)
+            GROUP BY b.itemID
+            ORDER BY b.bidDate DESC");
 
+
+            $rowcount = $itemsOnWatchList->rowCount();
 
             echo "<table class=\"table table-striped\">
               <tbody>";
-
 
 
             for($rownumber = 0; $rownumber<$rowcount; $rownumber++){
@@ -48,25 +48,36 @@ WHERE wli.userId = $userID) AS T");
             $title = $watchListItem['title'];
             $description = $watchListItem['description'];
             $photo = $watchListItem['photo'];
-            $date = $watchListItem['endDate'];
+            $endDate = $watchListItem['endDate'];
             $startPrice = $watchListItem['startPrice'];
+            $myLatestBid = $watchListItem['highestBid'];
+            $mylastBidDate = $watchListItem['bidDate'];
 
+            // Make a table with the bidamount and date of the highest bid(s) and then order them by date and take the oldest one.
+            $TopBid = $conn->query( "SELECT bidAmount, bidDate, buyerID FROM bids WHERE itemID = $itemID AND bidAmount = (SELECT max(bidAmount) FROM bids 
+WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
+            $TopBid = $TopBid -> fetch();
 
-            $findTopBid = $conn->query( "SELECT bidAmount, bidDate FROM bids WHERE itemID = ".$watchListItem['itemID']." ORDER BY bidAmount LIMIT 1");
-            $latestBid = $findTopBid -> fetch();
+            $currentPrice = $TopBid['bidAmount'];
+            $currentTopBuyer = $TopBid['buyerID'];
+            $bidStatus = 'Losing...';
 
-            $currentPrice = $latestBid['bidAmount'];
-            $lastBid = $latestBid['bidDate'];
+            if ($currentTopBuyer = $userID) {
+                $bidStatus = 'Winning!';
+            }
 
-            $findLatestBidOnItem = $conn->query( "SELECT bidAmount, bidDate FROM bids WHERE itemID = ".$watchListItem['itemID']." AND buyerID = $userID ORDER BY bidAmount LIMIT 1");
-            $mylatestBid = $findLatestBidOnItem -> fetch();
+            $wonOrNot = $conn->query( "SELECT buyerID FROM bids WHERE itemID = $itemID AND bidWon = true");
 
-            $mycurrentPrice = $mylatestBid['bidAmount'];
-            $mylastBidDate = $mylatestBid['bidDate'];
+            if($wonOrNot->rowCount() == 1) {
+                $wonOrNot = $wonOrNot->fetch();
 
+                if ($wonOrNot['buyerID'] == $userID) {
+                    $bidStatus = "Won!!!";
+                } else {
+                    $bidStatus = "Lost...";
+                }
 
-
-
+            }
 
             $chaine = '<div class="placeholder">
 
@@ -84,10 +95,11 @@ WHERE wli.userId = $userID) AS T");
   <div class="modal-body">
     <img src="'.$photo.'" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"
     <p>'.$description.'</p>
-    <h3>Bidding ends: '.$date.' </h2>
-    <h3> Start Price: '.$startPrice.' </h2>
-    <h3> Current Price: '.$currentPrice.' </h2>
-    <h3> Last Bid: '.$lastBid.' </h2>
+    <h2>Bidding ends: '.$endDate.' </h2>
+    <h2> Start Price: '.$startPrice.' </h2>
+    <h2> Current Highest Price: '.$currentPrice.' </h2>
+    <h2> Last Bid: '.$myLatestBid.' </h2>
+    <h2> Status: '.$bidStatus.' </h2>
   </div>
   <div class="modal-footer">
   <div class="form-group pull-left">
@@ -116,7 +128,8 @@ WHERE wli.userId = $userID) AS T");
 
                 echo "<tr>
                         <td class='historyTableData leftSide'>" . $chaine . "</td>
-                        <td class='historyTableData rightSide'> My latest bid: ".$mycurrentPrice."<br> Date: ".$mylastBidDate."</td>
+                        <td class='historyTableData rightSide'> My latest bid: ".$myLatestBid."<br> Status: ".$bidStatus."<br>Date: ".$mylastBidDate."</td>
+                        
                       </tr>";
 
 

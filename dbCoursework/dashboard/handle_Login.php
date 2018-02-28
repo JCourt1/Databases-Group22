@@ -1,9 +1,7 @@
+
 <?php
 
-
-
-
-
+session_start();// Starting Session
 
 try {
     $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
@@ -14,37 +12,44 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
-$password = mysqli_real_escape_string($conn, $_POST['password']);
-$username = $_POST['username'];
+
+$password = sha1($_POST['password']);
 
 
-$query = "SELECT userID, username FROM User " .
- "WHERE username = '$username' AND " .
- "password = SHA('$password')";
+$query = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ?");
 
-$data = mysqli_query($conn, $query);
-if (mysqli_num_rows($data) == 1) {
- $row = mysqli_fetch_array($data);
- setcookie('userID', $row['userID']);
- setcookie('username', $row['username']);
- $indexURL = 'http://' . $_SERVER['HTTP_HOST'] .
+
+$query->execute([$_POST['username'], $password]);
+
+
+
+if ($query->rowCount()) {
+
+
+ $row = $query->fetch();
+
+ $temp = $row['username'];
+ $_SESSION['login_user'] = $temp;
+
+    if (!isset($temp)) {
+            throw new Exception('Username is not set. Should not happen.');
+    }
+
+ $_SESSION['loggedin'] = true;
+
+
+ $dashboard = 'http://' . $_SERVER['HTTP_HOST'] .
  dirname($_SERVER['PHP_SELF']) . '/dashboard.php';
- header('Location: ' . $indexURL);
+ header('Location: ' . $dashboard);
 } else {
  echo 'Invalid username or password, try again';
-    $indexURL = 'http://' . $_SERVER['HTTP_HOST'] .
-     dirname($_SERVER['PHP_SELF']) . '/dashboard.php';
-     header('Location: ' . $indexURL);
+    $failed = 'http://' . $_SERVER['HTTP_HOST'] .
+     dirname($_SERVER['PHP_SELF']) . '/test.php';
+
+
+
+     header('Location: ' . $failed);
 }
-
-
-
-
-
-
-
-
-
 
 
 ?>

@@ -1,7 +1,23 @@
 
-<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+<?php $siteroot = '/Databases-Group22/dbCoursework/';
 
-<?php session_start(); ?>
+#require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
+session_start();
+
+try {
+        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+                        "team22@ibe-database",
+                        "ILoveCS17");
+    }
+    catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+
+
+
+?>
+
 
 
 
@@ -23,30 +39,29 @@
 
         <?php
 
-        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
+//         $_SESSION['login_user']   && $_SESSION['loggedin'] == true $_SERVER['DOCUMENT_ROOT']
 
-            echo '<ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
-            </ul>';
-        <?php } else { ?>
-
+        if (isset($_SESSION['login_user'])) { ?>
 
             <ul class="nav navbar-nav navbar-right">
-                            			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            			<li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                            				<div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
-                            				<form class="form-horizontal"  method="post" action="test.php" accept-charset="UTF-8">
-                            				  <input id="sp_uname" class="form-control login" type="text" name="sp_uname" placeholder="Username.." />
-                            				  <input id="sp_pass" class="form-control login" type="password" name="sp_pass" placeholder="Password.."/>
-                            				  <input class="btn btn-primary" type="submit" name="submit" value="login" />
-                            				</form>
-                            				</div>
-                            			</li>
-                            </ul>
+            <li><a href="#">Welcome, <?php echo $_SESSION['login_user'];?></a></li>
+            <li><a href="<?php echo $siteroot ?>profile/profilepage.php">Profile</a></li>
+            <li><a href="../profile/logout.php">Log out</a></li>
+            </ul>
+        <?php } else { ?>
 
-
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
+                            <form class="form-horizontal"  method="post" action="handle_Login.php" accept-charset="UTF-8">
+                              <input id="sp_uname" class="form-control login" type="text" name="username" placeholder="Username.." />
+                              <input id="sp_pass" class="form-control login" type="password" name="password" placeholder="Password.."/>
+                              <input class="btn btn-primary" type="submit" name="submit" value="login" />
+                            </form>
+                            </div>
+                        </li>
+                    </ul>
 
         <?php } ?>
 
@@ -93,7 +108,7 @@
       </div>
       <div class="modal-body">
           <!-- START OF FORM -->
-        <form class="" role="form" method="get" action="">
+        <form class="" role="form" method="get" action="<?php echo $siteroot?>search/search_results_page.php">
             <!-- SEARCH TERMS -->
             <div class="form-group">
                 <label for="searchTerm">Search for:</label>

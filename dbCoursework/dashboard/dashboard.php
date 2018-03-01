@@ -5,12 +5,7 @@
 
   <body>
 
-<<<<<<< HEAD
-
-    <?php include 'baseHeader.php';?>
-=======
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHeader.php";?>
->>>>>>> dca88b9188f8238dee554aebf04d1cadedd46c4b
 
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";?>
 
@@ -20,13 +15,9 @@
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/browsePopularItems.php";?>
     </div>
 
-<<<<<<< HEAD
     <?php include 'addBid.php';?>
-    <?php include "baseFooter.php";?>
-=======
 
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>
->>>>>>> dca88b9188f8238dee554aebf04d1cadedd46c4b
 
   </body>
 

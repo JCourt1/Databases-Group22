@@ -11,6 +11,32 @@ body {
   background-color: whitesmoke !important;
 }
 
+.blueTop {
+
+}
+
+.blueTop:hover {
+  color: #d4f7ff !important;
+}
+
+.lightblueTop {
+
+}
+
+.lightblueTop:hover {
+  color: #e7ffc8 !important;
+}
+
+.whiteTop {
+}
+
+.whiteTop:hover {
+  color: #ffe8f4 !important;
+}
+
+
+
+
 
 .page-header {
   text-align: center;

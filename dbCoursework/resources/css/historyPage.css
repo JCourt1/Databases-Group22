@@ -25,12 +25,24 @@ td.historyTableData {
     margin: 0 auto !important;
 }
 
+.tableHeader {
+    padding: 0px !important;
+}
 
 
-.leftSide {
+.rightSide {
     background-color: ghostwhite;
 }
 
-.rightSide {
+.leftSide {
     background-color: #e8eef0;
 }
+
+
+/*.leftSide {*/
+    /*background-color: ghostwhite;*/
+/*}*/
+
+/*.rightSide {*/
+    /*background-color: #e8eef0;*/
+/*}*/

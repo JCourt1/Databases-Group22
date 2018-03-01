@@ -37,7 +37,7 @@
             $rowcount = $itemsOnWatchList->rowCount();
 
             echo "<table class=\"table table-bordered\">
-              <tbody><th class='info'></th><th class='info'></th><th class='info'></th><th class='info'></th>";
+              <tbody><th class='info'></th><th class='info tableHeader'>Item</th><th class='info tableHeader'>Result of bidding</th><th class='info'></th>";
 
 
             for($rownumber = 0; $rownumber<$rowcount; $rownumber++){
@@ -152,7 +152,9 @@ WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
                     
                     </td>
                     
-                <th class='info'></th></tr>";
+                <th class='info'></th></tr>
+                
+                <th class='info'></th><th class='info'></th><th class='info'></th><th class='info'></th>";
 
 
 
@@ -170,7 +172,7 @@ WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
 
 
             ?>
-            <th class='info'></th><th class='info'><th class='info'></th><th class='info'></th></th>
+
           </tbody>
           </table>
 

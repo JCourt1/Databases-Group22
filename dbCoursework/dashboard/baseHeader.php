@@ -32,7 +32,7 @@ try {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/index.php" >Ebay</a>
+        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/index.php" >Ibé</a>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
@@ -44,9 +44,9 @@ try {
         if (isset($_SESSION['login_user'])) { ?>
 
             <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, <?php echo $_SESSION['login_user'];?></a></li>
-            <li><a href="<?php echo $siteroot ?>profile/profilepage.php">Profile</a></li>
-            <li><a href="../profile/logout.php">Log out</a></li>
+            <li><a class='lightblueTop' style='color: #95b796;' href="#">Welcome, <?php echo $_SESSION['login_user'];?></a></li>
+            <li><a class='blueTop' style='color: #337ab7;' href="<?php echo $siteroot ?>profile/profilepage.php">Profile</a></li>
+            <li><a class='whiteTop' style='color: #b3b7b2;' href="../profile/logout.php">Log out</a></li>
             </ul>
         <?php } else { ?>
 

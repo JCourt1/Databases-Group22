@@ -2,7 +2,7 @@
 <?php $siteroot = '/Databases-Group22/dbCoursework/';
 
 #require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
-session_start();
+
 
 try {
         $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",

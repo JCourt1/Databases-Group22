@@ -12,7 +12,6 @@
 <?php include 'baseHeader.php'; ?>
 
 
-
 <?php include 'commonElements/browsePopularItems.php';?>
 
 

@@ -177,7 +177,7 @@ try {
 </div>
 
 
-<!-- This script dynamically updates the subcatecory field when the parent category has been filled. It sends the data to the file:subCategorySearch.php -->
+<!-- This script dynamically updates the subcategory field when the parent category has been filled. It sends the data to the file:subCategorySearch.php -->
 <script type="text/javascript">
 $(document).ready(function(){
 

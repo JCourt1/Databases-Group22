@@ -1,4 +1,4 @@
-<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+<?php $siteroot = '/myapp/dbCoursework/'; ?>
 
 <?php include "baseHead.php"; ?>
 
@@ -20,6 +20,8 @@
 
 
 <?php include "baseFooter.php"; ?>
+
+
 
 </body>
 

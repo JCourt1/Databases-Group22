@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php $siteroot = '/Databases-Group22/dbCoursework'; ?>
+
+<?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHead.php";?>
 
 <?php
 
@@ -9,9 +11,6 @@ if (!isset($_SESSION['user_ID'])) {
 ?>
 
 
-<?php $siteroot = '/Databases-Group22/dbCoursework'; ?>
-
-<?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHead.php";?>
 </head>
 
   <body>

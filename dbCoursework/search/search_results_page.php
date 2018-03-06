@@ -7,10 +7,25 @@
     if (isset($_GET['filteredSubmit'])){
         $searchTerm = $_GET['searchTerm'];
         $parentCategory = $_GET['parentCat'];
-        $subCategory = $_GET['subCat'];
-        $condition = $GET['itemCondition'];
-        $minPrice = $GET['minPrice'];
-        $maxPrice = $GET['maxPrice'];
+        // Check if subcategory has been submitted:
+        if (isset($_GET['subCat'])){
+            $subCategory = $_GET['subCat'];
+        } else{
+            $subCategory = 0; // Default "Any" subcategory is numbered 0
+        }
+        $condition = $_GET['itemCondition'];
+        $minPrice = $_GET['minPrice'];
+        $maxPrice = $_GET['maxPrice'];
+
+        // Set the min price if there is one, otherwise set it = to 0.
+        if (empty($minPrice)) {
+            $minPrice = 0;
+        }
+
+        // Same with the max price
+        if (empty($maxPrice)){
+            $maxPrice = INF;
+        }
 
 
 
@@ -75,6 +90,21 @@
         $res = $statement->fetchAll();
         $url = 'search_result_page.php?searchTerm='.$searchTerm.'subCategory='.$subCategory.'condition='.$condition;
 
+    } else if (isset($_GET['searchBarSubmit'])) { // Search was made using the search bar only
+
+        $searchTerm = $_GET['searchTerm']; // get the search term
+
+        $sql_query = 'SELECT *
+                        FROM items i
+                        WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
+                        ORDER BY i.endDate ASC';
+        $statement = $conn->prepare($sql_query);
+        $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+
+        $statement->execute();
+        $res = $statement->fetchAll();
+        $url = 'search_result_page.php?searchTerm='.$searchTerm;
+
     } else {
         // No search was made -->
         $sql_query = 'SELECT *
@@ -90,7 +120,11 @@
 
  <h1 class="page-header">Search Results:</h1>
 
+<?php echo $subCategory ?>
+
  <div class="row placeholders">
+
+
 
      <?php # begin php
      $rownumber = 0;

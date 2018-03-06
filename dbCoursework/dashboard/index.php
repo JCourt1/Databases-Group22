@@ -1,18 +1,17 @@
+<?php session_start(); ?>
 
+<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+
+<?php include "baseHead.php"; ?>
 
 <?php
 
-session_start();
 
 if (isset($_SESSION['user_ID'])) {
     $dashboard = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/dashboard.php';
     header('Location: ' . $dashboard);
 }
 ?>
-
-<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
-
-<?php include "baseHead.php"; ?>
 
 <link href=<?php echo $siteroot; ?>"resources/css/base.css" rel="stylesheet">
 

@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <?php $siteroot = '/Databases-Group22/dbCoursework/';
 
 require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";

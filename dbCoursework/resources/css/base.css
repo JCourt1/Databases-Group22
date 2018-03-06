@@ -50,6 +50,7 @@ body {
   color: white;
 }
 
+
 /*
  * Global add-ons
  */
@@ -108,7 +109,6 @@ body {
   background-color: #428bca;
 }
 
-
 /*
  * Main content
  */
@@ -116,7 +116,7 @@ body {
 .main {
   padding: 20px;
   position: relative;
-  top: 60px
+
 }
 @media (min-width: 768px) {
   .main {
@@ -144,8 +144,9 @@ body {
   margin-bottom: 20px;
 }
 .placeholder img {
-  display: inline-block;
+  /*display: inline-block;*/
   border-radius: 50%;
+  background-color: white;
   width: 200;
   height: 200;
 }

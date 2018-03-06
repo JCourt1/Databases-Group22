@@ -12,7 +12,7 @@
 //        $password =  "ILoveCS17" ;
 //    ?>
 
-   // <?php require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";?>
+   <?php require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";?>
 
 
 

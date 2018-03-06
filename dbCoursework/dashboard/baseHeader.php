@@ -44,8 +44,8 @@ try {
         if (isset($_SESSION['login_user'])) { ?>
 
             <ul class="nav navbar-nav navbar-right">
-            <li><a class='lightblueTop' style='color: #95b796;' href="#">Welcome, <?php echo $_SESSION['login_user'];?></a></li>
-            <li><a class='blueTop' style='color: #337ab7;' href="<?php echo $siteroot ?>profile/profilepage.php">Profile</a></li>
+            <li><a class='lightblueTop' style='color: #95b796;' href="#">Currently logged in as: <?php echo $_SESSION['login_user'];?></a></li>
+            <li><a class='blueTop' style='color: #337ab7;' href="<?php echo $siteroot ?>dashboard/dashboard.php">Dashboard</a></li>
             <li><a class='whiteTop' style='color: #b3b7b2;' href="../profile/logout.php">Log out</a></li>
             </ul>
         <?php } else { ?>

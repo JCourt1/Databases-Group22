@@ -1,7 +1,7 @@
 
 <?php $siteroot = '/Databases-Group22/dbCoursework/';
 
-#require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
+require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
 
 try {

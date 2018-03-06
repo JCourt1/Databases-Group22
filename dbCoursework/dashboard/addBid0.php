@@ -13,9 +13,11 @@
             
             
 
-            if(!isset($_SESSION['user_ID'])){
-                $message = "Gotta login first";
-                echo "<script type='text/javascript'>alert('$message');</script>";
+            if(!isset($_SESSION['user_ID']) ||  $_SESSION['user_ID'] == NULL){
+                echo '<script type="text/javascript">'; 
+                echo 'alert("You have to login or register first");'; 
+                echo 'window.location.href = "browsePopularItems.php";';
+                echo '</script>';
             }
 
             else{
@@ -26,9 +28,10 @@
             
        
             if (!empty($_POST["bid"]) && $currentPrice < $_POST["bid"]) {
-                $date = date("Y-m-d H:i:s");
+                $date = new DateTime();
+                $result = $date->format('Y-m-d H:i:s');
                 $currentPrice = $_POST["bid"];
-                $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount, bidDate) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . "," .$date. " ) ");
+                $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . ") ");
                 $message = "Your bid has been registered. Thank you!";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             }

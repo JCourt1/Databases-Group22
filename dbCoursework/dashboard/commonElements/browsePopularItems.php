@@ -36,6 +36,8 @@
             $data2 = $querry_result2->fetch();
             $currentPrice = $data2['bidAmount'];
             $lastBid = $data2['bidDate'];
+
+            
             
             $_SESSION['currentPrice'.$rownumber] = $currentPrice;
             $_SESSION['itemID'.$rownumber] = $itemID;

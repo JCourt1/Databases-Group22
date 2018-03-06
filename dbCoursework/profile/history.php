@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php include("../dashboard/baseHead.php"); ?>
 
 <link href="../resources/css/historyPage.css" rel="stylesheet">
@@ -21,6 +23,8 @@
 
 
             <?php
+
+
 
             $userID = $_SESSION['user_ID'];
 

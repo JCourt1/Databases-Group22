@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if (!isset($_SESSION['user_ID'])) {
     $failed = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/index.php';
     header('Location: ' . $failed);

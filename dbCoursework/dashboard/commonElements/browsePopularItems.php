@@ -9,8 +9,8 @@
     <div class="row placeholders">
         <?php
       
-        $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items ORDER BY itemViewCount DESC LIMIT 4");
-        $count_result = $conn->query("SELECT COUNT(itemID) FROM ( SELECT itemID FROM items ORDER BY itemViewCount DESC LIMIT 4 ) AS count");
+        $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items WHERE endDate > NOW() ORDER BY itemViewCount DESC LIMIT 4");
+        $count_result = $conn->query("SELECT COUNT(itemID) FROM ( SELECT itemID FROM items WHERE endDate > NOW()   ORDER BY itemViewCount DESC LIMIT 4 ) AS count");
         $data3 = $count_result->fetch();
         $rowcount = $data3['COUNT(itemID)'];
          
@@ -106,14 +106,15 @@
     <!-- **********************    SECOND ROW     ***************************  -->
     <div class="row placeholders">
         <?php
-        $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items ORDER BY itemViewCount DESC LIMIT 8");
-        $count_result = $conn->query("SELECT COUNT(itemID) FROM ( SELECT itemID FROM items ORDER BY itemViewCount DESC LIMIT 8 ) AS count");
+        $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE endDate > NOW()  ORDER BY itemViewCount DESC LIMIT 8");
+        $count_result = $conn->query("SELECT COUNT(itemID) FROM ( SELECT itemID FROM items WHERE endDate > NOW()  ORDER BY itemViewCount DESC LIMIT 8 ) AS count");
         $data3 = $count_result->fetch();
         $rowcount = $data3['COUNT(itemID)'] - 4;
         $querry_result->fetch();
         $querry_result->fetch();
         $querry_result->fetch();
         $querry_result->fetch();
+        if($rowcount>0){
         for ($rownumber = 0; $rownumber < $rowcount; $rownumber++) {
             $data1 = $querry_result->fetch();
             $itemID = $data1['itemID'];
@@ -170,6 +171,7 @@
             </div>';
             echo $chaine;
         }
+    }
         ?>
 
 

@@ -9,7 +9,8 @@
         }
         
         session_start();
-           
+       
+            
             
 
         if(!isset($_SESSION['user_ID']) ||  $_SESSION['user_ID'] == NULL){
@@ -18,13 +19,13 @@
             echo 'window.location.href = "index.php";';
             echo '</script>';
         }
+
             else{
 
-
-        $currentPrice = $_SESSION['currentPrice2'];
-            $itemID = $_SESSION['itemID2'];
+            $currentPrice = $_SESSION['currentPrice7'];
+            $itemID = $_SESSION['itemID7'];
             $buyerID = $_SESSION['user_ID'];
-            
+       
             if (!empty($_POST["bid"]) && $currentPrice < $_POST["bid"]) {
                 $date = new DateTime();
                 $result = $date->format('Y-m-d H:i:s');

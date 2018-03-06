@@ -32,8 +32,6 @@ if (!isset($_SESSION['user_ID'])) {
 
         </div>
 
-
-
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>
 
   </body>

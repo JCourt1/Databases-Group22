@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid panel panel-success" style="padding-top: 10px; border: 5px solid;">
+
 
     <h3 class="page-header">Most Popular Items</h3>
 
@@ -232,7 +232,7 @@
 
     </div>
 
-</div>
+
 
 
  

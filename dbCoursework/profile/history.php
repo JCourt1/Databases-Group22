@@ -22,7 +22,7 @@
 
             <?php
 
-            $userID = $_SESSION['user_ID']; // hard coded for the moment
+            $userID = $_SESSION['user_ID'];
 
 
 

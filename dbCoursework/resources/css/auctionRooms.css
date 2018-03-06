@@ -1,0 +1,7 @@
+.carousel {
+    position: static !important;
+}
+
+.carousel-inner > .item > img{
+margin:auto;
+}

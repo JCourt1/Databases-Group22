@@ -19,13 +19,13 @@
                 <div class="panel-body">
                     <h3 class="text-center"> Adding new Item</h3>
 
-                    <form class="form form-signup" method="post" action='<?php echo $siteroot; ?>profile/confirmationPage.php' role="form"> 
+                    <form class="form form-signup" name="mainForm" method="post" onsubmit="return validateForm()" action='<?php echo $siteroot; ?>profile/confirmationPage.php' role="form"> 
                         <!-- ITEM TITLE -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span>
                                 </span>
-                                <input type="text" class="form-control" name="itemTitle" id="itemTitle" placeholder="Title" />
+                                <input required type="text" class="form-control" name="itemTitle" id="itemTitle" placeholder="Title" />
                             </div>
                         </div>
                         <!-- ITEM DESCRIPTION -->
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                                <input type="Text" class="form-control" name="reservedPrice" id="reservedPrice" placeholder="Reserved Price" />
+                                <input type="Text" class="form-control" name="reservedPrice" id="reservedPrice" placeholder="Reserved Price"  />
                             </div>
                         </div>                        
                         <!-- Photo -->
@@ -136,6 +136,28 @@ $(document).ready(function(){
     });
 
 });
+
+    function validateForm()
+    {
+    var itemTitle=document.forms["mainForm"]["itemTitle"].value;
+    var itemDescription=document.forms["mainForm"]["itemDescription"].value;
+    var startingPrice=document.forms["mainForm"]["startingPrice"].value;
+    var reservedPrice=document.forms["mainForm"]["reservedPrice"].value;
+    var photoLink=document.forms["mainForm"]["photoLink"].value;
+    var subCat2=document.forms["mainForm"]["subCat2"].value;
+    var expDate=document.forms["mainForm"]["expDate"].value;
+        if (itemTitle==""|| itemDescription==""|| subCat2=="" ||  startingPrice==""|| reservedPrice==""|| photoLink==""|| expDate=="" )
+        {
+            alert("Please Fill All Required Field");
+            return false; //this tells the php if to proceed or not
+        }
+        else{
+            return true;
+        }
+    }
+
+
+
 
 </script>
 

@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -22,7 +23,6 @@ if (isset($_SESSION['user_ID'])) {
 <?php include 'baseHeader.php'; ?>
 
 
-
 <?php include 'commonElements/browsePopularItems.php';?>
 
 
@@ -30,6 +30,8 @@ if (isset($_SESSION['user_ID'])) {
 
 
 <?php include "baseFooter.php"; ?>
+
+
 
 </body>
 

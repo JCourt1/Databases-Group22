@@ -2,7 +2,7 @@
 <?php $siteroot = '/Databases-Group22/dbCoursework/';
 
 #require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
-session_start();
+
 
 try {
         $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
@@ -177,7 +177,7 @@ try {
 </div>
 
 
-<!-- This script dynamically updates the subcatecory field when the parent category has been filled. It sends the data to the file:subCategorySearch.php -->
+<!-- This script dynamically updates the subcategory field when the parent category has been filled. It sends the data to the file:subCategorySearch.php -->
 <script type="text/javascript">
 $(document).ready(function(){
 

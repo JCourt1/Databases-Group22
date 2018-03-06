@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3f65ab4a-1b44-4639-958d-09a8b4927060" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php" />
       <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php" />
       <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/index.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/index.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/profile/my_current_bids.php" afterPath="$PROJECT_DIR$/dbCoursework/profile/my_current_bids.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -82,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+              <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -126,11 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -178,8 +175,8 @@
         <option value="$PROJECT_DIR$/dbCoursework/resources/php/regExs.php" />
         <option value="$PROJECT_DIR$/dbCoursework/profile/history.php" />
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php" />
-        <option value="$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php" />
         <option value="$PROJECT_DIR$/dbCoursework/profile/my_current_bids.php" />
+        <option value="$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php" />
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/index.php" />
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php" />
       </list>
@@ -351,12 +348,12 @@
       <workItem from="1519770893262" duration="626000" />
       <workItem from="1519837531663" duration="17602000" />
       <workItem from="1519914609386" duration="2185000" />
-      <workItem from="1520332123390" duration="16886000" />
+      <workItem from="1520332123390" duration="17519000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80173000" />
+    <option name="totallyTimeSpent" value="80806000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -837,11 +834,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php">
+    <entry file="file://$PROJECT_DIR$/dbCoursework/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding>
+            <marker date="1519766418000" expanded="true" signature="287:342" ph="select usern... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/handle_Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="16" />
+          <folding>
+            <marker date="1520366171000" expanded="true" signature="365:435" ph="SELECT userI... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-          <folding />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1520374699000" expanded="true" signature="5433:5503" ph="SELECT DISTI... categories" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -881,45 +908,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="37" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-          <folding>
-            <marker date="1519766418000" expanded="true" signature="287:342" ph="select usern... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1520374699000" expanded="true" signature="5433:5503" ph="SELECT DISTI... categories" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/handle_Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="16" />
-          <folding>
-            <marker date="1520366171000" expanded="true" signature="365:435" ph="SELECT userI... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php">
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
@@ -930,7 +919,15 @@
     <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

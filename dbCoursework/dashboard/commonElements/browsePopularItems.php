@@ -116,6 +116,7 @@
         $querry_result->fetch();
         if($rowcount>0){
         for ($rownumber = 0; $rownumber < $rowcount; $rownumber++) {
+
             $data1 = $querry_result->fetch();
             $itemID = $data1['itemID'];
             $title = $data1['title'];
@@ -133,7 +134,18 @@
             $data2 = $querry_result2->fetch();
             $currentPrice = $data2['bidAmount'];
             $lastBid = $data2['bidDate'];
+
+
+
+
+
             $modalReference = $rownumber + 4;
+
+
+              
+            $_SESSION['currentPrice'.$modalReference] = $currentPrice;
+            $_SESSION['itemID'.$modalReference] = $itemID;
+
             $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
   <!-- Modal -->
   <div id="myModal' . $modalReference . '" class="modal fade" role="dialog">
@@ -151,14 +163,16 @@
     <h3> Start Price: ' . $startPrice . ' </h2>
     <h3> Current Price: ' . $currentPrice . ' </h2>
     <h3> Last Bid: ' . $lastBid . ' </h2>
-  </div>
-  <div class="modal-footer">
-  <div class="form-group pull-left">
-  <input type="text" name="bid" id="inputBid" >
-</div>
-    <button type="button" class="btn btn-default pull-left" action ="dashboard.php">Bid</button>
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-  </div>
+    </div>
+    <div class="modal-footer">
+    <div class="form-group pull-left">
+    <form action="addBid'.$modalReference.'.php" method="post">
+    Bid: <input type="text" name="bid"><br>
+    <input type="submit" value="Bid" >
+    </form>
+    </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
 </div>
 </div>
 </div>

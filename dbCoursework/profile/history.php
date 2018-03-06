@@ -154,7 +154,7 @@ WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
                     
                 <th class='info'></th></tr>
                 
-                <th class='info'></th><th class='info'></th><th class='info'></th><th class='info'></th>";
+                ";
 
 
 
@@ -173,7 +173,8 @@ WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
 
             ?>
 
-          </tbody>
+            <th class='info'></th><th class='info'></th><th class='info'></th><th class='info'></th>
+            </tbody>
           </table>
 
           </div>

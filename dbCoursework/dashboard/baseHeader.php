@@ -32,7 +32,7 @@ try {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/index.php" >Ibé</a>
+        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/dashboard.php" >Ibé</a>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">

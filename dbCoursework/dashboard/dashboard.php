@@ -33,7 +33,7 @@ if (!isset($_SESSION['user_ID'])) {
 
         </div>
 
-    <?php include 'addBid.php';?>
+
 
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>
 

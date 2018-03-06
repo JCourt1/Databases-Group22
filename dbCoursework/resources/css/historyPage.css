@@ -3,15 +3,23 @@
 
     text-align: center;
     margin: auto;
+    border: 1px solid rgba(20, 20, 20, 0.95);
+    border-collapse: separate;
 
 }
 .table {
     background-color: #f9fbff;
     border-collapse: separate;
+    margin-bottom: 0px;
 }
 
 .table th {
    text-align: center;
+
+}
+
+.table-bordered {
+    border: 1px solid rgba(20, 20, 20, 0.95);
 }
 
 td.historyTableData {
@@ -20,6 +28,12 @@ td.historyTableData {
 
     float: none;
     position: relative;
+    border: 1px solid rgba(20, 20, 20, 0.95);
+    border-bottom-color: rgba(20, 20, 20, 0.95);
+    border-left-color: rgba(20, 20, 20, 0.95);
+    border-top-color: rgba(20, 20, 20, 0.95) ;
+    border-right-color: rgba(20, 20, 20, 0.95);
+    border-collapse: separate;
 
     width: 50%;
     margin: 0 auto !important;

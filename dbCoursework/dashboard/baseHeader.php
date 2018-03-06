@@ -32,7 +32,7 @@ try {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/index.php" >Ibé</a>
+        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/dashboard.php" >Ibé</a>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
@@ -177,7 +177,7 @@ try {
 </div>
 
 
-<!-- This script dynamically updates the subcatecory field when the parent category has been filled. It sends the data to the file:subCategorySearch.php -->
+<!-- This script dynamically updates the subcategory field when the parent category has been filled. It sends the data to the file:subCategorySearch.php -->
 <script type="text/javascript">
 $(document).ready(function(){
 

@@ -1,7 +1,16 @@
+
 <?php
     $siteroot = '/Databases-Group22/dbCoursework/';
-    include '../dashboard/baseHead.php';
-    include '../dashboard/baseHeader.php';
+    include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHead.php";
+
+?>
+
+<body>
+
+<?php
+    include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHeader.php";
+
+    //include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
 
     // Check if search has been made:
     if (isset($_GET['filteredSubmit'])){
@@ -120,7 +129,7 @@
 
  <h1 class="page-header">Search Results:</h1>
 
-<?php echo $subCategory ?>
+
 
  <div class="row placeholders">
 
@@ -186,5 +195,5 @@
 
 
  </div>
-
- <?php include '../dashboard/baseFooter.php'; ?>
+</body>
+ <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>

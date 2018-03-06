@@ -153,9 +153,9 @@ WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
                                     </table>
                                     
                                     </td>
-                                    <th class='info'></th>
-                                </tr>
-                                <th class='info'></th><th class='info'></th><th class='info'></th><th class='info'></th>";
+                                    
+                                <th class='info'></th></tr>
+                                ";
 
 //            echo $chaine;
 //
@@ -172,8 +172,8 @@ WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
 
             ?>
 
-
-          </tbody>
+            <th class='info'></th><th class='info'></th><th class='info'></th><th class='info'></th>
+            </tbody>
           </table>
 
           </div>

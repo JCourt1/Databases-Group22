@@ -3,10 +3,16 @@
 
 
 # select 4 items to have been bid upon most recently
-$query_result = $conn->query("SELECT b.bidDate, i.itemID, i.title, i.description, i.photo, i.endDate, i.startPrice
+# -> joins the items table with the bids table on unique item IDs, and only takes items which haven't expired (> now()).
+# Groups by item ID and then selects the row with the max (most recent)
+# bid date. These remaining rows of items are then ordered by bid date and only 4 are taken.
+
+$query_result = $conn->query("SELECT i.itemID, i.title, i.description, i.photo, i.endDate, i.startPrice, max(b.bidDate) as maxBidDate
 FROM items as i
 JOIN bids as b ON i.itemID = b.itemID
-ORDER BY b.bidDate DESC LIMIT 4;");
+WHERE i.endDate > NOW()
+GROUP BY i.itemID
+ORDER BY maxBidDate DESC LIMIT 4;");
 
 
 
@@ -20,11 +26,11 @@ $string = '
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
   <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+  
+  <panel>
+    <h1 class="text-center">Items with most recent bids</h1>
+    </panel>
+  
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
@@ -67,6 +73,6 @@ $string = '
 </div> ';
 
 echo $string;
-
-
 ?>
+
+

@@ -152,6 +152,8 @@ WHERE itemID = $itemID) ORDER BY bidDate DESC LIMIT 1");
                                     <td class='rightSide'>".$bidStatus."</td>
                                     </table>
                                     
+                                    <a href='../browse/auctionRooms.php?itemID=".$itemID."'>Auction Room</a>
+                                    
                                     </td>
                                     
                                 <th class='info'></th></tr>

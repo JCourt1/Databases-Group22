@@ -17,6 +17,17 @@
                     echo 'item title is not filled';
                 }
             var_dump($_POST) ?>
+
+
+            href="blablab.php?itemID=ghdfhfg&"
+
+
+            function () {
+
+
+
+            function($_GET['itemID'])
+
         </div>
     </div>
     </div>

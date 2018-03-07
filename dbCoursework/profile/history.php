@@ -34,7 +34,7 @@
             JOIN bids as b ON wli.itemID = b.itemID AND wli.userID = b.buyerID
             WHERE wli.userId = $userID AND i.itemID IN (SELECT items.itemID FROM items JOIN bids ON items.itemID = bids.itemID WHERE bids.bidWon = 1)
             GROUP BY b.itemID
-            ORDER BY b.bidDate DESC");
+            ORDER BY i.endDate DESC");
 
 
             $rowcount = $itemsOnWatchList->rowCount();

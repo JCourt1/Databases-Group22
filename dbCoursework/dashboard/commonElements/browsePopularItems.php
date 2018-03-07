@@ -57,7 +57,9 @@ else{
             
             $_SESSION['currentPrice'.$rownumber] = $currentPrice;
             $_SESSION['itemID'.$rownumber] = $itemID;
-            
+
+
+
 
             $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
             

@@ -138,6 +138,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
                 <!-- SUB CATEGORY -->
                 <label for="subcategory">Subcategory:</label>
                 <select class="form-control" name="subCat" id="subCat">
+                    <option value='0' selected>Any</option>
 
 
                 </select>
@@ -199,6 +200,7 @@ $(document).ready(function(){
             success: function (response) {
                 console.log(response);
                 console.log(parentCategory);
+                response = "<option value='0' selected >Any</option>" + response;
                 $("#subCat").html(response);
             },
         });

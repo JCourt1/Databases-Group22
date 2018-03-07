@@ -28,6 +28,7 @@
         }
     } else {
         $_GET['sort'] = 0; // default
+        $sort = $_GET['sort'];
         $sql_sort = "ORDER BY i.endDate ASC";
     }
     print("Sort option chosen is ".$sort.". ");
@@ -86,7 +87,7 @@
         $queryItemCondition = "AND i.itemCondition = '".$condition."' ";
         // SUB CATEGORY STATEMENT:
         $querySubCategory = "AND i.categoryID = ".$subCategory." ";
-        
+
         // CASE: subcategory was picked.
         if (!$subCategory == 0){
             print("Subcategory was chosen. ");
@@ -214,9 +215,26 @@
 
 
  <div class="row placeholders">
+     <form class="navbar-form" method='get' action=refresh name='sortBy'>
+         <div class="form-group">
+             <label for="sort">Sort by:</label>
+             <select id="sortDropDown" name="sortDropDown" class="form-control">
+                 <option value="0">Items ending sooner</option>
+                 <option value="1">Items ending later</option>
+                 <option value="2">Price (Low to High)</option>
+                 <option value="3">Price (High to Low)</option>
+             </select>
+             <div class="input-group-btn">
+                 <button class="btn btn-default" name="searchBarSubmit" type="submit" value="Search for item"><i class="glyphicon glyphicon-sort"></i></button>
+             </div>
+         </div>
+     </form>
 
 
+     <div name="searchResults" id="searchResults">
 
+     </div>
+     <div>
      <?php # begin php
      $rownumber = 0;
 
@@ -274,8 +292,37 @@
          }
      }
      # end php ?>
+ </div>
 
 
  </div>
 </body>
+
+<!-- This script dynamically sorts the search results. It sends the data to the file:sortResults.php -->
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $('#sortDropDown').on("change",function () {
+        var sort = $(this).find('option:selected').val();
+        console.log(sort);
+        var get = "<?php echo $_GET['filteredSubmit'] ?>";
+        console.log("FUCK"+get);
+        //var res = "";
+        $.ajax({
+            url: "<?php echo $siteroot; ?>search/sortResults.php",
+            type: "POST",
+            data: {"sort": sort, "res": res},
+            success: function (response) {
+                console.log(response);
+                console.log("Sort " + sort);
+                console.log("Res " + res);
+                $("#searchResults").html(response);
+            },
+        });
+    });
+
+});
+
+</script>
+
  <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>

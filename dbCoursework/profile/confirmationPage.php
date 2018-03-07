@@ -4,22 +4,25 @@
 
 <body>
 
-  <?php include('../dashboard/baseHeader.php'); ?>
+    <?php include('../dashboard/baseHeader.php'); ?>
 
-  <?php include('../dashboard/sideMenu.php'); ?>
+    <?php include('../dashboard/sideMenu.php'); ?>
 
 
-<div id="fullscreen_bg" class="fullscreen_bg"/>
-<div class="container">
-    <div class="row">
-        asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas asasddasdas
-        <?php var_dump($_POST) ?>
+    <div id="fullscreen_bg" class="fullscreen_bg"/>
+    <div class="container">
+        <div class="row">
+            <?php
+                if (empty($_POST['itemTitle'])){
+                    echo 'item title is not filled';
+                }
+            var_dump($_POST) ?>
+        </div>
     </div>
-</div>
-</div>
+    </div>
 
 
-</div>    
+    </div>    
 
 </body>
 

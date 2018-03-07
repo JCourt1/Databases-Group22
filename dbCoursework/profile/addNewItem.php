@@ -19,7 +19,7 @@
                 <div class="panel-body">
                     <h3 class="text-center"> Adding new Item</h3>
 
-                    <form class="form form-signup" name="mainForm" method="post" onsubmit="return validateForm()" action='<?php echo $siteroot; ?>profile/confirmationPage.php' role="form"> 
+                    <form class="form form-signup" name="mainForm" method="post" onsubmit="return validateForm()" action='<?php echo $siteroot; ?>profile/newItemConfirmationPage.php' role="form"> 
                         <!-- ITEM TITLE -->
                         <div class="form-group">
                             <div class="input-group">
@@ -33,7 +33,7 @@
                     
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                <input type="Text" class="form-control" name="itemDescription" id="itemDescription" placeholder="Description" />
+                                <input required type="Text" class="form-control" name="itemDescription" id="itemDescription" placeholder="Description" />
                             </div>
                         </div>
                     
@@ -41,21 +41,21 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                                <input type="Text" class="form-control" name="startingPrice" id="startingPrice" placeholder="Starting Price" />
+                                <input required type="Text" class="form-control" name="startingPrice" id="startingPrice" placeholder="Starting Price" />
                             </div>
                         </div>
                         <!-- Reserved Price -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                                <input type="number" class="form-control" name="reservedPrice" id="reservedPrice" placeholder="Reserved Price"  />
+                                <input required type="number" class="form-control" name="reservedPrice" id="reservedPrice" placeholder="Reserved Price"  />
                             </div>
                         </div>                        
                         <!-- Photo -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
-                                <input type="Text" class="form-control" name="photoLink" id="photoLink" placeholder="Photo" />
+                                <input required type="Text" class="form-control" name="photoLink" id="photoLink" placeholder="Photo" />
                             </div>
                         </div>                        
                         <!-- Condition -->
@@ -95,7 +95,7 @@
                         <label for="category">Auction End Date</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                <input type="date" id="expDate" name="expDate" class="form-control" placeholder="Auction End Date" />
+                                <input required type="date" id="expDate" name="expDate" class="form-control" placeholder="Auction End Date" />
                             </div>
                         </div>                               
                 </div>
@@ -139,21 +139,21 @@ $(document).ready(function(){
 
     function validateForm()
     {
-    // var itemTitle=document.forms["mainForm"]["itemTitle"].value;
-    // var itemDescription=document.forms["mainForm"]["itemDescription"].value;
-    // var startingPrice=document.forms["mainForm"]["startingPrice"].value;
-    // var reservedPrice=document.forms["mainForm"]["reservedPrice"].value;
-    // var photoLink=document.forms["mainForm"]["photoLink"].value;
-    // var subCat2=document.forms["mainForm"]["subCat2"].value;
-    // var expDate=document.forms["mainForm"]["expDate"].value;
-    //     if (itemTitle==""|| itemDescription==""|| subCat2=="" ||  startingPrice==""|| reservedPrice==""|| photoLink==""|| expDate=="" )
-    //     {
-    //         alert("Please Fill All Required Field");
-    //         return false; //this tells the php if to proceed or not
-    //     }
-    //     else{
-    //         return true;
-    //     }
+    var itemTitle=document.forms["mainForm"]["itemTitle"].value;
+    var itemDescription=document.forms["mainForm"]["itemDescription"].value;
+    var startingPrice=document.forms["mainForm"]["startingPrice"].value;
+    var reservedPrice=document.forms["mainForm"]["reservedPrice"].value;
+    var photoLink=document.forms["mainForm"]["photoLink"].value;
+    var subCat2=document.forms["mainForm"]["subCat2"].value;
+    var expDate=document.forms["mainForm"]["expDate"].value;
+        if (itemTitle==""|| itemDescription==""|| subCat2=="" ||  startingPrice==""|| reservedPrice==""|| photoLink==""|| expDate=="" )
+        {
+            alert("Please Fill All Required Field");
+            return false; //this tells the php if to proceed or not
+        }
+        else{
+            return true;
+        }
         return true;
     }
 

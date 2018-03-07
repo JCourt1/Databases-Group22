@@ -33,12 +33,12 @@
         $sql = "INSERT INTO items ( sellerID, title, description, itemCondition, categoryID, startPrice,reservePrice,endDate)
         VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','".$Condition."','".$subCat2."', '".$startingPrice."','".$reservedPrice."','".$expDate."')";
         if ($conn->query($sql)) {
-            echo "<script type= 'text/javascript'>alert('New Record Inserted Successfully');</script>";
+            echo "<script type= 'text/javascript'>alert('New item Inserted Successfully');</script>";
             echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
 
             }
             else{
-            echo "<script type= 'text/javascript'>alert('Data not successfully Inserted.');</script>";
+            echo "<script type= 'text/javascript'>alert('Item not successfully Inserted.');</script>";
         }
         $conn = null;
     }

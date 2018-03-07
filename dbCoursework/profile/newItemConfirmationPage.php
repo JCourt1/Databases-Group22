@@ -12,34 +12,34 @@
     try
     {  
         //create connection
-        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
-                        "team22@ibe-database",
-                        "ILoveCS17");
+        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8","team22@ibe-database","ILoveCS17");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        ?>
 
-        <?php
+        //store the variables that come from the form
         $itemTitle = $_POST['itemTitle'];
         $itemDescription = $_POST['itemDescription'];
         $startingPrice = $_POST['startingPrice'];
-        $reservedPrice = $_POST['reservedPrice'];
+        $reservePrice = $_POST['reservePrice'];
         $photoLink = $_POST['photoLink'];
         $Condition = $_POST['Condition'];
         $parentCat2 = $_POST['parentCat2'];
         $subCat2 = $_POST['subCat2'];
         $expDate = $_POST['expDate'];
 
-
+        //update the database
         $sql = "INSERT INTO items ( sellerID, title, description, itemCondition, categoryID, startPrice,reservePrice,endDate)
-        VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','".$Condition."','".$subCat2."', '".$startingPrice."','".$reservedPrice."','".$expDate."')";
-        if ($conn->query($sql)) {
-            echo "<script type= 'text/javascript'>alert('New item Inserted Successfully');</script>";
-            echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
-
-            }
-            else{
-            echo "<script type= 'text/javascript'>alert('Item not successfully Inserted.');</script>";
+        VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','".$Condition."','".$subCat2."', '".$startingPrice."','".$reservePrice."','".$expDate."')";
+        //print the relevant message regarding the outcome of the insertion
+        if ($conn->query($sql))
+        {
+            echo "<script type= 'text/javascript'>alert('New Item Inserted Successfully');</script>";
         }
+        else
+        {
+            echo "<script type= 'text/javascript'>alert('Item not successfully inserted.');</script>";
+        }
+        //navigate to the main page
+        echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
         $conn = null;
     }
 

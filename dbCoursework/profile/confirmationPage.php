@@ -42,8 +42,6 @@
             else{
             echo "<script type= 'text/javascript'>alert('Data not successfully Inserted.');</script>";
 
-<<<<<<< HEAD
-=======
     <div id="fullscreen_bg" class="fullscreen_bg"/>
     <div class="container">
         <div class="row">
@@ -66,7 +64,6 @@
         </div>
     </div>
     </div>
->>>>>>> 39c583d215e5ecfe8e9aa570bc13b6fb5451d0c9
 
             
         }

@@ -10,13 +10,14 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
+    $itemID = $_GET['itemID'];
 
-function addCount($itemID){
 
     $conn->query("UPDATE items SET itemViewCount = itemViewCount + 1  WHERE itemID = ".$itemID."; ");
 
 
-}
+
+    
 
 
 ?>

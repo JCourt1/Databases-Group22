@@ -3,11 +3,14 @@
     <h3 class="page-header">Most Popular Items</h3>
 
  
+<?php include 'increaseViewCount.php' ?>
 
   
 
     <div class="row placeholders">
         <?php
+
+       
       
         $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items WHERE endDate > NOW() ORDER BY itemViewCount DESC LIMIT 4");
         $count_result = $conn->query("SELECT COUNT(itemID) FROM ( SELECT itemID FROM items WHERE endDate > NOW()   ORDER BY itemViewCount DESC LIMIT 4 ) AS count");
@@ -15,6 +18,7 @@
         $rowcount = $data3['COUNT(itemID)'];
          
        
+
         for ($rownumber = 0; $rownumber < $rowcount; $rownumber++) {
     
        
@@ -76,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal" data-target="#myModal' . $rownumber . '">
+                <img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal"   data-target="#myModal' . $rownumber . '">
                 <a  data-toggle="modal" data-target="#myModal' . $rownumber . '">
                     <h4>' . $title . '
                     </h4>

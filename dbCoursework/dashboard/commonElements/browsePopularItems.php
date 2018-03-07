@@ -3,7 +3,19 @@
     <h3 class="page-header">Most Popular Items</h3>
 
  
-<?php include 'increaseViewCount.php' ?>
+<?php 
+if(isset($_SESSION['user_ID'])){
+$buyerID = $_SESSION['user_ID'];
+}
+
+else{
+
+    $buyerID = NULL;
+
+}
+
+
+?>
 
   
 
@@ -70,7 +82,7 @@
                             </div>
                             <div class="modal-footer">
                             <div class="form-group pull-left">
-                            <form action="addBid'.$rownumber.'.php" method="post">
+                            <form action="addBidMaster.php?itemID='.$itemID.'&currentPrice='.$currentPrice.'&buyerID='.$buyerID.'" method="post">
                             Bid: <input type="text" name="bid"><br>
                             <input type="submit" value="Bid" >
                             </form>
@@ -170,7 +182,7 @@
     </div>
     <div class="modal-footer">
     <div class="form-group pull-left">
-    <form action="addBid'.$modalReference.'.php" method="post">
+    <form action="addBidMaster.php?itemID='.$itemID.'&currentPrice='.$currentPrice.'&buyerID='.$buyerID.'" method="post">
     Bid: <input type="text" name="bid"><br>
     <input type="submit" value="Bid" >
     </form>

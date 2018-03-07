@@ -8,6 +8,12 @@
 <body>
 
 <?php
+    if(isset($_SESSION['user_ID'])){
+        $buyerID = $_SESSION['user_ID'];
+    } else {
+        $buyerID = NULL;
+    }
+
     include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHeader.php";
 
     //include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
@@ -265,52 +271,23 @@
      foreach ($res as $searchResult) {
          if (new DateTime($searchResult['endDate']) > new DateTime()) {
 
-             # Get the bid information:
-             $bidInfo = $conn->query("SELECT bidAmount, bidDate FROM bids WHERE itemID = " . $searchResult['itemID'] . " ORDER BY bidAmount LIMIT 1");
+             $itemID = $searchResult['itemID'];
+             $title = $searchResult['title'];
+             $photo = $searchResult['photo'];
+             $description = $searchResult['description'];
+             $startPrice = $searchResult['startPrice'];
+             $currentPrice= $searchResult['bidAmount'];
+             $lastBid = $searchResult['bidDate'];
 
-             $bid = $bidInfo->fetch();
+             $current_date =  new DateTime();
 
-             $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
+             $bid_end_date =  new DateTime($searchResult['endDate']);
+             $interval = $current_date->diff($bid_end_date);
+             $elapsed = $interval->format('%y y %m m %a d %h h %i min %s s');
 
-                 <!-- Modal -->
-                 <div id="myModal' . $rownumber . '" class="modal fade" role="dialog">
-                     <div class="modal-dialog">
+             // MODAL:
+             include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/itemModal.php";
 
-                         <!-- Modal content-->
-                         <div class="modal-content">
-                             <div class="modal-header">
-                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                 <h2 class="modal-title">' . $searchResult['title'] . '</h4>
-                             </div>
-                             <div class="modal-body">
-                                 <img src="' . $searchResult['photo'] . '" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"
-                                 <p>' . $searchResult['description'] . '</p>
-                                 <h3 id="countdown"> PLACEHOLDER </h3>
-                                 <h3 > Start Price: ' . $searchResult['startPrice'] . ' </h2>
-                                 <h3> Current Price: ' . $searchResult['bidAmount'] . ' </h2>
-                                 <h3> Last Bid: ' . $searchResult['bidDate'] . ' </h2>
-                             </div>
-                             <div class="modal-footer">
-                                 <div class="form-group pull-left">
-                                     <input type="text" name="bid" id="inputBid" >
-                                 </div>
-                                 <button type="button" class="btn btn-default pull-left" action="addBid()" >Bid</button>
-                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                             </div>
-                         </div>
-
-                     </div>
-                 </div>
-
-                 <img src="' . $searchResult['photo'] . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal" data-target="#myModal' . $rownumber . '">
-                 <a  data-toggle="modal" data-target="#myModal' . $rownumber . '">
-                     <h4>' . $searchResult['title'] . '
-                     </h4>
-                     <span class="text-muted">  ' . $searchResult['description'] . ' </span>
-                 </a>
-             </div>';
-
-             echo $chaine;
              $rownumber += 1;
 
          }

@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_ID'])) {
 
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";?>
 
-    
+
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 

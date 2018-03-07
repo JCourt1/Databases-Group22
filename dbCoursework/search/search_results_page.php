@@ -208,14 +208,43 @@
         $url = 'search_result_page.php';
     }
 
+
+
  ?>
+
+ <!-- This script dynamically sorts the search results. It sends the data to the file:sortResults.php -->
+ <script type="text/javascript">
+ $(document).ready(function(){
+     var res=<?php echo json_encode($res); ?>;
+     console.log("Res: " + res);
+
+     $('#sortDropDown').on("change",function () {
+         var sort = $(this).find('option:selected').val();
+         console.log(sort);
+
+         //var res = "";
+         $.ajax({
+             url: "<?php echo $siteroot; ?>search/sortResults.php",
+             type: "POST",
+             data: {"sort": sort, "res": res},
+             success: function (response) {
+                 console.log("Response: " + response);
+                 console.log("Sort: " + sort);
+                 $("#searchResults").html(response);
+             },
+         });
+     });
+
+ });
+
+ </script>
 
  <h1 class="page-header">Search Results:</h1>
 
 
 
  <div class="row placeholders">
-     <form class="navbar-form" method='get' action=refresh name='sortBy'>
+     <form class="navbar-form" method='get' name='sortBy'>
          <div class="form-group">
              <label for="sort">Sort by:</label>
              <select id="sortDropDown" name="sortDropDown" class="form-control">
@@ -224,17 +253,12 @@
                  <option value="2">Price (Low to High)</option>
                  <option value="3">Price (High to Low)</option>
              </select>
-             <div class="input-group-btn">
-                 <button class="btn btn-default" name="searchBarSubmit" type="submit" value="Search for item"><i class="glyphicon glyphicon-sort"></i></button>
-             </div>
          </div>
      </form>
 
 
      <div name="searchResults" id="searchResults">
 
-     </div>
-     <div>
      <?php # begin php
      $rownumber = 0;
 
@@ -298,31 +322,6 @@
  </div>
 </body>
 
-<!-- This script dynamically sorts the search results. It sends the data to the file:sortResults.php -->
-<script type="text/javascript">
-$(document).ready(function(){
 
-    $('#sortDropDown').on("change",function () {
-        var sort = $(this).find('option:selected').val();
-        console.log(sort);
-        var get = "<?php echo $_GET['filteredSubmit'] ?>";
-        console.log("FUCK"+get);
-        //var res = "";
-        $.ajax({
-            url: "<?php echo $siteroot; ?>search/sortResults.php",
-            type: "POST",
-            data: {"sort": sort, "res": res},
-            success: function (response) {
-                console.log(response);
-                console.log("Sort " + sort);
-                console.log("Res " + res);
-                $("#searchResults").html(response);
-            },
-        });
-    });
-
-});
-
-</script>
 
  <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>

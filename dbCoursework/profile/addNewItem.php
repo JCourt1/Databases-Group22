@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                                <input type="Text" class="form-control" name="reservedPrice" id="reservedPrice" placeholder="Reserved Price"  />
+                                <input type="number" class="form-control" name="reservedPrice" id="reservedPrice" placeholder="Reserved Price"  />
                             </div>
                         </div>                        
                         <!-- Photo -->
@@ -139,21 +139,22 @@ $(document).ready(function(){
 
     function validateForm()
     {
-    var itemTitle=document.forms["mainForm"]["itemTitle"].value;
-    var itemDescription=document.forms["mainForm"]["itemDescription"].value;
-    var startingPrice=document.forms["mainForm"]["startingPrice"].value;
-    var reservedPrice=document.forms["mainForm"]["reservedPrice"].value;
-    var photoLink=document.forms["mainForm"]["photoLink"].value;
-    var subCat2=document.forms["mainForm"]["subCat2"].value;
-    var expDate=document.forms["mainForm"]["expDate"].value;
-        if (itemTitle==""|| itemDescription==""|| subCat2=="" ||  startingPrice==""|| reservedPrice==""|| photoLink==""|| expDate=="" )
-        {
-            alert("Please Fill All Required Field");
-            return false; //this tells the php if to proceed or not
-        }
-        else{
-            return true;
-        }
+    // var itemTitle=document.forms["mainForm"]["itemTitle"].value;
+    // var itemDescription=document.forms["mainForm"]["itemDescription"].value;
+    // var startingPrice=document.forms["mainForm"]["startingPrice"].value;
+    // var reservedPrice=document.forms["mainForm"]["reservedPrice"].value;
+    // var photoLink=document.forms["mainForm"]["photoLink"].value;
+    // var subCat2=document.forms["mainForm"]["subCat2"].value;
+    // var expDate=document.forms["mainForm"]["expDate"].value;
+    //     if (itemTitle==""|| itemDescription==""|| subCat2=="" ||  startingPrice==""|| reservedPrice==""|| photoLink==""|| expDate=="" )
+    //     {
+    //         alert("Please Fill All Required Field");
+    //         return false; //this tells the php if to proceed or not
+    //     }
+    //     else{
+    //         return true;
+    //     }
+        return true;
     }
 
 

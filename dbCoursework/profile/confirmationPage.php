@@ -42,6 +42,31 @@
             else{
             echo "<script type= 'text/javascript'>alert('Data not successfully Inserted.');</script>";
 
+<<<<<<< HEAD
+=======
+    <div id="fullscreen_bg" class="fullscreen_bg"/>
+    <div class="container">
+        <div class="row">
+            <?php
+                if (empty($_POST['itemTitle'])){
+                    echo 'item title is not filled';
+                }
+            var_dump($_POST) ?>
+
+
+            href="blablab.php?itemID=ghdfhfg&"
+
+
+            function () {
+
+
+
+            function($_GET['itemID'])
+
+        </div>
+    </div>
+    </div>
+>>>>>>> 39c583d215e5ecfe8e9aa570bc13b6fb5451d0c9
 
             
         }

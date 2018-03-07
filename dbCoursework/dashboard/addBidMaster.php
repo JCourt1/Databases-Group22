@@ -7,24 +7,26 @@
         catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
+
+
+       $currentPrice =  $_GET['currentPrice'];
+       $buyerID = $_GET['buyerID'];
+       $itemID = $_GET['itemID'];
         
-        session_start();
-           
+        
             
 
-        if(!isset($_SESSION['user_ID']) ||  $_SESSION['user_ID'] == NULL){
-            echo '<script type="text/javascript">'; 
-            echo 'alert("You have to login or register first");'; 
-            echo 'window.location.href = "index.php";';
-            echo '</script>';
-        }
+            if(!isset($buyerID) ||  $buyerID == NULL){
+                echo '<script type="text/javascript">'; 
+                echo 'alert("You have to login or register first");'; 
+                echo 'window.location.href = "index.php";';
+                echo '</script>';
+            }
+
             else{
 
-
-        $currentPrice = $_SESSION['currentPrice2'];
-            $itemID = $_SESSION['itemID2'];
-            $buyerID = $_SESSION['user_ID'];
             
+       
             if (!empty($_POST["bid"]) && $currentPrice < $_POST["bid"]) {
                 $date = new DateTime();
                 $result = $date->format('Y-m-d H:i:s');
@@ -55,6 +57,8 @@
                 
             }
         
-        }
         
+        }
+
+    
 ?>

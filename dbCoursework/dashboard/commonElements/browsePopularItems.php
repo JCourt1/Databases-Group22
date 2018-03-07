@@ -3,11 +3,26 @@
     <h3 class="page-header">Most Popular Items</h3>
 
  
+<?php 
+if(isset($_SESSION['user_ID'])){
+$buyerID = $_SESSION['user_ID'];
+}
+
+else{
+
+    $buyerID = NULL;
+
+}
+
+
+?>
 
   
 
     <div class="row placeholders">
         <?php
+
+       
       
         $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items WHERE endDate > NOW() ORDER BY itemViewCount DESC LIMIT 4");
         $count_result = $conn->query("SELECT COUNT(itemID) FROM ( SELECT itemID FROM items WHERE endDate > NOW()   ORDER BY itemViewCount DESC LIMIT 4 ) AS count");
@@ -15,6 +30,7 @@
         $rowcount = $data3['COUNT(itemID)'];
          
        
+
         for ($rownumber = 0; $rownumber < $rowcount; $rownumber++) {
     
        
@@ -41,7 +57,9 @@
             
             $_SESSION['currentPrice'.$rownumber] = $currentPrice;
             $_SESSION['itemID'.$rownumber] = $itemID;
-            
+
+
+
 
             $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
             
@@ -66,7 +84,7 @@
                             </div>
                             <div class="modal-footer">
                             <div class="form-group pull-left">
-                            <form action="addBid'.$rownumber.'.php" method="post">
+                            <form action="addBidMaster.php?itemID='.$itemID.'&currentPrice='.$currentPrice.'&buyerID='.$buyerID.'" method="post">
                             Bid: <input type="text" name="bid"><br>
                             <input type="submit" value="Bid" >
                             </form>
@@ -76,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal" data-target="#myModal' . $rownumber . '">
+                <img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal"   data-target="#myModal' . $rownumber . '">
                 <a  data-toggle="modal" data-target="#myModal' . $rownumber . '">
                     <h4>' . $title . '
                     </h4>
@@ -166,7 +184,7 @@
     </div>
     <div class="modal-footer">
     <div class="form-group pull-left">
-    <form action="addBid'.$modalReference.'.php" method="post">
+    <form action="addBidMaster.php?itemID='.$itemID.'&currentPrice='.$currentPrice.'&buyerID='.$buyerID.'" method="post">
     Bid: <input type="text" name="bid"><br>
     <input type="submit" value="Bid" >
     </form>

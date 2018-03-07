@@ -1,4 +1,5 @@
 <?php
+$siteroot = '/Databases-Group22/dbCoursework/';
 // THIS IS THE FILE FOR THE ITEM MODAL.
 $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
 
@@ -23,7 +24,7 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
                 </div>
                 <div class="modal-footer">
                 <div class="form-group pull-left">
-                <form action="addBidMaster.php?itemID='.$itemID.'&currentPrice='.$currentPrice.'&buyerID='.$buyerID.'" method="post">
+                <form action="'.$siteroot.'dashboard/addBidMaster.php?itemID='.$itemID.'&currentPrice='.$currentPrice.'&buyerID='.$buyerID.'" method="post">
                 Bid: <input type="text" name="bid"><br>
                 <input type="submit" value="Bid" >
                 </form>

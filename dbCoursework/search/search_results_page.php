@@ -12,7 +12,7 @@
 
     //include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
 
-    // Check if search has been made:
+    // Check if advanced search has been made:
     if (isset($_GET['filteredSubmit'])){
         $searchTerm = $_GET['searchTerm'];
         $parentCategory = $_GET['parentCat'];
@@ -28,13 +28,20 @@
 
         // Set the min price if there is one, otherwise set it = to 0.
         if (empty($minPrice)) {
+            print("Minimum price was NOT chosen. ");
             $minPrice = 0;
+        } else{
+            print("Minimum price is £".$minPrice.". ");
         }
 
         // Same with the max price
         if (empty($maxPrice)){
-            $maxPrice = INF;
+            print("Maximum price was NOT chosen. ");
+            $maxPrice = 10000000000;
+        } else {
+            print("Maximum price is £".$maxPrice.". ");
         }
+
 
 
 
@@ -43,61 +50,166 @@
         ALSO NEED TO HANDLE PARENT CATEGORY LATER AND PRICES
         **/
 
-        // Check if parent category was picked:
-        if ($subCategory != 0){
+        // CASE: subcategory was picked.
+        if (!$subCategory == 0){
+            print("Subcategory was chosen. ");
 
-            // Check if condition was chosen:
-            if ($condition != 0){
-                $sql_query = 'SELECT *
+            // CASE: item condition was picked:
+            if (!$condition == 0){
+                print("Item condition was chosen. ");
+                $sql_query = "SELECT *
                                 FROM items i
-                                WHERE i.categoryID = :subCategory AND i.itemCondition = :condition
-                                AND (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
-                                ORDER BY i.endDate ASC';
-                $statement = $conn->prepare($sql_query);
-                $statement->bindValue(':subCategory', $subCategory);
-                $statement->bindValue(':condition', $condition);
-                $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+                                INNER JOIN (
+                                	SELECT b.itemID, b.bidAmount, b.bidDate
+                                	FROM bids b
+                                	INNER JOIN (
+                                		SELECT itemID, MAX(bidAmount) bidAmount
+                                		FROM bids
+                                		GROUP BY itemID
+                                	) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
+                                ) d ON i.itemID = d.itemID
+                                WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
+                                	AND i.itemCondition = '".$condition."'
+                                    AND d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice."
+                                    AND i.categoryID = ".$subCategory."
+                                ORDER BY i.endDate ASC;";
 
+                print("SQL Query is: ".$sql_query." ");
+                $statement = $conn->prepare($sql_query);
 
             } else {
-                // No condition was chosen -->
-                $sql_query = 'SELECT *
+                print("Item condition was NOT chosen. ");
+                // CASE: item condition NOT picked
+                $sql_query = "SELECT *
                                 FROM items i
-                                WHERE i.categoryID = :subCategory
-                                AND (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
-                                ORDER BY i.endDate ASC';
+                                INNER JOIN (
+                                	SELECT b.itemID, b.bidAmount, b.bidDate
+                                	FROM bids b
+                                	INNER JOIN (
+                                		SELECT itemID, MAX(bidAmount) bidAmount
+                                		FROM bids
+                                		GROUP BY itemID
+                                	) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
+                                ) d ON i.itemID = d.itemID
+                                WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
+                                    AND d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice."
+                                    AND i.categoryID = ".$subCategory."
+                                ORDER BY i.endDate ASC;";
+                print("SQL Query is: ".$sql_query." ");
                 $statement = $conn->prepare($sql_query);
-                $statement->bindValue(':subCategory', $subCategory);
-                $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+
             }
 
         } else {
-            // No parent category was picked -->
+            print("Subcategory was NOT chosen. ");
 
-            // Check if condition was chosen:
-            if ($condition != 0){
-                $sql_query = 'SELECT *
-                                FROM items i
-                                WHERE i.itemCondition = :condition
-                                AND (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
-                                ORDER BY i.endDate ASC';
-                $statement = $conn->prepare($sql_query);
-                $statement->bindValue(':condition', $condition);
-                $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
-            } else {
-                // No condition was chosen -->
-                $sql_query = 'SELECT *
-                                FROM items i
-                                WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
-                                ORDER BY i.endDate ASC';
-                $statement = $conn->prepare($sql_query);
-                $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+            // Parent Category WAS chosen
+            if (!$parentCategory == 0){
+                print("But parent category WAS chosen. ");
+
+                // Check if condition was chosen:
+                if (!$condition == 0){
+                    print("Item condition was chosen. ");
+                    $sql_query = "SELECT *
+                                    FROM items i
+                                    INNER JOIN (
+                                    	SELECT b.itemID, b.bidAmount, b.bidDate
+                                    	FROM bids b
+                                    	INNER JOIN (
+                                    		SELECT itemID, MAX(bidAmount) bidAmount
+                                    		FROM bids
+                                    		GROUP BY itemID
+                                    	) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
+                                    ) d ON i.itemID = d.itemID
+                                    WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
+                                        AND i.itemID IN (SELECT i.itemID FROM items i, categories c
+                                                        WHERE i.categoryID = c.categoryID
+                                                        AND c.parentCategory = '".$parentCategory."')
+                                        AND d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice."
+                                    ORDER BY i.endDate ASC;";
+                    print("SQL Query is: ".$sql_query." ");
+                    $statement = $conn->prepare($sql_query);
+                } else {
+                    print("Item condition was NOT chosen. ");
+                    // No condition was chosen -->
+                    $sql_query = "SELECT *
+                                    FROM items i
+                                    INNER JOIN (
+                                    	SELECT b.itemID, b.bidAmount, b.bidDate
+                                    	FROM bids b
+                                    	INNER JOIN (
+                                    		SELECT itemID, MAX(bidAmount) bidAmount
+                                    		FROM bids
+                                    		GROUP BY itemID
+                                    	) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
+                                    ) d ON i.itemID = d.itemID
+                                    WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
+                                        AND i.itemID IN (SELECT i.itemID FROM items i, categories c
+                                                            WHERE i.categoryID = c.categoryID
+                                                            AND c.parentCategory = '".$parentCategory."')
+                                        AND d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice."
+                                    ORDER BY i.endDate ASC;";
+                    $statement = $conn->prepare($sql_query);
+                    print("SQL Query is: ".$sql_query." ");
+
+                }
+
+            } // Parent Category WAS NOT chosen
+            else {
+                print("Parent Category ALSO NOT chosen. ");
+
+                // Check if condition was chosen:
+                if (!$condition == 0){
+                    $sql_query = "SELECT *
+                                    FROM items i
+                                    INNER JOIN (
+                                    	SELECT b.itemID, b.bidAmount, b.bidDate
+                                    	FROM bids b
+                                    	INNER JOIN (
+                                    		SELECT itemID, MAX(bidAmount) bidAmount
+                                    		FROM bids
+                                    		GROUP BY itemID
+                                    	) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
+                                    ) d ON i.itemID = d.itemID
+                                    WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
+                                    	AND i.itemCondition = '".$condition."'
+                                        AND d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice."
+                                    ORDER BY i.endDate ASC;";
+                    $statement = $conn->prepare($sql_query);
+                    print("SQL Query is: ".$sql_query." ");
+
+                } else {
+                    print("Item condition was NOT chosen. ");
+                    // No condition was chosen -->
+                    $sql_query = "SELECT *
+                                    FROM items i
+                                    INNER JOIN (
+                                    	SELECT b.itemID, b.bidAmount, b.bidDate
+                                    	FROM bids b
+                                    	INNER JOIN (
+                                    		SELECT itemID, MAX(bidAmount) bidAmount
+                                    		FROM bids
+                                    		GROUP BY itemID
+                                    	) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
+                                    ) d ON i.itemID = d.itemID
+                                    WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
+                                        AND d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice."
+                                    ORDER BY i.endDate ASC;";
+                    $statement = $conn->prepare($sql_query);
+                    print("SQL Query is: ".$sql_query." ");
+
+                }
+
             }
+
+
         }
 
         $statement->execute();
         $res = $statement->fetchAll();
-        $url = 'search_result_page.php?searchTerm='.$searchTerm.'subCategory='.$subCategory.'condition='.$condition;
+        $url = 'search_result_page.php?searchTerm='.$searchTerm.'&parentCategory='.$parentCategory.'&subCategory='.$subCategory.'&condition='.$condition;
+
+
 
     } else if (isset($_GET['searchBarSubmit'])) { // Search was made using the search bar only
 
@@ -163,8 +275,8 @@
                                  <p>' . $searchResult['description'] . '</p>
                                  <h3 id="countdown"> PLACEHOLDER </h3>
                                  <h3 > Start Price: ' . $searchResult['startPrice'] . ' </h2>
-                                 <h3> Current Price: ' . $bid['bidAmount'] . ' </h2>
-                                 <h3> Last Bid: ' . $bid['bidDate'] . ' </h2>
+                                 <h3> Current Price: ' . $searchResult['bidAmount'] . ' </h2>
+                                 <h3> Last Bid: ' . $searchResult['bidDate'] . ' </h2>
                              </div>
                              <div class="modal-footer">
                                  <div class="form-group pull-left">

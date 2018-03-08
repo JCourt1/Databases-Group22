@@ -20,7 +20,7 @@ catch (Exception $e) {
 
         <?php
     try
-    {  
+    {
         //store the variables that come from the form
         $email = $_POST['email'];
         $username = $_POST['username'];
@@ -29,7 +29,7 @@ catch (Exception $e) {
 
     }
 
-    catch (Exception $e) 
+    catch (Exception $e)
     {
         die('Erreur : ' . $e->getMessage());
     }
@@ -44,15 +44,15 @@ catch (Exception $e) {
 
 </html>
 
-<?php 
+<?php
 
 //validation check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $regError = "Invalid email format. Please try again";
 
-}elseif(!empty($password) ) 
+}elseif(!empty($password) )
 {
-    if (strlen($password) <= '8') {
+    if (strlen($password) < '8') {
         $regError = "Your Password Must Contain At Least 8 Characters! Please try again.";
     }
     elseif(!is_string($username)){
@@ -98,14 +98,14 @@ else{
 
     $_SESSION['user_ID'] = $id;
     $_SESSION['login_user'] = $uName;
-   
+
        if (!isset($_SESSION['user_ID'])) {
                throw new Exception('Username is not set. Should not happen.');
        }
-   
+
     $_SESSION['loggedin'] = true;
-   
-   
+
+
     $dashboard = 'http://' . $_SERVER['HTTP_HOST'] .
     dirname($_SERVER['PHP_SELF']) . '/dashboard.php';
     header('Location: ' . $dashboard);
@@ -116,4 +116,3 @@ else{
 
 }
 ?>
-

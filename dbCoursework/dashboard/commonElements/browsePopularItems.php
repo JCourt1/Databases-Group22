@@ -2,7 +2,18 @@
 
     <h3 class="page-header">Most Popular Items</h3>
 
+<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
  
+
+
+
+
+
+
+
+
+
+
 <?php 
 if(isset($_SESSION['user_ID'])){
 $buyerID = $_SESSION['user_ID'];
@@ -32,6 +43,8 @@ else{
        
 
         for ($rownumber = 0; $rownumber < $rowcount; $rownumber++) {
+
+         
     
        
             $data1 = $querry_result->fetch();
@@ -53,11 +66,42 @@ else{
             $currentPrice = $data2['bidAmount'];
             $lastBid = $data2['bidDate'];
 
+           
             
             
-            $_SESSION['currentPrice'.$rownumber] = $currentPrice;
-            $_SESSION['itemID'.$rownumber] = $itemID;
+            echo "
+            <script type='text/javascript'>
+            $(document).ready(function(){
+                        $('#img".$rownumber."').click(function(){
 
+                            var number = ".$itemID.";
+
+
+
+
+                            $.ajax({
+                                url: 'increaseViewCount.php',
+                                type: 'POST',
+                                data: 'itemID='+number,
+                                success: function (response) {
+                                    console.log('hurray');
+                                },
+
+                                error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                                    alert('Status: ' + textStatus); alert('Error: ' + errorThrown); 
+                                } 
+                            });
+                            
+                           
+
+                        });
+                        
+        });
+        
+        </script>
+            
+            
+            ";
 
 
 
@@ -94,7 +138,7 @@ else{
                         </div>
                     </div>
                 </div>
-                <img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal"   data-target="#myModal' . $rownumber . '">
+                <img src="' . $photo . '" width="200" height="200"  class="img" alt="Generic placeholder thumbnail" data-toggle="modal" id = "img'.$rownumber.'"   data-target="#myModal' . $rownumber . '">
                 <a  data-toggle="modal" data-target="#myModal' . $rownumber . '">
                     <h4>' . $title . '
                     </h4>
@@ -160,9 +204,46 @@ else{
             $modalReference = $rownumber + 4;
 
 
+
+
+            echo "
+            <script type='text/javascript'>
+            $(document).ready(function(){
+                        $('#img".$modalReference."').click(function(){
+
+                            var number = ".$itemID.";
+
+
+
+
+                            $.ajax({
+                                url: 'increaseViewCount.php',
+                                type: 'POST',
+                                data: 'itemID='+number,
+                                success: function (response) {
+                                    console.log('hurray');
+                                },
+
+                                error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                                    alert('Status: ' + textStatus); alert('Error: ' + errorThrown); 
+                                } 
+                            });
+                            
+                           
+
+                        });
+                        
+        });
+        
+        </script>
+            
+            
+            ";
+
+
+
+
               
-            $_SESSION['currentPrice'.$modalReference] = $currentPrice;
-            $_SESSION['itemID'.$modalReference] = $itemID;
 
             $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
   <!-- Modal -->
@@ -194,7 +275,7 @@ else{
 </div>
 </div>
 </div>
-              <img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal" data-target="#myModal' . $modalReference . '">
+              <img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal" id = "img'.$modalReference.'" data-target="#myModal' . $modalReference . '">
               <a  data-toggle="modal" data-target="#myModal' . $modalReference . '">
               <h4>' . $title . '
               </h4>
@@ -209,3 +290,4 @@ else{
 
     </div>
 </div>
+

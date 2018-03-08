@@ -35,37 +35,10 @@
         if ($conn->query($sql)) {
             echo "<script type= 'text/javascript'>alert('New Record Inserted Successfully');</script>";
             echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
-            
-
 
             }
             else{
             echo "<script type= 'text/javascript'>alert('Data not successfully Inserted.');</script>";
-
-    <div id="fullscreen_bg" class="fullscreen_bg"/>
-    <div class="container">
-        <div class="row">
-            <?php
-                if (empty($_POST['itemTitle'])){
-                    echo 'item title is not filled';
-                }
-            var_dump($_POST) ?>
-
-
-            href="blablab.php?itemID=ghdfhfg&"
-
-
-            function () {
-
-
-
-            function($_GET['itemID'])
-
-        </div>
-    </div>
-    </div>
-
-            
         }
         $conn = null;
     }

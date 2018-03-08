@@ -61,7 +61,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
                         </li>
                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login</a>
                             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
-                            <form class="form-horizontal"  method="post" action="../profile/handle_Login.php" accept-charset="UTF-8">
+                            <form class="form-horizontal"  method="post" action="handle_Login.php" accept-charset="UTF-8">
                               <input id="sp_uname" class="form-control login" type="text" name="username" placeholder="Username.." />
                               <input id="sp_pass" class="form-control login" type="password" name="password" placeholder="Password.."/>
                               <input class="btn btn-primary" type="submit" name="submit" value="login" />

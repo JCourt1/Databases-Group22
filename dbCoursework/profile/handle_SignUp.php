@@ -1,4 +1,5 @@
 
+<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 <?php
 //establish the connection
 try {
@@ -10,41 +11,20 @@ try {
 catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
-?>
-<html>
-<?php include('../dashboard/baseHead.php'); ?>
+try
+{  
+    //store the variables that come from the form
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['psw'];
+    $cpassword = $_POST['psw-repeat'];
 
-<body>
-    <?php include('../dashboard/baseHeader.php'); ?>
-    <?php include('../dashboard/sideMenu.php'); ?>
+}
 
-        <?php
-    try
-    {  
-        //store the variables that come from the form
-        $email = $_POST['email'];
-        $username = $_POST['username'];
-        $password = $_POST['psw'];
-        $cpassword = $_POST['psw-repeat'];
-
-    }
-
-    catch (Exception $e) 
-    {
-        die('Erreur : ' . $e->getMessage());
-    }
-    ?>
-
-
-
-
-</body>
-
-<?php include('../dashboard/baseFooter.php'); ?>
-
-</html>
-
-<?php 
+catch (Exception $e) 
+{
+    die('Erreur : ' . $e->getMessage());
+}
 
 //validation check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -75,45 +55,73 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $regError = "The password contains invalid characters";
     }
 }
-if(isset($regError)){
-echo "<script type= 'text/javascript'>alert('$regError');</script>";
-echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
-}
-else{
+// if(isset($regError)){
+// echo "<script type= 'text/javascript'>alert('$regError');</script>";
+// echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
+// }
+// else{
+    if(true){
     //update the database
-    $sql = "INSERT INTO users ( usernane, password,email)
-    VALUES ('".$usename."','".$password."','".$email."' )";
+    $password = sha1($password);
+    $sql = "INSERT INTO users ( username, password,email)
+    VALUES ('".$username."','".$password."','".$email."' )";
     //print the relevant message regarding the outcome of the insertion
     if ($conn->query($sql))
     {
-        echo "<script type= 'text/javascript'>alert('New Item Inserted Successfully');</script>";
+        
+        $query = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ?");
+        $query->execute([$_POST['username'], $password]);
+        $row = $query->fetch();
+
+        $uName = $row['username'];
+        $id = $row['userID'];
+
+        $_SESSION['user_ID'] = $id;
+        $_SESSION['login_user'] = $uName;
+
+        if (!isset($_SESSION['user_ID'])) {
+                throw new Exception('Username is not set. Should not happen.');
+        }
+        $_SESSION['loggedin'] = true;
+        echo "<script type= 'text/javascript'>alert('User created Successfully. You will redirected to the home page.');</script>";
+        
+        header("Location:".$siteroot."dashboard/dashboard.php");
+
+
+
     }
     else
     {
-        echo "<script type= 'text/javascript'>alert('Item not successfully inserted.');</script>";
+        echo "<script type= 'text/javascript'>alert('A problem occured. Please try again');</script>";
     }
-    //navigate to the main page
-    echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
-    $conn = null;
-
-    $_SESSION['user_ID'] = $id;
-    $_SESSION['login_user'] = $uName;
-   
-       if (!isset($_SESSION['user_ID'])) {
-               throw new Exception('Username is not set. Should not happen.');
-       }
-   
-    $_SESSION['loggedin'] = true;
-   
-   
-    $dashboard = 'http://' . $_SERVER['HTTP_HOST'] .
-    dirname($_SERVER['PHP_SELF']) . '/dashboard.php';
-    header('Location: ' . $dashboard);
 
 
-
-
+    // //navigate to the main page
+    // echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
+    // $conn = null;
 
 }
+
+
 ?>
+
+<html>
+<?php include('../dashboard/baseHead.php'); ?>
+
+<body>
+    <?php include('../dashboard/baseHeader.php'); ?>
+    <?php include('../dashboard/sideMenu.php'); ?>
+
+
+</body>
+
+<?php include('../dashboard/baseFooter.php'); ?>
+
+</html>
+
+<?php 
+
+?>
+
+
 

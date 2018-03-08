@@ -66,7 +66,9 @@ else{
             $currentPrice = $data2['bidAmount'];
             $lastBid = $data2['bidDate'];
 
-           
+           if($startPrice>=$currentPrice){
+               $currentPrice = $startPrice;
+           }
             
             
             echo "
@@ -197,7 +199,9 @@ else{
             $currentPrice = $data2['bidAmount'];
             $lastBid = $data2['bidDate'];
 
-
+            if($startPrice>=$currentPrice){
+                $currentPrice = $startPrice;
+            }
 
 
 

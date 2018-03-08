@@ -22,26 +22,11 @@ catch (Exception $e) {
     try
     {  
         //store the variables that come from the form
-        $email = $_POST['itemTitle'];
-        $password = $_POST['itemDescription'];
-        $password_repeat = $_POST['startingPrice'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['psw'];
+        $cpassword = $_POST['psw-repeat'];
 
-
-        //update the database
-        $sql = "INSERT INTO items ( sellerID, title, description, itemCondition, categoryID, startPrice,reservePrice,endDate)
-        VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','".$Condition."','".$subCat2."', '".$startingPrice."','".$reservePrice."','".$expDate."')";
-        //print the relevant message regarding the outcome of the insertion
-        if ($conn->query($sql))
-        {
-            echo "<script type= 'text/javascript'>alert('New Item Inserted Successfully');</script>";
-        }
-        else
-        {
-            echo "<script type= 'text/javascript'>alert('Item not successfully inserted.');</script>";
-        }
-        //navigate to the main page
-        echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
-        $conn = null;
     }
 
     catch (Exception $e) 
@@ -57,6 +42,78 @@ catch (Exception $e) {
 
 <?php include('../dashboard/baseFooter.php'); ?>
 
-
 </html>
+
+<?php 
+
+//validation check
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  $regError = "Invalid email format. Please try again";
+
+}elseif(!empty($password) ) 
+{
+    if (strlen($password) <= '8') {
+        $regError = "Your Password Must Contain At Least 8 Characters! Please try again.";
+    }
+    elseif(!is_string($username)){
+        $regError = "The username is not in the proper form";
+    }
+    elseif(!preg_match("#[0-9]+#",$password)) {
+        $regError = "Your Password Must Contain At Least 1 Number! Please try again.";
+    }
+    elseif(!preg_match("#[A-Z]+#",$password)) {
+        $regError = "Your Password Must Contain At Least 1 Capital Letter! Please try again.";
+    }
+    elseif(!preg_match("#[a-z]+#",$password)) {
+        $regError = "Your Password Must Contain At Least 1 Lowercase Letter! Please try again.";
+    }
+    elseif ($password != $cpassword) {
+        $regError = "The 2 password fields must match. Please try again";
+    }elseif(preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/", $password) === 0){
+        $regError ="Password must be at least 8 characters and must contain at least one lower case letter, one upper case letter and one digit";
+    }elseif(strpos($password, ';') !== false){
+        $regError = "The password contains invalid characters";
+    }
+}
+if(isset($regError)){
+echo "<script type= 'text/javascript'>alert('$regError');</script>";
+echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
+}
+else{
+    //update the database
+    $sql = "INSERT INTO users ( usernane, password,email)
+    VALUES ('".$usename."','".$password."','".$email."' )";
+    //print the relevant message regarding the outcome of the insertion
+    if ($conn->query($sql))
+    {
+        echo "<script type= 'text/javascript'>alert('New Item Inserted Successfully');</script>";
+    }
+    else
+    {
+        echo "<script type= 'text/javascript'>alert('Item not successfully inserted.');</script>";
+    }
+    //navigate to the main page
+    echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
+    $conn = null;
+
+    $_SESSION['user_ID'] = $id;
+    $_SESSION['login_user'] = $uName;
+   
+       if (!isset($_SESSION['user_ID'])) {
+               throw new Exception('Username is not set. Should not happen.');
+       }
+   
+    $_SESSION['loggedin'] = true;
+   
+   
+    $dashboard = 'http://' . $_SERVER['HTTP_HOST'] .
+    dirname($_SERVER['PHP_SELF']) . '/dashboard.php';
+    header('Location: ' . $dashboard);
+
+
+
+
+
+}
+?>
 

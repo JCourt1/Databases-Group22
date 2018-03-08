@@ -1,32 +1,44 @@
 
-<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
-<?php
+<html>
+<?php include('../dashboard/baseHead.php'); ?>
+
+<body>
+    <?php include('../dashboard/baseHeader.php'); ?>
+    <?php include('../dashboard/sideMenu.php'); ?>
+
+</body>
+
+<?php include('../dashboard/baseFooter.php'); ?>
+
+</html>
+
+
+
+
+<?php 
+$siteroot = '/Databases-Group22/dbCoursework/'; 
 //establish the connection
 try {
     $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
                     "team22@ibe-database",
                     "ILoveCS17");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //store the variables that come from the form
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['psw'];
-    $cpassword = $_POST['psw-repeat'];
-
 }
-
-catch (Exception $e) 
-{
+catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
+//store the variables that come from the form
+$email = $_POST['email'];
+$username = $_POST['username'];
+$password = $_POST['psw'];
+$cpassword = $_POST['psw-repeat'];
 //validation check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $regError = "Invalid email format. Please try again";
-
-}elseif(!empty($password) )
+}elseif(!empty($password) ) 
 {
-    if (strlen($password) < '8') {
+    if (strlen($password) <= '8') {
         $regError = "Your Password Must Contain At Least 8 Characters! Please try again.";
     }
     elseif(!is_string($username)){
@@ -49,73 +61,37 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $regError = "The password contains invalid characters";
     }
 }
-// if(isset($regError)){
-// echo "<script type= 'text/javascript'>alert('$regError');</script>";
-// echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
-// }
-// else{
-    if(true){
+if(isset($regError)){
+echo "<script type= 'text/javascript'>alert('$regError');</script>";
+echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
+}
+else{
     //update the database
-    $password = sha1($password);
     $sql = "INSERT INTO users ( username, password,email)
     VALUES ('".$username."','".$password."','".$email."' )";
     //print the relevant message regarding the outcome of the insertion
     if ($conn->query($sql))
     {
-        
         $query = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ?");
         $query->execute([$_POST['username'], $password]);
         $row = $query->fetch();
-
         $uName = $row['username'];
         $id = $row['userID'];
-
         $_SESSION['user_ID'] = $id;
         $_SESSION['login_user'] = $uName;
-
         if (!isset($_SESSION['user_ID'])) {
                 throw new Exception('Username is not set. Should not happen.');
         }
         $_SESSION['loggedin'] = true;
-        echo "<script type= 'text/javascript'>alert('User created Successfully. You will redirected to the home page.');</script>";
-        
-        header("Location:".$siteroot."dashboard/dashboard.php");
-
-
-
+        echo "<script type= 'text/javascript'>alert('User created Successfully. You will be redirected to the home page.');</script>";
     }
     else
     {
-        echo "<script type= 'text/javascript'>alert('A problem occured. Please try again');</script>";
+        echo "<script type= 'text/javascript'>alert('Item not successfully inserted.');</script>";
     }
-
-
-    // //navigate to the main page
-    // echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
-    // $conn = null;
-
+    //navigate to the main page
+    echo   '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
 }
-
-
 ?>
-
-<html>
-<?php include('../dashboard/baseHead.php'); ?>
-
-<body>
-    <?php include('../dashboard/baseHeader.php'); ?>
-    <?php include('../dashboard/sideMenu.php'); ?>
-
-
-</body>
-
-<?php include('../dashboard/baseFooter.php'); ?>
-
-</html>
-
-<?php 
-
-?>
-
 
 

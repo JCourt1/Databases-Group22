@@ -32,60 +32,137 @@
                                   <span class="text-muted">  ' . $description . ' </span>
                                   </a> </div>';
 
-                $result2 = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE itemID = " . $_GET['itemID']);
-                $data2 = $result2->fetch();
+
+                # Get last 20 bids
+                $result2 = $conn->prepare("SELECT bidID, bidDate, bidAmount, users.username FROM bids JOIN users on bids.buyerID = users.userID WHERE itemID = ? ORDER BY bidDate DESC");
+                $result2->execute([$_GET['itemID']]);
+
+                $rows = $result2->rowCount();
+                $res = $result2->fetchAll()
+
+                ?>
+
+        <table class="table table-dark" >
+            <thead>
+            <tr scope="row">
+                <th scope="col">
+                    Bid Date
+                </th>
+                <th scope="col">
+                    Bid Amount
+                </th>
+                <th scope="col">
+                    User
+                </th>
+            </tr>
+            </thead>
+            <tbody id="bidTable">
+
+                <?php
+
+                $highestBid = 0;
+                $count = 0;
+
+                foreach ($res as $row) {
+
+                    if ($count == 0) {
+                        $highestBid = $row['bidAmount'];
+                        $count++;
+                    }
+
+                    include "bidsRow.php";
+                }
+
+                    ?>
+
+            </tbody>
+        </table>
 
 
 
-
-
-            }
-
-            ?>
-
-
-
-
+<!--                    if ($i < 10) {-->
+<!---->
+<!--                    } else if ($i < 20) {-->
+<!---->
+<!--                    } else if ($i < 30) {-->
+<!---->
+<!--                    }-->
+<!---->
+<!--                }-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--            }-->
+<!---->
+<!--            ?>-->
 
     <container>
-        <?php include('carousel.php'); ?>
+        <?php include('carousel.php');
+
+        printCarousel($_GET['itemID'], $conn);
+        ?>
     </container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
 
 
 
 
+    <?php include("../dashboard/baseFooter.php");
 
-
-
-    <?php include("../dashboard/baseFooter.php"); ?>
+    ;?>
 
       </body>
 
+    <script>
 
+            //console.log(<?php //echo json_encode($res); ?>//);
+            var res=<?php echo json_encode($res); ?>;
+
+
+            var hBid = <?php echo $highestBid;?>;
+            console.log(hBid);
+
+        $(function () {
+           setInterval(function() {
+               $.ajax({
+
+                   url: "realtimeBids.php",
+                   type: "POST",
+                   data: {"itemID":<?php echo $_GET['itemID'];?>, "highestBid":hBid},
+                   success: function(response) {
+
+                       console.log("caca");
+                       console.log(response);
+                       console.log(response.newHighest);
+                       console.log(response.newRows);
+
+
+                       if (response.newHighest != 0) {
+                           hBid = response.newHighest;
+
+                           $("#bidTable").prepend(response.newRows.toString());
+                       }
+
+
+               }, error: function (request, status, error) {
+                       alert(request.responseText);
+                   },
+
+
+                   dataType: "json"});
+            }, 5000);
+        });
+
+        </script>
 
 
 
     </html>
+<?php } ?>

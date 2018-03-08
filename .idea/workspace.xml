@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f65ab4a-1b44-4639-958d-09a8b4927060" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Databases-Group22.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php" afterPath="$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php" />
       <change beforePath="$PROJECT_DIR$/dbCoursework/browse/carousel.php" afterPath="$PROJECT_DIR$/dbCoursework/browse/carousel.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/browsePopularItems.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/browsePopularItems.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/profile/confirmationPage.php" afterPath="$PROJECT_DIR$/dbCoursework/profile/confirmationPage.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/profile/history.php" afterPath="$PROJECT_DIR$/dbCoursework/profile/history.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/profile/my_current_bids.php" afterPath="$PROJECT_DIR$/dbCoursework/profile/my_current_bids.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/resources/css/auctionRooms.css" afterPath="$PROJECT_DIR$/dbCoursework/resources/css/auctionRooms.css" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" afterPath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,9 +17,151 @@
     <pharConfigPath>$PROJECT_DIR$/bootstrap-3.3.7/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="search_results_page.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbCoursework/search/search_results_page.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-399">
+              <caret line="223" column="46" lean-forward="true" selection-start-line="223" selection-start-column="5" selection-end-line="223" selection-end-column="46" />
+              <folding>
+                <marker date="1520506908000" expanded="true" signature="2214:2933" ph="SELECT * FRO... items" />
+                <marker date="1520506908000" expanded="true" signature="2325:2692" ph="SELECT b.ite... bids" />
+                <marker date="1520506908000" expanded="true" signature="2478:2607" ph="SELECT itemI... bids" />
+                <marker date="1520506908000" expanded="true" signature="6440:7123" ph="SELECT * FRO... items" />
+                <marker date="1520506908000" expanded="true" signature="6551:6918" ph="SELECT b.ite... bids" />
+                <marker date="1520506908000" expanded="true" signature="6704:6833" ph="SELECT itemI... bids" />
+                <marker date="1520506908000" expanded="true" signature="7503:8079" ph="SELECT * FRO... items" />
+                <marker date="1520506908000" expanded="true" signature="7614:7981" ph="SELECT b.ite... bids" />
+                <marker date="1520506908000" expanded="true" signature="7767:7896" ph="SELECT itemI... bids" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseHeader.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="723">
+              <caret line="203" column="44" lean-forward="true" selection-start-line="203" selection-start-column="16" selection-end-line="203" selection-end-column="44" />
+              <folding>
+                <marker date="1520506908000" expanded="true" signature="5433:5503" ph="SELECT DISTI... categories" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sortResults.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbCoursework/search/sortResults.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="87">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auctionRooms.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="694">
+              <caret line="158" column="35" lean-forward="false" selection-start-line="158" selection-start-column="35" selection-end-line="158" selection-end-column="35" />
+              <folding>
+                <marker date="1520544814000" expanded="true" signature="405:494" ph="SELECT itemI... items" />
+                <marker date="1520544814000" expanded="true" signature="903:1402" ph="..." />
+                <marker date="1520544814000" expanded="true" signature="1173:1395" ph="..." />
+                <marker date="1520544814000" expanded="true" signature="1212:1266" ph="..." />
+                <marker date="1520544814000" expanded="true" signature="1486:1625" ph="SELECT bidID... bids" />
+                <marker date="1520544814000" expanded="true" signature="2981:3045" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="realtimeBids.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dbCoursework/browse/realtimeBids.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="42" column="56" lean-forward="true" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+              <folding>
+                <marker date="1520545467000" expanded="true" signature="436:594" ph="SELECT bidID... bids" />
+                <marker date="1520545467000" expanded="true" signature="1045:1571" ph="..." />
+                <marker date="1520545467000" expanded="true" signature="1107:1201" ph="..." />
+                <marker date="1520545467000" expanded="true" signature="1263:1359" ph="..." />
+                <marker date="1520545467000" expanded="true" signature="1421:1516" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my_current_bids.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbCoursework/profile/my_current_bids.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2171">
+              <caret line="161" column="27" lean-forward="true" selection-start-line="161" selection-start-column="27" selection-end-line="161" selection-end-column="27" />
+              <folding>
+                <marker date="1520441264000" expanded="true" signature="674:1172" ph="SELECT i.ite... items" />
+                <marker date="1520441264000" expanded="true" signature="1013:1105" ph="SELECT items... items" />
+                <marker date="1520441264000" expanded="true" signature="1287:1436" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="2158:2329" ph="SELECT bidAm... bids" />
+                <marker date="1520441264000" expanded="true" signature="2243:2291" ph="SELECT max(b... bids" />
+                <marker date="1520441264000" expanded="true" signature="2657:2722" ph="SELECT buyer... bids" />
+                <marker date="1520441264000" expanded="true" signature="3069:4517" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="3156:4119" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="3183:4112" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="3234:4104" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="3263:3394" ph="..." />
+                <marker date="1520441264000" expanded="false" signature="3326:3333" ph="×" />
+                <marker date="1520441264000" expanded="true" signature="3370:3388" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="3421:3789" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="3818:4097" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="3855:3910" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="4363:4498" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="4382:4413" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="4761:6399" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="4935:6302" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="5048:6077" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="5126:5318" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="5396:5601" ph="..." />
+                <marker date="1520441264000" expanded="true" signature="5679:5884" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="handle_Login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/handle_Login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="24" selection-end-column="49" />
+              <folding>
+                <marker date="1520366171000" expanded="true" signature="365:435" ph="SELECT userI... users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bidsRow.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbCoursework/browse/bidsRow.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="17" selection-end-column="5" />
+              <folding>
+                <marker date="1520531522000" expanded="true" signature="36:226" ph="..." />
+                <marker date="1520531522000" expanded="true" signature="50:64" ph="..." />
+                <marker date="1520531522000" expanded="true" signature="50:96" ph="..." />
+                <marker date="1520531522000" expanded="true" signature="110:158" ph="..." />
+                <marker date="1520531522000" expanded="true" signature="172:219" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
+    <findStrings>
+      <find>res</find>
+    </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
@@ -65,13 +199,15 @@
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/index.php" />
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php" />
         <option value="$PROJECT_DIR$/dbCoursework/profile/history.php" />
-        <option value="$PROJECT_DIR$/dbCoursework/browse/carousel.php" />
         <option value="$PROJECT_DIR$/dbCoursework/profile/my_current_bids.php" />
         <option value="$PROJECT_DIR$/dbCoursework/resources/css/auctionRooms.css" />
         <option value="$PROJECT_DIR$/dbCoursework/resources/css/base.css" />
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/browsePopularItems.php" />
         <option value="$PROJECT_DIR$/dbCoursework/profile/confirmationPage.php" />
+        <option value="$PROJECT_DIR$/dbCoursework/browse/carousel.php" />
+        <option value="$PROJECT_DIR$/dbCoursework/browse/bidsRow.php" />
         <option value="$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php" />
+        <option value="$PROJECT_DIR$/dbCoursework/browse/realtimeBids.php" />
       </list>
     </option>
   </component>
@@ -82,11 +218,11 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="MAMP PHP 7.2.1" />
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="43" />
-    <option name="y" value="67" />
-    <option name="width" value="1440" />
-    <option name="height" value="832" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1662" />
+    <option name="y" value="-686" />
+    <option name="width" value="1618" />
+    <option name="height" value="1302" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -104,7 +240,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -113,79 +248,20 @@
               <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
               <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="browse" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="commonElements" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="profile" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="php" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="search" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.detected.package.jscs" value="true" />
+    <property name="node.js.selected.package.jscs" value="" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -251,11 +327,12 @@
       <workItem from="1519914609386" duration="2185000" />
       <workItem from="1520332123390" duration="19095000" />
       <workItem from="1520422886208" duration="5964000" />
+      <workItem from="1520441950339" duration="19062000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88435000" />
+    <option name="totallyTimeSpent" value="107922000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -267,14 +344,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="67" width="1440" height="832" extended-state="1" />
+    <frame x="-1662" y="-686" width="1618" height="1302" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24305555" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21631645" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20325203" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873166" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.024861878" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -282,24 +359,12 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3986195" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.024861878" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24305555" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873166" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3986195" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,44 +380,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/search_result_page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1520437436000" expanded="true" signature="5433:5503" ph="SELECT DISTI... categories" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/handle_search_term.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="16" lean-forward="true" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="150" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/profile/history.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="110" column="62" lean-forward="false" selection-start-line="110" selection-start-column="62" selection-end-line="110" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dbCoursework/profile/messages.php" />
     <entry file="file://$PROJECT_DIR$/bootstrap-3.3.7/js/tests/visual/affix-with-sticky-footer.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -372,16 +399,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="1575" column="30" lean-forward="false" selection-start-line="1575" selection-start-column="30" selection-end-line="1575" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/subCategorySearch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="9" selection-end-column="1" />
-          <folding>
-            <marker date="1519753782000" expanded="true" signature="362:451" ph="SELECT * FRO... categories" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -489,14 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/resources/php/regExs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/addBid2.php" />
     <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/index.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -530,70 +539,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/addBid0.php" />
-    <entry file="file://$PROJECT_DIR$/dbCoursework/search/search_results_page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="248" column="75" lean-forward="false" selection-start-line="248" selection-start-column="75" selection-end-line="248" selection-end-column="75" />
-          <folding>
-            <marker date="1520437436000" expanded="true" signature="2060:2779" ph="SELECT * FRO... items" />
-            <marker date="1520437436000" expanded="true" signature="2171:2538" ph="SELECT b.ite... bids" />
-            <marker date="1520437436000" expanded="true" signature="2324:2453" ph="SELECT itemI... bids" />
-            <marker date="1520437436000" expanded="true" signature="6294:6977" ph="SELECT * FRO... items" />
-            <marker date="1520437436000" expanded="true" signature="6405:6772" ph="SELECT b.ite... bids" />
-            <marker date="1520437436000" expanded="true" signature="6558:6687" ph="SELECT itemI... bids" />
-            <marker date="1520437436000" expanded="true" signature="7357:7933" ph="SELECT * FRO... items" />
-            <marker date="1520437436000" expanded="true" signature="7468:7835" ph="SELECT b.ite... bids" />
-            <marker date="1520437436000" expanded="true" signature="7621:7750" ph="SELECT itemI... bids" />
-            <marker date="1520437436000" expanded="true" signature="8438:8547" ph="SELECT bidAm... bids" />
-            <marker date="1520437436000" expanded="true" signature="8658:10991" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="8983:9219" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="9075:9082" ph="×" />
-            <marker date="1520437436000" expanded="true" signature="9148:9213" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="9835:9885" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="9835:9891" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="9835:10442" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="9835:10471" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="9835:10495" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="9835:10991" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="9947:10410" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="10015:10138" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="10773:10971" ph="..." />
-            <marker date="1520437436000" expanded="true" signature="10799:10856" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/handle_Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-74">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="16" />
-          <folding>
-            <marker date="1520366171000" expanded="true" signature="365:435" ph="SELECT userI... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-290">
-          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dbCoursework/resources/js/npm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/resources/js/navbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,7 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="1575" column="104" lean-forward="true" selection-start-line="1575" selection-start-column="27" selection-end-line="1575" selection-end-column="104" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -609,7 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -625,56 +572,239 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="28" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="189" column="31" lean-forward="true" selection-start-line="189" selection-start-column="31" selection-end-line="189" selection-end-column="31" />
-          <folding>
-            <marker date="1520437436000" expanded="true" signature="5433:5503" ph="SELECT DISTI... categories" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/profile/my_current_bids.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="114" column="6" lean-forward="true" selection-start-line="114" selection-start-column="6" selection-end-line="114" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="10" lean-forward="false" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
-          <folding>
-            <marker date="1520441264000" expanded="true" signature="405:494" ph="SELECT itemI... items" />
-            <marker date="1520441264000" expanded="true" signature="903:1402" ph="..." />
-            <marker date="1520441264000" expanded="true" signature="1173:1395" ph="..." />
-            <marker date="1520441264000" expanded="true" signature="1212:1266" ph="..." />
-            <marker date="1520441264000" expanded="true" signature="1448:1537" ph="SELECT itemI... items" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/commonElements/browsePopularItems.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="70" column="59" lean-forward="false" selection-start-line="70" selection-start-column="59" selection-end-line="70" selection-end-column="59" />
+        <state relative-caret-position="606">
+          <caret line="60" column="9" lean-forward="false" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+          <folding>
+            <marker date="1520523617000" expanded="true" signature="263:393" ph="SELECT itemI... items" />
+            <marker date="1520523617000" expanded="true" signature="435:558" ph="SELECT COUNT... itemID" />
+            <marker date="1520523617000" expanded="true" signature="463:547" ph="SELECT itemI... items" />
+            <marker date="1520523617000" expanded="true" signature="1300:1405" ph="SELECT buyer... bids" />
+            <marker date="1520523617000" expanded="true" signature="2008:2140" ph="SELECT itemI... items" />
+            <marker date="1520523617000" expanded="true" signature="2182:2304" ph="SELECT COUNT... itemID" />
+            <marker date="1520523617000" expanded="true" signature="2210:2293" ph="SELECT itemI... items" />
+            <marker date="1520523617000" expanded="true" signature="3199:3301" ph="SELECT bidAm... bids" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbCoursework/browse/carousel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+        <state relative-caret-position="240">
+          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding>
-            <marker date="1520441264000" expanded="true" signature="379:611" ph="SELECT i.ite... items" />
+            <element signature="e#9#61#0#PHP" expanded="true" />
+            <marker date="1520526005000" expanded="true" signature="439:728" ph="SELECT i.ite... items" />
+            <marker date="1520526005000" expanded="true" signature="1007:2520" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1054:1142" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1223:2073" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1257:1441" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1299:1311" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1312:1426" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1473:1637" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1507:1622" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1682:1845" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1716:1830" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1883:2049" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="1917:2034" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="2194:2314" ph="..." />
+            <marker date="1520526005000" expanded="true" signature="2392:2509" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/subCategorySearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <marker date="1520506908000" expanded="true" signature="364:453" ph="SELECT * FRO... categories" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/resources/php/regExs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/increaseViewCount.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1520523617000" expanded="true" signature="411:478" ph="UPDATE items... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/resources/js/navbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/commonElements/itemModal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1520506908000" expanded="true" signature="147:2063" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="242:1705" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="277:1694" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="351:1679" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="394:575" ph="..." />
+            <marker date="1520506908000" expanded="false" signature="473:480" ph="×" />
+            <marker date="1520506908000" expanded="true" signature="533:569" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="616:1130" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="819:1124" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="941:1124" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="1006:1124" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="1074:1124" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="1173:1660" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="1224:1535" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="1381:1512" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="1942:2056" ph="..." />
+            <marker date="1520506908000" expanded="true" signature="1955:1983" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/handle_Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="24" selection-end-column="49" />
+          <folding>
+            <marker date="1520366171000" expanded="true" signature="365:435" ph="SELECT userI... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/search/sortResults.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/search/search_results_page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-399">
+          <caret line="223" column="46" lean-forward="true" selection-start-line="223" selection-start-column="5" selection-end-line="223" selection-end-column="46" />
+          <folding>
+            <marker date="1520506908000" expanded="true" signature="2214:2933" ph="SELECT * FRO... items" />
+            <marker date="1520506908000" expanded="true" signature="2325:2692" ph="SELECT b.ite... bids" />
+            <marker date="1520506908000" expanded="true" signature="2478:2607" ph="SELECT itemI... bids" />
+            <marker date="1520506908000" expanded="true" signature="6440:7123" ph="SELECT * FRO... items" />
+            <marker date="1520506908000" expanded="true" signature="6551:6918" ph="SELECT b.ite... bids" />
+            <marker date="1520506908000" expanded="true" signature="6704:6833" ph="SELECT itemI... bids" />
+            <marker date="1520506908000" expanded="true" signature="7503:8079" ph="SELECT * FRO... items" />
+            <marker date="1520506908000" expanded="true" signature="7614:7981" ph="SELECT b.ite... bids" />
+            <marker date="1520506908000" expanded="true" signature="7767:7896" ph="SELECT itemI... bids" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="723">
+          <caret line="203" column="44" lean-forward="true" selection-start-line="203" selection-start-column="16" selection-end-line="203" selection-end-column="44" />
+          <folding>
+            <marker date="1520506908000" expanded="true" signature="5433:5503" ph="SELECT DISTI... categories" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/profile/my_current_bids.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2171">
+          <caret line="161" column="27" lean-forward="true" selection-start-line="161" selection-start-column="27" selection-end-line="161" selection-end-column="27" />
+          <folding>
+            <marker date="1520441264000" expanded="true" signature="674:1172" ph="SELECT i.ite... items" />
+            <marker date="1520441264000" expanded="true" signature="1013:1105" ph="SELECT items... items" />
+            <marker date="1520441264000" expanded="true" signature="1287:1436" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="2158:2329" ph="SELECT bidAm... bids" />
+            <marker date="1520441264000" expanded="true" signature="2243:2291" ph="SELECT max(b... bids" />
+            <marker date="1520441264000" expanded="true" signature="2657:2722" ph="SELECT buyer... bids" />
+            <marker date="1520441264000" expanded="true" signature="3069:4517" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="3156:4119" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="3183:4112" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="3234:4104" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="3263:3394" ph="..." />
+            <marker date="1520441264000" expanded="false" signature="3326:3333" ph="×" />
+            <marker date="1520441264000" expanded="true" signature="3370:3388" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="3421:3789" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="3818:4097" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="3855:3910" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="4363:4498" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="4382:4413" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="4761:6399" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="4935:6302" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="5048:6077" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="5126:5318" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="5396:5601" ph="..." />
+            <marker date="1520441264000" expanded="true" signature="5679:5884" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/browse/bidsRow.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <marker date="1520531522000" expanded="true" signature="36:226" ph="..." />
+            <marker date="1520531522000" expanded="true" signature="50:64" ph="..." />
+            <marker date="1520531522000" expanded="true" signature="50:96" ph="..." />
+            <marker date="1520531522000" expanded="true" signature="110:158" ph="..." />
+            <marker date="1520531522000" expanded="true" signature="172:219" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="694">
+          <caret line="158" column="35" lean-forward="false" selection-start-line="158" selection-start-column="35" selection-end-line="158" selection-end-column="35" />
+          <folding>
+            <marker date="1520544814000" expanded="true" signature="405:494" ph="SELECT itemI... items" />
+            <marker date="1520544814000" expanded="true" signature="903:1402" ph="..." />
+            <marker date="1520544814000" expanded="true" signature="1173:1395" ph="..." />
+            <marker date="1520544814000" expanded="true" signature="1212:1266" ph="..." />
+            <marker date="1520544814000" expanded="true" signature="1486:1625" ph="SELECT bidID... bids" />
+            <marker date="1520544814000" expanded="true" signature="2981:3045" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/browse/realtimeBids.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="56" lean-forward="true" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+          <folding>
+            <marker date="1520545467000" expanded="true" signature="436:594" ph="SELECT bidID... bids" />
+            <marker date="1520545467000" expanded="true" signature="1045:1571" ph="..." />
+            <marker date="1520545467000" expanded="true" signature="1107:1201" ph="..." />
+            <marker date="1520545467000" expanded="true" signature="1263:1359" ph="..." />
+            <marker date="1520545467000" expanded="true" signature="1421:1516" ph="..." />
           </folding>
         </state>
       </provider>

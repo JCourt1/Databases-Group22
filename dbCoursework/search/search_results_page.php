@@ -1,4 +1,3 @@
-
 <?php
     $siteroot = '/Databases-Group22/dbCoursework/';
     include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHead.php";
@@ -38,7 +37,6 @@
         $sql_sort = "ORDER BY i.endDate ASC";
     }
     print("Sort option chosen is ".$sort.". ");
-
 
     // Check if advanced search has been made:
     if (isset($_GET['filteredSubmit'])){
@@ -115,7 +113,6 @@
                 $statement = $conn->prepare($sql_query);
 
             }
-
         } else {
             print("Subcategory was NOT chosen. ");
 
@@ -138,7 +135,6 @@
                     print("SQL Query is: ".$sql_query." ");
 
                 }
-
             } // Parent Category WAS NOT chosen
             else {
                 print("Parent Category ALSO NOT chosen. ");
@@ -157,17 +153,12 @@
                     print("SQL Query is: ".$sql_query." ");
 
                 }
-
             }
-
-
         }
 
         $statement->execute();
         $res = $statement->fetchAll();
         $url = 'search_result_page.php?searchTerm='.$searchTerm.'&parentCategory='.$parentCategory.'&subCategory='.$subCategory.'&condition='.$condition;
-
-
 
     } else if (isset($_GET['searchBarSubmit'])) { // Search was made using the search bar only
         $searchTerm = $_GET['searchTerm']; // get the search term
@@ -214,8 +205,6 @@
         $url = 'search_result_page.php';
     }
 
-
-
  ?>
 
  <!-- This script dynamically sorts the search results. It sends the data to the file:sortResults.php -->
@@ -247,8 +236,6 @@
 
  <h1 class="page-header">Search Results:</h1>
 
-
-
  <div class="row placeholders">
      <form class="navbar-form" method='get' name='sortBy'>
          <div class="form-group">
@@ -261,7 +248,6 @@
              </select>
          </div>
      </form>
-
 
      <div name="searchResults" id="searchResults">
 
@@ -289,16 +275,12 @@
              include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/itemModal.php";
 
              $rownumber += 1;
-
          }
      }
      # end php ?>
  </div>
 
-
- </div>
+</div>
 </body>
-
-
 
  <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>

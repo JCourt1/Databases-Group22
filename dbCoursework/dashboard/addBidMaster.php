@@ -12,22 +12,29 @@
        $currentPrice =  $_GET['currentPrice'];
        $buyerID = $_GET['buyerID'];
        $itemID = $_GET['itemID'];
-        
-        
-            
+
+
+
 
             if(!isset($buyerID) ||  $buyerID == NULL){
-                echo '<script type="text/javascript">'; 
-                echo 'alert("You have to login or register first");'; 
+                echo '<script type="text/javascript">';
+                echo 'alert("You have to login or register first");';
                 echo 'window.location.href = "index.php";';
                 echo '</script>';
             }
 
             else{
 
-            
-       
+
+
             if (!empty($_POST["bid"]) && $currentPrice < $_POST["bid"]) {
+
+                // HERE GOES THE LOGIC TO EMAIL NOTIFY THE PREVIOUS HIGH BIDDER THAT THEY HAVE BEEN OUTBID
+                // - sql query the bids table to find the highest bid on the item (before the new bid is placed in the table)
+                // - send email to user
+                // ALSO POTENTIALLY THE LOGIC TO EMAIL NOTIFY THE SELLER THAT THEIR ITEM HAS A NEW BID
+                // - sql query the items table to find the sellerID
+                // - send email to seller
                 $date = new DateTime();
                 $result = $date->format('Y-m-d H:i:s');
                 $currentPrice = $_POST["bid"];
@@ -54,11 +61,11 @@
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.href = 'index.php';
                 </script>";
-                
+
             }
-        
-        
+
+
         }
 
-    
+
 ?>

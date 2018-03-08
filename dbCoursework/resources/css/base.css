@@ -166,3 +166,9 @@ width: 12.5%;
   margin-left: 60px;
   font-size: 40px;
 }
+
+ .footer {
+   position:fixed;
+   bottom:0;
+   padding: 0px;
+ }

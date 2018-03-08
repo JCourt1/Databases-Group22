@@ -102,23 +102,23 @@
 <!---->
 <!--            ?>-->
 
-    <container>
-        <?php include('carousel.php');
-
-        printCarousel($_GET['itemID'], $conn);
-        ?>
-    </container>
-
-    </div>
-
-
-
-
-    <?php include("../dashboard/baseFooter.php");
-
-    ;?>
-
-      </body>
+<!--    <container>-->
+<!--        --><?php //include('carousel.php');
+//
+//        printCarousel($_GET['itemID'], $conn);
+//        ?>
+<!--    </container>-->
+<!---->
+<!--    </div>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--    --><?php //include("../dashboard/baseFooter.php");
+//
+//    ;?>
+<!---->
+<!--      </body>-->
 
     <script>
 
@@ -161,8 +161,48 @@
         });
 
         </script>
+    </div>
+            <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+            <panel>
+            <h1 class="text-center" >Other items with most recent bids</h1>
+            </panel>
+
+<?php } else {?>
+
+                </div>
+
+            <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+            <panel>
+            <h1 class="text-center">Items with most recent bids</h1>
+            </panel>
+
+
+<?php }?>
 
 
 
-    </html>
-<?php } ?>
+            <container>
+               <?php include('carousel.php');
+
+               $itemID = -1;
+               if (isset($_GET['itemID'])) {
+                   $itemID = $_GET['itemID'];
+               }
+
+               printCarousel($itemID, $conn);
+               ?>
+            </container>
+
+            </footer>
+
+
+
+
+
+
+           <?php include("../dashboard/baseFooter.php");
+
+           ;?>
+
+             </body>
+</html>

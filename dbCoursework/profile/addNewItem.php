@@ -1,14 +1,14 @@
-<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+<?php $siteroot = '/Databases-Group22/dbCoursework/';?>
 
 <html>
 
-<?php include("../dashboard/baseHead.php"); ?>
+<?php include "../dashboard/baseHead.php";?>
 
 
 <body>
 
-<?php include("../dashboard/baseHeader.php"); ?>
-<?php include("../dashboard/sideMenu.php"); ?>
+<?php include "../dashboard/baseHeader.php";?>
+<?php include "../dashboard/sideMenu.php";?>
 
 
 <div id="fullscreen_bg" class="fullscreen_bg"/>
@@ -19,7 +19,7 @@
                 <div class="panel-body">
                     <h3 class="text-center"> Adding new Item</h3>
 
-                    <form class="form form-signup" name="mainForm" method="post" onsubmit="return validateForm()" action='<?php echo $siteroot; ?>profile/confirmationPage.php' role="form"> 
+                    <form class="form form-signup" name="mainForm" method="post" onsubmit="return validateForm()" action='<?php echo $siteroot; ?>profile/newItemConfirmationPage.php' role="form">
                         <!-- ITEM TITLE -->
                         <div class="form-group">
                             <div class="input-group">
@@ -30,61 +30,59 @@
                         </div>
                         <!-- ITEM DESCRIPTION -->
                         <div class="form-group">
-                    
+
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                <input type="Text" class="form-control" name="itemDescription" id="itemDescription" placeholder="Description" />
+                                <input required type="Text" class="form-control" name="itemDescription" id="itemDescription" placeholder="Description" />
                             </div>
                         </div>
-                    
+
                         <!-- Starting Price -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                                <input type="Text" class="form-control" name="startingPrice" id="startingPrice" placeholder="Starting Price" />
+                                <input required type="Text" class="form-control" name="startingPrice" id="startingPrice" placeholder="Starting Price" />
                             </div>
                         </div>
-                        <!-- Reserved Price -->
+                        <!-- Reserve Price -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-gbp"></span></span>
-                                <input type="number" class="form-control" name="reservedPrice" id="reservedPrice" placeholder="Reserved Price"  />
+                                <input required type="Text" class="form-control" name="reservePrice" id="reservePrice" placeholder="Reserve Price"  />
                             </div>
-                        </div>                        
+                        </div>
                         <!-- Photo -->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
-                                <input type="Text" class="form-control" name="photoLink" id="photoLink" placeholder="Photo" />
+                                <input required type="Text" class="form-control" name="photoLink" id="photoLink" placeholder="Photo" />
                             </div>
-                        </div>                        
+                        </div>
                         <!-- Condition -->
                         <div class="form-group">
                                 <label for="Condition">Condition</label>
-                        
+
                             <select class="form-control" name="Condition" id="Condition">
                                 <option>New</option>
                                 <option>Used</option>
                                 <option>Used - Like New</option>
                             </select>
-                        </div>                       
+                        </div>
                         <!-- PARENT CATEGORY -->
                         <div class="form-group">
                             <label for="category">Category:</label>
                             <select class="form-control" name="parentCat2" id="parentCat2">
-                            <option value="0" selected>Any</option>
-                            <?php
-                            $res = $conn->query("SELECT DISTINCT parentCategory FROM categories ORDER BY categoryID ASC");
-                            while($data=$res->fetch()) {
-                            ?>
-                                <option value="<?php echo $data['parentCategory'];?>"><?php echo $data['parentCategory'];?></option>
-                            <?php } ?>
+                                <?php
+                                $res = $conn->query("SELECT DISTINCT parentCategory FROM categories ORDER BY categoryID ASC");
+                                while ($data = $res->fetch()) {
+                                ?>
+                                <option value="<?php echo $data['parentCategory']; ?>"><?php echo $data['parentCategory']; ?></option>
+                                <?php }?>
                             </select>
                         </div>
                         <div class="form-group">
                             <!-- CHILD CATEGORY -->
                             <label for="subcategory">Subcategory:</label>
-                            <!--  -->
                             <select class="form-control" name="subCat2" id="subCat2">
 
 
@@ -95,9 +93,9 @@
                         <label for="category">Auction End Date</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                <input type="date" id="expDate" name="expDate" class="form-control" placeholder="Auction End Date" />
+                                <input required type="date" id="expDate" name="expDate" class="form-control" placeholder="Auction End Date" />
                             </div>
-                        </div>                               
+                        </div>
                 </div>
                         <button type="submit" class="btn btn-sm btn-primary btn-block" role="button"> Add Item</button>
                     </form>
@@ -107,11 +105,11 @@
 </div>
 
 
-</div> 
+</div>
 
 </body>
 
-<?php include("../dashboard/baseFooter.php"); ?>
+<?php include "../dashboard/baseFooter.php";?>
 
 </html>
 
@@ -136,26 +134,84 @@ $(document).ready(function(){
     });
 
 });
-
+    //form validation
     function validateForm()
     {
-    // var itemTitle=document.forms["mainForm"]["itemTitle"].value;
-    // var itemDescription=document.forms["mainForm"]["itemDescription"].value;
-    // var startingPrice=document.forms["mainForm"]["startingPrice"].value;
-    // var reservedPrice=document.forms["mainForm"]["reservedPrice"].value;
-    // var photoLink=document.forms["mainForm"]["photoLink"].value;
-    // var subCat2=document.forms["mainForm"]["subCat2"].value;
-    // var expDate=document.forms["mainForm"]["expDate"].value;
-    //     if (itemTitle==""|| itemDescription==""|| subCat2=="" ||  startingPrice==""|| reservedPrice==""|| photoLink==""|| expDate=="" )
-    //     {
-    //         alert("Please Fill All Required Field");
-    //         return false; //this tells the php if to proceed or not
-    //     }
-    //     else{
-    //         return true;
-    //     }
-        return true;
+    var itemTitle=document.forms["mainForm"]["itemTitle"].value;
+    var itemDescription=document.forms["mainForm"]["itemDescription"].value;
+    var startingPrice=document.forms["mainForm"]["startingPrice"].value;
+    var reservePrice=document.forms["mainForm"]["reservePrice"].value;
+    var photoLink=document.forms["mainForm"]["photoLink"].value;
+    var subCat2=document.forms["mainForm"]["subCat2"].value;
+    var expDate=document.forms["mainForm"]["expDate"].value;
+    
+        if ( !isAlphaNumeric(itemTitle) )
+        {
+            alert("The title field is not in the proper form");
+            return false; //this tells the php if to proceed or not
+        }
+        else if (!isAlphaNumeric(itemDescription))
+        {
+            alert("The description field is not in the proper form");
+            return false;
+        }
+        else if (subCat2=="")
+        {
+            alert("Please choose the subcategory");
+            return false;
+        }
+        else if (!isNumeric(startingPrice))
+        {
+            alert("The starting price field is not a number");
+            return false;
+        }
+        else if (!isNumeric(reservePrice))
+        {
+            alert("The reserve price field is not a number");
+            return false;
+        }
+        else if (!is_url(photoLink))
+        {
+            alert("The url provided is not correct");
+            return false;
+        }
     }
+
+
+    function isAlphaNumeric(str) {
+        var code, i, len;
+
+        for (i = 0, len = str.length; i < len; i++)
+        {
+        code = str.charCodeAt(i);
+        if (!(code > 47 && code < 58) && // numeric (0-9)
+            !(code > 64 && code < 91) && // upper alpha (A-Z)
+            !(code > 96 && code < 123)&&
+            !(code==32))
+        { // lower alpha (a-z)
+        return false;
+        }
+        }
+        return true;
+    };
+
+    function isNumeric(n)
+        {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+        }
+
+function is_url(str)
+{
+  regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (regexp.test(str))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+}
 
 
 

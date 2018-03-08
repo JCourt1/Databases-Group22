@@ -1,5 +1,39 @@
+<!-- NECESSARY THINGS THAT YOU WILL NEED BEFORE USING THIS SCRIPT:
+        $rownumber - if you have an array of items to display, this is the index of the array
+        $title - item Name
+        $photo - item photo
+        $description - item description
+        $elapsed - time until auction ends
+        $startPrice - item's starting price
+        $currentPrice - current highest bid
+        $lastBid - date of the most recent high bid
+        $buyerID - session ID of the user (incase they want to post a bid)
+-->
+<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var image = '#img' + <?php echo $rownumber; ?>;
+        $(image).on("click",function(){
+            var number = <?php echo $itemID; ?>;
+
+            $.ajax({
+                url: "<?php echo $siteroot; ?>dashboard/increaseViewCount.php",
+                type: "POST",
+                data: "itemID="+number,
+                success: function (response) {
+                    console.log("hurray");
+                },
+
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Status: " + textStatus); alert("Error: " + errorThrown);
+                }
+            });
+        });
+    });
+</script>
+
 <?php
-$siteroot = '/Databases-Group22/dbCoursework/';
 // THIS IS THE FILE FOR THE ITEM MODAL.
 $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
 
@@ -34,7 +68,7 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
             </div>
         </div>
     </div>
-    <img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal"   data-target="#myModal' . $rownumber . '">
+    <img src="' . $photo . '" width="200" height="200" class="img" id="img'.$rownumber.'" alt="Generic placeholder thumbnail" data-toggle="modal"   data-target="#myModal' . $rownumber . '">
     <a  data-toggle="modal" data-target="#myModal' . $rownumber . '">
         <h4>' . $title . '
         </h4>

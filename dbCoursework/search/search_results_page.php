@@ -1,4 +1,3 @@
-
 <?php
     $siteroot = '/Databases-Group22/dbCoursework/';
     include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHead.php";
@@ -39,7 +38,6 @@
     }
     print("Sort option chosen is ".$sort.". ");
 
-
     // Check if advanced search has been made:
     if (isset($_GET['filteredSubmit'])){
         $searchTerm = $_GET['searchTerm'];
@@ -74,7 +72,7 @@
         // THE FIRST PART OF THE SQL QUERY:
         $querySelect = "SELECT *
                         FROM items i
-                        INNER JOIN (
+                        LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
                             FROM bids b
                             INNER JOIN (
@@ -84,7 +82,7 @@
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
                         WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
-                        AND (d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice.") ";
+                        AND ((d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice.") OR d.bidAmount IS NULL) ";
         // IF THE PARENT CATEGORY WAS CHOSEN BUT NOT THE SUBCATEGORY
         $queryParentCategory = "AND i.itemID IN (SELECT i.itemID FROM items i, categories c
                                     WHERE i.categoryID = c.categoryID
@@ -115,7 +113,6 @@
                 $statement = $conn->prepare($sql_query);
 
             }
-
         } else {
             print("Subcategory was NOT chosen. ");
 
@@ -138,7 +135,6 @@
                     print("SQL Query is: ".$sql_query." ");
 
                 }
-
             } // Parent Category WAS NOT chosen
             else {
                 print("Parent Category ALSO NOT chosen. ");
@@ -157,17 +153,12 @@
                     print("SQL Query is: ".$sql_query." ");
 
                 }
-
             }
-
-
         }
 
         $statement->execute();
         $res = $statement->fetchAll();
         $url = 'search_result_page.php?searchTerm='.$searchTerm.'&parentCategory='.$parentCategory.'&subCategory='.$subCategory.'&condition='.$condition;
-
-
 
     } else if (isset($_GET['searchBarSubmit'])) { // Search was made using the search bar only
         $searchTerm = $_GET['searchTerm']; // get the search term
@@ -175,7 +166,7 @@
 
         $sql_query =  "SELECT *
                         FROM items i
-                        INNER JOIN (
+                        LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
                             FROM bids b
                             INNER JOIN (
@@ -198,7 +189,7 @@
         // No search was made -->
         $sql_query = "SELECT *
                         FROM items i
-                        INNER JOIN (
+                        LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
                             FROM bids b
                             INNER JOIN (
@@ -213,8 +204,6 @@
         $res = $statement->fetchAll();
         $url = 'search_result_page.php';
     }
-
-
 
  ?>
 
@@ -247,8 +236,6 @@
 
  <h1 class="page-header">Search Results:</h1>
 
-
-
  <div class="row placeholders">
      <form class="navbar-form" method='get' name='sortBy'>
          <div class="form-group">
@@ -261,7 +248,6 @@
              </select>
          </div>
      </form>
-
 
      <div name="searchResults" id="searchResults">
 
@@ -289,16 +275,12 @@
              include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/itemModal.php";
 
              $rownumber += 1;
-
          }
      }
      # end php ?>
  </div>
 
-
- </div>
+</div>
 </body>
-
-
 
  <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>

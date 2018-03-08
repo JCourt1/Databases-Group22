@@ -39,8 +39,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
         <?php
 
-//         $_SESSION['login_user']   && $_SESSION['loggedin'] == true $_SERVER['DOCUMENT_ROOT']
-
+        //if the user has logged in
         if (isset($_SESSION['login_user'])) { ?>
 
             <ul class="nav navbar-nav navbar-right">
@@ -48,6 +47,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
             <li><a class='blueTop' style='color: #337ab7;' href="<?php echo $siteroot ?>dashboard/dashboard.php">Dashboard</a></li>
             <li><a class='whiteTop' style='color: #b3b7b2;' href="../profile/logout.php">Log out</a></li>
             </ul>
+        <!-- else  if the user hasn't yet logged in -->
         <?php } else { ?>
 
                     <ul class="nav navbar-nav navbar-right">

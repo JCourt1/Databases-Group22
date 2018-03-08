@@ -11,6 +11,7 @@ try {
 catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
+<<<<<<< HEAD
 try
 {  
     //store the variables that come from the form
@@ -18,21 +19,59 @@ try
     $username = $_POST['username'];
     $password = $_POST['psw'];
     $cpassword = $_POST['psw-repeat'];
+=======
+?>
+<html>
+<?php include('../dashboard/baseHead.php'); ?>
+
+<body>
+    <?php include('../dashboard/baseHeader.php'); ?>
+    <?php include('../dashboard/sideMenu.php'); ?>
+
+        <?php
+    try
+    {
+        //store the variables that come from the form
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['psw'];
+        $cpassword = $_POST['psw-repeat'];
+
+    }
+
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+    ?>
+
+>>>>>>> 4f224856116e79f98a7752d9da6b1b33ef9d589b
 
 }
 
+<<<<<<< HEAD
 catch (Exception $e) 
 {
     die('Erreur : ' . $e->getMessage());
 }
+=======
+
+</body>
+
+<?php include('../dashboard/baseFooter.php'); ?>
+
+</html>
+
+<?php
+>>>>>>> 4f224856116e79f98a7752d9da6b1b33ef9d589b
 
 //validation check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $regError = "Invalid email format. Please try again";
 
-}elseif(!empty($password) ) 
+}elseif(!empty($password) )
 {
-    if (strlen($password) <= '8') {
+    if (strlen($password) < '8') {
         $regError = "Your Password Must Contain At Least 8 Characters! Please try again.";
     }
     elseif(!is_string($username)){
@@ -95,6 +134,22 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script type= 'text/javascript'>alert('A problem occured. Please try again');</script>";
     }
 
+<<<<<<< HEAD
+=======
+    $_SESSION['user_ID'] = $id;
+    $_SESSION['login_user'] = $uName;
+
+       if (!isset($_SESSION['user_ID'])) {
+               throw new Exception('Username is not set. Should not happen.');
+       }
+
+    $_SESSION['loggedin'] = true;
+
+
+    $dashboard = 'http://' . $_SERVER['HTTP_HOST'] .
+    dirname($_SERVER['PHP_SELF']) . '/dashboard.php';
+    header('Location: ' . $dashboard);
+>>>>>>> 4f224856116e79f98a7752d9da6b1b33ef9d589b
 
     // //navigate to the main page
     // echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
@@ -122,6 +177,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 <?php 
 
 ?>
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 4f224856116e79f98a7752d9da6b1b33ef9d589b

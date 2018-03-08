@@ -271,6 +271,10 @@
              $interval = $current_date->diff($bid_end_date);
              $elapsed = $interval->format('%y y %m m %a d %h h %i min %s s');
 
+             if($startPrice >= $currentPrice){
+                 $currentPrice = $startPrice;
+             }
+
              // MODAL:
              include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/itemModal.php";
 

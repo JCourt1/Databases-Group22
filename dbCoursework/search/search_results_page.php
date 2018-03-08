@@ -72,7 +72,7 @@
         // THE FIRST PART OF THE SQL QUERY:
         $querySelect = "SELECT *
                         FROM items i
-                        INNER JOIN (
+                        LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
                             FROM bids b
                             INNER JOIN (
@@ -82,7 +82,7 @@
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
                         WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
-                        AND (d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice.") ";
+                        AND ((d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice.") OR d.bidAmount IS NULL) ";
         // IF THE PARENT CATEGORY WAS CHOSEN BUT NOT THE SUBCATEGORY
         $queryParentCategory = "AND i.itemID IN (SELECT i.itemID FROM items i, categories c
                                     WHERE i.categoryID = c.categoryID
@@ -166,7 +166,7 @@
 
         $sql_query =  "SELECT *
                         FROM items i
-                        INNER JOIN (
+                        LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
                             FROM bids b
                             INNER JOIN (
@@ -189,7 +189,7 @@
         // No search was made -->
         $sql_query = "SELECT *
                         FROM items i
-                        INNER JOIN (
+                        LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
                             FROM bids b
                             INNER JOIN (

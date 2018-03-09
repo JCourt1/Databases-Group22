@@ -12,6 +12,7 @@
        $currentPrice =  $_GET['currentPrice'];
        $buyerID = $_GET['buyerID'];
        $itemID = $_GET['itemID'];
+        $bid = $_POST["bid"];
 
        // Get the sellerID
        $seller_query = "SELECT sellerID FROM items WHERE itemID = ".$itemID;
@@ -52,6 +53,21 @@
                 $conn->query("UPDATE bids SET bidWinning = 0 WHERE itemID = ".$itemID." AND bidWinning = 1");
                 $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount, bidWinning) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . ", 1 ) ");
                 $message = "Your bid has been registered. Thank you!";
+//                include "signalNecessaryNotifications.php";
+
+                $conn -> query("UPDATE bids SET bids.needsNotification = 1 WHERE bids.bidID IN 
+                                                                
+                                                                (SELECT bids1.bidID FROM (SELECT * FROM bids) AS bids1 JOIN
+                                                                
+                                                                (SELECT bids2.buyerID, max(bids2.bidAmount) as highestBid FROM (SELECT * FROM bids) as bids2 
+                                                                WHERE bids2.itemID = $itemID AND bids2.bidAmount < $bid GROUP BY bids2.buyerID) AS T
+                                                                ON bids1.buyerID = T.buyerID AND bids1.bidAmount = T.highestBid)
+                ");
+
+
+
+
+
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.href = 'index.php';
                 </script>";

@@ -28,7 +28,7 @@ $tableRow = '
         </td>
 
         <td>
-            <a href="'.$siteroot.'removeBidMaster.php?bidID='.$row['bidID'].'">Remove Bid</a>
+            <a href="'.$siteroot.'dashboard/removeBidMaster.php?bidID='.$row['bidID'].'">Remove Bid</a>
         </td>
 
 </tr>

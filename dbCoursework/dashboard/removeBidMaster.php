@@ -50,6 +50,7 @@ if($buyerIDforChecking['buyerID'] != $userID){
 
 
     // NOW REDIRECT BACK TO THE BID HISTORY PAGE FROM WHENCE WE CAME
+    header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../profile/bids_page.php');
 
 }
 

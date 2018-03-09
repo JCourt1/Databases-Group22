@@ -27,7 +27,7 @@ if (!isset($_SESSION['user_ID'])) {
 
         <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent;
           border-color: #d6e9c6;">
-    <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/browsePopularItems.php";?>
+          <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/browsePopularItems.php";?>
         </div>
 
         </div>

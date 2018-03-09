@@ -38,7 +38,8 @@
                 $date = new DateTime();
                 $result = $date->format('Y-m-d H:i:s');
                 $currentPrice = $_POST["bid"];
-                $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . " ) ");
+                $conn->query("UPDATE bids SET bidWinning = 0 WHERE itemID = ".$itemID." AND bidWinning = 1");
+                $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount, bidWinning) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . ", 1 ) ");
                 $message = "Your bid has been registered. Thank you!";
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.href = 'index.php';
@@ -48,8 +49,8 @@
                 $message = "The bid field cannot be empty!";
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.href = 'index.php';
-                
-                
+
+
                 </script>";
             }
             elseif(!empty($_POST["bid"]) && $currentPrice >= $_POST["bid"]){

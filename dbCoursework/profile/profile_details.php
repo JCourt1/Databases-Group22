@@ -6,8 +6,29 @@
     <?php include('../dashboard/baseHeader.php'); ?>
     <?php include('../dashboard/sideMenu.php'); ?>
 
+<?php 
 
-<div class="container" >
+$siteroot = '/Databases-Group22/dbCoursework/'; 
+//establish the connection
+try {
+    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+                    "team22@ibe-database",
+                    "ILoveCS17");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+
+$userID=$_SESSION['user_ID'];
+
+$res=$conn->query("SELECT * from users WHERE userID = $userID");
+$data=$res->fetch();
+
+?>
+
+
+<div class="container col-md-offset-2" >
 <h1>Edit Profile</h1>
 <hr>
     <div class="row" >

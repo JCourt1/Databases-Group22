@@ -13,12 +13,23 @@
        $buyerID = $_GET['buyerID'];
        $itemID = $_GET['itemID'];
 
+       // Get the sellerID
+       $seller_query = "SELECT sellerID FROM items WHERE itemID = ".$itemID;
+       $seller_statement = $conn->prepare($seller_query);
+       $seller_statement->execute();
+       $sellerID = $seller_statement->fetch();
+
 
 
 
             if(!isset($buyerID) ||  $buyerID == NULL){
                 echo '<script type="text/javascript">';
                 echo 'alert("You have to login or register first");';
+                echo 'window.location.href = "index.php";';
+                echo '</script>';
+            } else if ($buyerID == $sellerID['sellerID']){
+                echo '<script type="text/javascript">';
+                echo 'alert("You cannot bid on your own item");';
                 echo 'window.location.href = "index.php";';
                 echo '</script>';
             }

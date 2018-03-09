@@ -14,6 +14,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
         var image = '#img' + <?php echo $rownumber; ?>;
+        var watchlist = "#watchlist" + <?php echo $rownumber; ?>;
+
+        // VIEW COUNT
         $(image).on("click",function(){
             var number = <?php echo $itemID; ?>;
 
@@ -30,10 +33,57 @@
                 }
             });
         });
+
+        // Initial watchlist
+        $(watchlist).on("init", function(){
+            console.log("INITIASDIAS");
+        });
+
+        // WATCHLIST
+        $(watchlist).on("click",function(){
+            var number = <?php echo $itemID; ?>;
+            var userID;
+            try {
+                userID = <?php echo $buyerID; ?>;
+            } catch (err){
+                console.log("Nobody logged in");
+                userID = -1;
+            }
+
+            $.ajax({
+                url: "<?php echo $siteroot; ?>dashboard/handleWatchlistClick.php",
+                type: "POST",
+                data: {"itemID": number, "userID": userID},
+                success: function (response) {
+                    console.log("Watchlist Change");
+                    $(watchlist).html(response);
+                },
+
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Status: " + textStatus); alert("Error: " + errorThrown);
+                }
+            });
+        });
     });
 </script>
 
 <?php
+// For watchlist script when page is first loaded:
+if (!empty($buyerID)){
+    $query = "SELECT itemID, userID FROM watchlist_items w WHERE w.itemID = ".$itemID." AND w.userID = ".$buyerID;
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    $res = $statement->fetch();
+
+    if (empty($res['itemID']) || empty($res['userID'])) {
+        // Item not currently in watchlist
+        $watchlist_line = "<a>Add to watchlist</a>";
+    } else {
+        // Item is currently in watchlist
+        $watchlist_line = "<a>Remove from watchlist</a>";
+    }
+}
+
 // THIS IS THE FILE FOR THE ITEM MODAL.
 $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
 
@@ -52,8 +102,8 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
                     <p>' . $description . '</p>
                     <h3>Bidding ends: ' . $elapsed . ' </h2>
                     <h3 id="countdown'.$rownumber.'">  </h3>
-                    <h3 > Start Price: ' . $startPrice . ' </h2>
-                    <h3> Current Price: ' . $currentPrice . ' </h2>
+                    <h3 > Start Price: £' . $startPrice . ' </h2>
+                    <h3> Current Price: £' . $currentPrice . ' </h2>
                     <h3> Last Bid: ' . $lastBid . ' </h2>
                 </div>
                 <div class="modal-footer">
@@ -62,9 +112,14 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
                 Bid: <input type="text" name="bid"><br>
                 <input type="submit" value="Bid" >
                 </form>
-                <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$itemID.'">View in auction room</a>
+                <div>
+                    <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$itemID.'">View in auction room</a>
                 </div>
-                
+                <div class="watchlist" id="watchlist'.$rownumber.'">
+                    '.$watchlist_line.'
+                </div>
+                </div>
+
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

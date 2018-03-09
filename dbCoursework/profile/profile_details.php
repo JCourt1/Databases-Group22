@@ -1,5 +1,4 @@
 
-<html>
 <?php include('../dashboard/baseHead.php'); ?>
 
 <body>
@@ -142,7 +141,6 @@ $data=$res->fetch();
 
 <?php include('../dashboard/baseFooter.php'); ?>
 
-</html>
 
 
 

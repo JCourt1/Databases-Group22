@@ -69,6 +69,7 @@
 
 <?php
 // For watchlist script when page is first loaded:
+$watchlist_line = "<p>Log in to add item to watchlist</p>";
 if (!empty($buyerID)){
     $query = "SELECT itemID, userID FROM watchlist_items w WHERE w.itemID = ".$itemID." AND w.userID = ".$buyerID;
     $statement = $conn->prepare($query);

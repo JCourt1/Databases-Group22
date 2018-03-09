@@ -33,6 +33,7 @@ $email = $_POST['email'];
 $username = $_POST['username'];
 $password = $_POST['psw'];
 $cpassword = $_POST['psw-repeat'];
+
 //validation check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $regError = "Invalid email format. Please try again";
@@ -61,15 +62,17 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $regError = "The password contains invalid characters";
     }
 }
+//if no error occured
 if(isset($regError)){
 echo "<script type= 'text/javascript'>alert('$regError');</script>";
+//navigate to the main page
 echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
 }
 else{
     //update the database
     $sql = "INSERT INTO users ( username, password,email)
     VALUES ('".$username."','".$password."','".$email."' )";
-    //print the relevant message regarding the outcome of the insertion
+    //make an sql query and take the user ID from the DB
     if ($conn->query($sql))
     {
         $query = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ?");
@@ -83,6 +86,7 @@ else{
                 throw new Exception('Username is not set. Should not happen.');
         }
         $_SESSION['loggedin'] = true;
+        //print the relevant message regarding the outcome of the insertion
         echo "<script type= 'text/javascript'>alert('User created Successfully. You will be redirected to the home page.');</script>";
     }
     else

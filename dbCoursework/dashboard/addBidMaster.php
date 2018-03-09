@@ -55,12 +55,16 @@
                 $message = "Your bid has been registered. Thank you!";
 //                include "signalNecessaryNotifications.php";
 
+
+
+                // Signal that bids need notifications to be sent out where necessary
+                // (the highest bid on the same item from all users who have bid on it, apart from the user who has just made the new highest bid)
                 $conn -> query("UPDATE bids SET bids.needsNotification = 1 WHERE bids.bidID IN 
                                                                 
                                                                 (SELECT bids1.bidID FROM (SELECT * FROM bids) AS bids1 JOIN
                                                                 
                                                                 (SELECT bids2.buyerID, max(bids2.bidAmount) as highestBid FROM (SELECT * FROM bids) as bids2 
-                                                                WHERE bids2.itemID = $itemID AND bids2.bidAmount < $bid GROUP BY bids2.buyerID) AS T
+                                                                WHERE bids2.itemID = $itemID AND bids2.buyerID <> $buyerID GROUP BY bids2.buyerID) AS T
                                                                 ON bids1.buyerID = T.buyerID AND bids1.bidAmount = T.highestBid)
                 ");
 

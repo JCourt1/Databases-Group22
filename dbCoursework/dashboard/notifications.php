@@ -2,17 +2,21 @@
 <?php
 
 
+        ### To do:
+        ### make sure Session variables are set at login.
+        ### At login, Deal with any 1s in the needsNotification column.
+
+
 
     $myHighestBids = $_SESSION['myHighestBids'];
     $itemsImSelling = $_SESSION['itemsImSelling'];
 
-
-
-
     foreach ($myHighestBids as $highestBid) {
 
         $itemID = $highestBid[0];
-        $bidAmount = $highestBid[1];
+        $itemName = $highestBid[1];
+        $bidID = $highestBid[2];
+        $bidAmount = $highestBid[3];
 
         echo '<script>
             
@@ -22,28 +26,12 @@
             
                                url: "checkForHigherBids.php",
                                type: "POST",
-                               data: {"itemID":'.$itemID.', "highestBid":'.$bidAmount.'},
+                               data: {"itemName":'.$itemName.', "itemID":'.$itemID.', "bidID":'.$bidID.', "highestBid":'.$bidAmount.'},
                                success: function(response) {
-            
-                                   console.log("caca");
-                                   console.log(response);
-                                   console.log(response.newHighest);
-                                   console.log(response.newRows);
-            
             
                                    if (response.newHighest != 0) {
                                        hBid = response.newHighest;
-                                       $("#bidForm").attr("action", function(index, previousValue){
-            
-                                           var result = previousValue.replace(/currentPrice=.+&/, "currentPrice=" + hBid + "&");
-            
-                                           return result;
-                                       });
-                                       
-                                       
-                                       alert(response);
-            
-                                       $("#bidTable").prepend(response.newRows.toString());
+                                       alert(response.responseMSG);
                                    }
             
             
@@ -53,13 +41,70 @@
             
             
                                dataType: "json"});
-                        }, 5000);
+                        }, 8000);
                     });
         </script>';
-
-
-
     }
+
+
+
+    foreach ($itemsImSelling as $itemImSelling) {
+
+        $itemID = $itemImSelling[0];
+        $itemName = $itemImSelling[1];
+        $bidID = $itemImSelling[2];
+        $bidAmount = $itemImSelling[3];
+
+        echo '<script>
+            
+            $(function () {
+                       setInterval(function() {
+                           $.ajax({
+            
+                               url: "checkForHigherBids.php",
+                               type: "POST",
+                               data: {"itemID":'.$itemID.',"itemName":'.$itemName.', "bidID":'.$bidID.', "highestBidAmount":'.$bidAmount.'},
+                               success: function(response) {
+            
+                                   if (response.newHighest != 0) {
+                                       hBid = response.newHighest;
+                                       alert(response.responseMSG);
+                                   }
+            
+            
+                           }, error: function (request, status, error) {
+                                   alert(request.responseText);
+                               },
+            
+            
+                               dataType: "json"});
+                        }, 8000);
+                    });
+        </script>';
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

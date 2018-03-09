@@ -7,22 +7,14 @@
     <?php include('../dashboard/sideMenu.php'); ?>
 
 
-<div class="container">
+<div class="container" >
 <h1>Edit Profile</h1>
 <hr>
-    <div class="row">
-      <!-- left column -->
-      <div class="col-md-3">
-        <div class="text-center">
-          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-          <h6>Upload a different photo...</h6>
-          
-          <input class="form-control" type="file">
-        </div>
-      </div>
+    <div class="row" >
+
       
       <!-- edit form column -->
-      <div class="col-md-9 personal-info">
+      <div class="col-md-9 col-md-offset-2 personal-info">
         <div class="alert alert-info alert-dismissable">
           <a class="panel-close close" data-dismiss="alert">×</a> 
           <i class="fa fa-coffee"></i>

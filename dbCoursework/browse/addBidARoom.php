@@ -19,7 +19,7 @@
             if(!isset($buyerID) ||  $buyerID == NULL){
                 echo '<script type="text/javascript">';
                 echo 'alert("You have to login or register first");';
-                echo 'window.location.href = "index.php";';
+                echo 'window.location.href = "auctionRooms.php?itemID='.$itemID.'";';
                 echo '</script>';
             }
 
@@ -41,27 +41,25 @@
                 $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . " ) ");
                 $message = "Your bid has been registered. Thank you!";
                 echo "<script type='text/javascript'>alert('$message');
-                window.location.href = 'index.php';
+                window.location.href = 'auctionRooms.php?itemID=".$itemID."';
                 </script>";
             }
             elseif(empty($_POST["bid"])){
                 $message = "The bid field cannot be empty!";
                 echo "<script type='text/javascript'>alert('$message');
-                window.location.href = 'index.php';
-                
-                
+                window.location.href = 'auctionRooms.php?itemID=".$itemID."';
                 </script>";
             }
             elseif(!empty($_POST["bid"]) && $currentPrice >= $_POST["bid"]){
                 $message = "Your bid must be bigger than the current bid";
                 echo "<script type='text/javascript'>alert('$message');
-                window.location.href = 'index.php';
+                window.location.href = 'auctionRooms.php?itemID=".$itemID."';
                 </script>";
             }
             else{
                 $message = "Please enter a valid number!";
                 echo "<script type='text/javascript'>alert('$message');
-                window.location.href = 'index.php';
+                window.location.href = 'auctionRooms.php?itemID=".$itemID."';
                 </script>";
 
             }

@@ -1,5 +1,7 @@
 <?php include("../dashboard/baseHead.php"); ?>
 
+<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+
 <link href="../resources/css/auctionRooms.css" rel="stylesheet">
 
   <body>
@@ -25,12 +27,11 @@
                 $date = $data1['endDate'];
                 $startPrice = $data1['startPrice'];
 
-                echo '<div class="col-sm-offset-5 col-md-offset-5"><img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" data-toggle="modal" data-target="#myModal' . $modalReference . '">
-                                  <a  data-toggle="modal" data-target="#myModal' . $modalReference . '">
+                echo '<div class="col-sm-offset-5 col-md-offset-5"><img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail">
                                   <h4>' . $title . '
                                   </h4>
                                   <span class="text-muted">  ' . $description . ' </span>
-                                  </a> </div>';
+                                  </div>';
 
 
                 # Get last 20 bids
@@ -77,6 +78,12 @@
 
             </tbody>
         </table>
+
+
+        <form id="bidForm" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php echo $highestBid;?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
+            Bid: <input type="text" name="bid"><br>
+            <input type="submit" value="Bid" >
+        </form>
 
 
 
@@ -146,6 +153,12 @@
 
                        if (response.newHighest != 0) {
                            hBid = response.newHighest;
+                           $("#bidForm").attr("action", function(index, previousValue){
+
+                               var result = previousValue.replace(/currentPrice=.+&/, "currentPrice=" + hBid + "&");
+
+                               return result;
+                           });
 
                            $("#bidTable").prepend(response.newRows.toString());
                        }

@@ -62,7 +62,9 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder">
                 Bid: <input type="text" name="bid"><br>
                 <input type="submit" value="Bid" >
                 </form>
+                <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$itemID.'">View in auction room</a>
                 </div>
+                
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

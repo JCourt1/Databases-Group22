@@ -24,7 +24,13 @@
         <li><a href="<?php echo $siteroot; ?>browse/auctionRooms.php">Auction Rooms</a></li>
       </ul>
   -->
+      <h2> Profile </h2>
+      <ul class="nav nav-sidebar">
+
+        <li><a href="<?php echo $siteroot; ?>profile/profile_details.php">My account</a></li>
+
+      </ul>
       <br>
     </div>
-    </div>
+  </div>
 </div>

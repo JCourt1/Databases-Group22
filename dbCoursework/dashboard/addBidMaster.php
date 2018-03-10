@@ -21,10 +21,12 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
         $bid = $_POST["bid"];
 
        // Get the sellerID
-       $seller_query = "SELECT sellerID FROM items WHERE itemID = ".$itemID;
-       $seller_statement = $conn->prepare($seller_query);
-       $seller_statement->execute();
-       $sellerID = $seller_statement->fetch();
+       $sellerItem_query = "SELECT sellerID, title FROM items WHERE itemID = ".$itemID;
+        $statement = $conn->prepare($sellerItem_query);
+        $statement->execute();
+        $firstRow = $statement->fetch();
+        $sellerID = $firstRow["sellerID"];
+        $itemName = $firstRow["title"];
 
 
 
@@ -34,7 +36,7 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 echo 'alert("You have to login or register first");';
                 echo 'window.location.href = "index.php";';
                 echo '</script>';
-            } else if ($buyerID == $sellerID['sellerID']){
+            } else if ($buyerID == $sellerID){
                 echo '<script type="text/javascript">';
                 echo 'alert("You cannot bid on your own item");';
                 echo 'window.location.href = "index.php";';
@@ -61,10 +63,7 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 $message = "Your bid has been registered. Thank you!";
 //                include "signalNecessaryNotifications.php";
 
-                $statement = $conn -> query("SELECT sellerID, title FROM items WHERE itemID = ".$itemID);
-                $firstRow = $statement -> fetch();
-                $sellerID = $firstRow["sellerID"];
-                $itemName = $firstRow["title"];
+
 
                 // Signal that bids need notifications to be sent out where necessary
                 // (the highest bid on the same item from all users who have bid on it, apart from the user who has just made the new highest bid)
@@ -77,41 +76,24 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 $toBeNotified -> execute([$itemID, $buyerID]);
                 $toBeNotified = $toBeNotified->fetchAll();
 
-//                include $_SERVER['DOCUMENT_ROOT']. $siteroot."notifications/notificationWriter.php";
-
-                var_dump($toBeNotified);
                 foreach ($toBeNotified as $row) {
 
                     $buyerID = $row['buyerID'];
 
-//                    writeOutbidNotification($row['buyerID'], $_SESSION['login_user'], $currentPrice, $itemName);
-
                     $notification = '' . $_SESSION['login_user'] . 'outbid you on '.$itemName.' with a bid of ' . $currentPrice;
 
 
-                    $insertNotifications = $conn->prepare("INSERT INTO notifications (receiverID, message, isBuyer) VALUES (".$buyerID.", \"".$notification."\", 1)");
+                    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$buyerID.", \"rivalBid\", \"".$notification."\", 1, 1)");
                     $insertNotifications -> execute();
                 }
 
-
-//                updateSeller($sellerID, $_SESSION['login_user'], $currentPrice, $itemName);
-
                 $notification = '' . $_SESSION['login_user'] . 'placed a bid of '.$currentPrice.' on your item: ' . $itemName;
-                $insertNotifications = $conn->prepare("INSERT INTO notifications (receiverID, message, isBuyer) VALUES (".$sellerID.", \"".$notification."\", 0)");
+                $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"receivedBid\", \"".$notification."\", 0, 1)");
                 $insertNotifications->execute();
 
-                echo "<script type='text/javascript'>alert('$sellerID');
-
-                                                    
-                                                    </script>";
-
-                echo "<script type='text/javascript'>console.log('$notification');
-                
-                                                                    
-                                                                    </script>";
-
-
-//".$sellerID.", \"".$notification."\", 0
+//                var_dump($notification);
+//                var_dump($_SESSION['login_user']);
+//                var_dump($sellerID);
 
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.href = 'index.php';

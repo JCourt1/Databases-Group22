@@ -35,7 +35,7 @@ $data=$res->fetch();
       <div class="col-md-9 col-md-offset-2 personal-info">
         <h3>Personal info</h3>
         <!-- start of the  form  -->
-        <form class="form-horizontal" method='POST' name="mainForm" onsubmit="return validateForm()" role="form">
+        <form class="form-horizontal" method='POST' name="mainForm" onsubmit="return validateForm()" action="../profile/handle_SignUp.php" role="form">
           <!-- First name field  -->
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
@@ -172,7 +172,7 @@ $data=$res->fetch();
     var psw=document.forms["mainForm"]["psw"].value;
     var psw_confirm=document.forms["mainForm"]["psw-confirm"].value;
 
-        if ( !/^[a-zA-Z]*$/g.test(firstName))
+        if ( !/^[a-zA-Z]*$/g.test(firstName) )
         {
             alert("The first name must only have letters.");
             return false; //this tells the php if to proceed or not
@@ -209,7 +209,7 @@ $data=$res->fetch();
             alert("The the e-mail you provided in not in the right form");
             return false;
         }
-        else if (!isInt(buildingNumber))
+        else if (!isInt(buildingNumber) && !buildingNumber=='')
         {
             alert("The building number is not in the right form");
             return false;
@@ -224,7 +224,7 @@ $data=$res->fetch();
             alert("The field for county is not in the right form");
             return false;
         }
-        else if ( !is_valid_postcode(postCode))
+        else if ( !is_valid_postcode(postCode) && !postCode=='')
         {
             alert("The postcode is not valid");
             return false;
@@ -234,7 +234,7 @@ $data=$res->fetch();
             alert("The username is not in the right form");
             return false;
         }
-        else if ( (psw!=psw_confirm) && (psw!='' && psw_confirm!='') )
+        else if ( (psw!=psw_confirm) )
         {
             alert("Passowords do not match. Please try again.");
             return false;

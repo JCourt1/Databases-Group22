@@ -29,10 +29,20 @@ catch (Exception $e) {
 }
 
 //store the variables that come from the form
-$email = $_POST['email'];
-$username = $_POST['username'];
-$password = $_POST['psw'];
-$cpassword = $_POST['psw-repeat'];
+$firstName=$_POST['firstName'];
+$lastName=$_POST['lastName'];
+$phone=$_POST['phone'];
+$company=$_POST['company'];
+$picture=$_POST['picture'];
+$email=$_POST['email'];
+$street=$_POST['street'];
+$buildingNumber=$_POST['buildingNumber'];
+$city=$_POST['city'];
+$county=$_POST['county'];
+$postCode=$_POST['postCode'];
+$username=$_POST['username'];
+$psw_confirm=$_POST['psw_confirm'];
+
 
 //validation check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -66,7 +76,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 if(isset($regError)){
 echo "<script type= 'text/javascript'>alert('$regError');</script>";
 //navigate to the main page
-echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
+echo     '<script type="text/javascript">  window.location = "profile_details.php"   </script>';
 }
 else{
     //update the database
@@ -75,17 +85,6 @@ else{
     //make an sql query and take the user ID from the DB
     if ($conn->query($sql))
     {
-        $query = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ?");
-        $query->execute([$_POST['username'], $password]);
-        $row = $query->fetch();
-        $uName = $row['username'];
-        $id = $row['userID'];
-        $_SESSION['user_ID'] = $id;
-        $_SESSION['login_user'] = $uName;
-        if (!isset($_SESSION['user_ID'])) {
-                throw new Exception('Username is not set. Should not happen.');
-        }
-        $_SESSION['loggedin'] = true;
         //print the relevant message regarding the outcome of the insertion
         echo "<script type= 'text/javascript'>alert('User created Successfully. You will be redirected to the home page.');</script>";
     }

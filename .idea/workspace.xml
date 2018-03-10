@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f65ab4a-1b44-4639-958d-09a8b4927060" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/itemModal.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/itemModal.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/notifications/notificationsAtLogin.php" afterPath="$PROJECT_DIR$/dbCoursework/notifications/notificationsAtLogin.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" afterPath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" />
-    </list>
+    <list default="true" id="3f65ab4a-1b44-4639-958d-09a8b4927060" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -148,8 +142,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="MAMP PHP 7.2.1" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1377" />
-    <option name="y" value="-686" />
+    <option name="x" value="-1380" />
+    <option name="y" value="-582" />
     <option name="width" value="2111" />
     <option name="height" value="1194" />
   </component>
@@ -314,12 +308,12 @@
       <workItem from="1520422886208" duration="5964000" />
       <workItem from="1520441950339" duration="23923000" />
       <workItem from="1520587757509" duration="31309000" />
-      <workItem from="1520687905278" duration="12900000" />
+      <workItem from="1520687905278" duration="13178000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160043000" />
+    <option name="totallyTimeSpent" value="160321000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -331,7 +325,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1377" y="-686" width="2111" height="1194" extended-state="0" />
+    <frame x="-1380" y="-582" width="2111" height="1194" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13879678" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -583,8 +577,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1520703397000" expanded="true" signature="2402:2506" ph="INSERT INTO users... " />
-            <marker date="1520703397000" expanded="true" signature="2633:2703" ph="SELECT userI... users" />
+            <marker date="1520706591000" expanded="true" signature="2402:2506" ph="INSERT INTO users... " />
+            <marker date="1520706591000" expanded="true" signature="2633:2703" ph="SELECT userI... users" />
           </folding>
         </state>
       </provider>

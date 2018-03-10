@@ -13,10 +13,10 @@ if(isset($_SESSION['user_ID'])){
 <div class="row placeholders">
     <?php
 
-    $statement = $conn->prepare("SELECT itemid, title, description, photo, enddate, startprice
+    $statement = $conn->prepare("SELECT itemID, title, description, photo, endDate, startPrice
                                 FROM items
-                                WHERE enddate > NOW()
-                                ORDER BY itemviewcount DESC LIMIT 8");
+                                WHERE endDate > NOW()
+                                ORDER BY itemViewCount DESC LIMIT 8");
     $statement->execute();
     $res = $statement->fetchAll();
 
@@ -25,25 +25,25 @@ if(isset($_SESSION['user_ID'])){
     foreach ($res as $searchResult) {
 
         // Item information:
-        $itemID = $searchResult['itemid'];
+        $itemID = $searchResult['itemID'];
         $title = $searchResult['title'];
         $photo = $searchResult['photo'];
         $description = $searchResult['description'];
-        $startPrice = $searchResult['startprice'];
+        $startPrice = $searchResult['startPrice'];
 
         // Bid information:
-        $bid_query = $conn->prepare("SELECT buyerid, bidamount, biddate
+        $bid_query = $conn->prepare("SELECT buyerID, bidAmount, bidDate
                                     FROM bids
                                     WHERE itemID = " .$itemID. "
-                                    ORDER BY bidamount DESC LIMIT 1");
+                                    ORDER BY bidAmount DESC LIMIT 1");
         $bid_query->execute();
         $bid = $bid_query->fetch();
-        $currentPrice = $bid['bidamount'];
-        $lastBid = $bid['biddate'];
+        $currentPrice = $bid['bidAmount'];
+        $lastBid = $bid['bidDate'];
 
         $current_date =  new DateTime();
 
-        $bid_end_date =  new DateTime($searchResult['enddate']);
+        $bid_end_date =  new DateTime($searchResult['endDate']);
         $interval = $current_date->diff($bid_end_date);
         $elapsed = $interval->format('%y y %m m %a d %h h %i min %s s');
 

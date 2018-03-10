@@ -41,44 +41,56 @@ $city=$_POST['city'];
 $county=$_POST['county'];
 $postCode=$_POST['postCode'];
 $username=$_POST['username'];
-$psw_confirm=$_POST['psw_confirm'];
+$psw=$_POST['psw'];
+$psw_confirm=$_POST['psw-confirm'];
 
+
+
+//validate all the input fields
 if(!ctype_alpha ($firstName) &&  !$firstName=='' || strpos($firstName, ';')  ){
     $regError = "The first name provided is not in the right form. Please try again.";
 }elseif(!ctype_alpha ($firstName) &&  !$firstName=='' || strpos($firstName, ';')  ){
     $regError = "The last name provided is not in the right form. Please try again.";
-}elseif(!isValidUKNumber($phone) || strpos($phone, ';') &&  !$phone=='' ){
+}elseif( (!isValidUKNumber($phone) || strpos($phone, ';')) &&  !$phone=="" ){
     $regError = "The phone number is not in the right form. Please try again.";
-}elseif(ctype_alpha(str_replace(' ', '', $company)) === false  || strpos($company, ';') &&  !$company=='' ){
+}elseif((ctype_alpha(str_replace(' ', '', $company)) === false  || strpos($company, ';')) &&  !$company=='' ){
     $regError = "The company name is not in the right form. Please try again";
-}elseif(filter_var($picture, FILTER_VALIDATE_URL) || strpos($picture, ';') &&  !$company=='' ){
-    $regError = "The url provided for the picture is not valid. Please try again.";
-}elseif(!filter_var($email, FILTER_VALIDATE_EMAIL) || strpos($email, ';')  ){
-    $regError = "The email provided for the picture is not valid. Please try again.";
-}elseif(ctype_alpha(str_replace(' ', '', $street)) === false || strpos($street, ';')  ){
-    $regError = "The street provided for the picture is not valid. Please try again.";
-}elseif( !is_int($buildingNumber) || strpos($buildingNumber, ';')  ){
-    $regError = "The building number provided for the picture is not valid. Please try again.";
+}elseif((filter_var($picture, FILTER_VALIDATE_URL) || strpos($picture, ';')) &&  !$picture=='' ){
+    $regError = "The url provided is not valid. Please try again.";
+}elseif(!filter_var($email, FILTER_VALIDATE_EMAIL) || strpos($email, ';') ){
+    $regError = "The email provided is not valid. Please try again.";
+}elseif((ctype_alpha(str_replace(' ', '', $street)) === false || strpos($street, ';')) &&  !$street=='' ){
+    $regError = "The street provided is not valid. Please try again.";
+}elseif(( !preg_match('/^\d+[A-Z]?$/', $buildingNumber) || strpos($buildingNumber, ';')) &&  !$buildingNumber=='' ){
+    $regError = "The building number provided is not valid. Please try again.";
+}elseif((ctype_alpha(str_replace(' ', '', $city)) === false || strpos($city, ';')) &&  !$city==''){
+    $regError = "The city provided is not valid. Please try again.";
+}elseif((ctype_alpha(str_replace(' ', '', $county)) === false || strpos($county, ';')) &&  !$county==''){
+    $regError = "The county provided is not valid. Please try again.";
+}elseif(!is_string($username)){
+    $regError = "The username is not in the right form. Please try again.";
+}elseif($psw!= $psw_confirm ){
+    $regError = "The 2 password fields do not match";
+}elseif((isPasswordValid($psw)!=null || strpos($psw, ';')) && ($psw!='') ){
+    $regError = isPasswordValid($psw);
+    if ($regError==null){
+        $regError="password contains invalid characters";
+    }
 }
 
-
+//function to check if the UK number is valid
 function isValidUKNumber($input){
-$pattern = "/^(\0\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/";
+$pattern = "/^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/";
 $match = preg_match($pattern,$input);
 return $match;
 }
-
-
-/*
-//validation check
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  $regError = "Invalid email format. Please try again";
-}elseif(!empty($password) ) 
-{
+//function to validate the password
+function isPasswordValid($password){
+    $regError=null;
     if (strlen($password) <= '8') {
         $regError = "Your Password Must Contain At Least 8 Characters! Please try again.";
     }
-    elseif(!is_string($username)){
+    elseif(!is_string($password)){
         $regError = "The username is not in the proper form";
     }
     elseif(!preg_match("#[0-9]+#",$password)) {
@@ -90,15 +102,16 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     elseif(!preg_match("#[a-z]+#",$password)) {
         $regError = "Your Password Must Contain At Least 1 Lowercase Letter! Please try again.";
     }
-    elseif ($password != $cpassword) {
-        $regError = "The 2 password fields must match. Please try again";
-    }elseif(preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/", $password) === 0){
+    elseif(preg_match("/^.*(?=.{8,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/", $password) === 0){
         $regError ="Password must be at least 8 characters and must contain at least one lower case letter, one upper case letter and one digit";
     }elseif(strpos($password, ';') !== false){
         $regError = "The password contains invalid characters";
     }
-} */
-//if no error occured
+    return $regError;
+}
+
+
+//if an error is occured
 if(isset($regError)){
 echo "<script type= 'text/javascript'>alert('$regError');</script>";
 //navigate to the main page
@@ -106,10 +119,18 @@ echo     '<script type="text/javascript">  window.location = "profile_details.ph
 }
 else{
     //update the database
-    $sql = "INSERT INTO users ( username, password,email)
-    VALUES ('".$username."','".$password."','".$email."' )";
-    //make an sql query and take the user ID from the DB
-    if ($conn->query($sql))
+    $sql = "UPDATE users
+    SET firstName='".$firstName."', lastName='".$lastName."', phoneNumber='".$phone."', companyName='".$company."', profilePic='".$picture."', email='".$email."',
+     streetName='".$street."', buildingNumber='".$buildingNumber."', cityName='".$city."', countyName='".$county."', postCode='".$postCode."', username='".$username."' WHERE userID='".$_SESSION['user_ID']."' ";
+    //if the user typed a new password, update the database with the new password
+     if (isset($psw) && $psw=!'' ){
+        $psw= sha1($psw);
+        $sql2 = "UPDATE users SET password='".$psw."'";
+
+     }
+
+
+    if ($conn->query($sql) && $conn->query($sql2) )
     {
         //print the relevant message regarding the outcome of the insertion
         echo "<script type= 'text/javascript'>alert('User details updated Successfully. You will be redirected to the home page.');</script>";
@@ -119,7 +140,7 @@ else{
         echo "<script type= 'text/javascript'>alert('An error occured while updating user details.');</script>";
     }
     //navigate to the main page
-    echo   '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
+    echo   '<script type="text/javascript">  window.location = "profile_details.php"   </script>';
 }
 ?>
 

@@ -171,7 +171,7 @@ $data=$res->fetch();
     var username=document.forms["mainForm"]["username"].value;
     var psw=document.forms["mainForm"]["psw"].value;
     var psw_confirm=document.forms["mainForm"]["psw-confirm"].value;
-    
+
         if ( !/^[a-zA-Z]*$/g.test(firstName))
         {
             alert("The first name must only have letters.");
@@ -182,8 +182,10 @@ $data=$res->fetch();
             alert("The first name must only have letters.");
             return false;
         }
-        else if (!(phone.length==11 && (/^\d+$/).test(phone)))
+        else if (!(phone.length==11 && (/^\d+$/).test(phone)) && !(phone===null|| phone===''))
         {
+            console.log(phone);
+            console.log("pasdasdhone");
             alert("The phone number is not in the right form");
             return false;
         }
@@ -207,7 +209,7 @@ $data=$res->fetch();
             alert("The the e-mail you provided in not in the right form");
             return false;
         }
-        else if ((/[0-9]|\./).test(buildingNumber))
+        else if (!isInt(buildingNumber))
         {
             alert("The building number is not in the right form");
             return false;
@@ -232,6 +234,15 @@ $data=$res->fetch();
             alert("The username is not in the right form");
             return false;
         }
+        else if ( (psw!=psw_confirm) && (psw!='' && psw_confirm!='') )
+        {
+            alert("Passowords do not match. Please try again.");
+            return false;
+        }
+    }
+
+    function isInt(value) {
+      return !isNaN(value) && parseInt(Number(value)) == value &&  !isNaN(parseInt(value, 10));
     }
 
     // function to check if the input is a sentence

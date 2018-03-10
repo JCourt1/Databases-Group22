@@ -5,9 +5,9 @@
     <?php include('../dashboard/baseHeader.php'); ?>
     <?php include('../dashboard/sideMenu.php'); ?>
 
-<?php 
+<?php
 
-$siteroot = '/Databases-Group22/dbCoursework/'; 
+$siteroot = '/Databases-Group22/dbCoursework/';
 //establish the connection
 try {
     $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
@@ -31,7 +31,7 @@ $data=$res->fetch();
 <h1>Edit Profile</h1>
 <hr>
     <div class="row" >
-      
+
       <div class="col-md-9 col-md-offset-2 personal-info">
         <h3>Personal info</h3>
         <!-- start of the  form  -->
@@ -78,18 +78,18 @@ $data=$res->fetch();
               <input class="form-control" name="email" value="<?php echo $data['email'];  ?>" type="text">
             </div>
           </div>
-          <!-- Street field  -->
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Street:</label>
-            <div class="col-lg-6">
-              <input class="form-control" name="street" value="<?php if(isset($data['streetName'])){echo $data['streetName'];};?>"  placeholder="Please enter your address" type="text">
-            </div>
-          </div>
           <!-- Building number field  -->
           <div class="form-group">
             <label class="col-lg-3 control-label">Building Number:</label>
             <div class="col-lg-6">
               <input class="form-control" name="buildingNumber" value="<?php if(isset($data['buildingNumber'])){echo $data['buildingNumber'];};?>"  placeholder="Please enter your building number" type="text">
+            </div>
+          </div>
+          <!-- Street field  -->
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Street:</label>
+            <div class="col-lg-6">
+              <input class="form-control" name="street" value="<?php if(isset($data['streetName'])){echo $data['streetName'];};?>"  placeholder="Please enter your address" type="text">
             </div>
           </div>
           <!-- city field  -->
@@ -320,9 +320,3 @@ $data=$res->fetch();
 
 
 </script>
-
-
-
-
-
-

@@ -20,9 +20,9 @@
               
         echo '<script type="text/javascript"> console.log("connection Ok"); </script>';
       
-        $statement = $conn->prepare("SELECT itemid, sellerid, title, enddate, startprice, reserveprice, notified
+        $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, notified
         FROM items
-        WHERE enddate < NOW() AND (notified = 0 OR notified IS NULL)");
+        WHERE endDate < NOW() AND (notified = 0 OR notified IS NULL)");
 
 
         $statement->execute();
@@ -37,12 +37,12 @@
             
 
 
-            $itemID = $searchResult['itemid'];
-            $sellerID = $searchResult['sellerid'];
+            $itemID = $searchResult['itemID'];
+            $sellerID = $searchResult['sellerID'];
             $title = $searchResult['title'];
-            $endDate = $searchResult['enddate'];
-            $startPrice = $searchResult['startprice'];
-            $reservePrice = $searchResult['reserveprice'];
+            $endDate = $searchResult['endDate'];
+            $startPrice = $searchResult['startPrice'];
+            $reservePrice = $searchResult['reservePrice'];
             $notified  = $searchResult['notified'];
 
         
@@ -58,38 +58,38 @@
 
             
 
-            $bid_query = $conn->prepare("SELECT buyerid, bidamount, biddate
+            $bid_query = $conn->prepare("SELECT buyerID, bidAmount, bidDate
             FROM bids
-            WHERE itemid = " .$itemID. " AND bidwinning = 1");
+            WHERE itemID = " .$itemID. " AND bidWinning = 1");
             $bid_query->execute();
             $bid = $bid_query->fetch();
 
 
-            $buyerID = $bid['buyerid'];
-            $bidAmount = $bid['bidamount'];
-            $bidDate = $bid['biddate'];
+            $buyerID = $bid['buyerID'];
+            $bidAmount = $bid['bidAmount'];
+            $bidDate = $bid['bidDate'];
 
 
 
-            $buyer_query = $conn->prepare("SELECT firstname, lastname, email
+            $buyer_query = $conn->prepare("SELECT firstName, lastName, email
             FROM users
-            WHERE userid = " .$buyerID. "");
+            WHERE userID = " .$buyerID. "");
             $buyer_query->execute();
             $buyer = $buyer_query->fetch();
            
-            $buyerFirstName = $buyer['firstname'];
-            $buyerLastName = $buyer['lastname'];
+            $buyerFirstName = $buyer['firstName'];
+            $buyerLastName = $buyer['lastName'];
             $buyerEmail = $buyer['email'];
 
 
-            $seller_query = $conn->prepare("SELECT firstname, lastname, email
+            $seller_query = $conn->prepare("SELECT firstName, lastName, email
             FROM users
-            WHERE userid = " .$sellerID. "");
+            WHERE userID = " .$sellerID. "");
             $seller_query->execute();
             $seller = $seller_query->fetch();
            
-            $sellerFirstName = $buyer['firstname'];
-            $sellerLastName = $buyer['lastname'];
+            $sellerFirstName = $buyer['firstName'];
+            $sellerLastName = $buyer['lastName'];
             $sellerEmail = $buyer['email'];
 
 
@@ -112,7 +112,7 @@
             array_push($subjects, $subject_seller,$subject_buyer);
             array_push($messages, $message_seller, $message_buyer);
 
-            $conn ->query("UPDATE items SET  notified = 1 WHERE itemid = $itemID");
+            $conn ->query("UPDATE items SET  notified = 1 WHERE itemID = $itemID");
 
             
             

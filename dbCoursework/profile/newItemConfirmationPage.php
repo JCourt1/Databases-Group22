@@ -9,7 +9,7 @@
     <?php include('../dashboard/sideMenu.php'); ?>
     <?php
     try
-    {  
+    {
         //create connection
         $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8","team22@ibe-database","ILoveCS17");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -26,8 +26,13 @@
         $expDate = $_POST['expDate'];
 
         //update the database
+<<<<<<< HEAD
         $sql = "INSERT INTO items ( sellerID, title, description, photo, itemCondition, categoryID, startPrice,reservePrice,endDate)
         VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','".$photoLink."','".$Condition."','".$subCat2."', '".$startingPrice."','".$reservePrice."','".$expDate."')";
+=======
+        $sql = "INSERT INTO items ( sellerID, title, description, itemCondition, photo, categoryID, startPrice,reservePrice,endDate)
+        VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','.$photoLink.','".$Condition."','".$subCat2."', '".$startingPrice."','".$reservePrice."','".$expDate."')";
+>>>>>>> e104b0bf3df5091775163fc18e17227b119e949d
         //print the relevant message regarding the outcome of the insertion
         if ($conn->query($sql))
         {
@@ -42,7 +47,7 @@
         $conn = null;
     }
 
-    catch (Exception $e) 
+    catch (Exception $e)
     {
         die('Erreur : ' . $e->getMessage());
     }
@@ -51,9 +56,3 @@
 </body>
 
 <?php include('../dashboard/baseFooter.php'); ?>
-
-
-
-
-
-

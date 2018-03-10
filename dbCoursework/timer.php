@@ -64,6 +64,7 @@
             $bid_query->execute();
             $bid = $bid_query->fetch();
 
+            if(sizeof($bid)>0){
 
             $buyerID = $bid['buyerID'];
             $bidAmount = $bid['bidAmount'];
@@ -115,6 +116,7 @@
             $conn ->query("UPDATE items SET  notified = 1 WHERE itemID = $itemID");
 
             
+            }
             
 
 

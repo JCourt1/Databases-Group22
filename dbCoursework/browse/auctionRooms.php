@@ -93,6 +93,11 @@
         </form>
 
 
+        <button><form action="insertTest.php">
+                <input type="submit">
+            </form></button>
+
+
 
 <!--                    if ($i < 10) {-->
 <!---->

@@ -1,4 +1,10 @@
+<?php session_start();
+
+$siteroot = '/Databases-Group22/dbCoursework/'; ?>
 <?php
+
+
+
         try {
             $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
                             "team22@ibe-database",
@@ -55,22 +61,57 @@
                 $message = "Your bid has been registered. Thank you!";
 //                include "signalNecessaryNotifications.php";
 
-
+                $statement = $conn -> query("SELECT sellerID, title FROM items WHERE itemID = ".$itemID);
+                $firstRow = $statement -> fetch();
+                $sellerID = $firstRow["sellerID"];
+                $itemName = $firstRow["title"];
 
                 // Signal that bids need notifications to be sent out where necessary
                 // (the highest bid on the same item from all users who have bid on it, apart from the user who has just made the new highest bid)
-                $conn -> query("UPDATE bids SET bids.needsNotification = 1 WHERE bids.bidID IN 
-                                                                
-                                                                (SELECT bids1.bidID FROM (SELECT * FROM bids) AS bids1 JOIN
-                                                                
-                                                                (SELECT bids2.buyerID, max(bids2.bidAmount) as highestBid FROM (SELECT * FROM bids) as bids2 
-                                                                WHERE bids2.itemID = $itemID AND bids2.buyerID <> $buyerID GROUP BY bids2.buyerID) AS T
-                                                                ON bids1.buyerID = T.buyerID AND bids1.bidAmount = T.highestBid)
-                ");
+
+                $toBeNotified = $conn -> prepare("SELECT bids1.bidID, T.highestBid, T.buyerID FROM (SELECT * FROM bids) AS bids1 JOIN
+                                                                                
+                                                                                (SELECT bids2.buyerID, bids2.bidID, max(bids2.bidAmount) as highestBid FROM (SELECT * FROM bids) as bids2 
+                                                                                WHERE bids2.itemID = ? AND bids2.buyerID <> ? GROUP BY bids2.buyerID) AS T
+                                                                                ON bids1.buyerID = T.buyerID AND bids1.bidAmount = T.highestBid");
+                $toBeNotified -> execute([$itemID, $buyerID]);
+                $toBeNotified = $toBeNotified->fetchAll();
+
+//                include $_SERVER['DOCUMENT_ROOT']. $siteroot."notifications/notificationWriter.php";
+
+                var_dump($toBeNotified);
+                foreach ($toBeNotified as $row) {
+
+                    $buyerID = $row['buyerID'];
+
+//                    writeOutbidNotification($row['buyerID'], $_SESSION['login_user'], $currentPrice, $itemName);
+
+                    $notification = '' . $_SESSION['login_user'] . 'outbid you on '.$itemName.' with a bid of ' . $currentPrice;
 
 
+                    $insertNotifications = $conn->prepare("INSERT INTO notifications (receiverID, message, isBuyer) VALUES (".$buyerID.", \"".$notification."\", 1)");
+                    $insertNotifications -> execute();
+                }
 
 
+//                updateSeller($sellerID, $_SESSION['login_user'], $currentPrice, $itemName);
+
+                $notification = '' . $_SESSION['login_user'] . 'placed a bid of '.$currentPrice.' on your item: ' . $itemName;
+                $insertNotifications = $conn->prepare("INSERT INTO notifications (receiverID, message, isBuyer) VALUES (".$sellerID.", \"".$notification."\", 0)");
+                $insertNotifications->execute();
+
+                echo "<script type='text/javascript'>alert('$sellerID');
+
+                                                    
+                                                    </script>";
+
+                echo "<script type='text/javascript'>console.log('$notification');
+                
+                                                                    
+                                                                    </script>";
+
+
+//".$sellerID.", \"".$notification."\", 0
 
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.href = 'index.php';

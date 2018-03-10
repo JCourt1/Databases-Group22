@@ -8,15 +8,15 @@
 
 
 
-    $myHighestBids = $_SESSION['myHighestBids'];
-    $itemsImSelling = $_SESSION['itemsImSelling'];
+    $myHighestBids = $_SESSION['myBids'];
+    $itemsImSelling = $_SESSION['myItems'];
 
     foreach ($myHighestBids as $highestBid) {
 
-        $itemID = $highestBid[0];
-        $itemName = $highestBid[1];
-        $bidID = $highestBid[2];
-        $bidAmount = $highestBid[3];
+        $itemID = $highestBid['itemID'];
+        $itemName = $highestBid['title'];
+        $bidID = $highestBid['bidID'];
+        $bidAmount = $highestBid['bidAmount'];
 
         echo '<script>
             
@@ -50,8 +50,8 @@
 
     foreach ($itemsImSelling as $itemImSelling) {
 
-        $itemID = $itemImSelling[0];
-        $itemName = $itemImSelling[1];
+        $itemID = $itemImSelling['itemID'];
+        $itemName = $itemImSelling['title'];
         $bidID = $itemImSelling[2];
         $bidAmount = $itemImSelling[3];
 

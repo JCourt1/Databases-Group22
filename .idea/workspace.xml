@@ -4,7 +4,6 @@
     <list default="true" id="3f65ab4a-1b44-4639-958d-09a8b4927060" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php" />
       <change beforePath="$PROJECT_DIR$/dbCoursework/notifications/notificationsAtLogin.php" afterPath="$PROJECT_DIR$/dbCoursework/notifications/notificationsAtLogin.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" afterPath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,40 +52,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baseHeader.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="baseHeader.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="92" column="31" lean-forward="false" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+            <state relative-caret-position="690">
+              <caret line="49" column="26" lean-forward="false" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
               <folding>
-                <marker date="1520700939000" expanded="true" signature="6206:6276" ph="SELECT DISTI... categories" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dbCoursework/resources/css/base.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="283" column="14" lean-forward="false" selection-start-line="283" selection-start-column="14" selection-end-line="283" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="handle_Login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dbCoursework/login/handle_Login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="25" />
-              <folding>
-                <marker date="1520695715000" expanded="true" signature="421:491" ph="SELECT userI... users" />
-                <marker date="1520695715000" expanded="true" signature="1058:1877" ph="SELECT b1.*,... bids" />
-                <marker date="1520695715000" expanded="true" signature="1282:1497" ph="SELECT max(b... bids" />
-                <marker date="1520695715000" expanded="true" signature="1441:1497" ph="SELECT max(b... bids" />
-                <marker date="1520695715000" expanded="true" signature="2208:2430" ph="SELECT * FRO... items" />
-                <marker date="1520695715000" expanded="true" signature="2892:3060" ph="..." />
+                <marker date="1520701420000" expanded="true" signature="6208:6278" ph="SELECT DISTI... categories" />
               </folding>
             </state>
           </provider>
@@ -95,12 +67,12 @@
       <file leaf-file-name="notificationsAtLogin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbCoursework/notifications/notificationsAtLogin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+            <state relative-caret-position="180">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="31" />
               <folding>
-                <marker date="1520697873000" expanded="true" signature="33:81" ph="SELECT * FRO... communication" />
-                <marker date="1520697873000" expanded="true" signature="33:96" ph="SELECT * FRO... communication" />
-                <marker date="1520697873000" expanded="true" signature="198:269" ph="UPDATE communication... " />
+                <marker date="1520701395000" expanded="true" signature="33:81" ph="SELECT * FRO... communication" />
+                <marker date="1520701395000" expanded="true" signature="33:96" ph="SELECT * FRO... communication" />
+                <marker date="1520701395000" expanded="true" signature="227:298" ph="UPDATE communication... " />
               </folding>
             </state>
           </provider>
@@ -168,9 +140,9 @@
         <option value="$PROJECT_DIR$/DatabaseV2.sql" />
         <option value="$PROJECT_DIR$/dbCoursework/login/handle_Login.php" />
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/addBidMaster.php" />
+        <option value="$PROJECT_DIR$/dbCoursework/resources/css/base.css" />
         <option value="$PROJECT_DIR$/dbCoursework/notifications/notificationsAtLogin.php" />
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php" />
-        <option value="$PROJECT_DIR$/dbCoursework/resources/css/base.css" />
       </list>
     </option>
   </component>
@@ -182,8 +154,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="MAMP PHP 7.2.1" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1909" />
-    <option name="y" value="-678" />
+    <option name="x" value="-1925" />
+    <option name="y" value="-675" />
     <option name="width" value="2111" />
     <option name="height" value="1194" />
   </component>
@@ -341,12 +313,12 @@
       <workItem from="1520422886208" duration="5964000" />
       <workItem from="1520441950339" duration="23923000" />
       <workItem from="1520587757509" duration="31309000" />
-      <workItem from="1520687905278" duration="9184000" />
+      <workItem from="1520687905278" duration="9453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156327000" />
+    <option name="totallyTimeSpent" value="156596000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -358,7 +330,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1909" y="-678" width="2111" height="1194" extended-state="0" />
+    <frame x="-1925" y="-675" width="2111" height="1194" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13879678" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -453,13 +425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="32" column="14" lean-forward="true" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -859,18 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/notifications/notificationsAtLogin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-          <folding>
-            <marker date="1520697873000" expanded="true" signature="33:81" ph="SELECT * FRO... communication" />
-            <marker date="1520697873000" expanded="true" signature="33:96" ph="SELECT * FRO... communication" />
-            <marker date="1520697873000" expanded="true" signature="198:269" ph="UPDATE communication... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dbCoursework/login/handle_Login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
@@ -883,6 +836,14 @@
             <marker date="1520695715000" expanded="true" signature="2208:2430" ph="SELECT * FRO... items" />
             <marker date="1520695715000" expanded="true" signature="2892:3060" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/resources/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="283" column="14" lean-forward="false" selection-start-line="283" selection-start-column="14" selection-end-line="283" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -919,21 +880,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php">
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="92" column="31" lean-forward="false" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+        <state relative-caret-position="465">
+          <caret line="32" column="14" lean-forward="true" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/notifications/notificationsAtLogin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="31" />
           <folding>
-            <marker date="1520700939000" expanded="true" signature="6206:6276" ph="SELECT DISTI... categories" />
+            <marker date="1520701395000" expanded="true" signature="33:81" ph="SELECT * FRO... communication" />
+            <marker date="1520701395000" expanded="true" signature="33:96" ph="SELECT * FRO... communication" />
+            <marker date="1520701395000" expanded="true" signature="227:298" ph="UPDATE communication... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/resources/css/base.css">
+    <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/baseHeader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="283" column="14" lean-forward="false" selection-start-line="283" selection-start-column="14" selection-end-line="283" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="690">
+          <caret line="49" column="26" lean-forward="false" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+          <folding>
+            <marker date="1520701420000" expanded="true" signature="6208:6278" ph="SELECT DISTI... categories" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -89,9 +89,9 @@
             $seller_query->execute();
             $seller = $seller_query->fetch();
            
-            $sellerFirstName = $buyer['firstName'];
-            $sellerLastName = $buyer['lastName'];
-            $sellerEmail = $buyer['email'];
+            $sellerFirstName = $seller['firstName'];
+            $sellerLastName = $seller['lastName'];
+            $sellerEmail = $seller['email'];
 
 
             

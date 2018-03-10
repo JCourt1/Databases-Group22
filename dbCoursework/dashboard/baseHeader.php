@@ -49,7 +49,16 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
                 <?php if ($_SESSION['notificationsCount'] > 0) { ?>
 
-                    <li class="dropdown notificationsBox"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Notifications</a>
+                <?php if ($_SESSION['notificationsBoxRead'] == FALSE) { $_SESSION['notificationsBoxRead'] = TRUE;?>
+
+
+                    <li class="dropdown notificationsBox">
+
+                    <?php } else { ?>
+                        <li class="dropdown readNotificationsBox">
+                                        <?php } ?>
+
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Notifications</a>
                         <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
 
                             <?php foreach ($_SESSION['notifications'] as $notification) { ?>
@@ -58,6 +67,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
                         </div>
                     </li>
+
                 <?php } ?>
 
 
@@ -124,6 +134,12 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
 
 </nav>
+
+<div class="emptyDiv">
+
+</div>
+
+
 
 <!-- ADVANCED FILTERS MODAL -->
 <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="modalSearch" aria-hidden="true">

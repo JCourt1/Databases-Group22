@@ -231,6 +231,12 @@ width: 12.5%;
   background-color: transparent !important;
 }
 
+.readNotificationsBox {
+  background-color: transparent !important;
+}
+
+
+
 .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
   background-color: transparent !important;
 
@@ -251,9 +257,13 @@ width: 12.5%;
   text-align: center;
 }
 
+.emptyDiv {
+  padding-bottom: 30px !important;
+}
 
-
-
+.modalCentered {
+  margin:auto;
+  text-align: center;
 }
 
 
@@ -275,8 +285,8 @@ width: 12.5%;
   /*display: inline-block;*/
   border-radius: 50%;
   background-color: white;
-  width: 200;
-  height: 200;
+  width: 200px;
+  height: 200px;
 }
 
 .centeredNav {
@@ -284,6 +294,11 @@ width: 12.5%;
     width: 350px;
     border: 3px solid green;
     padding: 0px;
+}
+
+@media (min-width: 768px)
+.col-sm-3 {
+    width: 25%;
 }
 
 

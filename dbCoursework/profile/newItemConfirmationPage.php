@@ -27,7 +27,7 @@
 
         //update the database
         $sql = "INSERT INTO items ( sellerID, title, description, itemCondition, photo, categoryID, startPrice,reservePrice,endDate)
-        VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','.$photoLink.','".$Condition."','".$subCat2."', '".$startingPrice."','".$reservePrice."','".$expDate."')";
+        VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','.$Condition.','".$photoLink."','".$subCat2."', '".$startingPrice."','".$reservePrice."','".$expDate."')";
         //print the relevant message regarding the outcome of the insertion
         if ($conn->query($sql))
         {

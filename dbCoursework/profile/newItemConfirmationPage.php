@@ -26,13 +26,8 @@
         $expDate = $_POST['expDate'];
 
         //update the database
-<<<<<<< HEAD
-        $sql = "INSERT INTO items ( sellerID, title, description, photo, itemCondition, categoryID, startPrice,reservePrice,endDate)
-        VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','".$photoLink."','".$Condition."','".$subCat2."', '".$startingPrice."','".$reservePrice."','".$expDate."')";
-=======
         $sql = "INSERT INTO items ( sellerID, title, description, itemCondition, photo, categoryID, startPrice,reservePrice,endDate)
         VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','.$photoLink.','".$Condition."','".$subCat2."', '".$startingPrice."','".$reservePrice."','".$expDate."')";
->>>>>>> e104b0bf3df5091775163fc18e17227b119e949d
         //print the relevant message regarding the outcome of the insertion
         if ($conn->query($sql))
         {

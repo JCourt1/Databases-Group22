@@ -47,7 +47,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
             <ul class="nav navbar-nav navbar-right">
 
-                <?php if (isset($_SESSION['notifications'])) { ?>
+                <?php if ($_SESSION['notificationsCount'] > 0) { ?>
 
                     <li class="dropdown notificationsBox"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Notifications</a>
                         <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">

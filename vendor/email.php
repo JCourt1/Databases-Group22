@@ -33,16 +33,16 @@ try {
     //Server settings
     $mail->SMTPDebug = 4;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = ' smtp.live.com';  // Specify main and backup SMTP servers
+    $mail->Host = 'smtp.sendgrid.net';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'dadarudolf@hotmail.fr';                 // SMTP username
-    $mail->Password = 'DaRu9121994';                        // SMTP password
+    $mail->Username = 'DEL-1520507841-azure_07772c3ccec36eb8090b925c482930b1@azure.com';                 // SMTP username
+    $mail->Password = 'ILoveCS17';                        // SMTP password
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
 
 
     //Recipients
-    $mail->setFrom('dadarudolf@hotmail.fr', 'Mailer');
+    $mail->setFrom('DEL-1520507841-azure_07772c3ccec36eb8090b925c482930b1@azure.com', 'Mailer');
     $mail->addAddress($emails[$x]);               // Name is optional
 
 

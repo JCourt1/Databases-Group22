@@ -1,6 +1,3 @@
-
-
-
 <?php
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
@@ -8,30 +5,15 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 
-function send_email($emails, $subjects, $messages){
-
-echo '<script type="text/javascript"> console.log("email function called"); </script>';
-
+$siteroot = '/Databases-Group22/dbCoursework/';
 
 //Load composer's autoloader
-require '/autoload.php';
-require '/phpmailer/phpmailer/src/Exception.php';
-require '/phpmailer/phpmailer/src/PHPMailer.php';
-require '/phpmailer/phpmailer/src/SMTP.php';
-require '/league/oauth2-google/src/Provider/Google.php';
-require '/league/oauth2-google/src/Provider/GoogleUser.php';
+require 'vendor/autoload.php';
 
-$mail = new PHPMailer(true);   
-  
-for($x = 0; $x<sizeof($emails); $x++){  
-    echo '<script type="text/javascript"> console.log("for loop called"); </script>';
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
-
-    
-
-    echo '<script type="text/javascript"> console.log("PHPMailer object created"); </script>';
     //Server settings
-    $mail->SMTPDebug = 4;                                 // Enable verbose debug output
+    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = ' smtp.live.com';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -40,28 +22,24 @@ try {
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
 
+    $mail->SMTPDebug = 4;
 
     //Recipients
     $mail->setFrom('dadarudolf@hotmail.fr', 'Mailer');
-    $mail->addAddress($emails[$x]);               // Name is optional
+    $mail->addAddress('david.g.rudolf@gmail.com');               // Name is optional
 
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = $subjects[$x];
-    $mail->Body    = $messages[$x];
-   
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 
     $mail->send();
     echo 'Message has been sent';
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-}
-
-
-}
-
 }
 
 ?>

@@ -134,6 +134,138 @@ width: 12.5%;
   margin-top: 0;
 }
 
+/*.notificationsBox {*/
+  /*!*-webkit-animation: glowing 1500ms infinite;*!*/
+  /*!*-moz-animation: glowing 1500ms infinite;*!*/
+  /*!*-o-animation: glowing 1500ms infinite;*!*/
+  /*!*animation: glowing 1500ms infinite;*!*/
+
+  /*!*animation: pulse 5s infinite;*!*/
+
+  /*!*animation:*!*/
+      /*!*stretch*!*/
+      /*!*1.5s*!*/
+      /*!*ease-out*!*/
+      /*!*0s*!*/
+      /*!*alternate*!*/
+      /*!*infinite*!*/
+      /*!*none*!*/
+      /*!*running;*!*/
+
+  /*animation:*/
+      /*pulse 3s ease infinite alternate,*/
+      /*nudge 5s linear infinite alternate;*/
+
+
+
+/*}*/
+
+
+/*@keyframes pulse {*/
+  /*!*0% {*!*/
+    /*!*background-color: #001F3F;*!*/
+  /*!*}*!*/
+  /*!*100% {*!*/
+    /*!*background-color: #FF4136;*!*/
+  /*!*}*!*/
+
+
+@-webkit-keyframes glowing {
+  0% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; -webkit-box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #B20000; -webkit-box-shadow: 0 0 3px #B20000; }
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; -moz-box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #B20000; -moz-box-shadow: 0 0 3px #B20000; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+}
+
+@keyframes glowing {
+  0% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #FF0000; box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #B20000; box-shadow: 0 0 3px #B20000; }
+}
+
+@-webkit-keyframes glowing {
+  0% { background-color: #4143b2; -webkit-box-shadow: 0 0 3px #4143b2; }
+  50% { background-color: #3daaff; -webkit-box-shadow: 0 0 40px #3daaff; }
+  100% { background-color: #4143b2; -webkit-box-shadow: 0 0 3px #4143b2; }
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #4143b2; -moz-box-shadow: 0 0 3px #4143b2; }
+  50% { background-color: #3daaff; -moz-box-shadow: 0 0 40px #3daaff; }
+  100% { background-color: #4143b2; -moz-box-shadow: 0 0 3px #4143b2; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #4143b2; box-shadow: 0 0 3px #4143b2; }
+  50% { background-color: #3daaff; box-shadow: 0 0 40px #3daaff; }
+  100% { background-color: #4143b2; box-shadow: 0 0 3px #4143b2; }
+}
+
+@keyframes glowing {
+  0% { background-color: #4143b2; box-shadow: 0 0 3px #4143b2; }
+  50% { background-color: #3daaff; box-shadow: 0 0 40px #3daaff; }
+  100% { background-color: #4143b2; box-shadow: 0 0 3px #4143b2; }
+}
+
+.notificationsBox {
+
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+
+.notificationsBox.active .notificationsBox.a .notificationsBox.span{
+  color: white !important;
+  background-color: transparent !important;
+}
+
+.readNotificationsBox {
+  background-color: transparent !important;
+}
+
+
+
+.navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+  background-color: transparent !important;
+
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: white;
+}
+
+
+.navbar_center {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar_center.navbar-collapse {
+  text-align: center;
+}
+
+.emptyDiv {
+  padding-bottom: 30px !important;
+}
+
+.modalCentered {
+  margin:auto;
+  text-align: center;
+}
+
 
 /*
  * Placeholder dashboard ideas
@@ -153,11 +285,21 @@ width: 12.5%;
   /*display: inline-block;*/
   border-radius: 50%;
   background-color: white;
-  width: 200;
-  height: 200;
+  width: 200px;
+  height: 200px;
 }
 
+.centeredNav {
+    margin: auto;
+    width: 350px;
+    border: 3px solid green;
+    padding: 0px;
+}
 
+@media (min-width: 768px)
+.col-sm-3 {
+    width: 25%;
+}
 
 
  .sitename {
@@ -165,6 +307,10 @@ width: 12.5%;
   float: right !important;
   margin-left: 60px;
   font-size: 40px;
+
+   /*width: 100%;*/
+       /*text-align: center;*/
+
 }
 
  .footer {

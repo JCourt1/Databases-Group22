@@ -32,7 +32,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/dashboard.php" >Ibé</a>
+
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
@@ -41,9 +41,37 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
         //if the user has logged in
         if (isset($_SESSION['login_user'])) { ?>
+            <ul class="nav navbar-nav navbar-left">
+            <li><a class='lightblueTop' style='color: #95b796;' href="#">Currently logged in as: <?php echo $_SESSION['login_user'];?></a></li>
+            </ul>
 
             <ul class="nav navbar-nav navbar-right">
-            <li><a class='lightblueTop' style='color: #95b796;' href="#">Currently logged in as: <?php echo $_SESSION['login_user'];?></a></li>
+
+                <?php if ($_SESSION['notificationsCount'] > 0) { ?>
+
+                <?php if ($_SESSION['notificationsBoxRead'] == FALSE) { $_SESSION['notificationsBoxRead'] = TRUE;?>
+
+
+                    <li class="dropdown notificationsBox">
+
+                    <?php } else { ?>
+                        <li class="dropdown readNotificationsBox">
+                                        <?php } ?>
+
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Notifications</a>
+                        <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
+
+                            <?php foreach ($_SESSION['notifications'] as $notification) { ?>
+                                <p> <?php echo $notification['message'];?></p>
+                            <?php } ?>
+
+                        </div>
+                    </li>
+
+                <?php } ?>
+
+
+
             <li><a class='blueTop' style='color: #337ab7;' href="<?php echo $siteroot ?>dashboard/dashboard.php">Dashboard</a></li>
             <li><a class='whiteTop' style='color: #b3b7b2;' href="../profile/logout.php">Log out</a></li>
             </ul>
@@ -72,7 +100,9 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
         <?php } ?>
 
+        <div class="centeredNav">
 
+        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/dashboard.php" >Ibé</a>
         <!-- SEARCH BAR -->
         <form class="navbar-form" method='get' action='<?php echo $siteroot; ?>search/search_results_page.php' name='searchBar'>
             <div class="input-group add-on">
@@ -90,6 +120,8 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
             </div>
 
         </form>
+
+        </div>
     </div>
 
 
@@ -102,6 +134,12 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
 
 </nav>
+
+<div class="emptyDiv">
+
+</div>
+
+
 
 <!-- ADVANCED FILTERS MODAL -->
 <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="modalSearch" aria-hidden="true">

@@ -184,9 +184,9 @@ $(document).ready(function(){
         code = str.charCodeAt(i);
         if (!(code > 47 && code < 58) && // numeric (0-9)
             !(code > 64 && code < 91) && // upper alpha (A-Z)
-            !(code > 96 && code < 123)&&
-            !((code==32)||(code==46)||(code==45)||(code==63)))
-        { // lower alpha (a-z)
+            !(code > 96 && code < 123)&& // lower alpha (a-z)
+            !((code==32)||(code==46)||(code==45)||(code==63))) // full stop or dash or space or question mark
+        { 
         return false;
         }
         }

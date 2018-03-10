@@ -24,7 +24,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="../../bootstrap-3.3.7/docs/favicon.ico">
 
     <title>Ibé</title>
 
@@ -60,6 +60,3 @@
     <!-- Have to somewhere have a record of who is currently logged in so we have the userID etc. -->
 
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/resources/php/regExs.php";?>
-
-
-

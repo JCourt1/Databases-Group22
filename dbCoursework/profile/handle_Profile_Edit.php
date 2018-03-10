@@ -1,5 +1,5 @@
 
-
+<html>
 <?php include('../dashboard/baseHead.php'); ?>
 
 <body>
@@ -10,6 +10,7 @@
 
 <?php include('../dashboard/baseFooter.php'); ?>
 
+</html>
 
 
 
@@ -96,5 +97,7 @@ else{
     echo   '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
 }
 ?>
+
+
 
 

@@ -38,10 +38,17 @@
                 $result2 = $conn->prepare("SELECT bidID, bidDate, bidAmount, users.username FROM bids JOIN users on bids.buyerID = users.userID WHERE itemID = ? ORDER BY bidDate DESC");
                 $result2->execute([$_GET['itemID']]);
 
+                $endDate = $conn->prepare("SELECT endDate FROM items WHERE itemID = ?");
+                $endDate->execute([$_GET['itemID']]);
+                $endDate1 = $endDate -> fetch();
+
                 $rows = $result2->rowCount();
-                $res = $result2->fetchAll()
+                $res = $result2->fetchAll();
+
 
                 ?>
+
+        <h1>Bidding ends on: <?php echo convertDate($endDate1['endDate']); ?> at <?php echo convertTime($endDate1['endDate']); ?></h1>
 
         <table class="table table-dark" >
             <thead>
@@ -84,6 +91,11 @@
             Bid: <input type="text" name="bid"><br>
             <input type="submit" value="Bid" >
         </form>
+
+
+        <button><form action="insertTest.php">
+                <input type="submit">
+            </form></button>
 
 
 

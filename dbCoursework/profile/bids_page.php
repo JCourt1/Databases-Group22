@@ -25,27 +25,45 @@
 
     // SQL QUERIES
 
-    // 1. Array of items that are currently on sale belonging to this user:
-    $query_current_bids = "SELECT *
-                            FROM items i
-                            WHERE i.sellerID = ".$userID."
-                            AND i.endDate > NOW()
-                            ORDER BY i.endDate DESC
+    // 1. Array of most recent bids on each item for the current user:
+    $query_current_bids = "SELECT b1.*, i.sellerID, i.title, i.description, i.categoryID, i.startPrice, i.reservePrice, i.endDate
+                            FROM bids b1
+                            INNER JOIN
+                            (
+                                SELECT max(bidAmount) MaxBidAmount, itemID, buyerID
+                                FROM bids
+                                WHERE buyerID = ".$userID."
+                                GROUP BY itemID
+                            ) b2
+                              ON b1.itemID = b2.itemID
+                              AND b1.bidAmount = b2.MaxBidAmount
+                            LEFT JOIN items i ON i.itemID = b1.itemID
+                              WHERE i.endDate > NOW()
+                              ORDER BY b1.bidDate DESC
                             ";
-    $statement1 = $conn->prepare($query_current_sales);
+    $statement1 = $conn->prepare($query_current_bids);
     $statement1->execute();
-    $res_current_sales = $statement1->fetchAll();
+    $res_current_bids = $statement1->fetchAll();
 
-    // 2. Array of items that the user has had on sale in the past:
-    $query_past_sales = "SELECT *
-                        FROM items i
-                        WHERE i.sellerID = ".$userID."
-                        AND i.endDate <= NOW()
-                        ORDER BY i.endDate DESC
-                        ";
-    $statement2 = $conn->prepare($query_past_sales);
+    // 2. Array of bids on items that have expired:
+    $query_past_bids = "SELECT b1.*, i.sellerID, i.title, i.description, i.categoryID, i.startPrice, i.reservePrice, i.endDate
+                            FROM bids b1
+                            INNER JOIN
+                            (
+                                SELECT max(bidAmount) MaxBidAmount, itemID, buyerID
+                                FROM bids
+                                WHERE buyerID = ".$userID."
+                                GROUP BY itemID
+                            ) b2
+                              ON b1.itemID = b2.itemID
+                              AND b1.bidAmount = b2.MaxBidAmount
+                            LEFT JOIN items i ON i.itemID = b1.itemID
+                              WHERE i.endDate <= NOW()
+                              ORDER BY i.endDate DESC
+                            ";
+    $statement2 = $conn->prepare($query_past_bids);
     $statement2->execute();
-    $res_past_sales = $statement2->fetchAll();
+    $res_past_bids = $statement2->fetchAll();
 
 
      ?>
@@ -54,38 +72,29 @@
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-        <h1 class="page-header">My Listings</h1>
+        <h1 class="page-header">My Bids</h1>
 
         <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
-            <h3 class="page-header">Items currently on sale</h3>
+            <h3 class="page-header">Currently bidding on</h3>
 
-            <!-- TABLE OF ITEMS CURRENTLY ON SALE -->
+            <!-- TABLE OF ITEMS CURRENTLY BIDDING ON -->
             <table class="table table-dark" >
                 <thead>
                     <tr scope="row">
                         <th scope="col">Item Name</th>
                         <th scope="col">Category</th>
-                        <th scope="col">Current Price</th>
-                        <th scope="col">Reserve Price</th>
-                        <th scope="col">Item End Date</th>
+                        <th scope="col">My Most Recent Bid</th>
+                        <th scope="col">Bid Date</th>
+                        <th scope="col">Winning?</th>
                         <th scope="col">Auction Room</th>
+                        <th scope="col">Edit Bid</th>
                     </tr>
                 </thead>
-                <tbody id="currentSalesTable">
+                <tbody id="currentBidsTable">
 
                     <?php
 
-                        foreach ($res_current_sales as $row) {
-                            // Get high bid information:
-                            $bid_query = "SELECT MAX(bidAmount) bidAmount
-                                            FROM bids b
-                                            WHERE b.itemID = ".$row['itemID']."";
-                            $statement3 = $conn->prepare($bid_query);
-                            $statement3->execute();
-                            $currentBid = $statement3->fetch();
-                            if(empty($currentBid['bidAmount'])){
-                                $currentBid['bidAmount'] = "No bids";
-                            }
+                        foreach ($res_current_bids as $row) {
 
                             // Get category:
                             $cat_query = "SELECT categoryName FROM categories WHERE categoryID = ".$row['categoryID'];
@@ -93,7 +102,14 @@
                             $statement4->execute();
                             $category = $statement4->fetch();
 
-                            include "current_sales_row.php";
+                            // Is bid winning:
+                            if ($row['bidWinning'] == 1){
+                                $bidWinning = "Yes";
+                            } else {
+                                $bidWinning = "No";
+                            }
+
+                            include "current_bids_row.php";
                         }
 
                     ?>
@@ -102,56 +118,45 @@
         </div>
 
         <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
-            <h3 class="page-header">Sales History</h3>
+            <h3 class="page-header">Past bids</h3>
 
-            <!-- TABLE OF ITEMS HISTORICALLY ON SALE -->
+            <!-- TABLE OF ITEMS HISTORICALLY BID ON -->
             <table class="table table-dark" >
                 <thead>
                     <tr scope="row">
                         <th scope="col">Item Name</th>
                         <th scope="col">Category</th>
-                        <th scope="col">Item Sold?</th>
-                        <th scope="col">Buyer Email</th>
-                        <th scope="col">End Price</th>
-                        <th scope="col">Item End Date</th>
+                        <th scope="col">Auction Won?</th>
+                        <th scope="col">Final Price</th>
+                        <th scope="col">Auction Ended</th>
+                        <th scope="col">Seller Email</th>
                     </tr>
                 </thead>
-                <tbody id="pastSalesTable">
+                <tbody id="pastBidsTable">
 
                     <?php
 
                     $count = 0;
 
-                    foreach ($res_past_sales as $row) {
+                    foreach ($res_past_bids as $row) {
 
-                        // Get high bid information:
-                        $bid_query = "SELECT MAX(bidAmount) bidAmount, buyerID
-                                        FROM bids b
-                                        WHERE b.itemID = ".$row['itemID']."";
-                        $statement3 = $conn->prepare($bid_query);
-                        $statement3->execute();
-                        $currentBid = $statement3->fetch();
-                        if(empty($currentBid['bidAmount'])){
-                            // NO BIDS AT ALL
-                            $endPrice = 0;
-                            $itemSold = "No";
-                            $buyerEmail = "-";
-                        } else if ($currentBid['bidAmount'] < $row['reservePrice']){
-                            // RESERVE NOT MET
-                            $endPrice = $currentBid['bidAmount'].", reserve not met";
-                            $itemSold = "No";
-                            $buyerEmail = "-";
+                        if ($row['bidWinning'] == 0){
+                            $auctionWon = "No";
+                            $finalPrice = "-";
+                            $sellerEmail = "-";
+                        } else if ($row['bidAmount'] < $row['reservePrice']){
+                            $auctionWon = "No - did not meet reserve price";
+                            $finalPrice = "-";
+                            $sellerEmail = "-";
                         } else {
-                            // ITEM SOLD SUCCESSFULLY
-                            $endPrice = $currentBid['bidAmount'];
-                            $itemSold = "Yes";
-
-                            $email_query = "SELECT email FROM users WHERE userID = ".$currentBid['buyerID'];
+                            $auctionWon = "Yes";
+                            $finalPrice = "£".$row['bidAmount'];
+                            // Get seller email:
+                            $email_query = "SELECT email FROM users WHERE userID = ".$row['sellerID'];
                             $email_statement = $conn->prepare($email_query);
                             $email_statement->execute();
                             $email = $email_statement->fetch();
-
-                            $buyerEmail = $email['email'];
+                            $sellerEmail = $email['email'];
                         }
 
                         // Get category:
@@ -160,7 +165,7 @@
                         $statement4->execute();
                         $category = $statement4->fetch();
 
-                        include "past_sales_row.php";
+                        include "past_bids_row.php";
                     }
                     ?>
                 </tbody>

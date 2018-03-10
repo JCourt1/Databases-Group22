@@ -74,6 +74,16 @@ CREATE TABLE Watchlist_Items (
     CONSTRAINT WatchlistPK PRIMARY KEY (userID,itemID)
 );
 
+-- Notifications Table
+CREATE TABLE Notifications (
+  notificationID INTEGER NOT NULL AUTO_INCREMENT,
+  receiverID INTEGER NOT NULL,
+  isBuyer boolean,
+  message VARCHAR(45) NOT NULL,
+  unread boolean NOT NULL DEFAULT 1,
+  CONSTRAINT notificationPK PRIMARY KEY (notificationID)
+);
+
 -------------------------------------------
 -- FOREIGN KEYS --
 ALTER TABLE Items ADD CONSTRAINT ItemSeller FOREIGN KEY ItemSeller (sellerID) REFERENCES Users (userID);

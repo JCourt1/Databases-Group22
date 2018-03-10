@@ -1,6 +1,5 @@
 <?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
-<html>
 <?php include('../dashboard/baseHead.php'); ?>
 
 <body>
@@ -54,7 +53,6 @@
 <?php include('../dashboard/baseFooter.php'); ?>
 
 
-</html>
 
 
 

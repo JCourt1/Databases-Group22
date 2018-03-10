@@ -70,7 +70,7 @@ if ($query->rowCount()) {
     ##### Setting the Session variable with info about the items on sale of the user.
     $query_current_sales = "SELECT *
                                 FROM items i
-                                WHERE i.sellerID = ".$userID."
+                                WHERE i.sellerID = ".$id."
                                 AND i.endDate > NOW()
                                 ORDER BY i.endDate DESC
                                 ";
@@ -98,9 +98,12 @@ if ($query->rowCount()) {
  $dashboard = 'http://' . $_SERVER['HTTP_HOST'] . $siteroot . '/dashboard/dashboard.php';
  header('Location: ' . $dashboard);
 } else {
- echo 'Invalid username or password, try again';
+ echo "<script type='text/javascript'>alert('Invalid username or password, try again');
+ 
+                                                     
+                                                     </script>";
     $failed = 'http://' . $_SERVER['HTTP_HOST'] .
-        $siteroot . '/dashboard/test.php';
+        $siteroot . '/dashboard/index.php';
 
 
 

@@ -93,52 +93,6 @@
         </form>
 
 
-        <button><form action="insertTest.php">
-                <input type="submit">
-            </form></button>
-
-
-
-<!--                    if ($i < 10) {-->
-<!---->
-<!--                    } else if ($i < 20) {-->
-<!---->
-<!--                    } else if ($i < 30) {-->
-<!---->
-<!--                    }-->
-<!---->
-<!--                }-->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!---->
-<!--            }-->
-<!---->
-<!--            ?>-->
-
-<!--    <container>-->
-<!--        --><?php //include('carousel.php');
-//
-//        printCarousel($_GET['itemID'], $conn);
-//        ?>
-<!--    </container>-->
-<!---->
-<!--    </div>-->
-<!---->
-<!---->
-<!---->
-<!---->
-<!--    --><?php //include("../dashboard/baseFooter.php");
-//
-//    ;?>
-<!---->
-<!--      </body>-->
-
     <script>
 
             //console.log(<?php //echo json_encode($res); ?>//);
@@ -156,11 +110,6 @@
                    type: "POST",
                    data: {"itemID":<?php echo $_GET['itemID'];?>, "highestBid":hBid},
                    success: function(response) {
-
-                       console.log("caca");
-                       console.log(response);
-                       console.log(response.newHighest);
-                       console.log(response.newRows);
 
 
                        if (response.newHighest != 0) {

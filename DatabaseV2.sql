@@ -31,7 +31,7 @@ CREATE TABLE `communication` (
  `receiverid` INTEGER NOT NULL,
  `communicationtype` VARCHAR(31) NOT NULL,
  `message` VARCHAR(300) NOT NULL,
- `messagedate` timestamp NOT NULL,
+ `messagedate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
  `sent_by` INTEGER NOT NULL,
  `received_by` INTEGER NOT NULL,
  `classtype` VARCHAR(255) NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE `bid` (
  `itemid` INTEGER NOT NULL,
  `buyerid` INTEGER NOT NULL,
  `bidamount` decimal(7,2) NOT NULL,
- `biddate` timestamp NOT NULL,
+ `biddate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
  `bidwinning` BOOLEAN NOT NULL,
  `made_on` INTEGER NOT NULL,
  `made_by` INTEGER NOT NULL

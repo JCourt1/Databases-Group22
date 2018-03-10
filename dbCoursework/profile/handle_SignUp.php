@@ -69,6 +69,8 @@ echo     '<script type="text/javascript">  window.location = "../dashboard/index
 }
 else{
     //update the database
+
+    $password = sha1($password);
     $sql = "INSERT INTO users ( username, password,email)
     VALUES ('".$username."','".$password."','".$email."' )";
     //make an sql query and take the user ID from the DB

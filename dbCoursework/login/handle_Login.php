@@ -1,4 +1,4 @@
-
+<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 <?php
 
 session_start();// Starting Session
@@ -95,13 +95,12 @@ if ($query->rowCount()) {
 
 
 
- $dashboard = 'http://' . $_SERVER['HTTP_HOST'] .
- dirname($_SERVER['PHP_SELF']) . '/dashboard.php';
+ $dashboard = 'http://' . $_SERVER['HTTP_HOST'] . $siteroot . '/dashboard/dashboard.php';
  header('Location: ' . $dashboard);
 } else {
  echo 'Invalid username or password, try again';
     $failed = 'http://' . $_SERVER['HTTP_HOST'] .
-     dirname($_SERVER['PHP_SELF']) . '/test.php';
+        $siteroot . '/dashboard/test.php';
 
 
 

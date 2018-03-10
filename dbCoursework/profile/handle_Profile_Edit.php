@@ -43,7 +43,33 @@ $postCode=$_POST['postCode'];
 $username=$_POST['username'];
 $psw_confirm=$_POST['psw_confirm'];
 
+if(!ctype_alpha ($firstName) &&  !$firstName=='' || strpos($firstName, ';')  ){
+    $regError = "The first name provided is not in the right form. Please try again.";
+}elseif(!ctype_alpha ($firstName) &&  !$firstName=='' || strpos($firstName, ';')  ){
+    $regError = "The last name provided is not in the right form. Please try again.";
+}elseif(!isValidUKNumber($phone) || strpos($phone, ';') &&  !$phone=='' ){
+    $regError = "The phone number is not in the right form. Please try again.";
+}elseif(ctype_alpha(str_replace(' ', '', $company)) === false  || strpos($company, ';') &&  !$company=='' ){
+    $regError = "The company name is not in the right form. Please try again";
+}elseif(filter_var($picture, FILTER_VALIDATE_URL) || strpos($picture, ';') &&  !$company=='' ){
+    $regError = "The url provided for the picture is not valid. Please try again.";
+}elseif(!filter_var($email, FILTER_VALIDATE_EMAIL) || strpos($email, ';')  ){
+    $regError = "The email provided for the picture is not valid. Please try again.";
+}elseif(ctype_alpha(str_replace(' ', '', $street)) === false || strpos($street, ';')  ){
+    $regError = "The street provided for the picture is not valid. Please try again.";
+}elseif( !is_int($buildingNumber) || strpos($buildingNumber, ';')  ){
+    $regError = "The building number provided for the picture is not valid. Please try again.";
+}
 
+
+function isValidUKNumber($input){
+$pattern = "/^(\0\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/";
+$match = preg_match($pattern,$input);
+return $match;
+}
+
+
+/*
 //validation check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $regError = "Invalid email format. Please try again";
@@ -71,7 +97,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     }elseif(strpos($password, ';') !== false){
         $regError = "The password contains invalid characters";
     }
-}
+} */
 //if no error occured
 if(isset($regError)){
 echo "<script type= 'text/javascript'>alert('$regError');</script>";
@@ -86,11 +112,11 @@ else{
     if ($conn->query($sql))
     {
         //print the relevant message regarding the outcome of the insertion
-        echo "<script type= 'text/javascript'>alert('User created Successfully. You will be redirected to the home page.');</script>";
+        echo "<script type= 'text/javascript'>alert('User details updated Successfully. You will be redirected to the home page.');</script>";
     }
     else
     {
-        echo "<script type= 'text/javascript'>alert('Item not successfully inserted.');</script>";
+        echo "<script type= 'text/javascript'>alert('An error occured while updating user details.');</script>";
     }
     //navigate to the main page
     echo   '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';

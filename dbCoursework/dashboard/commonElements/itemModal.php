@@ -106,13 +106,13 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
                     <table class="table table-sm">
                       <tbody>
                         <tr>
-                          
+
                           <td>Bidding ends:</td>
                           <td>'.$elapsed.'</td>
                         </tr>
                         <h3 id="countdown'.$rownumber.'">  </h3>
                         <tr>
-                          
+
                           <td>Start Price:</td>
                           <td>£ '.$startPrice.'</td>
                         </tr>
@@ -120,19 +120,19 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
                           <td>Current Price:</td>
                           <td>£ '.$currentPrice.'</td>
                         </tr>
-                        
+
                         <tr>
                           <td>Last Bid:</td>
                           <td>'.$lastBid.'</td>
                         </tr>
-                        
-                        
+
+
                       </tbody>
                     </table>
-                    
-                    
-                    
-                    
+
+
+
+
                 </div>
                 <div class="modal-footer">
                 <div class="form-group pull-left">
@@ -140,20 +140,20 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
                 Amount: <input type="text" name="bid">
                 <input type="submit" value="Bid!" >
                 </form>
-                
+
                 </div>
-                
-                <div> 
+
+                <div>
                 <div>
                     <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$itemID.'">View in auction room</a>
                 </div>
                 <div class="watchlist" id="watchlist'.$rownumber.'">
                     '.$watchlist_line.'
                 </div>
-                
+
                 </div>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -170,7 +170,3 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
 echo $chaine;
 
  ?>
-
-
-
-

@@ -21,8 +21,8 @@
     if (isset($_GET['sort'])){
         $sort = $_GET['sort'];
         $sql_sort = "";
-        if ($sort == 1){
-            $sql_sort = "ORDER BY i.endDate DESC";
+        if ($sort == 4){
+            $sql_sort = "ORDER BY i.itemViewCount DESC";
         } else if ($sort == 2){
             $sql_sort = "ORDER BY bidAmount ASC";
         } else if ($sort == 3){
@@ -36,7 +36,6 @@
         $sort = $_GET['sort'];
         $sql_sort = "ORDER BY i.endDate ASC";
     }
-    // print("Sort option chosen is ".$sort.". ");
 
     // Check if advanced search has been made:
     if (isset($_GET['filteredSubmit'])){
@@ -55,18 +54,12 @@
 
         // Set the min price if there is one, otherwise set it = to 0.
         if (empty($minPrice)) {
-            // print("Minimum price was NOT chosen. ");
             $minPrice = 0;
-        } else{
-            // print("Minimum price is £".$minPrice.". ");
         }
 
         // Same with the max price
         if (empty($maxPrice)){
-            // print("Maximum price was NOT chosen. ");
             $maxPrice = 10000000000;
-        } else {
-            // print("Maximum price is £".$maxPrice.". ");
         }
 
         // THE FIRST PART OF THE SQL QUERY:
@@ -81,88 +74,98 @@
                                 GROUP BY itemID
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
-                        WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
+                        WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
                         AND i.endDate > NOW();
-                        AND ((d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice.") OR d.bidAmount IS NULL) ";
+                        AND ((d.bidAmount BETWEEN :minPrice AND :maxPrice) OR d.bidAmount IS NULL) ";
         // IF THE PARENT CATEGORY WAS CHOSEN BUT NOT THE SUBCATEGORY
         $queryParentCategory = "AND i.itemID IN (SELECT i.itemID FROM items i, categories c
                                     WHERE i.categoryID = c.categoryID
-                                    AND c.parentCategory = '".$parentCategory."') ";
+                                    AND c.parentCategory = :parentCategory) ";
         // ITEM CONDITION STATEMENT:
-        $queryItemCondition = "AND i.itemCondition = '".$condition."' ";
+        $queryItemCondition = "AND i.itemCondition = :condition ";
         // SUB CATEGORY STATEMENT:
-        $querySubCategory = "AND i.categoryID = ".$subCategory." ";
+        $querySubCategory = "AND i.categoryID = :subCategory ";
 
         // CASE: subcategory was picked.
         if (!$subCategory == 0){
-            // print("Subcategory was chosen. ");
 
             // CASE: item condition was picked:
             if (!$condition == 0){
-                // print("Item condition was chosen. ");
                 $sql_query = $querySelect.$queryItemCondition.$querySubCategory.$sql_sort;
 
-                // print("SQL Query is: ".$sql_query." ");
                 $statement = $conn->prepare($sql_query);
+                $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+                $statement->bindParam(':minPrice', $minPrice);
+                $statement->bindParam(':maxPrice', $maxPrice);
+                $statement->bindParam(':subCategory', $subCategory);
+                $statement->bindParam(':condition', $condition);
 
             } else {
-                // print("Item condition was NOT chosen. ");
                 // CASE: item condition NOT picked
                 $sql_query = $querySelect.$querySubCategory.$sql_sort;
 
-                // print("SQL Query is: ".$sql_query." ");
                 $statement = $conn->prepare($sql_query);
+                $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+                $statement->bindParam(':minPrice', $minPrice);
+                $statement->bindParam(':maxPrice', $maxPrice);
+                $statement->bindParam(':subCategory', $subCategory);
 
             }
         } else {
-            // print("Subcategory was NOT chosen. ");
 
             // Parent Category WAS chosen
             if (!$parentCategory == 0){
-                // print("But parent category WAS chosen. ");
 
                 // Check if condition was chosen:
                 if (!$condition == 0){
-                    // print("Item condition was chosen. ");
                     $sql_query = $querySelect.$queryParentCategory.$queryItemCondition.$sql_sort;
 
-                    // print("SQL Query is: ".$sql_query." ");
                     $statement = $conn->prepare($sql_query);
+                    $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+                    $statement->bindParam(':minPrice', $minPrice);
+                    $statement->bindParam(':maxPrice', $maxPrice);
+                    $statement->bindParam(':parentCategory', $parentCategory);
+                    $statement->bindParam(':condition', $condition);
+
                 } else {
-                    // print("Item condition was NOT chosen. ");
                     // No condition was chosen -->
                     $sql_query = $querySelect.$queryParentCategory.$sql_sort;
                     $statement = $conn->prepare($sql_query);
-                    // print("SQL Query is: ".$sql_query." ");
+                    $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+                    $statement->bindParam(':minPrice', $minPrice);
+                    $statement->bindParam(':maxPrice', $maxPrice);
+                    $statement->bindParam(':parentCategory', $parentCategory);
 
                 }
             } // Parent Category WAS NOT chosen
             else {
-                // print("Parent Category ALSO NOT chosen. ");
-
                 // Check if condition was chosen:
                 if (!$condition == 0){
                     $sql_query = $querySelect.$queryItemCondition.$sql_sort;
                     $statement = $conn->prepare($sql_query);
-                    // print("SQL Query is: ".$sql_query." ");
+                    $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+                    $statement->bindParam(':minPrice', $minPrice);
+                    $statement->bindParam(':maxPrice', $maxPrice);
+                    $statement->bindParam(':condition', $condition);
 
                 } else {
-                    // print("Item condition was NOT chosen. ");
                     // No condition was chosen -->
                     $sql_query = $querySelect.$sql_sort;
                     $statement = $conn->prepare($sql_query);
-                    // print("SQL Query is: ".$sql_query." ");
+                    $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
+                    $statement->bindParam(':minPrice', $minPrice);
+                    $statement->bindParam(':maxPrice', $maxPrice);
                 }
             }
         }
 
+        // Execute the query:
         $statement->execute();
         $res = $statement->fetchAll();
         $url = 'search_result_page.php?searchTerm='.$searchTerm.'&parentCategory='.$parentCategory.'&subCategory='.$subCategory.'&condition='.$condition;
 
     } else if (isset($_GET['searchBarSubmit'])) { // Search was made using the search bar only
         $searchTerm = $_GET['searchTerm']; // get the search term
-        // print("Searching for '".$searchTerm."'.");
 
         $sql_query =  "SELECT *
                         FROM items i
@@ -175,9 +178,8 @@
                                 GROUP BY itemID
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
-                        WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
-                        AND i.endDate > NOW()
-                        ORDER BY i.endDate ASC;".$sql_sort;
+                        WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
+                        AND i.endDate > NOW() ".$sql_sort;
         $statement = $conn->prepare($sql_query);
         $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
 
@@ -186,7 +188,6 @@
         $url = 'search_result_page.php?searchTerm='.$searchTerm;
 
     } else {
-        // print("Searching for everything!");
         // No search was made -->
         $sql_query = "SELECT *
                         FROM items i
@@ -199,8 +200,8 @@
                                 GROUP BY itemID
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
-                        WHERE i.endDate > NOW()
-                        ORDER BY i.endDate ASC;".$sql_sort;
+                        WHERE i.endDate > NOW() ".$sql_sort;
+
         $statement = $conn->prepare($sql_query);
         $statement->execute();
         $res = $statement->fetchAll();
@@ -236,6 +237,7 @@
 
  </script>
  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+     <?php echo $sql_query ?>
      <h1 class="page-header">Search Results:</h1>
 
      <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">

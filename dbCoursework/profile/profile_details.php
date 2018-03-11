@@ -82,7 +82,7 @@ $data=$res->fetch();
           <div class="form-group">
             <label class="col-lg-3 control-label">Building Number:</label>
             <div class="col-lg-6">
-              <input class="form-control" name="buildingNumber" value="<?php if(isset($data['buildingNumber'])){echo $data['buildingNumber'];};?>"  placeholder="Please enter your building number" type="text">
+              <input class="form-control" name="buildingNumber" value="<?php if(isset($data['buildingNumber'])){echo $data['buildingNumber'];};?>"  placeholder="Please enter your building number" type="numb">
             </div>
           </div>
           <!-- Street field  -->
@@ -179,7 +179,7 @@ $data=$res->fetch();
         }
         else if ( !/^[a-zA-Z]*$/g.test(lastName))
         {
-            alert("The first name must only have letters.");
+            alert("The last name must only have letters.");
             return false;
         }
         else if (!(phone.length==11 && (/^\d+$/).test(phone)) && !(phone===null|| phone===''))
@@ -206,10 +206,10 @@ $data=$res->fetch();
         }
         else if (!letterNumberSpace(street))
         {
-            alert("The the e-mail you provided in not in the right form");
+            alert("The the street you provided in not in the right form");
             return false;
         }
-        else if (!isInt(buildingNumber) && !buildingNumber=='')
+        else if (!/^\d+[A-Z]?$/.test(buildingNumber) && !buildingNumber=='')
         {
             alert("The building number is not in the right form");
             return false;

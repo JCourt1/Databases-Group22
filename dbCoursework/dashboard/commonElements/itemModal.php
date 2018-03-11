@@ -99,7 +99,7 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
                     <h2 class="modal-title modalCentered">' . $title . '</h4>
                 </div>
                 <div class="modal-body">
-                    <img src="' . $photo . '" width="200" height="200" class="img-responsive modalCentered" alt="Generic placeholder thumbnail">
+                    <img src="' . $photo . '" width="190" height="190" class="img-responsive modalCentered" alt="Generic placeholder thumbnail">
                     <br>
                     <p class="modalCentered">' . $description . '</p>
                     <br>

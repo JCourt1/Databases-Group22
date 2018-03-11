@@ -297,9 +297,11 @@ $(document).ready(function(){
 
 
 
-    <?php if (isset($_SESSION['user_ID'])) { ?>
+<?php
 
-    <script>
+if (isset($_SESSION['user_ID']) AND !is_null($_SESSION['user_ID'])) {
+
+    $notiScript = '<script>
 
     $(function () {
 
@@ -307,11 +309,11 @@ $(document).ready(function(){
        setInterval(function() {
            $.ajax({
 
-               url: "<?php echo $siteroot ?>notifications/checkForNotifications.php",
+               url: "'.$siteroot.'notifications/checkForNotifications.php",
                type: "POST",
                success: function(response) {
-
-                   console.log("hello");
+                   
+                   console.log("No notifications to report.");
 
                    if (response.length != 0) {
 
@@ -320,12 +322,12 @@ $(document).ready(function(){
                        $.each(response, function(index, row) {
 
                            var num = (count + 1) % 4;
-                           var classID = '.sa' + num;
+                           var classID = ".sa" + num;
                            for (i = num; i < 5; i++) {
                                if (! $(classID).hasClass("is-active")) {
 
                                } else {
-                                   classID = '.sa' + i;
+                                   classID = ".sa" + i;
                                    break;
                                }
                            }
@@ -333,23 +335,21 @@ $(document).ready(function(){
 
 
                            var t = row.messagedate.split(/[- :]/);
-                            var date = t[2] + '/' + t[1] + '/' + t[0];
-                            var time = t[3] + ':' + t[4] + ':' + t[5];
+                            var date = t[2] + "/" + t[1] + "/" + t[0];
+                            var time = t[3] + ":" + t[4] + ":" + t[5];
 
-                           $(classID).find('span').delay(1000).html("<b>" + time +"</b>:  " + row.message);
+                           $(classID).find("span").delay(1000).html("<b>" + time +"</b>:  " + row.message);
 
-
-                          // $('"' + classID + '"')
                           if (row.isBuyer) {
 
                           } else {
-                              $(classID).find('.icon').css("background", "#a72e77");
+                              $(classID).find(".icon").css("background", "#a72e77");
                           }
 
-                           $(classID).find(".alert-element").toggleClass('is-active');
+                           $(classID).find(".alert-element").toggleClass("is-active");
 
                            setTimeout(function(){
-                               $(classID).find(".alert-element").removeClass('is-active');
+                               $(classID).find(".alert-element").removeClass("is-active");
                            },10000);
                             console.log(row.message);
 
@@ -369,6 +369,8 @@ $(document).ready(function(){
         }, 5000);
     });
 
-    </script>
+    </script>';
 
-    <?php } ?>
+        echo $notiScript;
+
+    } ?>

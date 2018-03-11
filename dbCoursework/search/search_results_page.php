@@ -258,6 +258,8 @@
 
          <div class="row placeholders" name="searchResults" id="searchResults">
 
+             <div class="row placeholders">
+
              <?php # begin php
              $rownumber = 0;
 
@@ -289,6 +291,7 @@
                  }
              }
              # end php ?>
+             </div>
         </div>
     </div>
 </div>

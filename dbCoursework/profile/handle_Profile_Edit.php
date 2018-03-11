@@ -123,14 +123,14 @@ else{
     SET firstName='".$firstName."', lastName='".$lastName."', phoneNumber='".$phone."', companyName='".$company."', profilePic='".$picture."', email='".$email."',
      streetName='".$street."', buildingNumber='".$buildingNumber."', cityName='".$city."', countyName='".$county."', postCode='".$postCode."', username='".$username."' WHERE userID='".$_SESSION['user_ID']."' ";
     //if the user typed a new password, update the database with the new password
-     if (isset($psw) && $psw!='' ){
+     if (isset($psw) && !$psw=='' ){
         $psw= sha1($psw);
         $sql2 = "UPDATE users SET password='".$psw."' WHERE userID='".$_SESSION['user_ID']."' " ;
 
      }
 
 
-    if ($conn->query($sql) && $conn->query($sql2))
+    if ($conn->query($sql))
     {
         //print the relevant message regarding the outcome of the insertion
         echo "<script type= 'text/javascript'>alert('User details updated Successfully. You will be redirected to the home page.');</script>";

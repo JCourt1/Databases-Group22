@@ -1,6 +1,6 @@
 <?php
 
-session_start();// Starting Session
+        session_start();
 
         try {
             $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",

@@ -15,7 +15,7 @@
 
     include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHeader.php";
 
-    //include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
+    include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
 
     // ITEM SORTING OPTIONS:
     if (isset($_GET['sort'])){
@@ -36,7 +36,7 @@
         $sort = $_GET['sort'];
         $sql_sort = "ORDER BY i.endDate ASC";
     }
-    print("Sort option chosen is ".$sort.". ");
+    // print("Sort option chosen is ".$sort.". ");
 
     // Check if advanced search has been made:
     if (isset($_GET['filteredSubmit'])){
@@ -55,18 +55,18 @@
 
         // Set the min price if there is one, otherwise set it = to 0.
         if (empty($minPrice)) {
-            print("Minimum price was NOT chosen. ");
+            // print("Minimum price was NOT chosen. ");
             $minPrice = 0;
         } else{
-            print("Minimum price is £".$minPrice.". ");
+            // print("Minimum price is £".$minPrice.". ");
         }
 
         // Same with the max price
         if (empty($maxPrice)){
-            print("Maximum price was NOT chosen. ");
+            // print("Maximum price was NOT chosen. ");
             $maxPrice = 10000000000;
         } else {
-            print("Maximum price is £".$maxPrice.". ");
+            // print("Maximum price is £".$maxPrice.". ");
         }
 
         // THE FIRST PART OF THE SQL QUERY:
@@ -82,6 +82,7 @@
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
                         WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
+                        AND i.endDate > NOW();
                         AND ((d.bidAmount BETWEEN ".$minPrice."  AND ".$maxPrice.") OR d.bidAmount IS NULL) ";
         // IF THE PARENT CATEGORY WAS CHOSEN BUT NOT THE SUBCATEGORY
         $queryParentCategory = "AND i.itemID IN (SELECT i.itemID FROM items i, categories c
@@ -94,64 +95,63 @@
 
         // CASE: subcategory was picked.
         if (!$subCategory == 0){
-            print("Subcategory was chosen. ");
+            // print("Subcategory was chosen. ");
 
             // CASE: item condition was picked:
             if (!$condition == 0){
-                print("Item condition was chosen. ");
+                // print("Item condition was chosen. ");
                 $sql_query = $querySelect.$queryItemCondition.$querySubCategory.$sql_sort;
 
-                print("SQL Query is: ".$sql_query." ");
+                // print("SQL Query is: ".$sql_query." ");
                 $statement = $conn->prepare($sql_query);
 
             } else {
-                print("Item condition was NOT chosen. ");
+                // print("Item condition was NOT chosen. ");
                 // CASE: item condition NOT picked
                 $sql_query = $querySelect.$querySubCategory.$sql_sort;
 
-                print("SQL Query is: ".$sql_query." ");
+                // print("SQL Query is: ".$sql_query." ");
                 $statement = $conn->prepare($sql_query);
 
             }
         } else {
-            print("Subcategory was NOT chosen. ");
+            // print("Subcategory was NOT chosen. ");
 
             // Parent Category WAS chosen
             if (!$parentCategory == 0){
-                print("But parent category WAS chosen. ");
+                // print("But parent category WAS chosen. ");
 
                 // Check if condition was chosen:
                 if (!$condition == 0){
-                    print("Item condition was chosen. ");
+                    // print("Item condition was chosen. ");
                     $sql_query = $querySelect.$queryParentCategory.$queryItemCondition.$sql_sort;
 
-                    print("SQL Query is: ".$sql_query." ");
+                    // print("SQL Query is: ".$sql_query." ");
                     $statement = $conn->prepare($sql_query);
                 } else {
-                    print("Item condition was NOT chosen. ");
+                    // print("Item condition was NOT chosen. ");
                     // No condition was chosen -->
                     $sql_query = $querySelect.$queryParentCategory.$sql_sort;
                     $statement = $conn->prepare($sql_query);
-                    print("SQL Query is: ".$sql_query." ");
+                    // print("SQL Query is: ".$sql_query." ");
 
                 }
             } // Parent Category WAS NOT chosen
             else {
-                print("Parent Category ALSO NOT chosen. ");
+                // print("Parent Category ALSO NOT chosen. ");
 
                 // Check if condition was chosen:
                 if (!$condition == 0){
                     $sql_query = $querySelect.$queryItemCondition.$sql_sort;
                     $statement = $conn->prepare($sql_query);
-                    print("SQL Query is: ".$sql_query." ");
+                    // print("SQL Query is: ".$sql_query." ");
 
                 } else {
-                    print("Item condition was NOT chosen. ");
+                    // print("Item condition was NOT chosen. ");
                     // No condition was chosen -->
                     $sql_query = $querySelect.$sql_sort;
                     $statement = $conn->prepare($sql_query);
-                    print("SQL Query is: ".$sql_query." ");
-
+                    // print("SQL Query is: ".$sql_query." ");
                 }
             }
         }
@@ -162,7 +162,7 @@
 
     } else if (isset($_GET['searchBarSubmit'])) { // Search was made using the search bar only
         $searchTerm = $_GET['searchTerm']; // get the search term
-        print("Searching for '".$searchTerm."'.");
+        // print("Searching for '".$searchTerm."'.");
 
         $sql_query =  "SELECT *
                         FROM items i
@@ -176,6 +176,7 @@
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
                         WHERE (i.title LIKE '%".$searchTerm."%' OR i.description LIKE '%".$searchTerm."%')
+                        AND i.endDate > NOW()
                         ORDER BY i.endDate ASC;".$sql_sort;
         $statement = $conn->prepare($sql_query);
         $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
@@ -185,7 +186,7 @@
         $url = 'search_result_page.php?searchTerm='.$searchTerm;
 
     } else {
-        print("Searching for everything!");
+        // print("Searching for everything!");
         // No search was made -->
         $sql_query = "SELECT *
                         FROM items i
@@ -198,6 +199,7 @@
                                 GROUP BY itemID
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
+                        WHERE i.endDate > NOW()
                         ORDER BY i.endDate ASC;".$sql_sort;
         $statement = $conn->prepare($sql_query);
         $statement->execute();
@@ -233,57 +235,60 @@
  });
 
  </script>
+ <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+     <h1 class="page-header">Search Results:</h1>
 
- <h1 class="page-header">Search Results:</h1>
+     <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
 
- <div class="row placeholders">
-     <form class="navbar-form" method='get' name='sortBy'>
-         <div class="form-group">
-             <label for="sort">Sort by:</label>
-             <select id="sortDropDown" name="sortDropDown" class="form-control">
-                 <option value="0">Items ending sooner</option>
-                 <option value="1">Items ending later</option>
-                 <option value="2">Price (Low to High)</option>
-                 <option value="3">Price (High to Low)</option>
-             </select>
-         </div>
-     </form>
 
-     <div name="searchResults" id="searchResults">
+         <form class="navbar-form" method='get' name='sortBy'>
+             <div class="form-group">
+                 <label for="sort">Sort by:</label>
+                 <select id="sortDropDown" name="sortDropDown" class="form-control">
+                     <option value="0">Items ending sooner</option>
+                     <option value="1">Items ending later</option>
+                     <option value="2">Price (Low to High)</option>
+                     <option value="3">Price (High to Low)</option>
+                     <option value="4">Popularity</option>
+                 </select>
+             </div>
+         </form>
 
-     <?php # begin php
-     $rownumber = 0;
+         <div class="row placeholders" name="searchResults" id="searchResults">
 
-     foreach ($res as $searchResult) {
-         if (new DateTime($searchResult['endDate']) > new DateTime()) {
+             <?php # begin php
+             $rownumber = 0;
 
-             $itemID = $searchResult['itemID'];
-             $title = $searchResult['title'];
-             $photo = $searchResult['photo'];
-             $description = $searchResult['description'];
-             $startPrice = $searchResult['startPrice'];
-             $currentPrice= $searchResult['bidAmount'];
-             $lastBid = $searchResult['bidDate'];
+             foreach ($res as $searchResult) {
+                 if (new DateTime($searchResult['endDate']) > new DateTime()) {
 
-             $current_date =  new DateTime();
+                     $itemID = $searchResult['itemID'];
+                     $title = $searchResult['title'];
+                     $photo = $searchResult['photo'];
+                     $description = $searchResult['description'];
+                     $startPrice = $searchResult['startPrice'];
+                     $currentPrice= $searchResult['bidAmount'];
+                     $lastBid = $searchResult['bidDate'];
 
-             $bid_end_date =  new DateTime($searchResult['endDate']);
-             $interval = $current_date->diff($bid_end_date);
-             $elapsed = $interval->format('%y y %m m %a d %h h %i min %s s');
+                     $current_date =  new DateTime();
 
-             if($startPrice >= $currentPrice){
-                 $currentPrice = $startPrice;
+                     $bid_end_date =  new DateTime($searchResult['endDate']);
+                     $interval = $current_date->diff($bid_end_date);
+                     $elapsed = $interval->format('%y y %m m %a d %h h %i min %s s');
+
+                     if($startPrice >= $currentPrice){
+                         $currentPrice = $startPrice;
+                     }
+
+                     // MODAL:
+                     include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/itemModal.php";
+
+                     $rownumber += 1;
+                 }
              }
-
-             // MODAL:
-             include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/itemModal.php";
-
-             $rownumber += 1;
-         }
-     }
-     # end php ?>
- </div>
-
+             # end php ?>
+        </div>
+    </div>
 </div>
 </body>
 

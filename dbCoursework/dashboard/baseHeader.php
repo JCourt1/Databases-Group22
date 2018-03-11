@@ -201,15 +201,16 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
                  <label for="maxPrice">Maximum price:</label>
                  <input id="maxPrice" name="maxPrice" placeholder="" class="form-control">
              </div>
-             <div class="form-group">
+             <!--<div class="form-group">
                  <label for="sort">Sort by:</label>
                  <select id="sort" name="sort" class="form-control">
                      <option value="0" selected>Items ending sooner</option>
                      <option value="1">Items ending later</option>
                      <option value="2">Price (Low to High)</option>
                      <option value="3">Price (High to Low)</option>
+                     <option value="4">Popularity</option>
                  </select>
-             </div>
+             </div>-->
              <!-- SEARCH BUTTON -->
              <div class="form-group">
                  <label for="submit"></label>
@@ -371,4 +372,3 @@ $(document).ready(function(){
     </script>
 
     <?php } ?>
-

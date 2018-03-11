@@ -1,6 +1,10 @@
 <?php session_start();
 
+include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
+
 $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+
+
 <?php
 
 
@@ -49,12 +53,88 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
             if (!empty($_POST["bid"]) && $currentPrice < $_POST["bid"]) {
 
+ //////////////////////////////////////////////////////////////////////////////////////////               
+                
                 // HERE GOES THE LOGIC TO EMAIL NOTIFY THE PREVIOUS HIGH BIDDER THAT THEY HAVE BEEN OUTBID
                 // - sql query the bids table to find the highest bid on the item (before the new bid is placed in the table)
                 // - send email to user
                 // ALSO POTENTIALLY THE LOGIC TO EMAIL NOTIFY THE SELLER THAT THEIR ITEM HAS A NEW BID
                 // - sql query the items table to find the sellerID
                 // - send email to seller
+
+
+                //initialising the arrays that will contain the emails, subjects and messages.
+                $emails = array();
+                $subjects = array();
+                $messages = array();
+
+
+                ///getting the seller's details
+                $seller_query = $conn->prepare("SELECT firstName, lastName, email
+                FROM users
+                WHERE userID = " .$sellerID. "");
+                $seller_query->execute();
+                $seller = $seller_query->fetch();
+               
+                $sellerFirstName = $seller['firstName'];
+                $sellerLastName = $seller['lastName'];
+                $sellerEmail = $seller['email'];
+
+
+                
+                //getting the previous highest bid details
+                $old_bid_query = $conn->prepare("SELECT  buyerID, bidAmount, bidDate
+                FROM bids b1
+                INNER JOIN (
+                SELECT MAX(bidAmount) bidAmount, itemID
+                FROM bids
+                GROUP BY itemID
+                ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmount
+                WHERE b1.itemID = ".$itemID."
+                ");
+                $old_bid_query->execute();
+                $old_bid = $old_bid_query->fetch();
+                
+                $previous_buyerID = $old_bid['buyerID'];
+                $previous_bidAmount = $old_bid['bidAmount'];
+                $previous_bidDate = $old_bid['bidDate'];
+
+
+                //getting thhe previous highest bidder details
+                $older_bidder_query = $conn->prepare("SELECT firstName, lastName, email
+                FROM users
+                WHERE userID = " .$previous_buyerID. "");
+                $older_bidder_query->execute();
+                $old_bidder = $older_bidder_query->fetch();
+               
+                $old_bidder_firstName = $old_bidder['firstName'];
+                $old_bidder_lastName = $old_bidder['lastName'];
+                $old_bidder_email = $old_bidder['email'];
+
+
+             //writing the email text 
+            $subject_seller = 'A new bid on your item has been placed';    
+            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', someone has placed a new bid of £'.$bid.' on  your item \''.$itemName.'\'. ';
+            
+            $subject_old_buyer = 'Someone has outbid you';
+            $message_old_buyer = 'Dear '.$old_bidder_firstName.' '.$old_bidder_lastName.', someone has outbid you on the item \''.$itemName.'\' with a bid of  £'.$bid.'.<br>
+            your bid was '.$previous_bidAmount.', placed on '.$previous_bidDate.'';
+
+
+
+            array_push($emails,$sellerEmail, $old_bidder_email);
+            array_push($subjects, $subject_seller,$subject_old_buyer);
+            array_push($messages, $message_seller, $message_old_buyer);
+
+            send_email($emails, $subjects, $messages);
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+            
                 $date = new DateTime();
                 $result = $date->format('Y-m-d H:i:s');
                 $currentPrice = $_POST["bid"];

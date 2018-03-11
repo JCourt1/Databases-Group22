@@ -4,7 +4,7 @@
 
         $siteroot = '/Databases-Group22/dbCoursework/';
 
-        include 'vendor\email.php';
+        include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
 
         try {
             $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
@@ -56,15 +56,14 @@
 
         else{
 
-
-
             $bid_query = $conn->prepare("SELECT buyerID, bidAmount, bidDate FROM bids b1
                                         INNER JOIN (
                                         	SELECT MAX(bidAmount) bidAmount, itemID
                                             FROM bids
                                             GROUP BY itemID
                                         ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmount
-                                        WHERE b1.itemID = ".$itemID);
+                                        WHERE b1.itemID = :itemID");
+            $bid_query->bindParam(':itemID', $itemID);
             $bid_query->execute();
             $bid = $bid_query->fetch();
 
@@ -78,7 +77,8 @@
 
             $buyer_query = $conn->prepare("SELECT firstName, lastName, email
             FROM users
-            WHERE userID = " .$buyerID. "");
+            WHERE userID = :buyerID");
+            $buyer_query->bindParam(':buyerID', $buyerID);
             $buyer_query->execute();
             $buyer = $buyer_query->fetch();
 
@@ -89,7 +89,8 @@
 
             $seller_query = $conn->prepare("SELECT firstName, lastName, email
             FROM users
-            WHERE userID = " .$sellerID. "");
+            WHERE userID = :sellerID");
+            $seller_query->bindParam(':sellerID', $sellerID);
             $seller_query->execute();
             $seller = $seller_query->fetch();
 
@@ -103,21 +104,23 @@
 
 
             $subject_seller = 'Your item has been sold';
-            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', Your item: '.$title.' has been sold to '.$buyerFirstName.' '.$buyerLastName.' for the price of '.$bidAmount.'. This is his/her email address: '.$buyerEmail.'';
+            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', Your item: \''.$title.'\' has been sold to '.$buyerFirstName.' '.$buyerLastName.' for the price of £'.$bidAmount.'. This is his/her email address: '.$buyerEmail.'';
 
 
 
 
 
             $subject_buyer = 'You won the bidding!';
-            $message_buyer =  'Dear '.$sellerFirstName.' '.$sellerLastName.', Congratulations you have bought the item: '.$title.' for the price of '.$bidAmount.'. This is the seller\'s email address: '.$sellerEmail.' .';
+            $message_buyer =  'Dear '.$sellerFirstName.' '.$sellerLastName.', Congratulations you have bought the item: \''.$title.'\' for the price of £'.$bidAmount.'. This is the seller\'s email address: '.$sellerEmail.' .';
 
 
             array_push($emails,$sellerEmail, $buyerEmail);
             array_push($subjects, $subject_seller,$subject_buyer);
             array_push($messages, $message_seller, $message_buyer);
 
-            $conn ->query("UPDATE items SET  notified = 1 WHERE itemID = $itemID");
+            $update_stmt = $conn ->prepare("UPDATE items SET  notified = 1 WHERE itemID = :itemID");
+            $update_stmt->bindParam(':itemID', $itemID);
+            $update_stmt->execute();
 
 
             }

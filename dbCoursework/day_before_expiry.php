@@ -4,7 +4,7 @@
 
         $siteroot = '/Databases-Group22/dbCoursework/'; 
 
-        include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
+        include 'vendor\email.php';
 
         try {
             $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
@@ -22,7 +22,7 @@
       
         $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, notified
         FROM items
-        WHERE (endDate >= (NOW() + INTERVAL 1 DAY)) AND (endDate < (NOW() + INTERVAL 2 DAY))");
+        WHERE (endDate > NOW() ) AND (endDate < (NOW() + INTERVAL 1 DAY))");
 
 
         $statement->execute();
@@ -32,13 +32,13 @@
         $subjects = array();
         $messages = array();
 
-        //if(sizeof($res)>0){
+   
+
+        if(sizeof($res)>0){
 
         foreach ($res as $searchResult) {
 
             
-
-
             $itemID = $searchResult['itemID'];
             $sellerID = $searchResult['sellerID'];
             $title = $searchResult['title'];
@@ -50,6 +50,8 @@
         
         
         
+      
+
 
 
             
@@ -79,7 +81,7 @@
 
         }
           
-
+    }
           
     send_email($emails, $subjects, $messages);
 

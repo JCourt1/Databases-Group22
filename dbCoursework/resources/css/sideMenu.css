@@ -25,6 +25,11 @@ li:after {
     background-color: #759186;
 }
 
+.menustuff {
+  position: fixed;
+  top: 5%;
+}
+
 .nav-side-menu ul,
 .nav-side-menu li {
   list-style: none;

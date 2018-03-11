@@ -1,15 +1,15 @@
 
 <?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
-<div class="container-fluid nav-side-menu col-sm-3 col-md-2">
+<div class="container-fluid nav-side-menu col-sm-3 col-md-2" style="border-right: 10px solid #26224d;">
 
   <div class="row">
 
-    <div class="col-sm-3 col-md-2 sidebar">
+    <div class="col-sm-3 col-md-2 sidebar menustuff">
         <div style="background: #bbc4cb;">
             <br><br><br><br>
             </div>
 
-        <div class='menustuff' style="background: #bbc4cb;">
+
       <h2> <span class="glyphicon glyphicon-user"></span> Profile </h2>
       <ul class="nav nav-sidebar">
         <li><a href="<?php echo $siteroot; ?>profile/profile_details.php"><span class="glyphicon glyphicon-chevron-right"></span> My account</a> </li>
@@ -35,7 +35,6 @@
       </ul>
 
       <br>
-        </div>
 
 
 

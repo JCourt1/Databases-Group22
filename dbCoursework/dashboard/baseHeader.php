@@ -187,7 +187,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
                  <select id="itemCondition" name="itemCondition" class="form-control">
                      <option value="0" selected>Any</option>
                      <option value="New">New</option>
-                     <option value="Like new">Like new</option>
+                     <option value="Used - Like New">Used - Like New</option>
                      <option value="Used">Used</option>
                  </select>
              </div>
@@ -312,7 +312,7 @@ if (isset($_SESSION['user_ID']) AND !is_null($_SESSION['user_ID'])) {
                url: "'.$siteroot.'notifications/checkForNotifications.php",
                type: "POST",
                success: function(response) {
-                   
+
                    console.log("No notifications to report.");
 
                    if (response.length != 0) {

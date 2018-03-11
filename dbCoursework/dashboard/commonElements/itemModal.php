@@ -158,7 +158,7 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
             </div>
         </div>
     </div>
-    <img src="' . $photo . '" width="200" height="200" class="img modalCentered" id="img'.$rownumber.'" alt="Generic placeholder thumbnail" data-toggle="modal"   data-target="#myModal' . $rownumber . '">
+    <img src="' . $photo . '" style="border-radius: 15px;" class="img modalCentered" id="img'.$rownumber.'" alt="Generic placeholder thumbnail" data-toggle="modal"   data-target="#myModal' . $rownumber . '">
     <a  data-toggle="modal" data-target="#myModal' . $rownumber . '">
         <h4>' . $title . '
         </h4>

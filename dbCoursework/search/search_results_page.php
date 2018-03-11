@@ -17,25 +17,8 @@
 
     include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
 
-    // ITEM SORTING OPTIONS:
-    if (isset($_GET['sort'])){
-        $sort = $_GET['sort'];
-        $sql_sort = "";
-        if ($sort == 4){
-            $sql_sort = "ORDER BY i.itemViewCount DESC";
-        } else if ($sort == 2){
-            $sql_sort = "ORDER BY bidAmount ASC";
-        } else if ($sort == 3){
-            $sql_sort = "ORDER BY bidAmount DESC";
-        } else {
-            // Default sort
-            $sql_sort = "ORDER BY i.endDate ASC";
-        }
-    } else {
-        $_GET['sort'] = 0; // default
-        $sort = $_GET['sort'];
-        $sql_sort = "ORDER BY i.endDate ASC";
-    }
+    // SORTING:
+    $sql_sort = "ORDER BY i.endDate ASC";
 
     // Check if advanced search has been made:
     if (isset($_GET['filteredSubmit'])){
@@ -85,6 +68,7 @@
         $queryItemCondition = "AND i.itemCondition = :condition ";
         // SUB CATEGORY STATEMENT:
         $querySubCategory = "AND i.categoryID = :subCategory ";
+
 
         // CASE: subcategory was picked.
         if (!$subCategory == 0){
@@ -141,12 +125,28 @@
             else {
                 // Check if condition was chosen:
                 if (!$condition == 0){
-                    $sql_query = $querySelect.$queryItemCondition.$sql_sort;
+                    $sql_query = "SELECT *
+                                    FROM items i
+                                    LEFT JOIN (
+                                        SELECT b.itemID, b.bidAmount, b.bidDate
+                                        FROM bids b
+                                        INNER JOIN (
+                                            SELECT itemID, MAX(bidAmount) bidAmount
+                                            FROM bids
+                                            GROUP BY itemID
+                                        ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
+                                    ) d ON i.itemID = d.itemID
+                                    WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
+                                    AND i.endDate > NOW();
+                                    AND ((d.bidAmount BETWEEN :minPrice AND :maxPrice) OR d.bidAmount IS NULL)
+                                    AND i.itemCondition = :condition
+                                    ORDER BY i.endDate ASC";
+                                    echo $sql_query;
                     $statement = $conn->prepare($sql_query);
                     $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
                     $statement->bindParam(':minPrice', $minPrice);
                     $statement->bindParam(':maxPrice', $maxPrice);
-                    $statement->bindParam(':condition', $condition);
+                    $statement->bindParam(':condition', (string)$condition);
 
                 } else {
                     // No condition was chosen -->
@@ -237,7 +237,7 @@
 
  </script>
  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-     <?php echo $sql_query ?>
+
      <h1 class="page-header">Search Results:</h1>
 
      <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">

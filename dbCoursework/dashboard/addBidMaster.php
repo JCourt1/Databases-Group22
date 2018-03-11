@@ -114,10 +114,10 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
              //writing the email text 
             $subject_seller = 'A new bid on your item has been placed';    
-            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', someone has placed a new bid of '.$bid.' on  your item '.$itemName.'. ';
+            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', someone has placed a new bid of £'.$bid.' on  your item \''.$itemName.'\'. ';
             
             $subject_old_buyer = 'Someone has outbid you';
-            $message_old_buyer = 'Dear '.$old_bidder_firstName.' '.$old_bidder_lastName.', someone has outbid you on the item '.$itemName.' with a bid of  '.$bid.'.<br>
+            $message_old_buyer = 'Dear '.$old_bidder_firstName.' '.$old_bidder_lastName.', someone has outbid you on the item \''.$itemName.'\' with a bid of  £'.$bid.'.<br>
             your bid was '.$previous_bidAmount.', placed on '.$previous_bidDate.'';
 
 

@@ -67,8 +67,8 @@
             $watcherLastName = $user_details['lastName'];
             $watcherEmail = $user_details['email'];
 
-            $subject = 'Item '.$title.' is expiring soon';
-            $message = 'Dear '.$watcherFirstName.'  '.$watcherLastName.', the item '.$title.' that you are watching is expiring on the '.$endDate.'.';
+            $subject = 'Item \''.$title.'\' is expiring soon';
+            $message = 'Dear '.$watcherFirstName.'  '.$watcherLastName.', the item \''.$title.'\' that you are watching is expiring on the '.$endDate.'.';
 
             array_push($emails,$watcherEmail);
             array_push($subjects, $subject);

@@ -106,14 +106,14 @@
 
 
             $subject_seller = 'Your item has been sold';
-            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', Your item: '.$title.' has been sold to '.$buyerFirstName.' '.$buyerLastName.' for the price of '.$bidAmount.'. This is his/her email address: '.$buyerEmail.'';
+            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', Your item: \''.$title.'\' has been sold to '.$buyerFirstName.' '.$buyerLastName.' for the price of £'.$bidAmount.'. This is his/her email address: '.$buyerEmail.'';
 
 
 
 
 
             $subject_buyer = 'You won the bidding!';
-            $message_buyer =  'Dear '.$sellerFirstName.' '.$sellerLastName.', Congratulations you have bought the item: '.$title.' for the price of '.$bidAmount.'. This is the seller\'s email address: '.$sellerEmail.' .';
+            $message_buyer =  'Dear '.$sellerFirstName.' '.$sellerLastName.', Congratulations you have bought the item: \''.$title.'\' for the price of £'.$bidAmount.'. This is the seller\'s email address: '.$sellerEmail.' .';
 
 
             array_push($emails,$sellerEmail, $buyerEmail);

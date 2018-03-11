@@ -101,10 +101,10 @@
             </tr>
             <tr>
             <td>'.$title.'</td>
-            <td>'.$startPrice.'</td>
-            <td>'.$reservePrice.'</td>
+            <td>£'.$startPrice.'</td>
+            <td>£'.$reservePrice.'</td>
             <td>'.$endDate.'</td>
-            <td>'.$bidAmount.'</td>
+            <td>£'.$bidAmount.'</td>
             <td>'.$bidDate.'</td>
             </tr>
             </table>';

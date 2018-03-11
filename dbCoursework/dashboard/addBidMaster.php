@@ -58,8 +58,9 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 $date = new DateTime();
                 $result = $date->format('Y-m-d H:i:s');
                 $currentPrice = $_POST["bid"];
-                $conn->query("UPDATE bids SET bidWinning = 0 WHERE itemID = ".$itemID." AND bidWinning = 1");
-                $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount, bidWinning) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . ", 1 ) ");
+                // The following line is being commented out as we remove the bidWinning column:
+                // $conn->query("UPDATE bids SET bidWinning = 0 WHERE itemID = ".$itemID." AND bidWinning = 1");
+                $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . " ) ");
                 $message = "Your bid has been registered. Thank you!";
 //                include "signalNecessaryNotifications.php";
 
@@ -69,8 +70,8 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 // (the highest bid on the same item from all users who have bid on it, apart from the user who has just made the new highest bid)
 
                 $toBeNotified = $conn -> prepare("SELECT bids1.bidID, T.highestBid, T.buyerID FROM (SELECT * FROM bids) AS bids1 JOIN
-                                                                                
-                                                                                (SELECT bids2.buyerID, bids2.bidID, max(bids2.bidAmount) as highestBid FROM (SELECT * FROM bids) as bids2 
+
+                                                                                (SELECT bids2.buyerID, bids2.bidID, max(bids2.bidAmount) as highestBid FROM (SELECT * FROM bids) as bids2
                                                                                 WHERE bids2.itemID = ? AND bids2.buyerID <> ? GROUP BY bids2.buyerID) AS T
                                                                                 ON bids1.buyerID = T.buyerID AND bids1.bidAmount = T.highestBid");
                 $toBeNotified -> execute([$itemID, $buyerID]);

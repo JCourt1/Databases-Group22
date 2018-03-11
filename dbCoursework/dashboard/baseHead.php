@@ -32,3 +32,4 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="../resources/css/base.css" rel="stylesheet">
+    <link href="../resources/css/sideMenu.css" rel="stylesheet">

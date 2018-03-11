@@ -55,7 +55,7 @@ if(!ctype_alpha ($firstName) &&  !$firstName=='' || strpos($firstName, ';')  ){
     $regError = "The phone number is not in the right form. Please try again.";
 }elseif((ctype_alpha(str_replace(' ', '', $company)) === false  || strpos($company, ';')) &&  !$company=='' ){
     $regError = "The company name is not in the right form. Please try again";
-}elseif((filter_var($picture, FILTER_VALIDATE_URL) || strpos($picture, ';')) &&  !$picture=='' ){
+}elseif(!(filter_var($picture, FILTER_VALIDATE_URL) || strpos($picture, ';')) &&  !$picture=='' ){
     $regError = "The url provided is not valid. Please try again.";
 }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL) || strpos($email, ';') ){
     $regError = "The email provided is not valid. Please try again.";

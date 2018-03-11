@@ -28,7 +28,7 @@ if (!isset($_SESSION['user_ID'])) {
         <h3 style="display:inline-block; float: right"><span class="glyphicon glyphicon-menu-down"></span>  Most Popular Items</h3>
 
         <div class="container-fluid panel panel-success" style="border: 3px solid transparent;
-          border-color: #a5a6ff;">
+          border-color: #b5c1cb;">
           <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/browsePopularItems.php";?>
         </div>
 

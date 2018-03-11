@@ -48,7 +48,7 @@
 
                 ?>
 
-        <h1>Bidding ends on: <?php echo convertDate($endDate1['endDate']); ?> at <?php echo convertTime($endDate1['endDate']); ?></h1>
+        <h1>Bidding ends on: <?php echo $endDate1['endDate']; ?></h1>
 
         <table class="table table-dark" >
             <thead>

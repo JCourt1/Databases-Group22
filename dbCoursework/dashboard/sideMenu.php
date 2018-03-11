@@ -5,11 +5,11 @@
   <div class="row">
 
     <div class="col-sm-3 col-md-2 sidebar">
-        <div style="background: #c7ddf7;">
+        <div style="background: #bbc4cb;">
             <br><br><br><br>
             </div>
 
-        <div class='menustuff' style="background: #c7ddf7;">
+        <div class='menustuff' style="background: #bbc4cb;">
       <h2> <span class="glyphicon glyphicon-user"></span> Profile </h2>
       <ul class="nav nav-sidebar">
         <li><a href="<?php echo $siteroot; ?>profile/profile_details.php"><span class="glyphicon glyphicon-chevron-right"></span> My account</a> </li>

@@ -1,10 +1,17 @@
 <?php
 
 
+        $time = date("d");
 
         $siteroot = '/Databases-Group22/dbCoursework/'; 
 
-        include 'vendor\email.php';
+        include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
+
+
+
+
+
+
 
         try {
             $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",

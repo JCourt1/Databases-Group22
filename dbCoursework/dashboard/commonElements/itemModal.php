@@ -123,7 +123,7 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
                         
                         <tr>
                           <td>Last Bid:</td>
-                          <td>£ '.$lastBid.'</td>
+                          <td>'.$lastBid.'</td>
                         </tr>
                         
                         

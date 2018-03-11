@@ -15,7 +15,7 @@ function writeOutbidNotification($receiver, $sendingUser, $currentPrice, $itemNa
             }
 
     $notification = '' . $sendingUser . 'outbid you on '.$itemName.' with a bid of ' . $currentPrice;
-    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$receiver.", \"rivalBid\", \"".$notification."\", 1, 1)");
+    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$receiver.", \"Notification\", \"".$notification."\", 1, 1)");
     $insertNotifications -> execute();
 }
 
@@ -35,7 +35,7 @@ function updateSeller($sellerID, $sendingUser, $currentPrice, $itemName) {
             }
 
     $notification = '' . $sendingUser . ' placed a bid of '.$currentPrice.' on your item: ' . $itemName;
-    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"receivedBid\", \"".$notification."\", 0, 1)");
+    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"Notification\", \"".$notification."\", 0, 1)");
     $insertNotifications->execute();
 
 }

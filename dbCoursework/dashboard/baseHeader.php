@@ -222,9 +222,6 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 </div>
 
 
-<div class="liveNotifications">
-    <p>Hello</p>
-</div>
 
 
 <section class="section-alert sa1">
@@ -255,15 +252,6 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 </div>
 </section>
 
-
-<script>
-
-    $('.liveNotifications').click(function(){
-      $('.alert-element').toggleClass('is-active');
-    });
-
-
-</script>
 
 
 

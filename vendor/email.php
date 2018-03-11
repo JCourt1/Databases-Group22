@@ -14,12 +14,12 @@ echo '<script type="text/javascript"> console.log("email function called"); </sc
 
 
 //Load composer's autoloader
-require '/autoload.php';
-require '/phpmailer/phpmailer/src/Exception.php';
-require '/phpmailer/phpmailer/src/PHPMailer.php';
-require '/phpmailer/phpmailer/src/SMTP.php';
-require '/league/oauth2-google/src/Provider/Google.php';
-require '/league/oauth2-google/src/Provider/GoogleUser.php';
+require 'autoload.php';
+require 'phpmailer/phpmailer/src/Exception.php';
+require 'phpmailer/phpmailer/src/PHPMailer.php';
+require 'phpmailer/phpmailer/src/SMTP.php';
+require 'league/oauth2-google/src/Provider/Google.php';
+require 'league/oauth2-google/src/Provider/GoogleUser.php';
 
 $mail = new PHPMailer(true);   
   

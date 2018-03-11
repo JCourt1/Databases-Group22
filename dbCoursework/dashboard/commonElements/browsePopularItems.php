@@ -16,7 +16,7 @@ if(isset($_SESSION['user_ID'])){
     $statement = $conn->prepare("SELECT itemID, title, description, photo, endDate, startPrice
                                 FROM items
                                 WHERE endDate > NOW()
-                                ORDER BY itemViewCount DESC LIMIT 40");
+                                ORDER BY itemViewCount DESC LIMIT 12");
     $statement->execute();
     $res = $statement->fetchAll();
 

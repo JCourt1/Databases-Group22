@@ -146,6 +146,11 @@ width: 12.5%;
   margin-top: 0;
 }
 
+.indexItems {
+    /*margin: auto;*/
+    top: 60px;
+}
+
 /*.notificationsBox {*/
   /*!*-webkit-animation: glowing 1500ms infinite;*!*/
   /*!*-moz-animation: glowing 1500ms infinite;*!*/

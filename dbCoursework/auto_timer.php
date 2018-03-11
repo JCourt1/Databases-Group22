@@ -45,17 +45,11 @@
             $reservePrice = $searchResult['reservePrice'];
             $notified  = $searchResult['notified'];
 
-
-
         if($notified  == 1 ){
-
-
             continue;
-
         }
 
         else{
-
             $bid_query = $conn->prepare("SELECT buyerID, bidAmount, bidDate FROM bids b1
                                         INNER JOIN (
                                         	SELECT MAX(bidAmount) bidAmount, itemID
@@ -98,17 +92,8 @@
             $sellerLastName = $seller['lastName'];
             $sellerEmail = $seller['email'];
 
-
-
-
-
-
             $subject_seller = 'Your item has been sold';
             $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', Your item: \''.$title.'\' has been sold to '.$buyerFirstName.' '.$buyerLastName.' for the price of £'.$bidAmount.'. This is his/her email address: '.$buyerEmail.'';
-
-
-
-
 
             $subject_buyer = 'You won the bidding!';
             $message_buyer =  'Dear '.$sellerFirstName.' '.$sellerLastName.', Congratulations you have bought the item: \''.$title.'\' for the price of £'.$bidAmount.'. This is the seller\'s email address: '.$sellerEmail.' .';
@@ -122,18 +107,12 @@
             $update_stmt->bindParam(':itemID', $itemID);
             $update_stmt->execute();
 
-
             }
 
-
-
         }
-
 
     }
 
     send_email($emails, $subjects, $messages);
-
-
 
         ?>

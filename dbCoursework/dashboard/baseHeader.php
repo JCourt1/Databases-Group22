@@ -135,10 +135,6 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
 </nav>
 
-<div class="emptyDiv">
-
-</div>
-
 
 
 <!-- ADVANCED FILTERS MODAL -->

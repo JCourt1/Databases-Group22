@@ -1,4 +1,4 @@
-<h3 class="page-header">Most Popular Items</h3>
+
 
 <?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 

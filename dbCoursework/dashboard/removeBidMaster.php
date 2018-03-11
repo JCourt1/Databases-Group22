@@ -46,7 +46,8 @@ if($buyerIDforChecking['buyerID'] != $userID){
     $newBid_statement = $conn->prepare($newBidID_query);
     $newBid_statement->execute();
     $newBidID = $newBid_statement->fetch();
-    $conn->query("UPDATE bids SET bidWinning = 1 WHERE bidID = ".$newBidID['bidID']);
+    // The following statement has been commented out after removing the bidWinning column:
+    // $conn->query("UPDATE bids SET bidWinning = 1 WHERE bidID = ".$newBidID['bidID']);
 
 
     // NOW REDIRECT BACK TO THE BID HISTORY PAGE FROM WHENCE WE CAME

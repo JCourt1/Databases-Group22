@@ -102,8 +102,20 @@
                             $statement4->execute();
                             $category = $statement4->fetch();
 
+                            // Get userID of current high bid on item to check if user is winning:
+                            $user_query = "SELECT buyerID FROM bids b1
+                                            INNER JOIN (
+                                            	SELECT MAX(bidAmount) bidAmount, itemID
+                                                FROM bids
+                                                GROUP BY itemID
+                                            ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmount
+                                            WHERE b1.itemID = ".$row['itemID'];
+                            $statement5 = $conn->prepare($user_query);
+                            $statement5->execute();
+                            $topBidder = $statement5->fetch();
+
                             // Is bid winning:
-                            if ($row['bidWinning'] == 1){
+                            if ($topBidder['buyerID'] == $userID){
                                 $bidWinning = "Yes";
                             } else {
                                 $bidWinning = "No";
@@ -140,7 +152,19 @@
 
                     foreach ($res_past_bids as $row) {
 
-                        if ($row['bidWinning'] == 0){
+                        // Get userID of current high bid on item to check if user won:
+                        $user_query = "SELECT buyerID FROM bids b1
+                                        INNER JOIN (
+                                            SELECT MAX(bidAmount) bidAmount, itemID
+                                            FROM bids
+                                            GROUP BY itemID
+                                        ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmount
+                                        WHERE b1.itemID = ".$row['itemID'];
+                        $statement5 = $conn->prepare($user_query);
+                        $statement5->execute();
+                        $topBidder = $statement5->fetch();
+
+                        if ($topBidder['buyerID'] == $userID){
                             $auctionWon = "No";
                             $finalPrice = "-";
                             $sellerEmail = "-";

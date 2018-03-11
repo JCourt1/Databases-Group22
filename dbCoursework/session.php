@@ -10,7 +10,14 @@ $user_check= $_SESSION['login_user'];
 
 
 // SQL Query To Fetch Complete Information Of User
-$ses_sql= $conn->query("select username from users where username='$user_check'");
+
+// DEPRECATED:
+// $ses_sql= $conn->query("select username from users where username='$user_check'");
+// $row = $ses_sql->fetch();
+
+$ses_sql = $conn->prepare("SELECT username FROM users WHERE username = :username");
+$ses_sql->bindParam(':username', $user_check);
+$ses_sql->execute();
 $row = $ses_sql->fetch();
 
 $login_session =$row['username'];

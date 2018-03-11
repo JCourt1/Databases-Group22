@@ -64,7 +64,8 @@
                                             FROM bids
                                             GROUP BY itemID
                                         ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmount
-                                        WHERE b1.itemID = ".$itemID);
+                                        WHERE b1.itemID = :itemID");
+            $bid_query->bindParam(':itemID', $itemID);
             $bid_query->execute();
             $bid = $bid_query->fetch();
 
@@ -78,7 +79,8 @@
 
             $buyer_query = $conn->prepare("SELECT firstName, lastName, email
             FROM users
-            WHERE userID = " .$buyerID. "");
+            WHERE userID = :buyerID");
+            $buyer_query->bindParam(':buyerID', $buyerID);
             $buyer_query->execute();
             $buyer = $buyer_query->fetch();
 
@@ -89,7 +91,8 @@
 
             $seller_query = $conn->prepare("SELECT firstName, lastName, email
             FROM users
-            WHERE userID = " .$sellerID. "");
+            WHERE userID = :sellerID");
+            $seller_query->bindParam(':sellerID', $sellerID);
             $seller_query->execute();
             $seller = $seller_query->fetch();
 
@@ -117,7 +120,9 @@
             array_push($subjects, $subject_seller,$subject_buyer);
             array_push($messages, $message_seller, $message_buyer);
 
-            $conn ->query("UPDATE items SET  notified = 1 WHERE itemID = $itemID");
+            $update_stmt = $conn ->prepare("UPDATE items SET  notified = 1 WHERE itemID = :itemID");
+            $update_stmt->bindParam(':itemID', $itemID);
+            $update_stmt->execute();
 
 
             }

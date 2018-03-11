@@ -15,8 +15,8 @@
 
 
 
-<?php 
-$siteroot = '/Databases-Group22/dbCoursework/'; 
+<?php
+$siteroot = '/Databases-Group22/dbCoursework/';
 //establish the connection
 try {
     $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
@@ -126,24 +126,16 @@ else{
      if (isset($psw) && !$psw=='' ){
         $psw= sha1($psw);
         $sql2 = "UPDATE users SET password='".$psw."' WHERE userID='".$_SESSION['user_ID']."' " ;
-
      }
 
 
-    if ($conn->query($sql))
-    {
+    if ($conn->query($sql)) {
         //print the relevant message regarding the outcome of the insertion
         echo "<script type= 'text/javascript'>alert('User details updated Successfully. You will be redirected to the home page.');</script>";
-    }
-    else
-    {
+    } else {
         echo "<script type= 'text/javascript'>alert('An error occured while updating user details.');</script>";
     }
     //navigate to the main page
     echo   '<script type="text/javascript">  window.location = "profile_details.php"   </script>';
 }
 ?>
-
-
-
-

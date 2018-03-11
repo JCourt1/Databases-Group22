@@ -23,7 +23,7 @@
 
         if ($check != 0) {
 
-            $result = $conn->prepare("SELECT bidID, bidDate, bidAmount, users.username FROM bids JOIN users 
+            $result = $conn->prepare("SELECT bidID, bidDate, bidAmount, users.username FROM bids JOIN users
                     on bids.buyerID = users.userID WHERE itemID = ? AND bidAmount > ? AND needsNotification = 1 ORDER BY bidDate DESC");
                     $result->execute([$itemID, $myHighestBid]);
                     $result2 = $result->fetchAll();
@@ -37,7 +37,7 @@
 
                     foreach ($result2 as $row) {
 
-                        $finalresult = $finalresult . '<p>'. $row["username"] . 'outbid you with a bid of' . $row["bidAmount"] . '</p> <br>';
+                        $finalresult = $finalresult . '<p>'. $row["username"] . ' outbid you with a bid of ' . $row["bidAmount"] . '</p> <br>';
 
 
                     }

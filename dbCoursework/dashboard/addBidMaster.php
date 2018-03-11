@@ -53,8 +53,8 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
             if (!empty($_POST["bid"]) && $currentPrice < $_POST["bid"]) {
 
- //////////////////////////////////////////////////////////////////////////////////////////               
-                
+ //////////////////////////////////////////////////////////////////////////////////////////
+
                 // HERE GOES THE LOGIC TO EMAIL NOTIFY THE PREVIOUS HIGH BIDDER THAT THEY HAVE BEEN OUTBID
                 // - sql query the bids table to find the highest bid on the item (before the new bid is placed in the table)
                 // - send email to user
@@ -75,13 +75,13 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 WHERE userID = " .$sellerID. "");
                 $seller_query->execute();
                 $seller = $seller_query->fetch();
-               
+
                 $sellerFirstName = $seller['firstName'];
                 $sellerLastName = $seller['lastName'];
                 $sellerEmail = $seller['email'];
 
 
-                
+
                 //getting the previous highest bid details
                 $old_bid_query = $conn->prepare("SELECT  buyerID, bidAmount, bidDate
                 FROM bids b1
@@ -94,7 +94,7 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 ");
                 $old_bid_query->execute();
                 $old_bid = $old_bid_query->fetch();
-                
+
                 $previous_buyerID = $old_bid['buyerID'];
                 $previous_bidAmount = $old_bid['bidAmount'];
                 $previous_bidDate = $old_bid['bidDate'];
@@ -106,16 +106,16 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 WHERE userID = " .$previous_buyerID. "");
                 $older_bidder_query->execute();
                 $old_bidder = $older_bidder_query->fetch();
-               
+
                 $old_bidder_firstName = $old_bidder['firstName'];
                 $old_bidder_lastName = $old_bidder['lastName'];
                 $old_bidder_email = $old_bidder['email'];
 
 
-             //writing the email text 
-            $subject_seller = 'A new bid on your item has been placed';    
+             //writing the email text
+            $subject_seller = 'A new bid on your item has been placed';
             $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', someone has placed a new bid of £'.$bid.' on  your item \''.$itemName.'\'. ';
-            
+
             $subject_old_buyer = 'Someone has outbid you';
             $message_old_buyer = 'Dear '.$old_bidder_firstName.' '.$old_bidder_lastName.', someone has outbid you on the item \''.$itemName.'\' with a bid of  £'.$bid.'.<br>
             your bid was '.$previous_bidAmount.', placed on '.$previous_bidDate.'';
@@ -134,13 +134,17 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
 
 
-            
+
                 $date = new DateTime();
                 $result = $date->format('Y-m-d H:i:s');
                 $currentPrice = $_POST["bid"];
                 // The following line is being commented out as we remove the bidWinning column:
                 // $conn->query("UPDATE bids SET bidWinning = 0 WHERE itemID = ".$itemID." AND bidWinning = 1");
-                $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . " ) ");
+
+                //$conn->query("INSERT INTO bids (itemID, buyerID, bidAmount) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . " ) ");
+                $new_bid_query = $conn->prepare("INSERT INTO bids (itemID, buyerID, bidAmount) VALUES (" . $itemID . "," . $buyerID . ", :bid ) ");
+                $new_bid_query->bindParam(':bid', $_POST['bid']);
+                $new_bid_query->execute();
                 $message = "Your bid has been registered. Thank you!";
                 include "../notifications/notificationWriter.php";
 

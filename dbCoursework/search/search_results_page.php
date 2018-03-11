@@ -15,7 +15,7 @@
 
     include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHeader.php";
 
-    include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
+    //include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
 
     // SORTING:
     $sql_sort = "ORDER BY i.endDate ASC";
@@ -33,7 +33,6 @@
         $condition = $_GET['itemCondition'];
         $minPrice = $_GET['minPrice'];
         $maxPrice = $_GET['maxPrice'];
-        //$sort = $_GET['sort'];
 
         // Set the min price if there is one, otherwise set it = to 0.
         if (empty($minPrice)) {
@@ -58,7 +57,7 @@
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
                         WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
-                        AND i.endDate > NOW();
+                        AND i.endDate > NOW()
                         AND ((d.bidAmount BETWEEN :minPrice AND :maxPrice) OR d.bidAmount IS NULL) ";
         // IF THE PARENT CATEGORY WAS CHOSEN BUT NOT THE SUBCATEGORY
         $queryParentCategory = "AND i.itemID IN (SELECT i.itemID FROM items i, categories c
@@ -125,28 +124,12 @@
             else {
                 // Check if condition was chosen:
                 if (!$condition == 0){
-                    $sql_query = "SELECT *
-                                    FROM items i
-                                    LEFT JOIN (
-                                        SELECT b.itemID, b.bidAmount, b.bidDate
-                                        FROM bids b
-                                        INNER JOIN (
-                                            SELECT itemID, MAX(bidAmount) bidAmount
-                                            FROM bids
-                                            GROUP BY itemID
-                                        ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
-                                    ) d ON i.itemID = d.itemID
-                                    WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
-                                    AND i.endDate > NOW();
-                                    AND ((d.bidAmount BETWEEN :minPrice AND :maxPrice) OR d.bidAmount IS NULL)
-                                    AND i.itemCondition = :condition
-                                    ORDER BY i.endDate ASC";
-                                    echo $sql_query;
+                    $sql_query = $querySelect.$queryItemCondition.$sql_sort;
                     $statement = $conn->prepare($sql_query);
                     $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
                     $statement->bindParam(':minPrice', $minPrice);
                     $statement->bindParam(':maxPrice', $maxPrice);
-                    $statement->bindParam(':condition', (string)$condition);
+                    $statement->bindParam(':condition', $condition);
 
                 } else {
                     // No condition was chosen -->
@@ -155,6 +138,7 @@
                     $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
                     $statement->bindParam(':minPrice', $minPrice);
                     $statement->bindParam(':maxPrice', $maxPrice);
+
                 }
             }
         }
@@ -166,7 +150,6 @@
 
     } else if (isset($_GET['searchBarSubmit'])) { // Search was made using the search bar only
         $searchTerm = $_GET['searchTerm']; // get the search term
-
         $sql_query =  "SELECT *
                         FROM items i
                         LEFT JOIN (

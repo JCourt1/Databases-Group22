@@ -56,11 +56,18 @@
 
         else{
 
-            
 
-            $bid_query = $conn->prepare("SELECT buyerID, bidAmount, bidDate
+            
+            $bid_query = $conn->prepare("SELECT  bidAmount, bidDate
+            FROM bids b1
+            INNER JOIN (
+            SELECT MAX(bidAmount) bidAmount, itemID
             FROM bids
-            WHERE itemID = " .$itemID. " AND bidWinning = 1");
+            GROUP BY itemID
+            ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmount
+            WHERE b1.itemID = ".$itemID."
+            ");
+
             $bid_query->execute();
             $bid = $bid_query->fetch();
 

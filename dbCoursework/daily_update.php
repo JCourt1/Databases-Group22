@@ -1,7 +1,7 @@
 <?php
 
 
-        $time = date("d");
+        
 
         $siteroot = '/Databases-Group22/dbCoursework/'; 
 
@@ -27,9 +27,9 @@
               
         echo '<script type="text/javascript"> console.log("connection Ok"); </script>';
       
-        $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, notified
+        $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, itemViewCount
         FROM items
-        WHERE endDate < NOW() AND (notified = 0 OR notified IS NULL)");
+        WHERE endDate > NOW()");
 
 
         $statement->execute();
@@ -50,44 +50,29 @@
             $endDate = $searchResult['endDate'];
             $startPrice = $searchResult['startPrice'];
             $reservePrice = $searchResult['reservePrice'];
-            $notified  = $searchResult['notified'];
+            $reservePrice  = $searchResult['reservePrice'];
+            $itemViewcount = $searchResult['itemViewCount'];
 
         
-        
-        if($notified  == 1 ){
-            
-
-            continue;
-
-        }
-
-        else{
+       
 
             
 
-            $bid_query = $conn->prepare("SELECT buyerID, bidAmount, bidDate
+            $bid_query = $conn->prepare("SELECT  bidAmount, bidDate
+            FROM bids b1
+            INNER JOIN (
+            SELECT MAX(bidAmount) bidAmount, itemID
             FROM bids
-            WHERE itemID = " .$itemID. " AND bidWinning = 1");
+            GROUP BY itemID
+            ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmount
+            WHERE b1.itemID = ".$itemID."
+            ");
             $bid_query->execute();
             $bid = $bid_query->fetch();
 
-            if(sizeof($bid)>0){
-
-            $buyerID = $bid['buyerID'];
             $bidAmount = $bid['bidAmount'];
             $bidDate = $bid['bidDate'];
 
-
-
-            $buyer_query = $conn->prepare("SELECT firstName, lastName, email
-            FROM users
-            WHERE userID = " .$buyerID. "");
-            $buyer_query->execute();
-            $buyer = $buyer_query->fetch();
-           
-            $buyerFirstName = $buyer['firstName'];
-            $buyerLastName = $buyer['lastName'];
-            $buyerEmail = $buyer['email'];
 
 
             $seller_query = $conn->prepare("SELECT firstName, lastName, email
@@ -105,29 +90,39 @@
 
 
         
-            $subject_seller = 'Your item has been sold';
-            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', Your item: '.$title.' has been sold to '.$buyerFirstName.' '.$buyerLastName.' for the price of '.$bidAmount.'. This is his/her email address: '.$buyerEmail.'';
+            $subject_seller = 'Listing update';
+            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', please see an update of your listing below:<br>
+            <table style="width:100%">
+            <tr>
+            <th> Item </th>
+            <th> Start Price </th>
+            <th> Reserve Price  </th>
+            <th>  End Date </th>
+            <th> Highest Bid </th>
+            <th> Bid Date </th>
+            </tr>
+            <tr>
+            <td>'.$title.'</td>
+            <td>'.$startPrice.'</td>
+            <td>'.$reservePrice.'</td>
+            <td>'.$endDate.'</td>
+            <td>'.$bidAmount.'</td>
+            <td>'.$bidDate.'</td>
+            </tr>
+            </table>';
 
-          
 
-   
 
-            $subject_buyer = 'You won the bidding!';
-            $message_buyer =  'Dear '.$sellerFirstName.' '.$sellerLastName.', Congratulations you have bought the item: '.$title.' for the price of '.$bidAmount.'. This is the seller\'s email address: '.$sellerEmail.' .';
-
-           
-            array_push($emails,$sellerEmail, $buyerEmail);
-            array_push($subjects, $subject_seller,$subject_buyer);
-            array_push($messages, $message_seller, $message_buyer);
-
-            $conn ->query("UPDATE items SET  notified = 1 WHERE itemID = $itemID");
+            array_push($emails,$sellerEmail);
+            array_push($subjects, $subject_seller);
+            array_push($messages, $message_seller);
 
             
-            }
+            
             
 
 
-        }
+        
 
 
     }

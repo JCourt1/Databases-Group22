@@ -102,7 +102,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
         <div class="centeredNav">
 
-        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/dashboard.php" >Ibé</a>
+        <a class="navbar-brand sitename" a href="<?php echo $siteroot; ?>dashboard/dashboard.php" style="font-weight: bold;">ibé</a>
         <!-- SEARCH BAR -->
         <form class="navbar-form" method='get' action='<?php echo $siteroot; ?>search/search_results_page.php' name='searchBar'>
             <div class="input-group add-on">

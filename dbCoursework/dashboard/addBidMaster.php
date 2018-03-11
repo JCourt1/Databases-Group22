@@ -62,7 +62,7 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 // $conn->query("UPDATE bids SET bidWinning = 0 WHERE itemID = ".$itemID." AND bidWinning = 1");
                 $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . " ) ");
                 $message = "Your bid has been registered. Thank you!";
-//                include "signalNecessaryNotifications.php";
+                include "../notifications/notificationWriter.php";
 
 
 
@@ -79,22 +79,20 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
                 foreach ($toBeNotified as $row) {
 
-                    $buyerID = $row['buyerID'];
 
-                    $notification = '' . $_SESSION['login_user'] . 'outbid you on '.$itemName.' with a bid of ' . $currentPrice;
+                    $receiver = $row['buyerID'];
 
-
-                    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$buyerID.", \"rivalBid\", \"".$notification."\", 1, 1)");
-                    $insertNotifications -> execute();
+//                    $notification = '' . $_SESSION['login_user'] . 'outbid you on '.$itemName.' with a bid of ' . $currentPrice;
+//                    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$buyerID.", \"rivalBid\", \"".$notification."\", 1, 1)");
+//                    $insertNotifications -> execute();
+                    writeOutbidNotification($receiver, $_SESSION['login_user'], $currentPrice, $itemName);
                 }
 
-                $notification = '' . $_SESSION['login_user'] . 'placed a bid of '.$currentPrice.' on your item: ' . $itemName;
-                $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"receivedBid\", \"".$notification."\", 0, 1)");
-                $insertNotifications->execute();
+                updateSeller($sellerID, $_SESSION['login_user'], $currentPrice, $itemName);
 
-//                var_dump($notification);
-//                var_dump($_SESSION['login_user']);
-//                var_dump($sellerID);
+                //                $notification = '' . $_SESSION['login_user'] . 'placed a bid of '.$currentPrice.' on your item: ' . $itemName;
+                //                $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"receivedBid\", \"".$notification."\", 0, 1)");
+                //                $insertNotifications->execute();
 
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.href = 'index.php';

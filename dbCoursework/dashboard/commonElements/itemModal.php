@@ -99,20 +99,20 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
                     <h2 class="modal-title modalCentered">' . $title . '</h4>
                 </div>
                 <div class="modal-body">
-                    <img src="' . $photo . '" width="200" height="200" class="img-responsive modalCentered" alt="Generic placeholder thumbnail">
+                    <img src="' . $photo . '" width="190" height="190" class="img-responsive modalCentered" alt="Generic placeholder thumbnail">
                     <br>
                     <p class="modalCentered">' . $description . '</p>
                     <br>
                     <table class="table table-sm">
                       <tbody>
                         <tr>
-                          
+
                           <td>Bidding ends:</td>
                           <td>'.$elapsed.'</td>
                         </tr>
                         <h3 id="countdown'.$rownumber.'">  </h3>
                         <tr>
-                          
+
                           <td>Start Price:</td>
                           <td>£ '.$startPrice.'</td>
                         </tr>
@@ -120,19 +120,19 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
                           <td>Current Price:</td>
                           <td>£ '.$currentPrice.'</td>
                         </tr>
-                        
+
                         <tr>
                           <td>Last Bid:</td>
                           <td>'.$lastBid.'</td>
                         </tr>
-                        
-                        
+
+
                       </tbody>
                     </table>
-                    
-                    
-                    
-                    
+
+
+
+
                 </div>
                 <div class="modal-footer">
                 <div class="form-group pull-left">
@@ -140,25 +140,25 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
                 Amount: <input type="text" name="bid">
                 <input type="submit" value="Bid!" >
                 </form>
-                
+
                 </div>
-                
-                <div> 
+
+                <div>
                 <div>
                     <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$itemID.'">View in auction room</a>
                 </div>
                 <div class="watchlist" id="watchlist'.$rownumber.'">
                     '.$watchlist_line.'
                 </div>
-                
+
                 </div>
 
-                    
+
                 </div>
             </div>
         </div>
     </div>
-    <img src="' . $photo . '" width="200" height="200" class="img modalCentered" id="img'.$rownumber.'" alt="Generic placeholder thumbnail" data-toggle="modal"   data-target="#myModal' . $rownumber . '">
+    <img src="' . $photo . '" style="border-radius: 15px;" class="img modalCentered" id="img'.$rownumber.'" alt="Generic placeholder thumbnail" data-toggle="modal"   data-target="#myModal' . $rownumber . '">
     <a  data-toggle="modal" data-target="#myModal' . $rownumber . '">
         <h4>' . $title . '
         </h4>
@@ -170,7 +170,3 @@ $chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
 echo $chaine;
 
  ?>
-
-
-
-

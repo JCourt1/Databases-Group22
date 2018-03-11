@@ -1,7 +1,7 @@
 <?php
 
 
-function writeOutbidNotification($receiver, $sendingUser, $amount, $item) {
+function writeOutbidNotification($receiver, $sendingUser, $currentPrice, $itemName) {
 
 //    global $conn;
 
@@ -14,14 +14,14 @@ function writeOutbidNotification($receiver, $sendingUser, $amount, $item) {
                 die('Erreur : ' . $e->getMessage());
             }
 
-    $message = $sendingUser . ' outbid you on '.$item.' with a bid of ' . $amount;
-    $conn->query("INSERT INTO notifications (receiverID, message, isBuyer) VALUES (".$receiver.", ".$message.", 1);");
-//    $query->execute();
+    $notification = '' . $sendingUser . 'outbid you on '.$itemName.' with a bid of ' . $currentPrice;
+    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$receiver.", \"rivalBid\", \"".$notification."\", 1, 1)");
+    $insertNotifications -> execute();
 }
 
 
 
-function updateSeller($sellerID, $sendingUser, $amount, $item) {
+function updateSeller($sellerID, $sendingUser, $currentPrice, $itemName) {
 
 //    global $conn;
 
@@ -34,12 +34,10 @@ function updateSeller($sellerID, $sendingUser, $amount, $item) {
                 die('Erreur : ' . $e->getMessage());
             }
 
+    $notification = '' . $sendingUser . ' placed a bid of '.$currentPrice.' on your item: ' . $itemName;
+    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"receivedBid\", \"".$notification."\", 0, 1)");
+    $insertNotifications->execute();
 
-
-
-    $message = $sendingUser . ' placed a bid of '.$amount.' on your item: ' . $item;
-    $query = $conn->prepare("INSERT INTO notifications (receiverID, message, isBuyer) VALUES (".$sellerID.", ".$message.", 0;)");
-    $query->execute();
 }
 
 ?>

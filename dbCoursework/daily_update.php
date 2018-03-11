@@ -3,7 +3,7 @@
 
         
 
-        $siteroot = '/Databases-Group22/dbCoursework/'; 
+        $siteroot = '/Databases-Group22/dbCoursework/';
 
         include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
 
@@ -23,8 +23,8 @@
             echo '<script type="text/javascript"> console.log("connection to MySQL failed"); </script>';
         }
 
-        
-              
+
+
         echo '<script type="text/javascript"> console.log("connection Ok"); </script>';
       
         $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, itemViewCount
@@ -41,7 +41,7 @@
 
         foreach ($res as $searchResult) {
 
-            
+
 
 
             $itemID = $searchResult['itemID'];
@@ -56,7 +56,6 @@
         
        
 
-            
 
             $bid_query = $conn->prepare("SELECT  bidAmount, bidDate
             FROM bids b1
@@ -80,13 +79,12 @@
             WHERE userID = " .$sellerID. "");
             $seller_query->execute();
             $seller = $seller_query->fetch();
-           
+
             $sellerFirstName = $seller['firstName'];
             $sellerLastName = $seller['lastName'];
             $sellerEmail = $seller['email'];
 
 
-            
 
 
         
@@ -129,6 +127,6 @@
 
     send_email($emails, $subjects, $messages);
 
-       
+
 
         ?>

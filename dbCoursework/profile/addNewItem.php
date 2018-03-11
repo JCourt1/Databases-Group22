@@ -62,9 +62,9 @@
                                 <label for="Condition">Condition</label>
 
                             <select class="form-control" name="Condition" id="Condition">
-                                <option>New</option>
-                                <option>Used</option>
-                                <option>Used - Like New</option>
+                                <option value="New">New</option>
+                                <option value="Used - Like New">Used - Like New</option>
+                                <option value="Used">Used</option>
                             </select>
                         </div>
                         <!-- PARENT CATEGORY -->
@@ -142,7 +142,7 @@ $(document).ready(function(){
     var photoLink=document.forms["mainForm"]["photoLink"].value;
     var subCat2=document.forms["mainForm"]["subCat2"].value;
     var expDate=document.forms["mainForm"]["expDate"].value;
-    
+
         if ( !isAlphaNumeric(itemTitle) )
         {
             alert("The title field is not in the proper form");
@@ -186,7 +186,7 @@ $(document).ready(function(){
             !(code > 64 && code < 91) && // upper alpha (A-Z)
             !(code > 96 && code < 123)&& // lower alpha (a-z)
             !((code==32)||(code==46)||(code==45)||(code==63))) // full stop or dash or space or question mark
-        { 
+        {
         return false;
         }
         }
@@ -216,4 +216,3 @@ $(document).ready(function(){
 
 
 </script>
-

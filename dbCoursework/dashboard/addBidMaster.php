@@ -138,10 +138,11 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 $date = new DateTime();
                 $result = $date->format('Y-m-d H:i:s');
                 $currentPrice = $_POST["bid"];
-                $conn->query("UPDATE bids SET bidWinning = 0 WHERE itemID = ".$itemID." AND bidWinning = 1");
-                $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount, bidWinning) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . ", 1 ) ");
+                // The following line is being commented out as we remove the bidWinning column:
+                // $conn->query("UPDATE bids SET bidWinning = 0 WHERE itemID = ".$itemID." AND bidWinning = 1");
+                $conn->query("INSERT INTO bids (itemID, buyerID, bidAmount) VALUES (" . $itemID . "," . $buyerID . "," . $_POST["bid"] . " ) ");
                 $message = "Your bid has been registered. Thank you!";
-//                include "signalNecessaryNotifications.php";
+                include "../notifications/notificationWriter.php";
 
 
 
@@ -149,8 +150,8 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
                 // (the highest bid on the same item from all users who have bid on it, apart from the user who has just made the new highest bid)
 
                 $toBeNotified = $conn -> prepare("SELECT bids1.bidID, T.highestBid, T.buyerID FROM (SELECT * FROM bids) AS bids1 JOIN
-                                                                                
-                                                                                (SELECT bids2.buyerID, bids2.bidID, max(bids2.bidAmount) as highestBid FROM (SELECT * FROM bids) as bids2 
+
+                                                                                (SELECT bids2.buyerID, bids2.bidID, max(bids2.bidAmount) as highestBid FROM (SELECT * FROM bids) as bids2
                                                                                 WHERE bids2.itemID = ? AND bids2.buyerID <> ? GROUP BY bids2.buyerID) AS T
                                                                                 ON bids1.buyerID = T.buyerID AND bids1.bidAmount = T.highestBid");
                 $toBeNotified -> execute([$itemID, $buyerID]);
@@ -158,22 +159,20 @@ $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
                 foreach ($toBeNotified as $row) {
 
-                    $buyerID = $row['buyerID'];
 
-                    $notification = '' . $_SESSION['login_user'] . 'outbid you on '.$itemName.' with a bid of ' . $currentPrice;
+                    $receiver = $row['buyerID'];
 
-
-                    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$buyerID.", \"rivalBid\", \"".$notification."\", 1, 1)");
-                    $insertNotifications -> execute();
+//                    $notification = '' . $_SESSION['login_user'] . 'outbid you on '.$itemName.' with a bid of ' . $currentPrice;
+//                    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$buyerID.", \"rivalBid\", \"".$notification."\", 1, 1)");
+//                    $insertNotifications -> execute();
+                    writeOutbidNotification($receiver, $_SESSION['login_user'], $currentPrice, $itemName);
                 }
 
-                $notification = '' . $_SESSION['login_user'] . 'placed a bid of '.$currentPrice.' on your item: ' . $itemName;
-                $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"receivedBid\", \"".$notification."\", 0, 1)");
-                $insertNotifications->execute();
+                updateSeller($sellerID, $_SESSION['login_user'], $currentPrice, $itemName);
 
-//                var_dump($notification);
-//                var_dump($_SESSION['login_user']);
-//                var_dump($sellerID);
+                //                $notification = '' . $_SESSION['login_user'] . 'placed a bid of '.$currentPrice.' on your item: ' . $itemName;
+                //                $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"receivedBid\", \"".$notification."\", 0, 1)");
+                //                $insertNotifications->execute();
 
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.href = 'index.php';

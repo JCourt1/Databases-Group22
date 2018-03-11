@@ -186,32 +186,32 @@ $data=$res->fetch();
         {
             console.log(phone);
             console.log("pasdasdhone");
-            alert("The phone number is not in the right form");
+            alert("The phone number is not in the right form.");
             return false;
         }
         else if (!letterNumberSpace(company))
         {
-            alert("The company name is not in the right form");
+            alert("The company name is not in the right form.");
             return false;
         }
-        else if (!is_url(picture))
+        else if (!is_url(picture)&& !(picture==''))
         {
-            alert("The url for the profile picture is not in the right form");
+            alert("The url for the profile picture is not in the right form.");
             return false;
         }
         else if (!validateEmail(email))
         {
-            alert("The the e-mail you provided in not in the right form");
+            alert("The the e-mail you provided in not in the right form.");
             return false;
         }
         else if (!letterNumberSpace(street))
         {
-            alert("The the street you provided in not in the right form");
+            alert("The the street you provided in not in the right form.");
             return false;
         }
         else if (!/^\d+[A-Z]?$/.test(buildingNumber) && !buildingNumber=='')
         {
-            alert("The building number is not in the right form");
+            alert("The building number is not in the right form.");
             return false;
         }
         else if ( !/^[a-zA-Z\s]*$/g.test(city))// letters only with spaces

@@ -2,7 +2,7 @@
 
 
 
-        $siteroot = '/Databases-Group22/dbCoursework/'; 
+        $siteroot = '/Databases-Group22/dbCoursework/';
 
         include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
 
@@ -16,10 +16,10 @@
             echo '<script type="text/javascript"> console.log("connection to MySQL failed"); </script>';
         }
 
-        
-              
+
+
         echo '<script type="text/javascript"> console.log("connection Ok"); </script>';
-      
+
         $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, notified
         FROM items
         WHERE endDate < NOW() AND (notified = 0 OR notified IS NULL)");
@@ -34,7 +34,7 @@
 
         foreach ($res as $searchResult) {
 
-            
+
 
 
             $itemID = $searchResult['itemID'];
@@ -45,10 +45,10 @@
             $reservePrice = $searchResult['reservePrice'];
             $notified  = $searchResult['notified'];
 
-        
-        
+
+
         if($notified  == 1 ){
-            
+
 
             continue;
 
@@ -84,7 +84,7 @@
             WHERE userID = " .$buyerID. "");
             $buyer_query->execute();
             $buyer = $buyer_query->fetch();
-           
+
             $buyerFirstName = $buyer['firstName'];
             $buyerLastName = $buyer['lastName'];
             $buyerEmail = $buyer['email'];
@@ -95,36 +95,36 @@
             WHERE userID = " .$sellerID. "");
             $seller_query->execute();
             $seller = $seller_query->fetch();
-           
+
             $sellerFirstName = $seller['firstName'];
             $sellerLastName = $seller['lastName'];
             $sellerEmail = $seller['email'];
 
 
-            
 
 
-        
+
+
             $subject_seller = 'Your item has been sold';
             $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', Your item: '.$title.' has been sold to '.$buyerFirstName.' '.$buyerLastName.' for the price of '.$bidAmount.'. This is his/her email address: '.$buyerEmail.'';
 
-          
 
-   
+
+
 
             $subject_buyer = 'You won the bidding!';
             $message_buyer =  'Dear '.$sellerFirstName.' '.$sellerLastName.', Congratulations you have bought the item: '.$title.' for the price of '.$bidAmount.'. This is the seller\'s email address: '.$sellerEmail.' .';
 
-           
+
             array_push($emails,$sellerEmail, $buyerEmail);
             array_push($subjects, $subject_seller,$subject_buyer);
             array_push($messages, $message_seller, $message_buyer);
 
             $conn ->query("UPDATE items SET  notified = 1 WHERE itemID = $itemID");
 
-            
+
             }
-            
+
 
 
         }
@@ -134,6 +134,6 @@
 
     send_email($emails, $subjects, $messages);
 
-       
+
 
         ?>

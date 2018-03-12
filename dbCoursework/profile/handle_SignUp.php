@@ -76,8 +76,10 @@ else{
     //make an sql query and take the user ID from the DB
     if ($conn->query($sql))
     {
-        $query = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ?");
-        $query->execute([$_POST['username'], $password]);
+        $query = $conn->prepare("SELECT userID, username FROM users WHERE username = :username AND password = :password");
+        $query->bindValue(':username',$_POST['username']);
+        $query->bindValue(':password',$password);
+        $query->execute();
         $row = $query->fetch();
         $uName = $row['username'];
         $id = $row['userID'];

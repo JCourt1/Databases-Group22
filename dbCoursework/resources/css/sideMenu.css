@@ -98,7 +98,6 @@ li:after {
 .nav-side-menu li {
     background-color: rgba(0,0,0,.075);
   padding-left: 0px;
-    border-top: 3px solid #2e353d;
 }
 .nav-side-menu li a {
   text-decoration: none;

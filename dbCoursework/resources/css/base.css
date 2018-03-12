@@ -107,7 +107,6 @@ width: 12.5%;
       padding-right:0px;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     /*background-color: #f5f5f5;*/
-    border-right: 10px solid #26224d;
   }
 }
 
@@ -366,31 +365,31 @@ width: 12.5%;
 
 }
 
+.highzindex {
+    z-index: 500000;
+}
+
 
 
 .sa1 {
-  z-index: 20000;
   position: fixed;
      bottom: 20px;
   left: 20px;
 }
 
 .sa2 {
-  z-index: 20000;
   position: fixed;
      bottom: 95px;
   left: 20px;
 }
 
 .sa3 {
-  z-index: 20000;
   position: fixed;
      bottom: 170px;
      left: 20px;
 }
 
 .sa4 {
-  z-index: 20000;
   position: fixed;
      bottom: 245px;
   left: 20px;

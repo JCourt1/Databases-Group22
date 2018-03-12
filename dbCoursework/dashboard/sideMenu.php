@@ -1,5 +1,6 @@
+
 <?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
-<div class="container-fluid nav-side-menu col-sm-3 col-md-2" style="border-right: 10px solid #26224d;">
+<div class="container-fluid nav-side-menu col-sm-3 col-md-2">
 
   <div class="row">
 

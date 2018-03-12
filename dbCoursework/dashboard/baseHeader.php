@@ -331,9 +331,11 @@ if (isset($_SESSION['user_ID']) AND !is_null($_SESSION['user_ID'])) {
                           }
 
                            $(classID).find(".alert-element").toggleClass("is-active");
+                           $(classID).toggleClass("highzindex");
 
                            setTimeout(function(){
                                $(classID).find(".alert-element").removeClass("is-active");
+                               $(classID).removeClass("highzindex");
                            },10000);
                             console.log(row.message);
 

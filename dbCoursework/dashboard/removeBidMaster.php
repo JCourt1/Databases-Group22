@@ -30,24 +30,9 @@ if($buyerIDforChecking['buyerID'] != $userID){
     header('Location: ' . $failed);
 } else {
     // HERE GOES THE LOGIC TO DO THE DELETION:
-    $conn->query("DELETE FROM bids WHERE bidID = ".$bidID);
+    $conn->query('UPDATE bids SET bidRemoved = 1 WHERE itemID = '.$buyerIDforChecking['itemID'].' AND buyerID = '.$buyerIDforChecking['buyerID'].'');
 
-    // Find the next highest bid on that item and update it so that it is winning:
-    $newBidID_query = "SELECT bidID
-                        FROM bids b1
-                        INNER JOIN
-                        (
-                        SELECT max(bidAmount) MaxBidAmount, itemID
-                        FROM bids
-                        WHERE itemID = ".$buyerIDforChecking['itemID']."
-                        ) b2
-                        ON b1.itemID = b2.itemID
-                        AND b1.bidAmount = b2.MaxBidAmount";
-    $newBid_statement = $conn->prepare($newBidID_query);
-    $newBid_statement->execute();
-    $newBidID = $newBid_statement->fetch();
-    // The following statement has been commented out after removing the bidWinning column:
-    // $conn->query("UPDATE bids SET bidWinning = 1 WHERE bidID = ".$newBidID['bidID']);
+
 
 
     // NOW REDIRECT BACK TO THE BID HISTORY PAGE FROM WHENCE WE CAME

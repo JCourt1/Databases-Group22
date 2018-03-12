@@ -80,7 +80,6 @@
                         <th scope="col">Bid Date</th>
                         <th scope="col">Winning?</th>
                         <th scope="col">Auction Room</th>
-                        <th scope="col">Edit Bid</th>
                     </tr>
                 </thead>
                 <tbody id="currentBidsTable">

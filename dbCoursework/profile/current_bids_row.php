@@ -26,11 +26,7 @@ $tableRow = '
         <td>
             <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$row['itemID'].'">View in auction room</a>
         </td>
-
-        <td>
-            <a href="'.$siteroot.'dashboard/removeBidMaster.php?bidID='.$row['bidID'].'">Remove Bid</a>
-        </td>
-
+        
 </tr>
 ';
 

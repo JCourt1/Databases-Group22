@@ -10,7 +10,7 @@
             </div>
 
 
-      <h2>Category 1 </h2>
+      <h2>Auctions </h2>
       <ul class="nav nav-sidebar">
         <li><a href="listed_items.php"><span class="glyphicon glyphicon-chevron-right"></span>Listed Items</a> </li>
         <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Subcategory 1</a> </li>
@@ -18,7 +18,7 @@
       <br>
         <br>
 
-      <h2>Category 2 </h2>
+      <h2>Messages </h2>
       <ul class="nav nav-sidebar">
 
         <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Subcategory 1</a></li>

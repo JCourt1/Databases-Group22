@@ -201,6 +201,6 @@
 
     $.noConflict();
     $(document).ready( function () {
-        $('#table_id').DataTable( {"pageLength": 10});
+        $('#table_id').DataTable( {"pageLength": 10, "order": [[ 1, "desc" ]]});
     } );
 </script>

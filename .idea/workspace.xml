@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f65ab4a-1b44-4639-958d-09a8b4927060" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/admin/baseHead.php" afterPath="$PROJECT_DIR$/dbCoursework/admin/baseHead.php" />
       <change beforePath="$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php" afterPath="$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/baseHead.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/itemModal.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/itemModal.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/index.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/index.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" afterPath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -130,14 +124,14 @@
         <entry file="file://$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1034">
-              <caret line="203" column="54" lean-forward="true" selection-start-line="203" selection-start-column="54" selection-end-line="203" selection-end-column="54" />
+              <caret line="203" column="71" lean-forward="false" selection-start-line="203" selection-start-column="71" selection-end-line="203" selection-end-column="71" />
               <folding>
-                <marker date="1520895188000" expanded="true" signature="463:572" ph="SELECT itemI... items" />
-                <marker date="1520895188000" expanded="true" signature="981:1304" ph="..." />
-                <marker date="1520895188000" expanded="true" signature="1119:1173" ph="..." />
-                <marker date="1520895188000" expanded="true" signature="1388:1527" ph="SELECT bidID... bids" />
-                <marker date="1520895188000" expanded="true" signature="1629:1671" ph="SELECT endDa... items" />
-                <marker date="1520895188000" expanded="true" signature="3032:3081" ph="..." />
+                <marker date="1520895420000" expanded="true" signature="463:572" ph="SELECT itemI... items" />
+                <marker date="1520895420000" expanded="true" signature="981:1304" ph="..." />
+                <marker date="1520895420000" expanded="true" signature="1119:1173" ph="..." />
+                <marker date="1520895420000" expanded="true" signature="1388:1527" ph="SELECT bidID... bids" />
+                <marker date="1520895420000" expanded="true" signature="1629:1671" ph="SELECT endDa... items" />
+                <marker date="1520895420000" expanded="true" signature="3032:3081" ph="..." />
               </folding>
             </state>
           </provider>
@@ -278,8 +272,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="MAMP PHP 7.2.1" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2349" />
-    <option name="y" value="-634" />
+    <option name="x" value="-2308" />
+    <option name="y" value="-603" />
     <option name="width" value="1992" />
     <option name="height" value="1272" />
   </component>
@@ -477,12 +471,12 @@
       <workItem from="1520806959039" duration="2621000" />
       <workItem from="1520861424733" duration="1645000" />
       <workItem from="1520879893555" duration="3675000" />
-      <workItem from="1520890529572" duration="4145000" />
+      <workItem from="1520890529572" duration="4325000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="203151000" />
+    <option name="totallyTimeSpent" value="203331000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -494,7 +488,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2349" y="-634" width="1992" height="1272" extended-state="0" />
+    <frame x="-2308" y="-603" width="1992" height="1272" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13504016" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -1068,14 +1062,14 @@
     <entry file="file://$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1034">
-          <caret line="203" column="54" lean-forward="true" selection-start-line="203" selection-start-column="54" selection-end-line="203" selection-end-column="54" />
+          <caret line="203" column="71" lean-forward="false" selection-start-line="203" selection-start-column="71" selection-end-line="203" selection-end-column="71" />
           <folding>
-            <marker date="1520895188000" expanded="true" signature="463:572" ph="SELECT itemI... items" />
-            <marker date="1520895188000" expanded="true" signature="981:1304" ph="..." />
-            <marker date="1520895188000" expanded="true" signature="1119:1173" ph="..." />
-            <marker date="1520895188000" expanded="true" signature="1388:1527" ph="SELECT bidID... bids" />
-            <marker date="1520895188000" expanded="true" signature="1629:1671" ph="SELECT endDa... items" />
-            <marker date="1520895188000" expanded="true" signature="3032:3081" ph="..." />
+            <marker date="1520895420000" expanded="true" signature="463:572" ph="SELECT itemI... items" />
+            <marker date="1520895420000" expanded="true" signature="981:1304" ph="..." />
+            <marker date="1520895420000" expanded="true" signature="1119:1173" ph="..." />
+            <marker date="1520895420000" expanded="true" signature="1388:1527" ph="SELECT bidID... bids" />
+            <marker date="1520895420000" expanded="true" signature="1629:1671" ph="SELECT endDa... items" />
+            <marker date="1520895420000" expanded="true" signature="3032:3081" ph="..." />
           </folding>
         </state>
       </provider>

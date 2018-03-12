@@ -15,10 +15,16 @@ if (!isset($_SESSION['admin_ID'])) {
 
   <body>
 
-    <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHeader.php";?>
+    <?php include ('baseHeader.php');?>
+    <?php include('sideMenu.php'); ?>
 
 
-    <p> Admin page </p>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+  <h1 class="page-header">Homepage</h1>
+
+
+</div>
 
 
 

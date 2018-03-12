@@ -1,4 +1,3 @@
-
 <?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 <div class="container-fluid">
   <div class="row">

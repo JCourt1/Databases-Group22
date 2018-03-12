@@ -98,10 +98,10 @@ if ($query->rowCount()) {
  $dashboard = 'http://' . $_SERVER['HTTP_HOST'] . $siteroot . '/dashboard/dashboard.php';
  header('Location: ' . $dashboard);
 } else {
- echo "<script type='text/javascript'>alert('Invalid username or password, try again');
+ echo "<script type='text/javascript'>alert('Invalid username or password, try again');</script>";
  
                                                      
-                                                     </script>";
+                                                     
     $failed = 'http://' . $_SERVER['HTTP_HOST'] .
         $siteroot . '/dashboard/index.php';
 

@@ -25,11 +25,11 @@
 
     // SQL QUERIES
 
-    // 1. Array of most items in the user's watchlist:
+    // 1. Array of items in the user's watchlist:
     $query_watchlist = "SELECT i.*
                             FROM watchlist_items w
                             LEFT JOIN items i ON i.itemID = w.itemID
-                            WHERE w.userID = ".$userID."
+                            WHERE w.userID = ".$userID." AND i.endDate > NOW()
                             ORDER BY i.endDate ASC";
     $statement1 = $conn->prepare($query_watchlist);
     $statement1->execute();
@@ -44,6 +44,7 @@
 
         <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
 
+            <?php if(!empty($res_watchlist)){ ?>
             <!-- TABLE OF ITEMS IN WATCHLIST -->
             <table class="table table-dark" >
                 <thead>
@@ -73,6 +74,8 @@
                     ?>
                 </tbody>
             </table>
+        <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>You haven't added anything to your watchlist yet.</p>";} ?>
+
         </div>
 
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>

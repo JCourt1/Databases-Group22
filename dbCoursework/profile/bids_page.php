@@ -70,6 +70,8 @@
         <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
             <h3 class="page-header">Currently bidding on</h3>
 
+            <?php if(!empty($res_current_bids)) { ?>
+
             <!-- TABLE OF ITEMS CURRENTLY BIDDING ON -->
             <table class="table table-dark" >
                 <thead>
@@ -80,7 +82,6 @@
                         <th scope="col">Bid Date</th>
                         <th scope="col">Winning?</th>
                         <th scope="col">Auction Room</th>
-                        <th scope="col">Edit Bid</th>
                     </tr>
                 </thead>
                 <tbody id="currentBidsTable">
@@ -122,11 +123,14 @@
                     ?>
                 </tbody>
             </table>
+
+        <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>You are not currently bidding on anything.</p>";} ?>
         </div>
 
         <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
             <h3 class="page-header">Past bids</h3>
 
+            <?php if(!empty($res_past_bids)){ ?>
             <!-- TABLE OF ITEMS HISTORICALLY BID ON -->
             <table class="table table-dark" >
                 <thead>
@@ -235,6 +239,8 @@
                     ?>
                 </tbody>
             </table>
+        <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>You don't have any bids on finished auctions.</p>";} ?>
+
         </div>
 
         </div>

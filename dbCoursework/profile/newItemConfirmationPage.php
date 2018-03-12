@@ -27,9 +27,22 @@
 
         //update the database
         $sql = "INSERT INTO items ( sellerID, title, description, itemCondition, photo, categoryID, startPrice,reservePrice,endDate)
-        VALUES ('".$_SESSION['user_ID']."','".$itemTitle."', '".$itemDescription."','.$Condition.','".$photoLink."','".$subCat2."', '".$startingPrice."','".$reservePrice."','".$expDate."')";
+        VALUES (:sellerID,:itemTitle,:itemDescription,:Condition,:photoLink,:subCat2,:startingPrice,:reservePrice,:expDate )";
+        
+        $statement = $conn->prepare($sql);
+
+        $statement->bindValue(':sellerID',$_SESSION['user_ID']);
+        $statement->bindParam(':itemTitle', $itemTitle);
+        $statement->bindParam(':itemDescription', $itemDescription);
+        $statement->bindParam(':Condition', $Condition);
+        $statement->bindParam(':photoLink', $photoLink);
+        $statement->bindParam(':subCat2', $subCat2);
+        $statement->bindParam(':startingPrice', $startingPrice);
+        $statement->bindParam(':reservePrice', $reservePrice);
+        $statement->bindParam(':expDate', $expDate);
+
         //print the relevant message regarding the outcome of the insertion
-        if ($conn->query($sql))
+        if ($statement->execute())
         {
             echo "<script type= 'text/javascript'>alert('New Item Inserted Successfully');</script>";
         }

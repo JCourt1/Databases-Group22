@@ -173,6 +173,11 @@ $(document).ready(function(){
             alert("The url provided is not correct");
             return false;
         }
+        else if (reservePrice<startingPrice)
+        {
+            alert("Reserve price cannot be lower than starting price.");
+            return false;
+        }
     }
 
     // function to check if the input is a sentence
@@ -185,7 +190,7 @@ $(document).ready(function(){
         if (!(code > 47 && code < 58) && // numeric (0-9)
             !(code > 64 && code < 91) && // upper alpha (A-Z)
             !(code > 96 && code < 123)&& // lower alpha (a-z)
-            !((code==32)||(code==46)||(code==45)||(code==63))) // full stop or dash or space or question mark
+            !((code>=32 && code<= 34)||(code>=40 && code<= 46) ||(code==63) )) // .,!()?"space+
         {
         return false;
         }

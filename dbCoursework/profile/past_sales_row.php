@@ -27,6 +27,10 @@ $tableRow = '
             '.$row["endDate"].'
         </td>
 
+        <td>
+            '.$feedbackHTML.'
+        </td>
+
 </tr>
 ';
 

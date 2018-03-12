@@ -160,7 +160,8 @@
                         $statement5->execute();
                         $topBidder = $statement5->fetch();
 
-                        if ($topBidder['buyerID'] == $userID){
+                        
+                        if ($topBidder['buyerID'] != $userID){
                             $auctionWon = "No";
                             $finalPrice = "-";
                             $sellerEmail = "-";

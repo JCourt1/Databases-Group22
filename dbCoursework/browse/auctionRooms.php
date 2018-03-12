@@ -18,7 +18,7 @@
 
 
             if (isset($_GET['itemID'])) {
-                $result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE itemID = " . $_GET['itemID']);
+                $result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE itemRemoved = 0 AND itemID = " . $_GET['itemID']);
                 $data1 = $result->fetch();
                 $itemID = $data1['itemID'];
                 $title = $data1['title'];
@@ -49,6 +49,8 @@
                 ?>
 
         <h1>Bidding ends on: <?php echo $endDate1['endDate']; ?></h1>
+
+        <?php if(!empty($res)) {?>
 
         <table class="table table-dark" >
             <thead>
@@ -83,11 +85,13 @@
 
                     ?>
 
+
             </tbody>
         </table>
 
+    <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>Item doesn't currently have any bids.</p>";} ?>
 
-        <form id="bidForm" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php echo $highestBid;?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
+        <form id="bidForm" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
             Bid: <input type="text" name="bid"><br>
             <input type="submit" value="Bid" >
         </form>
@@ -135,44 +139,49 @@
         });
 
         </script>
-    </div>
-            <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-            <panel>
-            <h1 class="text-center" >Other items with most recent bids</h1>
-            </panel>
+
+            </div>
+
+                <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                    <panel>
+                        <h3 class="text-center">Customers who placed bids on the same items as you were also interested in:</h3>
+                    </panel>
+
+                    <container>
+                       <?php include('carousel.php');
+
+                       $itemID = -1;
+                       if (isset($_GET['itemID'])) {
+                           $itemID = $_GET['itemID'];
+                       }
+
+                       printCollaborativeFilteredCarousel($_SESSION['user_ID'], $itemID, $conn);
+                       ?>
+                    </container>
 
 <?php } else {?>
 
-                </div>
+            </div>
+                <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                    <panel>
+                        <h1 class="text-center" >Items with most recent bids:</h1>
+                    </panel>
 
-            <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-            <panel>
-            <h1 class="text-center">Items with most recent bids</h1>
-            </panel>
+                    <container>
+                       <?php include('carousel.php');
 
+                       $itemID = -1;
+                       if (isset($_GET['itemID'])) {
+                           $itemID = $_GET['itemID'];
+                       }
+
+                       printCarousel($itemID, $conn);
+                       ?>
+                    </container>
 
 <?php }?>
 
-
-
-            <container>
-               <?php include('carousel.php');
-
-               $itemID = -1;
-               if (isset($_GET['itemID'])) {
-                   $itemID = $_GET['itemID'];
-               }
-
-               printCarousel($itemID, $conn);
-               ?>
-            </container>
-
-            </footer>
-
-
-
-
-
+                </footer>
 
            <?php include("../dashboard/baseFooter.php");
 

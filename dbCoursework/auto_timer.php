@@ -13,7 +13,7 @@
         echo '<script type="text/javascript"> console.log("connection Ok"); </script>';
         $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, notified
                                         FROM items
-                                        WHERE endDate < NOW() AND (notified = 0 OR notified IS NULL)");
+                                        WHERE endDate < NOW() AND itemRemoved = 0 AND (notified = 0 OR notified IS NULL)");
         $statement->execute();
         $res = $statement->fetchAll();
         $emails = array();

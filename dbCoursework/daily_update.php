@@ -1,7 +1,7 @@
 <?php
 
 
-        
+
 
         $siteroot = '/Databases-Group22/dbCoursework/';
 
@@ -26,10 +26,10 @@
 
 
         echo '<script type="text/javascript"> console.log("connection Ok"); </script>';
-      
+
         $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, itemViewCount
         FROM items
-        WHERE endDate > NOW()");
+        WHERE endDate > NOW() AND itemRemoved = 0");
 
 
         $statement->execute();
@@ -53,8 +53,8 @@
             $reservePrice  = $searchResult['reservePrice'];
             $itemViewcount = $searchResult['itemViewCount'];
 
-        
-       
+
+
 
 
             $bid_query = $conn->prepare("SELECT  bidAmount, bidDate
@@ -87,7 +87,7 @@
 
 
 
-        
+
             $subject_seller = 'Listing update';
             $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', please see an update of your listing below:<br>
             <table style="width:100%">
@@ -115,12 +115,12 @@
             array_push($subjects, $subject_seller);
             array_push($messages, $message_seller);
 
-            
-            
-            
 
 
-        
+
+
+
+
 
 
     }

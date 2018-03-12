@@ -29,7 +29,7 @@
     $query_watchlist = "SELECT i.*
                             FROM watchlist_items w
                             LEFT JOIN items i ON i.itemID = w.itemID
-                            WHERE w.userID = ".$userID." AND i.endDate > NOW()
+                            WHERE w.userID = ".$userID." AND i.endDate > NOW() AND i.itemRemoved = 0
                             ORDER BY i.endDate ASC";
     $statement1 = $conn->prepare($query_watchlist);
     $statement1->execute();

@@ -58,6 +58,7 @@
                         ) d ON i.itemID = d.itemID
                         WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
                         AND i.endDate > NOW()
+                        AND i.itemRemoved = 0
                         AND ((d.bidAmount BETWEEN :minPrice AND :maxPrice) OR d.bidAmount IS NULL) ";
         // IF THE PARENT CATEGORY WAS CHOSEN BUT NOT THE SUBCATEGORY
         $queryParentCategory = "AND i.itemID IN (SELECT i.itemID FROM items i, categories c
@@ -162,6 +163,7 @@
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
                         WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
+                        AND i.itemRemoved = 0;
                         AND i.endDate > NOW() ".$sql_sort;
         $statement = $conn->prepare($sql_query);
         $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');
@@ -183,7 +185,8 @@
                                 GROUP BY itemID
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
-                        WHERE i.endDate > NOW() ".$sql_sort;
+                        WHERE i.itemRemoved = 0
+                        AND i.endDate > NOW() ".$sql_sort;
 
         $statement = $conn->prepare($sql_query);
         $statement->execute();

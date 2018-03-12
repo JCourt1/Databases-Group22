@@ -35,6 +35,31 @@ if (!isset($_SESSION['user_ID'])) {
 
     <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseFooter.php";?>
 
+
+    <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+             <panel>
+                 <h1 class="text-center">Items with most recent bids</h1>
+
+                 <br>
+             </panel>
+
+
+
+             <container>
+                <?php include($_SERVER['DOCUMENT_ROOT']."$siteroot/browse/carousel.php");
+
+                $itemID = -1;
+
+                printCarousel($itemID, $conn);
+                ?>
+             </container>
+
+             </footer>
+
+
+
+
+
   </body>
 
 </html>

@@ -14,7 +14,7 @@ function generateCarouselItem($number) {
 
         return '<div class="item">
         <div class="placeholder">
-            <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$number['itemID'].'">  
+            <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$number['itemID'].'">
                 <img src=" '  . $number['photo'] . ' " width="200" height="200" class="img center-block">
             </a>
         </div>
@@ -30,7 +30,7 @@ function printCarousel($itemIDNotToDisplay, $conn) {
     $query_result = $conn->query("SELECT i.itemID, i.title, i.description, i.photo, i.endDate, i.startPrice, max(b.bidDate) as maxBidDate
     FROM items as i
     JOIN bids as b ON i.itemID = b.itemID
-    WHERE i.endDate > NOW() AND i.itemID <> $itemIDNotToDisplay 
+    WHERE i.endDate > NOW() AND itemRemoved = 0 AND i.itemID <> $itemIDNotToDisplay 
     GROUP BY i.itemID
     ORDER BY maxBidDate DESC LIMIT 6;");
 
@@ -43,11 +43,11 @@ function printCarousel($itemIDNotToDisplay, $conn) {
 
 
     $string = '
-        
+
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
           <!-- Indicators -->
-          
-        
+
+
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
             <div class="item active">
@@ -57,8 +57,8 @@ function printCarousel($itemIDNotToDisplay, $conn) {
               </a>
             </div>
             </div>
-            
-            
+
+
             ';
 
     for ($i = 1; $i < $rowCount; $i++) {
@@ -67,7 +67,7 @@ function printCarousel($itemIDNotToDisplay, $conn) {
 
 
     $string = $string . '</div>
-        
+
           <!-- Left and right controls -->
           <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -85,5 +85,3 @@ function printCarousel($itemIDNotToDisplay, $conn) {
 }
 
 ?>
-
-

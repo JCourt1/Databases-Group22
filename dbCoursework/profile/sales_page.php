@@ -29,7 +29,7 @@
     $query_current_sales = "SELECT *
                             FROM items i
                             WHERE i.sellerID = ".$userID."
-                            AND i.endDate > NOW()
+                            AND i.endDate > NOW() AND i.itemRemoved = 0
                             ORDER BY i.endDate DESC
                             ";
     $statement1 = $conn->prepare($query_current_sales);
@@ -40,7 +40,7 @@
     $query_past_sales = "SELECT *
                         FROM items i
                         WHERE i.sellerID = ".$userID."
-                        AND i.endDate <= NOW()
+                        AND i.endDate <= NOW() AND i.itemRemoved = 0
                         ORDER BY i.endDate DESC
                         ";
     $statement2 = $conn->prepare($query_past_sales);

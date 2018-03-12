@@ -35,7 +35,7 @@
                                 GROUP BY itemID
                             ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.MaxBidAmount
                             LEFT JOIN items i ON i.itemID = b1.itemID
-                              WHERE i.endDate > NOW()
+                              WHERE i.endDate > NOW() AND i.itemRemoved = 0
                               ORDER BY b1.bidDate DESC";
 
     $statement1 = $conn->prepare($query_current_bids);
@@ -53,7 +53,7 @@
                                 GROUP BY itemID
                             ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.MaxBidAmount
                             LEFT JOIN items i ON i.itemID = b1.itemID
-                              WHERE i.endDate <= NOW()
+                              WHERE i.endDate <= NOW() AND i.itemRemoved = 0
                               ORDER BY i.endDate DESC";
 
     $statement2 = $conn->prepare($query_past_bids);

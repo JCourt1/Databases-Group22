@@ -18,7 +18,7 @@
 
 
             if (isset($_GET['itemID'])) {
-                $result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE itemID = " . $_GET['itemID']);
+                $result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE itemRemoved = 0 AND itemID = " . $_GET['itemID']);
                 $data1 = $result->fetch();
                 $itemID = $data1['itemID'];
                 $title = $data1['title'];
@@ -49,6 +49,8 @@
                 ?>
 
         <h1>Bidding ends on: <?php echo $endDate1['endDate']; ?></h1>
+
+        <?php if(!empty($res)) {?>
 
         <table class="table table-dark" >
             <thead>
@@ -83,11 +85,13 @@
 
                     ?>
 
+
             </tbody>
         </table>
 
+    <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>Item doesn't currently have any bids.</p>";} ?>
 
-        <form id="bidForm" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php echo $highestBid;?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
+        <form id="bidForm" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
             Bid: <input type="text" name="bid"><br>
             <input type="submit" value="Bid" >
         </form>

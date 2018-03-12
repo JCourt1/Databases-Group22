@@ -2,7 +2,7 @@
 
 
 
-        $siteroot = '/Databases-Group22/dbCoursework/'; 
+        $siteroot = '/Databases-Group22/dbCoursework/';
 
         include 'vendor\email.php';
 
@@ -16,13 +16,13 @@
             echo '<script type="text/javascript"> console.log("connection to MySQL failed"); </script>';
         }
 
-        
-              
+
+
         echo '<script type="text/javascript"> console.log("connection Ok"); </script>';
-      
+
         $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, notified
         FROM items
-        WHERE (endDate > NOW() ) AND (endDate < (NOW() + INTERVAL 1 DAY))");
+        WHERE itemRemoved = 0 AND (endDate > NOW() ) AND (endDate < (NOW() + INTERVAL 1 DAY))");
 
 
         $statement->execute();
@@ -32,13 +32,13 @@
         $subjects = array();
         $messages = array();
 
-   
+
 
         if(sizeof($res)>0){
 
         foreach ($res as $searchResult) {
 
-            
+
             $itemID = $searchResult['itemID'];
             $sellerID = $searchResult['sellerID'];
             $title = $searchResult['title'];
@@ -47,14 +47,14 @@
             $reservePrice = $searchResult['reservePrice'];
             $notified  = $searchResult['notified'];
 
-        
-        
-        
-      
 
 
 
-            
+
+
+
+
+
             $watchlist_querry = $conn->prepare("SELECT userID FROM watchlist_items WHERE itemID = ".$itemID." ");
 
             $watchlist_querry->execute();
@@ -62,7 +62,7 @@
 
             foreach($users as $user){
             $userID = $user['userID'];
-            $user_querry = $conn->prepare("SELECT firstName, lastName, email FROM users WHERE userID = ".$userID." ");    
+            $user_querry = $conn->prepare("SELECT firstName, lastName, email FROM users WHERE userID = ".$userID." ");
             $user_querry->execute();
             $user_details = $user_querry->fetch();
             $watcherFirstName = $user_details['firstName'];
@@ -75,16 +75,16 @@
             array_push($emails,$watcherEmail);
             array_push($subjects, $subject);
             array_push($messages, $message);
-            
+
 
             }
 
         }
-          
+
     }
-          
+
     send_email($emails, $subjects, $messages);
 
-       
+
 
         ?>

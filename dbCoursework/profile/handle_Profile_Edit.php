@@ -119,23 +119,42 @@ echo     '<script type="text/javascript">  window.location = "profile_details.ph
 }
 else{
     //update the database
-    $sql = "UPDATE users
-    SET firstName='".$firstName."', lastName='".$lastName."', phoneNumber='".$phone."', companyName='".$company."', profilePic='".$picture."', email='".$email."',
-     streetName='".$street."', buildingNumber='".$buildingNumber."', cityName='".$city."', countyName='".$county."', postCode='".$postCode."', username='".$username."' WHERE userID='".$_SESSION['user_ID']."' ";
-    //if the user typed a new password, update the database with the new password
+    $query = $conn->prepare("UPDATE users
+    SET firstName=:firstName, lastName=:lastName, phoneNumber=:phone, companyName=:company, profilePic=:picture, email=:email,
+     streetName=:street, buildingNumber=:buildingNumber, cityName=:city, countyName=:county, postCode=:postCode, username=:username WHERE userID= :user_ID ");
+     
+     $query->bindValue(':firstName',$firstName);
+     $query->bindValue(':lastName',$lastName);
+     $query->bindValue(':phone',$phone);
+     $query->bindValue(':company',$company);
+     $query->bindValue(':picture',$picture);
+     $query->bindValue(':email',$email);
+     $query->bindValue(':street',$street);
+     $query->bindValue(':buildingNumber',$buildingNumber);
+     $query->bindValue(':city',$city);
+     $query->bindValue(':county',$county);
+     $query->bindValue(':postCode',$postCode);
+     $query->bindValue(':username',$username);
+     $query->bindValue(':user_ID',$_SESSION['user_ID']);
+    
+     //if the user typed a new password, update the database with the new password
      if (isset($psw) && !$psw=='' ){
         $psw= sha1($psw);
-        $sql2 = "UPDATE users SET password='".$psw."' WHERE userID='".$_SESSION['user_ID']."' " ;
+        $query2 = $conn->prepare("UPDATE users SET password=:psw WHERE userID=:user_id " );
+        $query2->bindValue(':psw',$psw);
+        $query2->bindValue(':user_id',$_SESSION['user_ID']);
+        $query2->execute();
+
      }
 
 
-    if ($conn->query($sql)) {
+    if ($query->execute()) {
         //print the relevant message regarding the outcome of the insertion
         echo "<script type= 'text/javascript'>alert('User details updated Successfully. You will be redirected to the home page.');</script>";
     } else {
         echo "<script type= 'text/javascript'>alert('An error occured while updating user details.');</script>";
     }
     //navigate to the main page
-    echo   '<script type="text/javascript">  window.location = "profile_details.php"   </script>';
+    echo   '<script type="text/javascript">  window.location = "../dashboard/dashboard.php"   </script>';
 }
 ?>

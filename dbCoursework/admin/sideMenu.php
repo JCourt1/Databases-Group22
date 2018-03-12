@@ -12,7 +12,7 @@
 
       <h2>Category 1 </h2>
       <ul class="nav nav-sidebar">
-        <li><a href="enlisted_items.php"><span class="glyphicon glyphicon-chevron-right"></span>Enlisted Items</a> </li>
+        <li><a href="listed_items.php"><span class="glyphicon glyphicon-chevron-right"></span>Listed Items</a> </li>
         <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span> Subcategory 1</a> </li>
       </ul>
       <br>

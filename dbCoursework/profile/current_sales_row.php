@@ -27,6 +27,10 @@ $tableRow = '
             <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$row['itemID'].'">View in auction room</a>
         </td>
 
+        <td>
+            '.$row["itemViewCount"].'
+        </td>
+
 </tr>
 ';
 

@@ -67,8 +67,9 @@
                         <th scope="col">Category</th>
                         <th scope="col">Current Price</th>
                         <th scope="col">Reserve Price</th>
-                        <th scope="col">Item End Date</th>
+                        <th scope="col">End Date</th>
                         <th scope="col">Auction Room</th>
+                        <th scope="col">Views</th>
                     </tr>
                 </thead>
                 <tbody id="currentSalesTable">
@@ -113,7 +114,8 @@
                         <th scope="col">Item Sold?</th>
                         <th scope="col">Buyer Email</th>
                         <th scope="col">End Price</th>
-                        <th scope="col">Item End Date</th>
+                        <th scope="col">Auction End Date</th>
+                        <th scope="col">Give Feedback</th>
                     </tr>
                 </thead>
                 <tbody id="pastSalesTable">
@@ -136,22 +138,62 @@
                             $endPrice = 0;
                             $itemSold = "No";
                             $buyerEmail = "-";
+                            $feedbackHTML = "-";
                         } else if ($currentBid['bidAmount'] < $row['reservePrice']){
                             // RESERVE NOT MET
                             $endPrice = $currentBid['bidAmount'].", reserve not met";
                             $itemSold = "No";
                             $buyerEmail = "-";
+                            $feedbackHTML = "-";
                         } else {
                             // ITEM SOLD SUCCESSFULLY
                             $endPrice = $currentBid['bidAmount'];
                             $itemSold = "Yes";
 
-                            $email_query = "SELECT email FROM users WHERE userID = ".$currentBid['buyerID'];
+                            $email_query = "SELECT email, userID FROM users WHERE userID = ".$currentBid['buyerID'];
                             $email_statement = $conn->prepare($email_query);
                             $email_statement->execute();
                             $email = $email_statement->fetch();
 
                             $buyerEmail = $email['email'];
+                            $buyerID = $email['userID'];
+
+                            // Get feedback row from DB:
+                            $feedback_query = "SELECT communicationID, isPositive
+                                            FROM communication
+                                            WHERE communicationType = 'Feedback'
+                                            AND senderID = ".$userID."
+                                            AND receiverID = ".$buyerID."
+                                            AND itemID = ".$row['itemID'];
+                            $feedback_statement = $conn->prepare($feedback_query);
+                            $feedback_statement->execute();
+                            $feedback = $feedback_statement->fetch();
+
+
+                            // Check if the communication exists:
+                            if(!empty($feedback['communicationID'])){
+
+                                if(strlen($feedback['isPositive']) < 1) {
+                                    $from = "sales_page";
+                                    $feedbackHTML = '<div class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Give Feedback</a>
+                                                        <div class="dropdown-menu" style="padding: 15px;">
+                                                            <form class="form-horizontal" method="post" action="handle_feedback.php?from='.$from.'&senderID='.$userID.'&receiverID='.$buyerID.'&itemID='.$row['itemID'].'" accept-charset="UTF-8">
+                                                              <button class="btn btn-primary" type="submit" name="feedback" value="1"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                                                              <button class="btn btn-danger" type="submit" name="feedback" value="0"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+                                                            </form>
+                                                        </div>
+                                                    </div>';
+
+                                } else if ($feedback['isPositive'] == 0){
+                                    // NEGATIVE FEEDBACK WAS GIVEN
+                                    $feedbackHTML = "<span style='color: red;' class='glyphicon glyphicon-thumbs-down'></span>";
+                                } else if ($feedback['isPositive'] == 1){
+                                    // POSITIVE FEEDBACK WAS GIVEN
+                                    $feedbackHTML = "<span style='color: green;' class='glyphicon glyphicon-thumbs-up'></span>";
+                                }
+                            } else {
+                                $feedbackHTML = "Not available";
+                            }
                         }
 
                         // Get category:

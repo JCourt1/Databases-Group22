@@ -60,30 +60,34 @@
                         $seller_query->execute();
                         $seller = $seller_query->fetch();
 
-                        if (!($reservePrice > $bidAmount)){
+                            // THE ITEM WAS SOLD
+                            if ($reservePrice <= $bidAmount){
 
-                            // EMAILS
-                            $sellerFirstName = $seller['firstName'];
-                            $sellerLastName = $seller['lastName'];
-                            $sellerEmail = $seller['email'];
-                            $subject_seller = 'Your item has been sold';
-                            $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', Your item: \''.$title.'\' has been sold to '.$buyerFirstName.' '.$buyerLastName.' for the price of £'.$bidAmount.'. This is his/her email address: '.$buyerEmail.'';
-                            $subject_buyer = 'You won the bidding!';
-                            $message_buyer =  'Dear '.$sellerFirstName.' '.$sellerLastName.', Congratulations you have bought the item: \''.$title.'\' for the price of £'.$bidAmount.'. This is the seller\'s email address: '.$sellerEmail.' .';
-                            array_push($emails,$sellerEmail, $buyerEmail);
-                            array_push($subjects, $subject_seller,$subject_buyer);
-                            array_push($messages, $message_seller, $message_buyer);
+                                // EMAILS
+                                $sellerFirstName = $seller['firstName'];
+                                $sellerLastName = $seller['lastName'];
+                                $sellerEmail = $seller['email'];
+                                $subject_seller = 'Your item has been sold';
+                                $message_seller = 'Dear '.$sellerFirstName.' '.$sellerLastName.', Your item: \''.$title.'\' has been sold to '.$buyerFirstName.' '.$buyerLastName.' for the price of £'.$bidAmount.'. This is his/her email address: '.$buyerEmail.'';
+                                $subject_buyer = 'You won the bidding!';
+                                $message_buyer =  'Dear '.$sellerFirstName.' '.$sellerLastName.', Congratulations you have bought the item: \''.$title.'\' for the price of £'.$bidAmount.'. This is the seller\'s email address: '.$sellerEmail.' .';
+                                array_push($emails, $sellerEmail, $buyerEmail);
+                                array_push($subjects, $subject_seller, $subject_buyer);
+                                array_push($messages, $message_seller, $message_buyer);
 
-                            // FEEDBACK
-                            // buyer gives feedback:
-                            $conn->query('INSERT INTO communication (communicationType, senderID, receiverID, itemID, message) VALUES ("Feedback", '.$buyerID.', '.$sellerID.', '.$itemID.', "Feedback")');
-                            // seller gives feedback:
-                            $conn->query('INSERT INTO communication (communicationType, senderID, receiverID, itemID, message) VALUES ("Feedback", '.$sellerID.', '.$buyerID.', '.$itemID.', "Feedback")');
+                                // FEEDBACK
+                                // buyer gives feedback:
+                                $conn->query('INSERT INTO communication (communicationType, senderID, receiverID, itemID, message) VALUES ("Feedback", '.$buyerID.', '.$sellerID.', '.$itemID.', "Feedback")');
+                                // seller gives feedback:
+                                $conn->query('INSERT INTO communication (communicationType, senderID, receiverID, itemID, message) VALUES ("Feedback", '.$sellerID.', '.$buyerID.', '.$itemID.', "Feedback")');
 
+                            } else {
+                                // LET THE SELLER KNOW THEY DIDN'T SELL THE ITEM
+                            }
 
                             $conn ->query("UPDATE items SET  notified = 1 WHERE itemID = $itemID");
 
-                        }
+
                     }
                 }
             }

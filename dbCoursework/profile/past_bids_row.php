@@ -27,6 +27,10 @@ $tableRow = '
             '.$sellerEmail.'
         </td>
 
+        <td>
+            '.$feedbackHTML.'
+        </td>
+
 </tr>
 ';
 

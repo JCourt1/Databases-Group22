@@ -29,12 +29,14 @@
     $query_watchlist = "SELECT i.*
                             FROM watchlist_items w
                             LEFT JOIN items i ON i.itemID = w.itemID
-                            WHERE w.userID = 1
+                            WHERE w.userID = ".$userID."
                             ORDER BY i.endDate ASC";
     $statement1 = $conn->prepare($query_watchlist);
     $statement1->execute();
     $res_watchlist = $statement1->fetchAll();
      ?>
+
+
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 

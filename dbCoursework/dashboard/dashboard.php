@@ -23,12 +23,11 @@ if (!isset($_SESSION['user_ID'])) {
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-        <h1 class="page-header" style="display:inline-block">Dashboard</h1>
+        <h1 class="page-header"> Dashboard</h1>
 
-        <h3 style="display:inline-block; float: right"><span class="glyphicon glyphicon-menu-down"></span>  Most Popular Items</h3>
+        <h3> Most Popular Items</h3>
 
-        <div class="container-fluid panel panel-success" style="border: 3px solid transparent;
-          border-color: #b5c1cb;">
+        <div class="container-fluid panel panel-success">
           <?php include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/commonElements/browsePopularItems.php";?>
         </div>
 

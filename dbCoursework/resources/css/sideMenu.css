@@ -3,7 +3,7 @@
   font-family: verdana;
   font-size: 12px;
   font-weight: 200;
-  background-color: #bbc4cb;
+  background-color: #3c3f41;
   position: fixed;
   top: 0px;
 
@@ -102,7 +102,7 @@ li:after {
 }
 .nav-side-menu li a {
   text-decoration: none;
-  color: #291809;
+  color: #fefefe;
 }
 .nav-side-menu li a i {
   padding-left: 10px;
@@ -111,7 +111,7 @@ li:after {
 }
 .nav-side-menu li:hover {
   border-left: 3px solid #d19b3d;
-  background-color: #a5a6ff;
+  background-color: #222222;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
@@ -157,6 +157,6 @@ li:after {
 }
 
 h2 {
-    color: #14142d;
+    color: #96b693;
     padding-left: 15px;
 }

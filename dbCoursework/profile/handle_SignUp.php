@@ -1,6 +1,6 @@
 
 
-<?php include('../dashboard/baseHead.php'); ?>
+<?php include('baseHead.php'); ?>
 
 <body>
     <?php include('../dashboard/baseHeader.php'); ?>

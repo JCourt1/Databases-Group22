@@ -50,6 +50,8 @@
 
         <h1>Bidding ends on: <?php echo $endDate1['endDate']; ?></h1>
 
+        <?php if(!empty($res)) {?>
+
         <table class="table table-dark" >
             <thead>
             <tr scope="row">
@@ -83,11 +85,13 @@
 
                     ?>
 
+
             </tbody>
         </table>
 
+    <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>Item doesn't currently have any bids.</p>";} ?>
 
-        <form id="bidForm" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php echo $highestBid;?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
+        <form id="bidForm" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
             Bid: <input type="text" name="bid"><br>
             <input type="submit" value="Bid" >
         </form>

@@ -5,7 +5,7 @@
 
         $siteroot = '/Databases-Group22/dbCoursework/';
 
-        include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
+        include 'vendor\email.php';
 
 
 

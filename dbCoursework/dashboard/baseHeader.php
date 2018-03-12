@@ -72,7 +72,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
 
 
-            <li><a class='blueTop' style='color: #337ab7;' href="<?php echo $siteroot ?>dashboard/dashboard.php">Dashboard</a></li>
+            <li><a class='blueTop' style='color: #bbc4cb;' href="<?php echo $siteroot ?>dashboard/dashboard.php">Dashboard</a></li>
             <li><a class='whiteTop' style='color: #b3b7b2;' href="../profile/logout.php">Log out</a></li>
             </ul>
         <!-- else  if the user hasn't yet logged in -->
@@ -134,10 +134,6 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
 
 </nav>
-
-<div class="emptyDiv">
-
-</div>
 
 
 
@@ -226,9 +222,6 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 </div>
 
 
-<div class="liveNotifications">
-    <p>Hello</p>
-</div>
 
 
 <section class="section-alert sa1">
@@ -259,15 +252,6 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 </div>
 </section>
 
-
-<script>
-
-    $('.liveNotifications').click(function(){
-      $('.alert-element').toggleClass('is-active');
-    });
-
-
-</script>
 
 
 

@@ -17,16 +17,29 @@ catch (Exception $e) {
 
 
 $password = sha1($_POST['password']);
-
-
 $query = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ?");
-
-
 $query->execute([$_POST['username'], $password]);
 
 
+$adminquery = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ? AND usertype = 'admin'");
+$adminquery->execute([$_POST['username'], $password]);
 
-if ($query->rowCount()) {
+if ($adminquery->rowCount()) {
+
+    $row = $adminquery->fetch();
+    $uName = $row['username'];
+    $id = $row['userID'];
+    $_SESSION['login_user'] = $uName;
+    $_SESSION['admin_ID'] = $id;
+    $_SESSION['user_ID'] = $id;
+
+    include "../notifications/notificationsAtLogin.php";
+
+    $adminPage = 'http://' . $_SERVER['HTTP_HOST'] . $siteroot . '/admin/admin.php';
+     header('Location: ' . $adminPage);
+
+
+} else if ($query->rowCount()) {
 
 
     $row = $query->fetch();
@@ -81,17 +94,7 @@ if ($query->rowCount()) {
 
     $_SESSION['myItems'] = $res_current_sales;
 
-
-
-
     include "../notifications/notificationsAtLogin.php";
-
-
-
-
-
-
-
 
 
 

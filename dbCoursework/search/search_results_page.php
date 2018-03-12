@@ -15,7 +15,7 @@
 
     include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/baseHeader.php";
 
-    //include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
+    include $_SERVER['DOCUMENT_ROOT']."$siteroot/dashboard/sideMenu.php";
 
     // SORTING:
     $sql_sort = "ORDER BY i.endDate ASC";

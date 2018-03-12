@@ -1,9 +1,10 @@
 <?php session_start();
 
-include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
 
-$siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
+$siteroot = '/Databases-Group22/dbCoursework/';
+include "../../vendor/email.php";
+?>
 
 <?php
 

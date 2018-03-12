@@ -139,44 +139,49 @@
         });
 
         </script>
-    </div>
-            <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-            <panel>
-            <h1 class="text-center" >Other items with most recent bids</h1>
-            </panel>
+
+            </div>
+
+                <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                    <panel>
+                        <h3 class="text-center">Customers who placed bids on the same items as you were also interested in:</h3>
+                    </panel>
+
+                    <container>
+                       <?php include('carousel.php');
+
+                       $itemID = -1;
+                       if (isset($_GET['itemID'])) {
+                           $itemID = $_GET['itemID'];
+                       }
+
+                       printCollaborativeFilteredCarousel($_SESSION['user_ID'], $itemID, $conn);
+                       ?>
+                    </container>
 
 <?php } else {?>
 
-                </div>
+            </div>
+                <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                    <panel>
+                        <h1 class="text-center" >Items with most recent bids:</h1>
+                    </panel>
 
-            <footer class="footer col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-            <panel>
-            <h1 class="text-center">Items with most recent bids</h1>
-            </panel>
+                    <container>
+                       <?php include('carousel.php');
 
+                       $itemID = -1;
+                       if (isset($_GET['itemID'])) {
+                           $itemID = $_GET['itemID'];
+                       }
+
+                       printCarousel($itemID, $conn);
+                       ?>
+                    </container>
 
 <?php }?>
 
-
-
-            <container>
-               <?php include('carousel.php');
-
-               $itemID = -1;
-               if (isset($_GET['itemID'])) {
-                   $itemID = $_GET['itemID'];
-               }
-
-               printCarousel($itemID, $conn);
-               ?>
-            </container>
-
-            </footer>
-
-
-
-
-
+                </footer>
 
            <?php include("../dashboard/baseFooter.php");
 

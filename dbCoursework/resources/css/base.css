@@ -299,6 +299,10 @@ width: 12.5%;
     width: 260px;
   margin-bottom: 30px;
 }
+.placeholderCarousel {
+  margin-bottom: 30px;
+    text-align: center;
+}
 .placeholder img {
   /*display: inline-block;*/
   border-radius: 50%;

@@ -146,7 +146,9 @@ width: 12.5%;
 }
 
 .indexItems {
-    /*margin: auto;*/
+    left:4%;
+
+    margin: auto;
     top: 60px;
 }
 
@@ -295,10 +297,19 @@ width: 12.5%;
   margin-bottom: 0;
 }
 .placeholder {
-    height: 300px;
-    width: 260px;
+    width: 265px;
+    height: 270px;
+
   margin-bottom: 30px;
 }
+
+.placeholder {
+    width: 265px;
+    height: 270px;
+
+  margin-bottom: 30px;
+}
+
 .placeholderCarousel {
   margin-bottom: 30px;
     text-align: center;
@@ -332,20 +343,21 @@ width: 12.5%;
   }
 
   .footer {
-    position: relative;
-    bottom: 0;
+    position: sticky;
     padding: 0px;
   }
 
-@media (min-height: 1050px) {
+@media (min-height: 1150px) {
 
   .footer {
-     position:fixed;
-     bottom:0;
+     position: sticky;
      padding: 0px;
    }
 
 
+}
+.centered {
+    text-align: center;
 }
 
   .liveNotifications {

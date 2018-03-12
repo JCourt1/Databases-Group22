@@ -52,7 +52,10 @@
 
         <?php if(!empty($res)) {?>
 
-        <table class="table table-dark" >
+        <table id="table_id" class="table table-dark" data-pagination="true"
+                   data-id-field="name"
+                   data-page-list="[5, 10, 25, 50, 100, ALL]"
+                   data-page-size="5">
             <thead>
             <tr scope="row">
                 <th scope="col">
@@ -67,6 +70,7 @@
             </tr>
             </thead>
             <tbody id="bidTable">
+
 
                 <?php
 
@@ -91,10 +95,12 @@
 
     <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>Item doesn't currently have any bids.</p>";} ?>
 
-        <form id="bidForm" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
-            Bid: <input type="text" name="bid"><br>
+        <form id="bidForm" class="centered" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
+            Type in an amount: <input type="text" name="bid">
             <input type="submit" value="Bid" >
         </form>
+        <br>
+        <br>
 
 
     <script>
@@ -190,3 +196,11 @@
              </body>
 
 </html>
+
+<script>
+
+    $.noConflict();
+    $(document).ready( function () {
+        $('#table_id').DataTable( {"pageLength": 10});
+    } );
+</script>

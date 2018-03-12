@@ -23,7 +23,7 @@ if (isset($_SESSION['user_ID'])) {
 
 <?php include 'baseHeader.php'; ?>
 
-<div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main indexItems">
+<div class=" col-sm-12 col-md-12 col-lg-12 main indexItems">
 <?php include 'commonElements/browsePopularItems.php';?>
 </div>
 

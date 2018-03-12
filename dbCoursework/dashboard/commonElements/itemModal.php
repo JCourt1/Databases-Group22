@@ -96,7 +96,7 @@ if (!empty($buyerID)){
 }
 
 // THIS IS THE FILE FOR THE ITEM MODAL.
-$chaine = '<div class="col-xs-6 col-sm-3 placeholder modalCentered">
+$chaine = '<div class="col-xs-6 col-sm-3 col-m-3 col-lg-3 placeholder modalCentered">
 
 
     <!-- Modal -->

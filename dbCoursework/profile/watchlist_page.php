@@ -46,7 +46,7 @@
 
             <?php if(!empty($res_watchlist)){ ?>
             <!-- TABLE OF ITEMS IN WATCHLIST -->
-            <table class="table table-dark" >
+            <table class="table table-dark pageableTable" >
                 <thead>
                     <tr scope="row">
                         <th scope="col">Item Name</th>
@@ -83,3 +83,12 @@
   </body>
 
 </html>
+
+<script>
+
+    $.noConflict();
+    $(document).ready( function () {
+        $('.pageableTable').DataTable(
+            {"pageLength": 10, "order": [[ 2, "asc" ]], searching: false, "lengthChange": false});
+    } );
+</script>

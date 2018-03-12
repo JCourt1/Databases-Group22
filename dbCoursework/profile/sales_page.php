@@ -61,7 +61,7 @@
 
             <?php if(!empty($res_current_sales)){ ?>
             <!-- TABLE OF ITEMS CURRENTLY ON SALE -->
-            <table class="table table-dark" >
+            <table class="table table-dark pageableTable" >
                 <thead>
                     <tr scope="row">
                         <th scope="col">Item Name</th>
@@ -110,7 +110,7 @@
             <?php if(!empty($res_past_sales)){ ?>
 
             <!-- TABLE OF ITEMS HISTORICALLY ON SALE -->
-            <table class="table table-dark" >
+            <table class="table table-dark pageableTable" >
                 <thead>
                     <tr scope="row">
                         <th scope="col">Item Name</th>
@@ -222,3 +222,12 @@
   </body>
 
 </html>
+
+<script>
+
+    $.noConflict();
+    $(document).ready( function () {
+        $('.pageableTable').DataTable(
+            {"pageLength": 10, "order": [[ 4, "asc" ]], searching: false, "lengthChange": false});
+    } );
+</script>

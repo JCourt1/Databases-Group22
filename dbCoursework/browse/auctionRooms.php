@@ -96,7 +96,7 @@
     <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>Item doesn't currently have any bids.</p>";} ?>
 
         <form id="bidForm" class="centered" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
-            Type in an amount: <input type="text" name="bid">
+            Make a bid: <input type="text" name="bid">
             <input type="submit" value="Bid" >
         </form>
         <br>
@@ -201,6 +201,7 @@
 
     $.noConflict();
     $(document).ready( function () {
-        $('#table_id').DataTable( {"pageLength": 10, "order": [[ 1, "desc" ]]});
+        $('#table_id').DataTable(
+            {"pageLength": 10, "order": [[ 1, "desc" ]], searching: false, "lengthChange": false});
     } );
 </script>

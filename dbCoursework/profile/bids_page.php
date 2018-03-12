@@ -73,7 +73,7 @@
             <?php if(!empty($res_current_bids)) { ?>
 
             <!-- TABLE OF ITEMS CURRENTLY BIDDING ON -->
-            <table class="table table-dark" >
+            <table class="table table-dark pageableTable">
                 <thead>
                     <tr scope="row">
                         <th scope="col">Item Name</th>
@@ -127,12 +127,12 @@
         <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>You are not currently bidding on anything.</p>";} ?>
         </div>
 
-        <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
+        <div class="container-fluid panel panel-success " style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
             <h3 class="page-header">Past bids</h3>
 
             <?php if(!empty($res_past_bids)){ ?>
             <!-- TABLE OF ITEMS HISTORICALLY BID ON -->
-            <table class="table table-dark" >
+            <table class="table table-dark pageableTable" >
                 <thead>
                     <tr scope="row">
                         <th scope="col">Item Name</th>
@@ -250,3 +250,12 @@
   </body>
 
 </html>
+
+<script>
+
+    $.noConflict();
+    $(document).ready( function () {
+        $('.pageableTable').DataTable(
+            {"pageLength": 10, "order": [[ 3, "desc" ]], searching: false, "lengthChange": false});
+    } );
+</script>

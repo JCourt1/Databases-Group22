@@ -38,7 +38,9 @@
     $positive = 0;
     $total = 0;
     foreach ($res as $feedback) {
-        $positive += $feedback['isPositive'];
+        if($feedback['isPositive'] != 0){
+            $positive += 1;
+        }
         $total += 1;
     }
 
@@ -48,6 +50,8 @@
     if($total > 0){
         $percentage = ($positive * 1.0)/$total;
         $percentage = round($percentage*100, 1);
+    } else {
+        $percentage = 0;
     }
 
     ?>

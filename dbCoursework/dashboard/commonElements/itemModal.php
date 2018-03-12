@@ -76,12 +76,22 @@ if (!empty($buyerID)){
     $statement->execute();
     $res = $statement->fetch();
 
-    if (empty($res['itemID']) || empty($res['userID'])) {
-        // Item not currently in watchlist
-        $watchlist_line = "<a>Add to watchlist</a>";
+    // Check that the item isn't the user's own item
+    $seller_check = "SELECT sellerID FROM items WHERE itemID = ".$itemID;
+    $statement = $conn->prepare($seller_check);
+    $statement->execute();
+    $seller = $statement->fetch();
+
+    if ($buyerID != $seller['sellerID']){
+        if (empty($res['itemID']) || empty($res['userID'])) {
+            // Item not currently in watchlist
+            $watchlist_line = "<a>Add to watchlist</a>";
+        } else {
+            // Item is currently in watchlist
+            $watchlist_line = "<a>Remove from watchlist</a>";
+        }
     } else {
-        // Item is currently in watchlist
-        $watchlist_line = "<a>Remove from watchlist</a>";
+        $watchlist_line = "<p></p>";
     }
 }
 

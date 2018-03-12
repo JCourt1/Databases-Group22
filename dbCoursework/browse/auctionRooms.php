@@ -18,7 +18,7 @@
 
 
             if (isset($_GET['itemID'])) {
-                $result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE itemID = " . $_GET['itemID']);
+                $result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE itemRemoved = 0 AND itemID = " . $_GET['itemID']);
                 $data1 = $result->fetch();
                 $itemID = $data1['itemID'];
                 $title = $data1['title'];

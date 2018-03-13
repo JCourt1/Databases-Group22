@@ -17,10 +17,9 @@ $itemID = $_GET['itemID'];
 $isPositive = $_POST['feedback'];
 $from = $_GET['from'];
 
-$feedback_query = $conn->prepare("UPDATE communication
+$feedback_query = $conn->prepare("UPDATE feedback
                     SET isPositive = ?
-                    WHERE communicationType = 'Feedback'
-                    AND senderID = ?
+                    WHERE senderID = ?
                     AND receiverID = ?
                     AND itemID = ?");
 

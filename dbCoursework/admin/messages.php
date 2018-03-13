@@ -28,7 +28,6 @@
         $query = "SELECT *   FROM items";
         $statement = $conn->prepare($query);
         $statement->execute();
-
     if(!empty($statement)) { ?>
 
       <!-- TABLE OF ITEMS CURRENTLY BIDDING ON -->
@@ -50,11 +49,6 @@
 
                 foreach ($statement as $row)
                 {
-                    // Get category:
-                    $cat_query = "SELECT categoryName FROM categories WHERE categoryID = ".$row['categoryID'];
-                    $statement2 = $conn->prepare($cat_query);
-                    $statement2->execute();
-                    $category = $statement2->fetch();
                     if(!$row['itemRemoved']){
                     include "items_row.php";
                     }

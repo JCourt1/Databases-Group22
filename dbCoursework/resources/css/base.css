@@ -328,6 +328,9 @@ width: 12.5%;
     padding: 0px;
 }
 
+.carouselIMG {
+    border-radius: 50%;
+}
 
 
   .sitename {

@@ -101,16 +101,10 @@ if ($adminquery->rowCount()) {
  $dashboard = 'http://' . $_SERVER['HTTP_HOST'] . $siteroot . '/dashboard/dashboard.php';
  header('Location: ' . $dashboard);
 } else {
- echo "<script type='text/javascript'>alert('Invalid username or password, try again');</script>";
+
+ echo "<script type='text/javascript'>alert('Invalid username or password, try again');
+window.location.href = '../dashboard/index.php';</script>";
  
-                                                     
-                                                     
-    $failed = 'http://' . $_SERVER['HTTP_HOST'] .
-        $siteroot . '/dashboard/index.php';
-
-
-
-     header('Location: ' . $failed);
 }
 
 

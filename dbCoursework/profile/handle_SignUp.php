@@ -14,11 +14,11 @@
 
 
 
-<?php 
-$siteroot = '/Databases-Group22/dbCoursework/'; 
+<?php
+$siteroot = '/Databases-Group22/dbCoursework/';
 //establish the connection
 try {
-    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
                     "team22@ibe-database",
                     "ILoveCS17");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -36,7 +36,7 @@ $cpassword = $_POST['psw-repeat'];
 //validation check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $regError = "Invalid email format. Please try again";
-}elseif(!empty($password) ) 
+}elseif(!empty($password) )
 {
     if (strlen($password) <= '8') {
         $regError = "Your Password Must Contain At Least 8 Characters! Please try again.";
@@ -71,11 +71,25 @@ else{
     //update the database
 
     $password = sha1($password);
-    $sql = "INSERT INTO users ( username, password,email)
-    VALUES ('".$username."','".$password."','".$email."' )";
+    // $sql = "INSERT INTO users (username, password,email)
+    // VALUES ('".$username."','".$password."','".$email."' )";
+
+
     //make an sql query and take the user ID from the DB
-    if ($conn->query($sql))
-    {
+    try {
+        $conn->beginTransaction();
+
+        $userRegistration = $conn->prepare("INSERT INTO users (username, password, email)
+                                            VALUES (?, ?, ?)");
+        $userRegistration->execute([$username, $password, $email]);
+
+        $lastID = $conn->lastInsertId();
+
+        $insertClient = $conn->prepare("INSERT INTO clients (userID) VALUES (".$lastID.")");
+
+        $insertClient->execute();
+        $conn->commit();
+
         $query = $conn->prepare("SELECT userID, username FROM users WHERE username = :username AND password = :password");
         $query->bindValue(':username',$_POST['username']);
         $query->bindValue(':password',$password);
@@ -92,13 +106,13 @@ else{
         //print the relevant message regarding the outcome of the insertion
         echo "<script type= 'text/javascript'>alert('User created Successfully. You will be redirected to the home page.');</script>";
     }
-    else
+    catch (Exception $e)
     {
-        echo "<script type= 'text/javascript'>alert('Item not successfully inserted.');</script>";
+        echo $e->getMessage();
+        $conn->rollBack();
+        echo "<script type= 'text/javascript'>alert('Failed to create profile.');</script>";
     }
     //navigate to the main page
     echo   '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
 }
 ?>
-
-

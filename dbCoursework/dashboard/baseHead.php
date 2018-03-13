@@ -9,7 +9,7 @@
 
 <!--    --><?php
 //        $servername = "ibe-database.mysql.database.azure.com"  ;
-//        $dbname = "ibe_db" ;
+//        $dbname = "ibe_dbv3" ;
 //        $username =  "team22@ibe-database" ;
 //        $password =  "ILoveCS17" ;
 //    ?>

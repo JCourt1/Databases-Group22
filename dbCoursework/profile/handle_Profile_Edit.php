@@ -3,8 +3,8 @@
 <?php include('../dashboard/baseHead.php'); ?>
 
 <body>
-    <?php //include('../dashboard/baseHeader.php'); ?>
-    <?php //include('../dashboard/sideMenu.php'); ?>
+    <?php include('../dashboard/baseHeader.php'); ?>
+    <?php include('../dashboard/sideMenu.php'); ?>
 
 </body>
 
@@ -161,9 +161,9 @@ else{
         echo "<script type= 'text/javascript'>alert('User details updated Successfully. You will be redirected to the home page.');</script>";
     } catch (Exception $e) {
         echo $e->getMessage();
-        //echo "<script type= 'text/javascript'>alert('An error occured while updating user details.');</script>";
+        echo "<script type= 'text/javascript'>alert('An error occured while updating user details.');</script>";
     }
     //navigate to the main page
-    //echo   '<script type="text/javascript">  window.location = "../dashboard/dashboard.php"   </script>';
+    echo   '<script type="text/javascript">  window.location = "../dashboard/dashboard.php"   </script>';
 }
 ?>

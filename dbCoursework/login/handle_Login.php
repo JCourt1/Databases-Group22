@@ -35,7 +35,7 @@ if ($adminquery->rowCount()) {
 
     include "../notifications/notificationsAtLogin.php";
 
-    $adminPage = 'http://' . $_SERVER['HTTP_HOST'] . $siteroot . '/admin/admin.php';
+    $adminPage = 'http://' . $_SERVER['HTTP_HOST'] . $siteroot . '/admin/listed_items.php';
      header('Location: ' . $adminPage);
 
 

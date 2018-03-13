@@ -13,7 +13,7 @@
       <h2>Menu </h2>
       <ul class="nav nav-sidebar">
         <li><a href="listed_items.php"><span class="glyphicon glyphicon-chevron-right"></span>Listed Items</a> </li>
-        <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span>Messages from users</a></li>
+        <li><a href="messages.php"><span class="glyphicon glyphicon-chevron-right"></span>Messages from users</a></li>
       </ul>
       <br>
         <br>

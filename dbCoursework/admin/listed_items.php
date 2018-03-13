@@ -32,7 +32,7 @@
     if(!empty($statement)) { ?>
 
       <!-- TABLE OF ITEMS CURRENTLY BIDDING ON -->
-      <table class="table table-dark" >
+      <table class="table table-dark pageableTable"  >
           <thead>
               <tr scope="row">
                   <th scope="col">Item Name</th>
@@ -77,6 +77,15 @@
   </body>
 
 </html>
+
+<script>
+
+$.noConflict();
+$(document).ready( function () {
+    $('.pageableTable').DataTable(
+        {"pageLength": 10, "order": [[ 3, "desc" ]], searching: false, "lengthChange": false});
+} );
+</script>
 
 
 

@@ -5,7 +5,7 @@
 
         $siteroot = '/Databases-Group22/dbCoursework/';
 
-        include 'vendor\email.php';
+        include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
 
 
 
@@ -53,19 +53,20 @@
             $reservePrice  = $searchResult['reservePrice'];
             $itemViewcount = $searchResult['itemViewCount'];
 
-
+          
 
 
 
             $bid_query = $conn->prepare("SELECT  bidAmount, bidDate
             FROM bids b1
             INNER JOIN (
-            SELECT MAX(bidAmount) bidAmount, itemID
+            SELECT MAX(bidAmount) bidAmountA, itemID
             FROM bids
             GROUP BY itemID
-            ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmount
+            ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmountA
             WHERE b1.itemID = ".$itemID."
             ");
+
             $bid_query->execute();
             $bid = $bid_query->fetch();
 

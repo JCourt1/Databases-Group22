@@ -87,10 +87,10 @@ include "../../vendor/email.php";
                 $old_bid_query = $conn->prepare("SELECT  buyerID, bidAmount, bidDate
                 FROM bids b1
                 INNER JOIN (
-                SELECT MAX(bidAmount) bidAmount, itemID
+                SELECT MAX(bidAmount) bidAmountA, itemID
                 FROM bids
                 GROUP BY itemID
-                ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmount
+                ) b2 ON b1.itemID = b2.itemID AND b1.bidAmount = b2.bidAmountA
                 WHERE b1.itemID = ".$itemID."
                 ");
                 $old_bid_query->execute();
@@ -99,6 +99,9 @@ include "../../vendor/email.php";
                 $previous_buyerID = $old_bid['buyerID'];
                 $previous_bidAmount = $old_bid['bidAmount'];
                 $previous_bidDate = $old_bid['bidDate'];
+
+
+
 
 
                 //getting thhe previous highest bidder details

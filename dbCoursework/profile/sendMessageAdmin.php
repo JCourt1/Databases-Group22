@@ -49,10 +49,13 @@ echo '<script type="text/javascript"> console.log("sendMessageAdmin.php called")
 
             $conn->commit();
 
+
         } catch (Exception $e) {
                  echo $e->getMessage();
                  $conn->rollBack();
         }
+
+
 
 
 

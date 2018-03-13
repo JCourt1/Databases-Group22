@@ -38,17 +38,10 @@
       <br>
       <br>
       <br>
-  
-   
 
-
-
-      <ul class="nav nav-sidebar">
-      <li><a href="<?php echo $siteroot; ?>profile/help.php"><span class="glyphicon glyphicon-exclamation-sign"></span> Help</a></li>
-  </ul>
-
-
-
+    <ul class="nav nav-sidebar">
+        <li><a href="<?php echo $siteroot; ?>profile/help.php"><span class="glyphicon glyphicon-exclamation-sign"></span> Help and feeback</a></li>
+    </ul>
 
     </div>
   </div>

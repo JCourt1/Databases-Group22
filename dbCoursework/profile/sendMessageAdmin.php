@@ -24,6 +24,7 @@ echo '<script type="text/javascript"> console.log("sendMessageAdmin.php called")
         //store the variables that come from the form
         $subject = $_POST['Subject'];
         $message = $_POST['Message'];
+        $messageSubject = $_POST['Subject'];
         $userID = $_SESSION['user_ID'];
 
 

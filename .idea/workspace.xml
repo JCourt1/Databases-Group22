@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f65ab4a-1b44-4639-958d-09a8b4927060" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php" afterPath="$PROJECT_DIR$/dbCoursework/browse/auctionRooms.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/browse/carousel.php" afterPath="$PROJECT_DIR$/dbCoursework/browse/carousel.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/browsePopularItems.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/browsePopularItems.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/itemModal.php" afterPath="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/itemModal.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/login/handle_Login.php" afterPath="$PROJECT_DIR$/dbCoursework/login/handle_Login.php" />
-      <change beforePath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" afterPath="$PROJECT_DIR$/dbCoursework/resources/css/base.css" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/dbCoursework/notifications/notificationWriter.php" afterPath="$PROJECT_DIR$/dbCoursework/notifications/notificationWriter.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,51 +28,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="handle_Login.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dbCoursework/login/handle_Login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="973">
-              <caret line="106" column="1" lean-forward="false" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
-              <folding>
-                <marker date="1520900969000" expanded="true" signature="419:489" ph="SELECT userI... users" />
-                <marker date="1520900969000" expanded="true" signature="575:668" ph="SELECT userI... users" />
-                <marker date="1520900969000" expanded="true" signature="1654:2473" ph="SELECT b1.*,... bids" />
-                <marker date="1520900969000" expanded="true" signature="1878:2093" ph="SELECT max(b... bids" />
-                <marker date="1520900969000" expanded="true" signature="2037:2093" ph="SELECT max(b... bids" />
-                <marker date="1520900969000" expanded="true" signature="2804:3026" ph="SELECT * FRO... items" />
-                <marker date="1520900969000" expanded="true" signature="3479:3586" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addBidMaster.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dbCoursework/dashboard/addBidMaster.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="831">
-              <caret line="196" column="51" lean-forward="false" selection-start-line="196" selection-start-column="16" selection-end-line="196" selection-end-column="51" />
-              <folding>
-                <marker date="1520808498000" expanded="true" signature="640:689" ph="SELECT selle... items" />
-                <marker date="1520808498000" expanded="true" signature="2447:2555" ph="SELECT first... users" />
-                <marker date="1520808498000" expanded="true" signature="2923:3243" ph="SELECT buyer... bids" />
-                <marker date="1520808498000" expanded="true" signature="3033:3130" ph="SELECT MAX(b... bids" />
-                <marker date="1520808498000" expanded="true" signature="3665:3781" ph="SELECT first... users" />
-                <marker date="1520808498000" expanded="true" signature="5575:5669" ph="INSERT INTO bids... " />
-                <marker date="1520808498000" expanded="true" signature="6208:6777" ph="SELECT bids1... *" />
-                <marker date="1520808498000" expanded="true" signature="6258:6276" ph="SELECT * FRO... bids" />
-                <marker date="1520808498000" expanded="true" signature="6374:6627" ph="SELECT bids2... *" />
-                <marker date="1520808498000" expanded="true" signature="6450:6468" ph="SELECT * FRO... bids" />
-                <marker date="1520808498000" expanded="true" signature="8192:8288" ph="..." />
-                <marker date="1520808498000" expanded="true" signature="8461:8559" ph="..." />
-                <marker date="1520808498000" expanded="true" signature="8781:8877" ph="..." />
-                <marker date="1520808498000" expanded="true" signature="9024:9120" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -133,7 +85,6 @@
         <option value="$PROJECT_DIR$/DatabaseV2.sql" />
         <option value="$PROJECT_DIR$/dbCoursework/notifications/notificationsAtLogin.php" />
         <option value="$PROJECT_DIR$/dbCoursework/notifications/checkForNotifications.php" />
-        <option value="$PROJECT_DIR$/dbCoursework/notifications/notificationWriter.php" />
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/addBidMaster.php" />
         <option value="$PROJECT_DIR$/vendor/email.php" />
         <option value="$PROJECT_DIR$/dbCoursework/admin/admin.php" />
@@ -155,6 +106,7 @@
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/browsePopularItems.php" />
         <option value="$PROJECT_DIR$/dbCoursework/dashboard/commonElements/itemModal.php" />
         <option value="$PROJECT_DIR$/dbCoursework/login/handle_Login.php" />
+        <option value="$PROJECT_DIR$/dbCoursework/notifications/notificationWriter.php" />
       </list>
     </option>
   </component>
@@ -166,10 +118,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="MAMP PHP 7.2.1" />
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-2357" />
-    <option name="y" value="-647" />
-    <option name="width" value="1992" />
-    <option name="height" value="1272" />
+    <option name="x" value="-2240" />
+    <option name="y" value="-669" />
+    <option name="width" value="1852" />
+    <option name="height" value="1229" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -188,7 +140,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,12 +151,6 @@
               <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
               <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
@@ -223,70 +168,13 @@
               <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
               <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="commonElements" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="login" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="notifications" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="profile" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dbCoursework" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="phpmailer" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="phpmailer" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="phpmailer" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Databases-Group22" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Databases-Group22" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="phpmailer" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="phpmailer" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -299,10 +187,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dbCoursework/notifications" />
       <recent name="$PROJECT_DIR$/dbCoursework/browse" />
       <recent name="$PROJECT_DIR$/dbCoursework/login" />
       <recent name="$PROJECT_DIR$/dbCoursework/dashboard" />
-      <recent name="$PROJECT_DIR$/dbCoursework/notifications" />
       <recent name="$PROJECT_DIR$/dbCoursework/commonElements" />
     </key>
   </component>
@@ -376,7 +264,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207949000" />
+    <option name="totallyTimeSpent" value="208750000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -388,10 +276,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2357" y="-647" width="1992" height="1272" extended-state="1" />
-    <editor active="true" />
+    <frame x="-2240" y="-669" width="1852" height="1229" extended-state="1" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13504016" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14524838" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19794953" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -403,13 +290,24 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3986195" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19794953" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.024861878" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13504016" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873166" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3986195" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -430,9 +328,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1520613117000" expanded="true" signature="532:621" ph="SELECT itemI... watchlist_items" />
-            <marker date="1520613117000" expanded="true" signature="878:956" ph="INSERT INTO watchlist_items... " />
-            <marker date="1520613117000" expanded="true" signature="1107:1175" ph="DELETE FROM watchlist_items... " />
+            <marker date="1520956017000" expanded="true" signature="534:623" ph="SELECT itemI... watchlist_items" />
+            <marker date="1520956017000" expanded="true" signature="880:958" ph="INSERT INTO watchlist_items... " />
+            <marker date="1520956017000" expanded="true" signature="1109:1177" ph="DELETE FROM watchlist_items... " />
           </folding>
         </state>
       </provider>
@@ -442,7 +340,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1520613117000" expanded="true" signature="411:478" ph="UPDATE items... " />
+            <marker date="1520956017000" expanded="true" signature="413:480" ph="UPDATE items... " />
           </folding>
         </state>
       </provider>
@@ -474,7 +372,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1520506908000" expanded="true" signature="364:453" ph="SELECT * FRO... categories" />
+            <marker date="1520956017000" expanded="true" signature="366:455" ph="SELECT * FRO... categories" />
           </folding>
         </state>
       </provider>
@@ -546,9 +444,9 @@
         <state relative-caret-position="210">
           <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
           <folding>
-            <marker date="1520776502000" expanded="true" signature="391:466" ph="SELECT * FRO... communication" />
-            <marker date="1520776502000" expanded="true" signature="391:482" ph="SELECT messa... communication" />
-            <marker date="1520776502000" expanded="true" signature="636:692" ph="UPDATE communication... " />
+            <marker date="1520956017000" expanded="true" signature="393:468" ph="SELECT * FRO... communication" />
+            <marker date="1520956017000" expanded="true" signature="393:484" ph="SELECT messa... communication" />
+            <marker date="1520956017000" expanded="true" signature="638:694" ph="UPDATE communication... " />
           </folding>
         </state>
       </provider>
@@ -581,15 +479,15 @@
         <state relative-caret-position="145">
           <caret line="17" column="4" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
           <folding>
-            <marker date="1520880075000" expanded="true" signature="1341:2035" ph="SELECT * FRO... items" />
-            <marker date="1520880075000" expanded="true" signature="1451:1818" ph="SELECT b.ite... bids" />
-            <marker date="1520880075000" expanded="true" signature="1604:1733" ph="SELECT itemI... bids" />
-            <marker date="1520880075000" expanded="true" signature="6458:7124" ph="SELECT * FRO... items" />
-            <marker date="1520880075000" expanded="true" signature="6568:6935" ph="SELECT b.ite... bids" />
-            <marker date="1520880075000" expanded="true" signature="6721:6850" ph="SELECT itemI... bids" />
-            <marker date="1520880075000" expanded="true" signature="8156:8175" ph="SELECT * FRO... items" />
-            <marker date="1520880075000" expanded="true" signature="7569:7936" ph="SELECT b.ite... bids" />
-            <marker date="1520880075000" expanded="true" signature="7722:7851" ph="SELECT itemI... bids" />
+            <marker date="1520956017000" expanded="true" signature="1341:2035" ph="SELECT * FRO... items" />
+            <marker date="1520956017000" expanded="true" signature="1451:1818" ph="SELECT b.ite... bids" />
+            <marker date="1520956017000" expanded="true" signature="1604:1733" ph="SELECT itemI... bids" />
+            <marker date="1520956017000" expanded="true" signature="6458:7124" ph="SELECT * FRO... items" />
+            <marker date="1520956017000" expanded="true" signature="6568:6935" ph="SELECT b.ite... bids" />
+            <marker date="1520956017000" expanded="true" signature="6721:6850" ph="SELECT itemI... bids" />
+            <marker date="1520956017000" expanded="true" signature="8155:8174" ph="SELECT * FRO... items" />
+            <marker date="1520956017000" expanded="true" signature="7568:7935" ph="SELECT b.ite... bids" />
+            <marker date="1520956017000" expanded="true" signature="7721:7850" ph="SELECT itemI... bids" />
           </folding>
         </state>
       </provider>
@@ -650,17 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbCoursework/notifications/notificationWriter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="200" lean-forward="false" selection-start-line="37" selection-start-column="200" selection-end-line="37" selection-end-column="200" />
-          <folding>
-            <marker date="1520807085000" expanded="true" signature="600:789" ph="INSERT INTO communication... " />
-            <marker date="1520807085000" expanded="true" signature="1421:1610" ph="INSERT INTO communication... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/email.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -673,18 +560,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1520887839000" expanded="true" signature="36:745" ph="..." />
-            <marker date="1520887839000" expanded="true" signature="50:94" ph="..." />
-            <marker date="1520887839000" expanded="true" signature="108:157" ph="..." />
-            <marker date="1520887839000" expanded="true" signature="171:223" ph="..." />
-            <marker date="1520887839000" expanded="true" signature="237:286" ph="..." />
-            <marker date="1520887839000" expanded="true" signature="300:347" ph="..." />
-            <marker date="1520887839000" expanded="true" signature="361:403" ph="..." />
-            <marker date="1520887839000" expanded="true" signature="417:465" ph="..." />
-            <marker date="1520887839000" expanded="true" signature="479:730" ph="..." />
-            <marker date="1520887839000" expanded="true" signature="588:716" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -730,10 +606,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1520887839000" expanded="true" signature="834:855" ph="SELECT * FRO... items" />
-            <marker date="1520887839000" expanded="true" signature="1795:1844" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -741,7 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -749,7 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -793,9 +664,6 @@
         <state relative-caret-position="425">
           <caret line="51" column="191" lean-forward="true" selection-start-line="51" selection-start-column="186" selection-end-line="51" selection-end-column="191" />
           <folding>
-            <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
             <marker date="1520898832000" expanded="true" signature="463:572" ph="SELECT itemI... items" />
             <marker date="1520898832000" expanded="true" signature="981:1332" ph="..." />
             <marker date="1520898832000" expanded="true" signature="1088:1107" ph="..." />
@@ -812,26 +680,26 @@
         <state relative-caret-position="944">
           <caret line="253" column="0" lean-forward="true" selection-start-line="253" selection-start-column="0" selection-end-line="260" selection-end-column="9" />
           <folding>
-            <marker date="1520897045000" expanded="true" signature="763:1471" ph="SELECT b1.*,... bids" />
-            <marker date="1520897045000" expanded="true" signature="980:1177" ph="SELECT max(b... bids" />
-            <marker date="1520897045000" expanded="true" signature="1732:2440" ph="SELECT b1.*,... bids" />
-            <marker date="1520897045000" expanded="true" signature="1949:2146" ph="SELECT max(b... bids" />
-            <marker date="1520897045000" expanded="true" signature="3795:3861" ph="SELECT categ... categories" />
-            <marker date="1520897045000" expanded="true" signature="4278:4745" ph="SELECT buyer... bids" />
-            <marker date="1520897045000" expanded="true" signature="4408:4569" ph="SELECT MAX(b... bids" />
-            <marker date="1520897045000" expanded="true" signature="5497:5546" ph="..." />
-            <marker date="1520897045000" expanded="true" signature="6773:7219" ph="SELECT buyer... bids" />
-            <marker date="1520897045000" expanded="true" signature="6898:7051" ph="SELECT MAX(b... bids" />
-            <marker date="1520897045000" expanded="true" signature="8435:8489" ph="SELECT userI... users" />
-            <marker date="1520897045000" expanded="true" signature="8999:9381" ph="SELECT commu... communication" />
-            <marker date="1520897045000" expanded="true" signature="9955:10963" ph="..." />
-            <marker date="1520897045000" expanded="false" signature="10123:10137" ph="..." />
-            <marker date="1520897045000" expanded="true" signature="10138:10904" ph="..." />
-            <marker date="1520897045000" expanded="true" signature="10382:10841" ph="..." />
-            <marker date="1520897045000" expanded="true" signature="11175:11186" ph="..." />
-            <marker date="1520897045000" expanded="true" signature="11445:11458" ph="..." />
-            <marker date="1520897045000" expanded="true" signature="11780:11846" ph="SELECT categ... categories" />
-            <marker date="1520897045000" expanded="true" signature="12288:12337" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="763:1471" ph="SELECT b1.*,... bids" />
+            <marker date="1520956017000" expanded="true" signature="980:1177" ph="SELECT max(b... bids" />
+            <marker date="1520956017000" expanded="true" signature="1732:2440" ph="SELECT b1.*,... bids" />
+            <marker date="1520956017000" expanded="true" signature="1949:2146" ph="SELECT max(b... bids" />
+            <marker date="1520956017000" expanded="true" signature="3795:3861" ph="SELECT categ... categories" />
+            <marker date="1520956017000" expanded="true" signature="4278:4745" ph="SELECT buyer... bids" />
+            <marker date="1520956017000" expanded="true" signature="4408:4569" ph="SELECT MAX(b... bids" />
+            <marker date="1520956017000" expanded="true" signature="5497:5546" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="6773:7219" ph="SELECT buyer... bids" />
+            <marker date="1520956017000" expanded="true" signature="6898:7051" ph="SELECT MAX(b... bids" />
+            <marker date="1520956017000" expanded="true" signature="8435:8489" ph="SELECT userI... users" />
+            <marker date="1520956017000" expanded="true" signature="8999:9006" ph="SELECT commu... communication" />
+            <marker date="1520956017000" expanded="true" signature="9955:10963" ph="..." />
+            <marker date="1520956017000" expanded="false" signature="10123:10137" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="10138:10904" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="10382:10841" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="11175:11186" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="11445:11458" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="11780:11846" ph="SELECT categ... categories" />
+            <marker date="1520956017000" expanded="true" signature="12288:12337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -853,22 +721,22 @@
         <state relative-caret-position="248">
           <caret line="63" column="56" lean-forward="false" selection-start-line="63" selection-start-column="56" selection-end-line="63" selection-end-column="56" />
           <folding>
-            <marker date="1520897314000" expanded="true" signature="769:1001" ph="SELECT * FRO... items" />
-            <marker date="1520897314000" expanded="true" signature="1261:1478" ph="SELECT * FRO... items" />
-            <marker date="1520897314000" expanded="true" signature="2883:3051" ph="SELECT MAX(b... bids" />
-            <marker date="1520897314000" expanded="true" signature="3492:3547" ph="SELECT categ... categories" />
-            <marker date="1520897314000" expanded="true" signature="3950:3999" ph="..." />
-            <marker date="1520897314000" expanded="true" signature="5193:5362" ph="SELECT MAX(b... bids" />
-            <marker date="1520897314000" expanded="true" signature="6435:6482" ph="SELECT email... users" />
-            <marker date="1520897314000" expanded="true" signature="6928:7309" ph="SELECT commu... communication" />
-            <marker date="1520897314000" expanded="true" signature="7885:8892" ph="..." />
-            <marker date="1520897314000" expanded="false" signature="8053:8067" ph="..." />
-            <marker date="1520897314000" expanded="true" signature="8068:8833" ph="..." />
-            <marker date="1520897314000" expanded="true" signature="8311:8770" ph="..." />
-            <marker date="1520897314000" expanded="true" signature="9104:9115" ph="..." />
-            <marker date="1520897314000" expanded="true" signature="9374:9387" ph="..." />
-            <marker date="1520897314000" expanded="true" signature="9709:9764" ph="SELECT categ... categories" />
-            <marker date="1520897314000" expanded="true" signature="10143:10192" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="769:1001" ph="SELECT * FRO... items" />
+            <marker date="1520956017000" expanded="true" signature="1261:1478" ph="SELECT * FRO... items" />
+            <marker date="1520956017000" expanded="true" signature="2883:3051" ph="SELECT MAX(b... bids" />
+            <marker date="1520956017000" expanded="true" signature="3492:3547" ph="SELECT categ... categories" />
+            <marker date="1520956017000" expanded="true" signature="3950:3999" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="5193:5362" ph="SELECT MAX(b... bids" />
+            <marker date="1520956017000" expanded="true" signature="6435:6482" ph="SELECT email... users" />
+            <marker date="1520956017000" expanded="true" signature="6928:6935" ph="SELECT commu... communication" />
+            <marker date="1520956017000" expanded="true" signature="7885:8892" ph="..." />
+            <marker date="1520956017000" expanded="false" signature="8053:8067" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="8068:8833" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="8311:8770" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="9104:9115" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="9374:9387" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="9709:9764" ph="SELECT categ... categories" />
+            <marker date="1520956017000" expanded="true" signature="10143:10192" ph="..." />
           </folding>
         </state>
       </provider>
@@ -933,22 +801,22 @@
         <state relative-caret-position="590">
           <caret line="329" column="38" lean-forward="true" selection-start-line="329" selection-start-column="38" selection-end-line="329" selection-end-column="38" />
           <folding>
-            <marker date="1520865950000" expanded="true" signature="6538:6608" ph="SELECT DISTI... categories" />
-            <marker date="1520865950000" expanded="true" signature="10931:13074" ph="..." />
-            <marker date="1520865950000" expanded="true" signature="10952:13058" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="10986:13044" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="11006:13032" ph="{&quot;url&quot;: &quot;EXTERNAL_FRAGMENTnotifications/checkForNotifications.php&quot;...}" />
-            <marker date="1520865950000" expanded="true" signature="11157:12888" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="11269:12873" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="11372:12848" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="11536:11811" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="11609:11644" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="11650:11782" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="12177:12207" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="12213:12327" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="12530:12720" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="12602:12720" ph="{...}" />
-            <marker date="1520865950000" expanded="true" signature="12931:12997" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="6540:6610" ph="SELECT DISTI... categories" />
+            <marker date="1520956017000" expanded="true" signature="10933:13076" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="10954:13060" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="10988:13046" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="11008:13034" ph="{&quot;url&quot;: &quot;EXTERNAL_FRAGMENTnotifications/checkForNotifications.php&quot;...}" />
+            <marker date="1520956017000" expanded="true" signature="11159:12890" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="11271:12875" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="11374:12850" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="11538:11813" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="11611:11646" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="11652:11784" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="12179:12209" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="12215:12329" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="12532:12722" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="12604:12722" ph="{...}" />
+            <marker date="1520956017000" expanded="true" signature="12933:12999" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -974,8 +842,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1520613117000" expanded="true" signature="760:843" ph="SELECT userI... watchlist_items" />
-            <marker date="1520613117000" expanded="true" signature="1313:1381" ph="DELETE FROM watchlist_items... " />
+            <marker date="1520956017000" expanded="true" signature="762:845" ph="SELECT userI... watchlist_items" />
+            <marker date="1520956017000" expanded="true" signature="1315:1383" ph="DELETE FROM watchlist_items... " />
           </folding>
         </state>
       </provider>
@@ -993,20 +861,20 @@
         <state relative-caret-position="831">
           <caret line="196" column="51" lean-forward="false" selection-start-line="196" selection-start-column="16" selection-end-line="196" selection-end-column="51" />
           <folding>
-            <marker date="1520808498000" expanded="true" signature="640:689" ph="SELECT selle... items" />
-            <marker date="1520808498000" expanded="true" signature="2447:2555" ph="SELECT first... users" />
-            <marker date="1520808498000" expanded="true" signature="2923:3243" ph="SELECT buyer... bids" />
-            <marker date="1520808498000" expanded="true" signature="3033:3130" ph="SELECT MAX(b... bids" />
-            <marker date="1520808498000" expanded="true" signature="3665:3781" ph="SELECT first... users" />
-            <marker date="1520808498000" expanded="true" signature="5575:5669" ph="INSERT INTO bids... " />
-            <marker date="1520808498000" expanded="true" signature="6208:6777" ph="SELECT bids1... *" />
-            <marker date="1520808498000" expanded="true" signature="6258:6276" ph="SELECT * FRO... bids" />
-            <marker date="1520808498000" expanded="true" signature="6374:6627" ph="SELECT bids2... *" />
-            <marker date="1520808498000" expanded="true" signature="6450:6468" ph="SELECT * FRO... bids" />
-            <marker date="1520808498000" expanded="true" signature="8192:8288" ph="..." />
-            <marker date="1520808498000" expanded="true" signature="8461:8559" ph="..." />
-            <marker date="1520808498000" expanded="true" signature="8781:8877" ph="..." />
-            <marker date="1520808498000" expanded="true" signature="9024:9120" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="642:691" ph="SELECT selle... items" />
+            <marker date="1520956017000" expanded="true" signature="2449:2557" ph="SELECT first... users" />
+            <marker date="1520956017000" expanded="true" signature="2925:3245" ph="SELECT buyer... bids" />
+            <marker date="1520956017000" expanded="true" signature="3035:3132" ph="SELECT MAX(b... bids" />
+            <marker date="1520956017000" expanded="true" signature="3667:3783" ph="SELECT first... users" />
+            <marker date="1520956017000" expanded="true" signature="5577:5671" ph="INSERT INTO bids... " />
+            <marker date="1520956017000" expanded="true" signature="6210:6779" ph="SELECT bids1... *" />
+            <marker date="1520956017000" expanded="true" signature="6260:6278" ph="SELECT * FRO... bids" />
+            <marker date="1520956017000" expanded="true" signature="6376:6629" ph="SELECT bids2... *" />
+            <marker date="1520956017000" expanded="true" signature="6452:6470" ph="SELECT * FRO... bids" />
+            <marker date="1520956017000" expanded="true" signature="8194:8290" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="8463:8561" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="8783:8879" ph="..." />
+            <marker date="1520956017000" expanded="true" signature="9026:9122" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1015,14 +883,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="973">
           <caret line="106" column="1" lean-forward="false" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbCoursework/notifications/notificationWriter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
           <folding>
-            <marker date="1520900969000" expanded="true" signature="419:489" ph="SELECT userI... users" />
-            <marker date="1520900969000" expanded="true" signature="575:668" ph="SELECT userI... users" />
-            <marker date="1520900969000" expanded="true" signature="1654:2473" ph="SELECT b1.*,... bids" />
-            <marker date="1520900969000" expanded="true" signature="1878:2093" ph="SELECT max(b... bids" />
-            <marker date="1520900969000" expanded="true" signature="2037:2093" ph="SELECT max(b... bids" />
-            <marker date="1520900969000" expanded="true" signature="2804:3026" ph="SELECT * FRO... items" />
-            <marker date="1520900969000" expanded="true" signature="3479:3586" ph="..." />
+            <marker date="1520955888000" expanded="true" signature="665:831" ph="INSERT INTO communication... " />
+            <marker date="1520955888000" expanded="true" signature="980:1066" ph="INSERT INTO Notification... " />
+            <marker date="1520955888000" expanded="true" signature="1849:2015" ph="INSERT INTO communication... " />
+            <marker date="1520955888000" expanded="true" signature="2172:2338" ph="INSERT INTO communication... " />
+            <marker date="1520955888000" expanded="true" signature="2499:2585" ph="INSERT INTO Notification... " />
           </folding>
         </state>
       </provider>

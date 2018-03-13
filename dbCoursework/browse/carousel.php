@@ -15,7 +15,7 @@ function generateCarouselItem($number) {
         return '<div class="item">
         <div class="placeholderCarousel">
             <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$number['itemID'].'">  
-                <img src=" '  . $number['photo'] . ' " width="200" height="200" class="img center-block">
+                <img src=" '  . $number['photo'] . ' " width="200" height="200" class="img center-block carouselIMG">
             </a>
             <p class="placeholderCarousel">'.$number['title'].'</p>
         </div>
@@ -79,7 +79,7 @@ function printCollaborativeFilteredCarousel($userID, $itemIDNotToDisplay, $conn)
             <div class="item active">
             <div class="placeholderCarousel">
             <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$first['itemID'].'">
-              <img src=" '  . $first['photo'] . ' " width="200" height="200" class="img center-block">
+              <img src=" '  . $first['photo'] . ' " width="200" height="200" class="img center-block carouselIMG">
               </a>
               <p class="placeholderCarousel">'.$first['title'].'</p>
             </div>
@@ -144,7 +144,7 @@ function printCarousel($itemIDNotToDisplay, $conn) {
             <div class="item active">
             <div class="placeholderCarousel">
             <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$first['itemID'].'">
-              <img src=" '  . $first['photo'] . ' " width="200" height="200" class="img center-block">
+              <img src=" '  . $first['photo'] . ' " width="200" height="200" class="img center-block carouselIMG">
               <p class="placeholderCarousel">'.$first['title'].'</p>
               </a>
             </div>

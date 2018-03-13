@@ -27,7 +27,7 @@
                 $date = $data1['endDate'];
                 $startPrice = $data1['startPrice'];
 
-                echo '<div class="col-sm-offset-5 col-md-offset-5"><img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail">
+                echo '<div class="col-sm-offset-5 col-md-offset-5"><img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" style="border-radius: 50%;">
                                   <h4>' . $title . '
                                   </h4>
                                   <span class="text-muted">  ' . $description . ' </span>
@@ -48,8 +48,9 @@
 
                 ?>
 
-        <h1>Bidding ends on: <?php echo $endDate1['endDate']; ?></h1>
-
+        <br>
+        <h1 style="text-align: center">Bidding ends on <?php echo date_format(date_create($endDate1['endDate']),"d-m-Y"); ?> at <?php echo date_format(date_create($endDate1['endDate']),"H:i:s"); ?></h1>
+        <br>
         <?php if(!empty($res)) {?>
 
         <table id="table_id" class="table table-dark" data-pagination="true"
@@ -94,11 +95,15 @@
         </table>
 
     <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>Item doesn't currently have any bids.</p>";} ?>
-
-        <form id="bidForm" class="centered" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
-            Make a bid: <input type="text" name="bid">
-            <input type="submit" value="Bid" >
+        <br>
+        <br>
+        <form id="bidForm" style="font-size: 20px;" class="centered" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
+            Make a bid: <input type="text" name="bid" style="width: 200px;
+                           ;">
+            <input type="submit" value="Bid">
         </form>
+        <br>
+        <br>
         <br>
         <br>
 
@@ -152,7 +157,7 @@
                     <panel>
                         <h3 class="text-center">Customers who placed bids on the same items as you were also interested in:</h3>
                     </panel>
-
+                    <br>
                     <container>
                        <?php include('carousel.php');
 

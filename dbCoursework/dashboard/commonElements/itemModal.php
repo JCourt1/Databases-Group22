@@ -118,7 +118,7 @@ $chaine = '<div class="col-xs-6 col-sm-3 col-m-3 col-lg-3 placeholder modalCente
                         <tr>
 
                           <td>Bidding ends:</td>
-                          <td>'.$elapsed.'</td>
+                          <td>'.$elapsed.'</td>                          
                         </tr>
                         <h3 id="countdown'.$rownumber.'">  </h3>
                         <tr>
@@ -133,7 +133,7 @@ $chaine = '<div class="col-xs-6 col-sm-3 col-m-3 col-lg-3 placeholder modalCente
 
                         <tr>
                           <td>Last Bid:</td>
-                          <td>'.$lastBid.'</td>
+                          <td>'.date_format(date_create($lastBid),"d-m-Y").' at '.date_format(date_create($lastBid),"H:i:s").'</td>
                         </tr>
 
 

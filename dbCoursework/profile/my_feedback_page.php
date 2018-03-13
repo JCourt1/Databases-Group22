@@ -24,10 +24,9 @@
     }
 
     // SQL QUERIES
-    $query = "SELECT communicationID, itemID, senderID, receiverID, isPositive
-                FROM communication
-                WHERE communicationType = 'Feedback' AND receiverID = :userID AND isPositive IS NOT NULL
-                ORDER BY messagedate DESC";
+    $query = "SELECT itemID, senderID, receiverID, isPositive
+                FROM feedback
+                WHERE receiverID = :userID AND isPositive IS NOT NULL";
     $statement = $conn->prepare($query);
     $statement->bindParam(':userID', $userID);
     $statement->execute();

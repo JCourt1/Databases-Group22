@@ -34,7 +34,17 @@
   </form>
 </div>
 
+<?php 
+$sql = "SELECT username FROM users";
 
+$statement = $conn->prepare($sql);
+$statement->execute();
+$usernames = $statement->fetchAll();
+// while ($results=$statement->fetch())
+// {
+// 	$usernames[] = $results;
+// }
+?>
 
 <script>
 // Get the modal
@@ -54,8 +64,17 @@ window.onclick = function(event) {
     var username=document.forms["mainForm"]["username"].value;
     var psw=document.forms["mainForm"]["psw"].value;
     var psw_repeat=document.forms["mainForm"]["psw-repeat"].value;
+    var usernames = <?php echo json_encode($usernames); ?>;
 
-    
+        for (i=0; i<usernames.length;i++)
+        {
+            if(usernames[i]['username']==username)
+            {
+                alert("This username is already in use. Please choose another one.");
+                return false;
+            }
+        }
+
         if ( !validateEmail(email) )
         {
             alert("The provided e-mail is not valid");
@@ -63,7 +82,7 @@ window.onclick = function(event) {
         }
         else if (!isAlphaNumeric(username))
         {
-            alert("The username must have only letters and numbers without spaces");
+            alert("The username must have only letters and numbers without spaces.");
             return false;
         }
         else if (psw!=psw_repeat)

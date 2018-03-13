@@ -1,45 +1,36 @@
 <?php
 
-$tableRow = '
-<tr scope="row">
+try
+{
+    //create connection
+    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8","team22@ibe-database","ILoveCS17");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        <td>
-            '.$row["title"].'
-        </td>
 
-        <td>
-            '.$row["categoryID"].'
-        </td>
 
-        <td>
-            '.$row["itemCondition"].'
-        </td>
+    $query = "UPDATE items SET itemRemoved=1 WHERE itemID= '".$_POST['delete']."' ";
+    
 
-        <td>
-            '.$row["startPrice"].'
-        </td>
+    $statement = $conn->prepare($query);
 
-        <td>
-        '.$row["reservePrice"].'
-        </td>
 
-        <td>
-        '.$row["endDate"].'
-        </td>
+    //print the relevant message regarding the outcome of the insertion
+    if ($statement->execute())
+    {
+        echo "<script type= 'text/javascript'>alert('Item deleted Successfully');</script>";
+    }
+    else
+    {
+        echo "<script type= 'text/javascript'>alert('A problem occured while deleting the item.');</script>";
+    }
+    //navigate to the main page
+    echo     '<script type="text/javascript">  window.location = "listed_items.php"   </script>';
+    $conn = null;
+}
 
-        <td>
-        '.$row["itemViewCount"].'
-        </td>
-
-        <td>
-            <form class="form-horizontal" method="post" action="handle_deletion.php" accept-charset="UTF-8">
-            <button type="submit"><span class="glyphicon glyphicon-trash"></span></button>
-                
-            </form>
-        </td>
-        
-</tr>
-';
-
-echo $tableRow;
+catch (Exception $e)
+{
+    die('Erreur : ' . $e->getMessage());
+}
 ?>
+

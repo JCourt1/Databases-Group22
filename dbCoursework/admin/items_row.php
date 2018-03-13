@@ -8,7 +8,7 @@ $tableRow = '
         </td>
 
         <td>
-            '.$row["categoryID"].'
+            '.$category["categoryName"].'
         </td>
 
         <td>
@@ -33,7 +33,7 @@ $tableRow = '
 
         <td>
             <form class="form-horizontal" method="post" action="handle_deletion.php" accept-charset="UTF-8">
-            <button type="submit"><span class="glyphicon glyphicon-trash"></span></button>
+            <button type="submit" name="delete" value="'.$row["itemID"].'" ><span class="glyphicon glyphicon-trash"></span></button>
                 
             </form>
         </td>

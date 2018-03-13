@@ -163,7 +163,7 @@
                             ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
                         ) d ON i.itemID = d.itemID
                         WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
-                        AND i.itemRemoved = 0;
+                        AND i.itemRemoved = 0
                         AND i.endDate > NOW() ".$sql_sort;
         $statement = $conn->prepare($sql_query);
         $statement->bindValue(':searchTerm', '%'.$searchTerm.'%');

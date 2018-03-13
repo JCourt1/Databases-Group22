@@ -19,7 +19,7 @@
 $siteroot = '/Databases-Group22/dbCoursework/';
 //establish the connection
 try {
-    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
                     "team22@ibe-database",
                     "ILoveCS17");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -120,38 +120,47 @@ echo     '<script type="text/javascript">  window.location = "profile_details.ph
 else{
     //update the database
     $query = $conn->prepare("UPDATE users
-    SET firstName=:firstName, lastName=:lastName, phoneNumber=:phone, companyName=:company, profilePic=:picture, email=:email,
-     streetName=:street, buildingNumber=:buildingNumber, cityName=:city, countyName=:county, postCode=:postCode, username=:username WHERE userID= :user_ID ");
-     
-     $query->bindValue(':firstName',$firstName);
-     $query->bindValue(':lastName',$lastName);
-     $query->bindValue(':phone',$phone);
-     $query->bindValue(':company',$company);
-     $query->bindValue(':picture',$picture);
+                            SET username = :username, email = :email
+                            WHERE userID = :user_ID");
+    $query2 = $conn->prepare("UPDATE clients
+                            SET firstName=:firstName, lastName=:lastName, phoneNumber=:phone, companyName=:company, profilePic=:picture,
+                            streetName=:street, buildingNumber=:buildingNumber, cityName=:city, countyName=:county, postCode=:postCode
+                            WHERE userID= :user_ID;");
+
+     $query2->bindValue(':firstName',$firstName);
+     $query2->bindValue(':lastName',$lastName);
+     $query2->bindValue(':phone',$phone);
+     $query2->bindValue(':company',$company);
+     $query2->bindValue(':picture',$picture);
      $query->bindValue(':email',$email);
-     $query->bindValue(':street',$street);
-     $query->bindValue(':buildingNumber',$buildingNumber);
-     $query->bindValue(':city',$city);
-     $query->bindValue(':county',$county);
-     $query->bindValue(':postCode',$postCode);
+     $query2->bindValue(':street',$street);
+     $query2->bindValue(':buildingNumber',$buildingNumber);
+     $query2->bindValue(':city',$city);
+     $query2->bindValue(':county',$county);
+     $query2->bindValue(':postCode',$postCode);
      $query->bindValue(':username',$username);
      $query->bindValue(':user_ID',$_SESSION['user_ID']);
-    
+     $query2->bindValue(':user_ID',$_SESSION['user_ID']);
+
+
      //if the user typed a new password, update the database with the new password
      if (isset($psw) && !$psw=='' ){
         $psw= sha1($psw);
-        $query2 = $conn->prepare("UPDATE users SET password=:psw WHERE userID=:user_id " );
-        $query2->bindValue(':psw',$psw);
-        $query2->bindValue(':user_id',$_SESSION['user_ID']);
-        $query2->execute();
+        $query3 = $conn->prepare("UPDATE users SET password=:psw WHERE userID=:user_id " );
+        $query3->bindValue(':psw',$psw);
+        $query3->bindValue(':user_id',$_SESSION['user_ID']);
+        $query3->execute();
 
      }
 
 
-    if ($query->execute()) {
+    try {
+        $query->execute();
+        $query2->execute();
         //print the relevant message regarding the outcome of the insertion
         echo "<script type= 'text/javascript'>alert('User details updated Successfully. You will be redirected to the home page.');</script>";
-    } else {
+    } catch (Exception $e) {
+        echo $e->getMessage();
         echo "<script type= 'text/javascript'>alert('An error occured while updating user details.');</script>";
     }
     //navigate to the main page

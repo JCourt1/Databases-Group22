@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
                     "team22@ibe-database",
                     "ILoveCS17");
 }
@@ -17,10 +17,9 @@ $itemID = $_GET['itemID'];
 $isPositive = $_POST['feedback'];
 $from = $_GET['from'];
 
-$feedback_query = $conn->prepare("UPDATE communication
+$feedback_query = $conn->prepare("UPDATE feedback
                     SET isPositive = ?
-                    WHERE communicationType = 'Feedback'
-                    AND senderID = ?
+                    WHERE senderID = ?
                     AND receiverID = ?
                     AND itemID = ?");
 

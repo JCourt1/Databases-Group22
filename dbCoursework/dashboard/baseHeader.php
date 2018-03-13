@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
 
 //try {
-//        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+//        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
 //                        "team22@ibe-database",
 //                        "ILoveCS17");
 //    }

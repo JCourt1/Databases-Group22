@@ -11,7 +11,7 @@ include "../../vendor/email.php";
 
 
         try {
-            $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+            $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
                             "team22@ibe-database",
                             "ILoveCS17");
         }
@@ -170,17 +170,10 @@ include "../../vendor/email.php";
 
                     $receiver = $row['buyerID'];
 
-//                    $notification = '' . $_SESSION['login_user'] . 'outbid you on '.$itemName.' with a bid of ' . $currentPrice;
-//                    $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$buyerID.", \"rivalBid\", \"".$notification."\", 1, 1)");
-//                    $insertNotifications -> execute();
                     writeOutbidNotification($receiver, $_SESSION['login_user'], $currentPrice, $itemName);
                 }
 
                 updateSeller($sellerID, $_SESSION['login_user'], $currentPrice, $itemName);
-
-                //                $notification = '' . $_SESSION['login_user'] . 'placed a bid of '.$currentPrice.' on your item: ' . $itemName;
-                //                $insertNotifications = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message, isBuyer, unread) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"receivedBid\", \"".$notification."\", 0, 1)");
-                //                $insertNotifications->execute();
 
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.href = 'index.php';

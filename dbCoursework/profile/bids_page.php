@@ -191,10 +191,9 @@
                             $sellerID = $email['userID'];
 
                             // Get feedback row from DB:
-                            $feedback_query = "SELECT communicationID, isPositive
-                                            FROM communication
-                                            WHERE communicationType = 'Feedback'
-                                            AND senderID = ".$userID."
+                            $feedback_query = "SELECT itemID, isPositive
+                                            FROM feedback
+                                            WHERE senderID = ".$userID."
                                             AND receiverID = ".$sellerID."
                                             AND itemID = ".$row['itemID'];
                             $feedback_statement = $conn->prepare($feedback_query);
@@ -202,7 +201,7 @@
                             $feedback = $feedback_statement->fetch();
 
                             // Check if the communication exists:
-                            if(!empty($feedback['communicationID'])){
+                            if(!empty($feedback['itemID'])){
 
                                 if(strlen($feedback['isPositive']) < 1) {
                                     $from = "bids_page";

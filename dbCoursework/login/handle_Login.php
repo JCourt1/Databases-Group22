@@ -7,7 +7,7 @@ session_start();// Starting Session
 
 
 try {
-    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+    $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
                     "team22@ibe-database",
                     "ILoveCS17");
 }
@@ -21,7 +21,7 @@ $query = $conn->prepare("SELECT userID, username FROM users WHERE username = ? A
 $query->execute([$_POST['username'], $password]);
 
 
-$adminquery = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ? AND usertype = 'admin'");
+$adminquery = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ? AND userID IN (SELECT userID from administrators)");
 $adminquery->execute([$_POST['username'], $password]);
 
 if ($adminquery->rowCount()) {
@@ -35,7 +35,7 @@ if ($adminquery->rowCount()) {
 
     include "../notifications/notificationsAtLogin.php";
 
-    $adminPage = 'http://' . $_SERVER['HTTP_HOST'] . $siteroot . '/admin/admin.php';
+    $adminPage = 'http://' . $_SERVER['HTTP_HOST'] . $siteroot . '/admin/listed_items.php';
      header('Location: ' . $adminPage);
 
 
@@ -104,9 +104,8 @@ if ($adminquery->rowCount()) {
 
  echo "<script type='text/javascript'>alert('Invalid username or password, try again');
 window.location.href = '../dashboard/index.php';</script>";
- 
+
 }
 
 
 ?>
-

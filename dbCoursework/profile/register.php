@@ -34,7 +34,17 @@
   </form>
 </div>
 
+<?php
+        //create connection
+        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8","team22@ibe-database","ILoveCS17");
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT username FROM users";
+        $statement = $conn->prepare($sql);
+        $statement->execute();
+        $usernames=$statement->fetchAll();
 
+
+?>
 
 <script>
 // Get the modal
@@ -60,6 +70,11 @@ window.onclick = function(event) {
         {
             alert("The provided e-mail is not valid");
             return false; //this tells the php if to proceed or not
+        }
+        else if (!isAlphaNumeric(username))
+        {
+            alert("The username must have only letters and numbers without spaces");
+            return false;
         }
         else if (!isAlphaNumeric(username))
         {

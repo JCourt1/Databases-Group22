@@ -1,13 +1,27 @@
 <?php
 
 
-$query = $conn->prepare("SELECT * FROM communication WHERE receiverID = ? AND unread = 1");
+$query = $conn->prepare("SELECT * FROM communication JOIN Notification ON communication.communicationID = Notification.communicationID WHERE receiverID = ? AND Notification.unread = 1");
 $query->execute([$_SESSION['user_ID']]);
 $count = $query->rowCount();
 $result = $query->fetchall();
 
-$query2 = $conn->prepare("UPDATE communication SET unread = 0 WHERE receiverID = ? AND unread = 1");
-$query2->execute([$_SESSION['user_ID']]);
+
+
+try {
+
+        $conn->beginTransaction();
+        $query2 = $conn->prepare("UPDATE Notification SET unread = 0 WHERE unread = 1 AND communicationID in (SELECT communicationID FROM communication WHERE receiverID = ?)");
+        $query2->execute([$_SESSION['user_ID']]);
+        $conn->commit();
+
+
+} catch (Exception $e) {
+            echo $e->getMessage();
+            $conn->rollBack();
+}
+
+
 
 $_SESSION['notifications'] = $result;
 $_SESSION['notificationsCount'] = $count;

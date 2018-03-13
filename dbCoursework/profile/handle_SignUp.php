@@ -103,6 +103,8 @@ else{
                 throw new Exception('Username is not set. Should not happen.');
         }
         $_SESSION['loggedin'] = true;
+
+        include "../notifications/notificationsAtLogin.php";
         //print the relevant message regarding the outcome of the insertion
         echo "<script type= 'text/javascript'>alert('User created Successfully. You will be redirected to the home page.');</script>";
     }

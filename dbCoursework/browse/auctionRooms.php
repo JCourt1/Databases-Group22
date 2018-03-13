@@ -94,10 +94,84 @@
             </tbody>
         </table>
 
-    <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>Item doesn't currently have any bids.</p>";} ?>
+
+
+
+            <script>
+
+                        //console.log(<?php //echo json_encode($res); ?>//);
+                        var res=<?php echo json_encode($res); ?>;
+
+
+                        var hBid = <?php echo $highestBid;?>;
+                        console.log(hBid);
+
+                    $(function () {
+                       setInterval(function() {
+                           $.ajax({
+
+                               url: "realtimeBids.php",
+                               type: "POST",
+                               data: {"itemID":<?php echo $_GET['itemID'];?>, "highestBid":hBid},
+                               success: function(response) {
+
+
+                                   if (response.newHighest != 0) {
+                                       hBid = response.newHighest;
+                                       $("#bidForm").attr("action", function(index, previousValue){
+
+                                           var result = previousValue.replace(/currentPrice=.+&/, "currentPrice=" + hBid + "&");
+
+                                           return result;
+                                       });
+
+                                       $("#bidTable").prepend(response.newRows.toString());
+                                   }
+
+
+                           }, error: function (request, status, error) {
+                                   alert(request.responseText);
+                               },
+
+
+                               dataType: "json"});
+                        }, 5000);
+                    });
+
+                    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <?php } else {
+
+
+            echo "<p style='font-style: italic; font-size: 24px; color: grey;'>Item doesn't currently have any bids.</p>";
+
+
+        } ?>
+
+
         <br>
         <br>
-        <form id="bidForm" style="font-size: 20px;" class="centered" action="<?php echo $siteroot;?>browse/addBidARoom.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
+        <form id="bidForm" style="font-size: 20px;" class="centered" action="<?php echo $siteroot;?>dashboard/addBidMaster.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
             Make a bid: <input type="text" name="bid" style="width: 200px;
                            ;">
             <input type="submit" value="Bid">
@@ -108,48 +182,7 @@
         <br>
 
 
-    <script>
 
-            //console.log(<?php //echo json_encode($res); ?>//);
-            var res=<?php echo json_encode($res); ?>;
-
-
-            var hBid = <?php echo $highestBid;?>;
-            console.log(hBid);
-
-        $(function () {
-           setInterval(function() {
-               $.ajax({
-
-                   url: "realtimeBids.php",
-                   type: "POST",
-                   data: {"itemID":<?php echo $_GET['itemID'];?>, "highestBid":hBid},
-                   success: function(response) {
-
-
-                       if (response.newHighest != 0) {
-                           hBid = response.newHighest;
-                           $("#bidForm").attr("action", function(index, previousValue){
-
-                               var result = previousValue.replace(/currentPrice=.+&/, "currentPrice=" + hBid + "&");
-
-                               return result;
-                           });
-
-                           $("#bidTable").prepend(response.newRows.toString());
-                       }
-
-
-               }, error: function (request, status, error) {
-                       alert(request.responseText);
-                   },
-
-
-                   dataType: "json"});
-            }, 5000);
-        });
-
-        </script>
 
             </div>
 
@@ -170,6 +203,10 @@
                        ?>
                     </container>
 
+
+
+
+<!--else statement referring to "if (isset($_GET['itemID']))" towards ~ line 50-->
 <?php } else {?>
 
             </div>

@@ -1,7 +1,8 @@
 <?php
 
 
-$query = $conn->prepare("SELECT * FROM communication c JOIN Notification n ON c.communicationID = n.communicationID WHERE receiverID = ? AND n.unread = 1");
+$query = $conn->prepare("SELECT * FROM communication c JOIN Notification n ON c.communicationID = n.communicationID 
+WHERE receiverID = ? AND n.unread = 1");
 $query->execute([$_SESSION['user_ID']]);
 $count = $query->rowCount();
 $result = $query->fetchall();

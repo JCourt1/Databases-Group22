@@ -27,14 +27,19 @@ function printCollaborativeFilteredCarousel($userID, $itemIDNotToDisplay, $conn)
 
     global $siteroot;
 
+
+    // Get a list of those items that have been bid on by other users,
+    // where the items haven't expired or been removed, and also only picking
+    // other users who have bid on the same items as the user.
+
     $query_result = $conn->prepare("SELECT DISTINCT (bids.itemID), items.title, items.description, items.photo, items.endDate, items.startPrice
             FROM bids JOIN items ON bids.itemID = items.itemID
-            WHERE items.itemRemoved = 0 AND items.itemID <> ? AND buyerID IN
+            WHERE items.itemRemoved = 0 AND items.endDate < NOW() AND items.itemID <> ? AND buyerID IN
             
             (SELECT buyerID FROM
             (SELECT COUNT(DISTINCT itemID) freq, buyerID
             FROM bids
-            WHERE itemID IN (SELECT b1.itemID FROM bids b1
+            WHERE buyerID <> ? AND itemID IN (SELECT b1.itemID FROM bids b1
             INNER JOIN (
                 SELECT MAX(bidAmount) bidAmount, buyerID, itemID
                 FROM bids 
@@ -44,23 +49,7 @@ function printCollaborativeFilteredCarousel($userID, $itemIDNotToDisplay, $conn)
             )
             GROUP BY buyerID
             ORDER BY freq desc)T)");
-    $query_result->execute([$itemIDNotToDisplay, $userID]);
-
-//SELECT COUNT(DISTINCT itemID) freq, buyerID
-//    FROM bids
-//    WHERE itemID IN (SELECT b1.itemID FROM bids b1
-//    INNER JOIN (
-//        SELECT MAX(bidAmount) bidAmount, buyerID, itemID
-//        FROM bids
-//        WHERE buyerID = ?
-//        GROUP BY itemID
-//        ) b2 ON b1.bidAmount = b2.bidAmount AND b1.itemID = b2.itemID
-//    )
-//    GROUP BY buyerID
-//    ORDER BY freq desc
-
-
-
+    $query_result->execute([$itemIDNotToDisplay, $userID, $userID]);
 
     $rowCount = $query_result -> rowCount();
     $first = $query_result -> fetch();

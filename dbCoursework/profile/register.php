@@ -34,16 +34,16 @@
   </form>
 </div>
 
-<?php
-        //create connection
-        $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8","team22@ibe-database","ILoveCS17");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT username FROM users";
-        $statement = $conn->prepare($sql);
-        $statement->execute();
-        $usernames=$statement->fetchAll();
+<?php 
+$sql = "SELECT username FROM users";
 
-
+$statement = $conn->prepare($sql);
+$statement->execute();
+$usernames = $statement->fetchAll();
+// while ($results=$statement->fetch())
+// {
+// 	$usernames[] = $results;
+// }
 ?>
 
 <script>
@@ -64,8 +64,17 @@ window.onclick = function(event) {
     var username=document.forms["mainForm"]["username"].value;
     var psw=document.forms["mainForm"]["psw"].value;
     var psw_repeat=document.forms["mainForm"]["psw-repeat"].value;
+    var usernames = <?php echo json_encode($usernames); ?>;
 
-    
+        for (i=0; i<usernames.length;i++)
+        {
+            if(usernames[i]['username']==username)
+            {
+                alert("This username is already in use. Please choose another one.");
+                return false;
+            }
+        }
+
         if ( !validateEmail(email) )
         {
             alert("The provided e-mail is not valid");
@@ -73,12 +82,7 @@ window.onclick = function(event) {
         }
         else if (!isAlphaNumeric(username))
         {
-            alert("The username must have only letters and numbers without spaces");
-            return false;
-        }
-        else if (!isAlphaNumeric(username))
-        {
-            alert("The username must have only letters and numbers without spaces");
+            alert("The username must have only letters and numbers without spaces.");
             return false;
         }
         else if (psw!=psw_repeat)

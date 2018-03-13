@@ -21,7 +21,7 @@ $query = $conn->prepare("SELECT userID, username FROM users WHERE username = ? A
 $query->execute([$_POST['username'], $password]);
 
 
-$adminquery = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ? AND usertype = 'admin'");
+$adminquery = $conn->prepare("SELECT userID, username FROM users WHERE username = ? AND password = ? AND userID IN (SELECT userID from administrators)");
 $adminquery->execute([$_POST['username'], $password]);
 
 if ($adminquery->rowCount()) {
@@ -104,9 +104,8 @@ if ($adminquery->rowCount()) {
 
  echo "<script type='text/javascript'>alert('Invalid username or password, try again');
 window.location.href = '../dashboard/index.php';</script>";
- 
+
 }
 
 
 ?>
-

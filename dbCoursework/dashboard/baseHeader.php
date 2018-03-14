@@ -49,7 +49,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
                 <li class="dropdown nBox ">
 
-                    <a class="dropdown-toggle notiDropdown" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Notifications</a>
+                    <a class="dropdown-toggle notiDropdown" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-star-empty"></span> Notifications</a>
                                             <div class="dropdown-menu notiContent" style="padding: 15px; padding-bottom: 10px;">
 
                 <?php if ($_SESSION['notificationsCount'] > 0) { ?>

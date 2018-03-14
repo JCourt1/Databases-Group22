@@ -66,12 +66,12 @@
 
         if ( !isAlphaNumeric(subject) )
         {
-            alert("The subject field is not in the proper form");
+            alert("The subject field is not in the proper form.");
             return false; //this tells the php if to proceed or not
         }
         else if (!isAlphaNumeric(message))
         {
-            alert("The message field is not in the proper form");
+            alert("The message field is not in the proper form.");
             return false;
         }
        

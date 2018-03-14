@@ -28,10 +28,6 @@ echo '<script type="text/javascript"> console.log("sendMessageAdmin.php called")
         $userID = $_SESSION['user_ID'];
 
 
-        // $query = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationType, message) VALUES (:userID, 6, :message) ");
-        // $query->bindParam(':userID', $userID);
-        // $query->bindParam(':message', $message);
-        // $query->execute();
 
 
 
@@ -48,6 +44,9 @@ echo '<script type="text/javascript"> console.log("sendMessageAdmin.php called")
             $insertNotifications -> execute([$lastid, $messageSubject]);
 
             $conn->commit();
+
+            echo "<script type= 'text/javascript'>alert('Your message has been sent successfully. We will reply to you within 3 business days.');</script>";
+            echo     '<script type="text/javascript">  window.location = "../dashboard/index.php"   </script>';
 
 
         } catch (Exception $e) {

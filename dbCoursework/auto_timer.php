@@ -1,5 +1,5 @@
 <?php
-        $siteroot = '/Databases-Group22/dbCoursework/';
+        
         include 'vendor\email.php';
         try {
             $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
@@ -53,17 +53,23 @@
                         $buyerID = $bid['buyerID'];
                         $bidAmount = $bid['bidAmount'];
                         $bidDate = $bid['bidDate'];
-                        $buyer_query = $conn->prepare("SELECT firstName, lastName, email
-                                                        FROM users
-                                                        WHERE userID = " .$buyerID. "");
+                        $buyer_query = $conn->prepare(
+"SELECT u.email, c.firstName, c.lastName
+            FROM users u JOIN clients c ON c.userID = u.userID
+            WHERE u.userID = " .$buyerID. "");
+
+
+
+
                         $buyer_query->execute();
                         $buyer = $buyer_query->fetch();
                         $buyerFirstName = $buyer['firstName'];
                         $buyerLastName = $buyer['lastName'];
                         $buyerEmail = $buyer['email'];
-                        $seller_query = $conn->prepare("SELECT firstName, lastName, email
-                                                        FROM users
-                                                        WHERE userID = " .$sellerID. "");
+                        $seller_query = $conn->prepare(
+"SELECT u.email, c.firstName, c.lastName
+            FROM users u JOIN clients c ON c.userID = u.userID
+            WHERE u.userID = " .$sellerID. "");
                         $seller_query->execute();
                         $seller = $seller_query->fetch();
 

@@ -2,8 +2,6 @@
 
 
 
-        $siteroot = '/Databases-Group22/dbCoursework/';
-
         include 'vendor\email.php';
 
         try {
@@ -62,7 +60,12 @@
 
             foreach($users as $user){
             $userID = $user['userID'];
-            $user_querry = $conn->prepare("SELECT firstName, lastName, email FROM users WHERE userID = ".$userID." ");
+
+
+          
+            $user_querry = $conn->prepare("SELECT u.email, c.firstName, c.lastName
+            FROM users u JOIN clients c ON c.userID = u.userID
+            WHERE u.userID = ".$userID." ");
             $user_querry->execute();
             $user_details = $user_querry->fetch();
             $watcherFirstName = $user_details['firstName'];
@@ -75,6 +78,30 @@
             array_push($emails,$watcherEmail);
             array_push($subjects, $subject);
             array_push($messages, $message);
+
+
+
+
+
+            try {
+
+                $conn->beginTransaction();
+    
+                $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, message) VALUES (6, ?, ?) ");
+                $insertCommunication -> execute([$userID, $message]);
+    
+                $lastid = $conn->lastInsertId();
+    
+                $insertNotifications = $conn->prepare("INSERT INTO private_message (communicationID, messageSubject, messageResolved) VALUES (?, ?, 0)");
+                $insertNotifications -> execute([$lastid, $subject]);
+    
+                $conn->commit();
+    
+    
+            } catch (Exception $e) {
+                     echo $e->getMessage();
+                     $conn->rollBack();
+            }
 
 
             }

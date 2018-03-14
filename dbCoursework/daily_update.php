@@ -3,9 +3,8 @@
 
 
 
-        $siteroot = '/Databases-Group22/dbCoursework/';
 
-        include 'C:\wamp64\www\Databases-Group22\vendor\email.php';
+        include 'vendor\email.php';
 
 
 
@@ -38,6 +37,8 @@
         $emails = array();
         $subjects = array();
         $messages = array();
+
+
 
         foreach ($res as $searchResult) {
 
@@ -75,9 +76,11 @@
 
 
 
-            $seller_query = $conn->prepare("SELECT firstName, lastName, email
-            FROM users
-            WHERE userID = " .$sellerID. "");
+
+
+            $seller_query = $conn->prepare("SELECT u.email, c.firstName, c.lastName
+            FROM users u JOIN clients c ON c.userID = u.userID
+            WHERE u.userID = " .$sellerID. "");
             $seller_query->execute();
             $seller = $seller_query->fetch();
 
@@ -118,6 +121,26 @@
 
 
 
+            try {
+
+                $conn->beginTransaction();
+    
+                $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, message) VALUES (6, ?, ?) ");
+                $insertCommunication -> execute([$sellerID, $message_seller]);
+    
+                $lastid = $conn->lastInsertId();
+    
+                $insertNotifications = $conn->prepare("INSERT INTO private_message (communicationID, messageSubject, messageResolved) VALUES (?, ?, 0)");
+                $insertNotifications -> execute([$lastid, $subject_seller]);
+    
+                $conn->commit();
+    
+    
+            } catch (Exception $e) {
+                     echo $e->getMessage();
+                     $conn->rollBack();
+            }
+    
 
 
 

@@ -7,7 +7,7 @@ try
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-
+    // set the variable messageResolved to 1 (true)
     $query = "UPDATE private_message SET messageResolved=1 WHERE communicationID= '".$_POST['delete']."' ";
 
 

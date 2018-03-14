@@ -24,7 +24,7 @@
         $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8","team22@ibe-database","ILoveCS17");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // 1. Array of most recent bids on each item for the current user:
+        // Get the messages array from the database
         $query = "SELECT *
         FROM communication c
         JOIN users u ON c.senderID = u.userID
@@ -50,16 +50,10 @@
           </thead>
         <tbody id="all items">
             <?php
-
+                //display the results
                 foreach ($res as $row)
                 {
                     if(true){
-
-                        // if(empty($res['companyName'])){
-                        //     $companyName = "-";
-                        // } else {
-                        //     $companyName = $res['companyName'];
-                        // }
                     include "message_row.php";
                     }
                 }

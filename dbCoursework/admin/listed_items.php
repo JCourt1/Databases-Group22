@@ -24,7 +24,7 @@
         $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8","team22@ibe-database","ILoveCS17");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // 1. Array of most recent bids on each item for the current user:
+        // Get the listed items
         $query = "SELECT *   FROM items WHERE itemRemoved = 0";
         $statement = $conn->prepare($query);
         $statement->execute();
@@ -47,7 +47,7 @@
           </thead>
         <tbody id="all items">
             <?php
-
+                //display the results
                 foreach ($statement as $row)
                 {
                     // Get category:

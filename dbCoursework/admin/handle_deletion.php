@@ -7,7 +7,7 @@ try
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-
+    //set the itemRemoved value as 1
     $query = "UPDATE items SET itemRemoved=1 WHERE itemID= '".$_POST['delete']."' ";
     
 

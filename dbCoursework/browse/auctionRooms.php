@@ -173,7 +173,7 @@
 
         <br>
         <br>
-        <form id="bidForm" style="font-size: 20px;" class="centered" action="<?php echo $siteroot;?>dashboard/addBidMaster.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
+        <form id="bidForm" style="font-size: 20px;" class="centered" onsubmit="return isBidLowerThanStartPrice()"  action="<?php echo $siteroot;?>dashboard/addBidMaster.php?itemID=<?php echo $itemID;?>&currentPrice=<?php if(!empty($highestBid)){echo $highestBid;}?>&buyerID=<?php echo $_SESSION['user_ID'];?>" method="post">
             Make a bid: <input type="text" name="bid" style="width: 200px;
                            ;">
             <input type="submit" value="Bid">
@@ -248,4 +248,27 @@
         $('#table_id').DataTable(
             {"pageLength": 10, "order": [[ 1, "desc" ]], searching: false, "lengthChange": false});
     } );
+
+
+
+    //check whether the entered bid is higher than the starting price.
+    function isBidLowerThanStartPrice()
+    {
+        var bid=document.forms["bidForm"]["bid"].value;
+        var startPrice = "<?php echo $startPrice ?>";
+        if(parseFloat(bid)<=parseFloat(startPrice)){
+            alert('The bid must be higher than the starting price. Please enter a higher bid.');
+            return false;
+        }
+        else{
+            return true;
+        }
+
+        
+
+
+    }
+
+
+
 </script>

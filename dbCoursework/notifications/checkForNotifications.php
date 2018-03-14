@@ -17,8 +17,13 @@
         $notificazione = $notificazione -> fetchAll();
 
         $commIDs = array();
+
+        // storing communication Id for the upcoming SQL query, and the notifications in the session variable so they can be kept in the notifications box in the menu.
         foreach ($notificazione as $notificazion) {
             array_push($commIDs, $notificazion['communicationID']);
+            $newNotification = array( "message" => $notificazion['message'], "messagedate" => $notificazion['messagedate']);
+            array_push($_SESSION['notifications'], $newNotification);
+
         }
         $commIDs = implode(',', $commIDs);
 

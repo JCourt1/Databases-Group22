@@ -18,8 +18,11 @@
 
 
             if (isset($_GET['itemID'])) {
-                $result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE itemRemoved = 0 AND itemID = " . $_GET['itemID']);
-                $data1 = $result->fetch();
+                $query11 = $conn->prepare("SELECT itemID, title, description, photo, endDate, startPrice FROM items  WHERE itemRemoved = 0 AND itemID = :itemID ");
+                $query11->bindValue(':itemID',$_GET['itemID']);
+                $query11->execute();
+
+                $data1 = $query11->fetch();
                 $itemID = $data1['itemID'];
                 $title = $data1['title'];
                 $description = $data1['description'];
@@ -101,7 +104,6 @@
 
             <script>
 
-                        //console.log(<?php //echo json_encode($res); ?>//);
                         var res=<?php echo json_encode($res); ?>;
 
 
@@ -257,6 +259,7 @@
         var bid=document.forms["bidForm"]["bid"].value;
         var startPrice = "<?php echo $startPrice ?>";
         if(parseFloat(bid)<=parseFloat(startPrice)){
+
             alert('The bid must be higher than the starting price. Please enter a higher bid.');
             return false;
         }

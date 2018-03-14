@@ -13,8 +13,9 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
-$itemID = $_POST['itemID'];
-
+if(isset($_POST['itemID'])){
+    $itemID = $_POST['itemID'];
+}
 
 
 //$querry = $conn->query("UPDATE items SET title = 'strangeToy' WHERE itemID =2 ");

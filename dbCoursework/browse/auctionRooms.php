@@ -27,6 +27,8 @@
                 $date = $data1['endDate'];
                 $startPrice = $data1['startPrice'];
 
+                include('../dashboard/increaseViewCount.php');
+
                 echo '<div class="col-sm-offset-5 col-md-offset-5"><img src="' . $photo . '" width="200" height="200" class="img" alt="Generic placeholder thumbnail" style="border-radius: 50%;">
                                   <h4>' . $title . '
                                   </h4>

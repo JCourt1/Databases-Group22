@@ -45,7 +45,7 @@
         }
 
         // THE FIRST PART OF THE SQL QUERY:
-        $querySelect = "SELECT *
+        $querySelect = "SELECT i.*, d.itemID as bidsItemID, d.bidAmount, d.bidDate
                         FROM items i
                         LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
@@ -151,7 +151,7 @@
 
     } else if (isset($_GET['searchBarSubmit'])) { // Search was made using the search bar only
         $searchTerm = $_GET['searchTerm']; // get the search term
-        $sql_query =  "SELECT *
+        $sql_query =  "SELECT i.*, d.itemID as bidsItemID, d.bidAmount, d.bidDate
                         FROM items i
                         LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
@@ -174,19 +174,20 @@
 
     } else {
         // No search was made -->
-        $sql_query = "SELECT *
-                        FROM items i
-                        LEFT JOIN (
-                            SELECT b.itemID, b.bidAmount, b.bidDate
-                            FROM bids b
-                            INNER JOIN (
-                                SELECT itemID, MAX(bidAmount) bidAmount
-                                FROM bids
-                                GROUP BY itemID
-                            ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
-                        ) d ON i.itemID = d.itemID
-                        WHERE i.itemRemoved = 0
-                        AND i.endDate > NOW() ".$sql_sort;
+        $sql_query = "SELECT i.*, d.itemID as bidsItemID, d.bidAmount, d.bidDate
+                                FROM items i
+                                LEFT JOIN (
+                                    SELECT b.itemID, b.bidAmount, b.bidDate
+                                    FROM bids b
+                                    INNER JOIN (
+                                        SELECT itemID, MAX(bidAmount) bidAmount
+                                        FROM bids
+                                        GROUP BY itemID
+                                    ) c ON b.itemID = c.itemID AND b.bidAmount = c.bidAmount
+                                ) d ON i.itemID = d.itemID
+                                WHERE i.itemRemoved = 0
+                                AND i.endDate > NOW()
+                                ".$sql_sort;
 
         $statement = $conn->prepare($sql_query);
         $statement->execute();

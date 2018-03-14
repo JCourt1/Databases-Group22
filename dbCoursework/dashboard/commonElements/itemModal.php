@@ -135,13 +135,15 @@ $chaine = '<div class="col-xs-6 col-sm-3 col-m-3 col-lg-3 placeholder modalCente
                     <table class="table table-sm">
                       <tbody>
                         <tr>
-
+                            <td>Item condition:</td>
+                            <td>'.$condition.'</td>
+                        <tr>
+                        <tr>
                           <td>Bidding ends:</td>
                           <td>'.$elapsed.'</td>
                         </tr>
                         <h3 id="countdown'.$rownumber.'">  </h3>
                         <tr>
-
                           <td>Start Price:</td>
                           <td>£ '.$startPrice.'</td>
                         </tr>
@@ -149,13 +151,10 @@ $chaine = '<div class="col-xs-6 col-sm-3 col-m-3 col-lg-3 placeholder modalCente
                           <td>Current Price:</td>
                           <td>£ '.$currentPrice.'</td>
                         </tr>
-
                         <tr>
                           <td>Last Bid:</td>
                           <td>'.date_format(date_create($lastBid),"d-m-Y").' at '.date_format(date_create($lastBid),"H:i:s").'</td>
                         </tr>
-
-
                       </tbody>
                     </table>
 

@@ -20,7 +20,7 @@ if(isset($_SESSION['user_ID'])){
 
 
 
-        $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice FROM items WHERE endDate > NOW() ORDER BY itemViewCount DESC LIMIT 4");
+        $querry_result = $conn->query("SELECT itemID, title, description, photo, endDate, startPrice, itemCondition FROM items WHERE endDate > NOW() ORDER BY itemViewCount DESC LIMIT 4");
         $count_result = $conn->query("SELECT COUNT(itemID) FROM ( SELECT itemID FROM items WHERE endDate > NOW()   ORDER BY itemViewCount DESC LIMIT 4 ) AS count");
         $data3 = $count_result->fetch();
         $rowcount = $data3['COUNT(itemID)'];
@@ -37,6 +37,7 @@ if(isset($_SESSION['user_ID'])){
             $photo = $data1['photo'];
             $date = $data1['endDate'];
             $startPrice = $data1['startPrice'];
+            $condition = $data1['itemCondition'];
 
 
             $current_date =  new DateTime();

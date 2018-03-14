@@ -8,6 +8,7 @@
         $currentPrice - current highest bid
         $lastBid - date of the most recent high bid
         $buyerID - session ID of the user (incase they want to post a bid)
+        $condition - item's condition
 -->
 <?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
 
@@ -68,6 +69,13 @@
 </script>
 
 <?php
+// User variables:
+if(isset($_SESSION['user_ID'])){
+    $buyerID = $_SESSION['user_ID'];
+} else {
+    $buyerID = NULL;
+}
+
 // Get the seller information
 $seller_check = "SELECT sellerID FROM items WHERE itemID = ".$itemID;
 $statement = $conn->prepare($seller_check);
@@ -112,6 +120,13 @@ if (!empty($buyerID)){
     }
 }
 
+// For formatting the date:
+if(!empty($lastBid)){
+    $lastBid = date_format(date_create($lastBid),"d-m-Y").' at '.date_format(date_create($lastBid),"H:i:s");
+} else {
+    $lastBid = "No bids have been placed on this item.";
+}
+
 // THIS IS THE FILE FOR THE ITEM MODAL.
 $chaine = '<div class="col-xs-6 col-sm-3 col-m-3 col-lg-3 placeholder modalCentered">
 
@@ -153,7 +168,7 @@ $chaine = '<div class="col-xs-6 col-sm-3 col-m-3 col-lg-3 placeholder modalCente
                         </tr>
                         <tr>
                           <td>Last Bid:</td>
-                          <td>'.date_format(date_create($lastBid),"d-m-Y").' at '.date_format(date_create($lastBid),"H:i:s").'</td>
+                          <td>'.$lastBid.'</td>
                         </tr>
                       </tbody>
                     </table>

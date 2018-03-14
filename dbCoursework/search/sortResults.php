@@ -68,6 +68,7 @@ if ($sort == 0){
 }
 
 // Generate html:
+
 $rownumber = 0;
 
 foreach ($res as $searchResult) {

@@ -45,7 +45,7 @@
         }
 
         // THE FIRST PART OF THE SQL QUERY:
-        $querySelect = "SELECT i.*, d.itemID as bidsItemID, d.bidAmount, d.bidDate
+        $querySelect = "SELECT i.*, d.bidAmount, d.bidDate
                         FROM items i
                         LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
@@ -59,7 +59,7 @@
                         WHERE (i.title LIKE :searchTerm OR i.description LIKE :searchTerm)
                         AND i.endDate > NOW()
                         AND i.itemRemoved = 0
-                        AND ((d.bidAmount BETWEEN :minPrice AND :maxPrice) OR d.bidAmount IS NULL) ";
+                        AND ((d.bidAmount BETWEEN :minPrice AND :maxPrice) OR ((i.startPrice BETWEEN :minPrice AND :maxPrice) AND d.bidAmount IS NULL)) ";
         // IF THE PARENT CATEGORY WAS CHOSEN BUT NOT THE SUBCATEGORY
         $queryParentCategory = "AND i.itemID IN (SELECT i.itemID FROM items i, categories c
                                     WHERE i.categoryID = c.categoryID
@@ -151,7 +151,7 @@
 
     } else if (isset($_GET['searchBarSubmit'])) { // Search was made using the search bar only
         $searchTerm = $_GET['searchTerm']; // get the search term
-        $sql_query =  "SELECT i.*, d.itemID as bidsItemID, d.bidAmount, d.bidDate
+        $sql_query =  "SELECT i.*, d.bidAmount, d.bidDate
                         FROM items i
                         LEFT JOIN (
                             SELECT b.itemID, b.bidAmount, b.bidDate
@@ -174,7 +174,7 @@
 
     } else {
         // No search was made -->
-        $sql_query = "SELECT i.*, d.itemID as bidsItemID, d.bidAmount, d.bidDate
+        $sql_query = "SELECT i.*, d.bidAmount, d.bidDate
                                 FROM items i
                                 LEFT JOIN (
                                     SELECT b.itemID, b.bidAmount, b.bidDate
@@ -229,6 +229,9 @@
 
      <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
 
+         <?php
+         
+         if(!empty($res)){ ?>
 
          <form class="navbar-form" method='get' name='sortBy'>
              <div class="form-group">
@@ -281,6 +284,8 @@
              # end php ?>
              </div>
         </div>
+    <?php } else { echo "<p style='font-style: italic; font-size: 24px; color: grey;'>No results found that matched your criteria.</p>";} ?>
+
     </div>
 </div>
 </body>

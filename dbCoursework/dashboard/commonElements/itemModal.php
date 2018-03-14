@@ -68,6 +68,29 @@
 </script>
 
 <?php
+// Get the seller information
+$seller_check = "SELECT sellerID FROM items WHERE itemID = ".$itemID;
+$statement = $conn->prepare($seller_check);
+$statement->execute();
+$seller = $statement->fetch();
+
+// Get the seller's feedback score
+$feedback_score_query = $conn->prepare("SELECT 100*SUM(isPositive)/COUNT(isPositive) percentage, COUNT(isPositive) total FROM feedback WHERE receiverID = ".$seller['sellerID']);
+$feedback_score_query->execute();
+$feedback = $feedback_score_query->fetch();
+$feedback_score = 0;
+$total_feedback = '0 reviews';
+
+if(!empty($feedback)){
+    $feedback_score = round($feedback['percentage'], 1);
+    $total_feedback = $feedback['total'];
+    if($total_feedback == 1){
+        $total_feedback = $total_feedback.' review';
+    } else {
+        $total_feedback = $total_feedback.' reviews';
+    }
+}
+
 // For watchlist script when page is first loaded:
 $watchlist_line = "<p>Log in to add item to watchlist</p>";
 if (!empty($buyerID)){
@@ -75,12 +98,6 @@ if (!empty($buyerID)){
     $statement = $conn->prepare($query);
     $statement->execute();
     $res = $statement->fetch();
-
-    // Check that the item isn't the user's own item
-    $seller_check = "SELECT sellerID FROM items WHERE itemID = ".$itemID;
-    $statement = $conn->prepare($seller_check);
-    $statement->execute();
-    $seller = $statement->fetch();
 
     if ($buyerID != $seller['sellerID']){
         if (empty($res['itemID']) || empty($res['userID'])) {
@@ -113,12 +130,14 @@ $chaine = '<div class="col-xs-6 col-sm-3 col-m-3 col-lg-3 placeholder modalCente
                     <br>
                     <p class="modalCentered">' . $description . '</p>
                     <br>
+                    <p style="font-weight: bold;" class="modalCentered">Seller has '.$feedback_score.'% positive feedback ('.$total_feedback.')</p>
+
                     <table class="table table-sm">
                       <tbody>
                         <tr>
 
                           <td>Bidding ends:</td>
-                          <td>'.$elapsed.'</td>                          
+                          <td>'.$elapsed.'</td>
                         </tr>
                         <h3 id="countdown'.$rownumber.'">  </h3>
                         <tr>
@@ -148,7 +167,7 @@ $chaine = '<div class="col-xs-6 col-sm-3 col-m-3 col-lg-3 placeholder modalCente
                 <div class="form-group pull-left">
                 <form action="'.$siteroot.'dashboard/addBidMaster.php?itemID='.$itemID.'&currentPrice='.$currentPrice.'&buyerID='.$buyerID.'" method="post">
                 Amount: <input type="text" name="bid">
-                <input type="submit" value="Bid!" >
+                <input type="submit" value="Place bid" >
                 </form>
 
                 </div>

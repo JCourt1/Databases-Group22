@@ -55,6 +55,15 @@ function printCollaborativeFilteredCarousel($userID, $itemIDNotToDisplay, $conn)
     $first = $query_result -> fetch();
 
 
+    if ($rowCount > 0) {
+        $firstID = '?itemID=' . $first['itemID'];
+        $firstphoto = $first['photo'];
+        $firstTitle = $first['title'];
+    } else {
+        $firstID = '';
+        $firstphoto = "https://www.horizontrvl.com/assets/images/icon_warning_red.png";
+        $firstTitle = 'Either you haven\'t bid on anything, or no one else has bid on the same items as you, or they have but haven\'t bid on any other items!';
+    }
 
 
     $string = '
@@ -67,10 +76,10 @@ function printCollaborativeFilteredCarousel($userID, $itemIDNotToDisplay, $conn)
           <div class="carousel-inner">
             <div class="item active">
             <div class="placeholderCarousel">
-            <a href="'.$siteroot.'browse/auctionRooms.php?itemID='.$first['itemID'].'">
-              <img src=" '  . $first['photo'] . ' " width="200" height="200" class="img center-block carouselIMG">
+            <a href="'.$siteroot.'browse/auctionRooms.php'.$firstID.'">
+              <img src=" '  . $firstphoto . ' " width="200" height="200" class="img center-block carouselIMG">
               </a>
-              <p class="placeholderCarousel">'.$first['title'].'</p>
+              <p class="placeholderCarousel">'.$firstTitle.'</p>
             </div>
             </div>
             

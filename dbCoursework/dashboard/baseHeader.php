@@ -78,7 +78,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
 
                             <?php foreach ($_SESSION['notifications'] as $notification) { ?>
-                                <p> <?php echo "<b>" . date_format(date_create($notification['endDate']),"H:i:s") . "</b>:  " . $notification['message'];?></p>
+                                <p> <?php echo "<b>" . date_format(date_create($notification['messagedate']),"H:i:s") . "</b>:  " . $notification['message'];?></p>
                             <?php } ?>
 
 

@@ -80,6 +80,8 @@ foreach ($res as $searchResult) {
         $startPrice = $searchResult['startPrice'];
         $currentPrice= $searchResult['bidAmount'];
         $lastBid = $searchResult['bidDate'];
+        $condition = $searchResult['itemCondition'];
+
 
         $current_date =  new DateTime();
 

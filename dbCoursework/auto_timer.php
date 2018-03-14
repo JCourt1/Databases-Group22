@@ -14,6 +14,9 @@
         $statement = $conn->prepare("SELECT itemID, sellerID, title, endDate, startPrice, reservePrice, notified
                                         FROM items
                                         WHERE endDate < NOW() AND itemRemoved = 0 AND (notified = 0 OR notified IS NULL)");
+
+
+
         $statement->execute();
         $res = $statement->fetchAll();
         $emails = array();
@@ -81,9 +84,52 @@
 
                                 // FEEDBACK
                                 // buyer gives feedback:
-                                $conn->query('INSERT INTO communication (communicationType, senderID, receiverID, itemID, message) VALUES ("Feedback", '.$buyerID.', '.$sellerID.', '.$itemID.', "Feedback")');
-                                // seller gives feedback:
-                                $conn->query('INSERT INTO communication (communicationType, senderID, receiverID, itemID, message) VALUES ("Feedback", '.$sellerID.', '.$buyerID.', '.$itemID.', "Feedback")');
+                               
+                                $sellerMessageSubject = 'Your item has been sold!';
+                                $buyerMessageSubject = 'Congratulations, you won!';
+                                try {
+
+                                    $conn->beginTransaction();
+                        
+                                    $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, message) VALUES (6, ?, ?) ");
+                                    $insertCommunication -> execute([$sellerID, $message_seller]);
+                        
+                                    $lastid = $conn->lastInsertId();
+                        
+                                    $insertNotifications = $conn->prepare("INSERT INTO private_message (communicationID, messageSubject, messageResolved) VALUES (?, ?, 0)");
+                                    $insertNotifications -> execute([$lastid, $sellerMessageSubject]);
+                        
+                                    $conn->commit();
+                        
+                        
+                                } catch (Exception $e) {
+                                         echo $e->getMessage();
+                                         $conn->rollBack();
+                                }
+                        
+                                try {
+
+                                    $conn->beginTransaction();
+                        
+                                    $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, message) VALUES (6, ?, ?) ");
+                                    $insertCommunication -> execute([$buyerID, $message_buyer]);
+                        
+                                    $lastid = $conn->lastInsertId();
+                        
+                                    $insertNotifications = $conn->prepare("INSERT INTO private_message (communicationID, messageSubject, messageResolved) VALUES (?, ?, 0)");
+                                    $insertNotifications -> execute([$lastid, $buyerMessageSubject]);
+                        
+                                    $conn->commit();
+                        
+                        
+                                } catch (Exception $e) {
+                                         echo $e->getMessage();
+                                         $conn->rollBack();
+                                }
+                        
+                                
+
+
 
                             } else {
                                 // LET THE SELLER KNOW THEY DIDN'T SELL THE ITEM

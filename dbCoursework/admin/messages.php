@@ -42,7 +42,7 @@
               <tr scope="row">
                   <th scope="col">Username</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Company Name</th>
+                  <th scope="col">Subject</th>
                   <th scope="col">Date</th>
                   <th scope="col">Message</th>
                   <th scope="col">Resolved?</th>
@@ -54,11 +54,12 @@
                 foreach ($res as $row)
                 {
                     if(true){
-                        if(empty($res['companyName'])){
-                            $companyName = "-";
-                        } else {
-                            $companyName = $res['companyName'];
-                        }
+
+                        // if(empty($res['companyName'])){
+                        //     $companyName = "-";
+                        // } else {
+                        //     $companyName = $res['companyName'];
+                        // }
                     include "message_row.php";
                     }
                 }

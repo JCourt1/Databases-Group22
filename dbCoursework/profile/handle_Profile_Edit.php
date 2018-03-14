@@ -61,7 +61,7 @@ if(!ctype_alpha ($firstName) &&  !$firstName=='' || strpos($firstName, ';')  ){
     $regError = "The email provided is not valid. Please try again.";
 }elseif((ctype_alpha(str_replace(' ', '', $street)) === false || strpos($street, ';')) &&  !$street=='' ){
     $regError = "The street provided is not valid. Please try again.";
-}elseif(( !preg_match('/^\d+[A-Z]?$/', $buildingNumber) || strpos($buildingNumber, ';')) &&  !$buildingNumber=='' ){
+}elseif(( !preg_match('/^\d+[A-Za-z]?$/', $buildingNumber) || strpos($buildingNumber, ';')) &&  !$buildingNumber=='' ){
     $regError = "The building number provided is not valid. Please try again.";
 }elseif((ctype_alpha(str_replace(' ', '', $city)) === false || strpos($city, ';')) &&  !$city==''){
     $regError = "The city provided is not valid. Please try again.";

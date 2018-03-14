@@ -12,13 +12,13 @@ $tableRow = '
         </td>
 
         <td>
-            '.$companyName.'
+            '.$row["messageSubject"].'
         </td>
 
         <td>
             '.$row["messagedate"].'
         </td>
-        <td height="100" width="100" >
+        <td  >
         '.$row["message"].'
         </td>
 

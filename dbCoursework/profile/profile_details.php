@@ -21,8 +21,20 @@ catch (Exception $e) {
 //take the user id from the session variable
 $userID=$_SESSION['user_ID'];
 //make the query and get all the user's details. Store them in the data variable
-$res=$conn->query("SELECT * from users WHERE userID = $userID");
-$data=$res->fetch();
+//$res=$conn->query("SELECT * from users WHERE userID = $userID");
+//$data=$res->fetch();
+
+
+
+  $query = "SELECT *
+  FROM users u
+  JOIN clients c ON c.userID = u.userID
+  WHERE  u.userID=$userID" ;
+  $res = $conn->prepare($query);
+  $res->execute();
+  $data = $res->fetch();
+
+
 
 ?>
 
@@ -209,7 +221,7 @@ $data=$res->fetch();
             alert("The the street you provided in not in the right form.");
             return false;
         }
-        else if (!/^\d+[A-Z]?$/.test(buildingNumber) && !buildingNumber=='')
+        else if (!/^\d+[A-Za-z]?$/.test(buildingNumber) && !buildingNumber=='')
         {
             alert("The building number is not in the right form.");
             return false;

@@ -57,7 +57,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
                 <?php } ?>
 
-            <li><a class='blueTop' style='color: #bbc4cb;' href="admin.php">Home page</a></li>
+            <li><a class='blueTop' style='color: #bbc4cb;' href="listed_items.php">Home page</a></li>
             <li><a class='whiteTop' style='color: #b3b7b2;' href="../profile/logout.php">Log out</a>
             </ul>
 

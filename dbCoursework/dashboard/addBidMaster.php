@@ -72,8 +72,9 @@ include "../../vendor/email.php";
 
                 ///getting the seller's details
                 $seller_query = $conn->prepare("SELECT firstName, lastName, email
-                FROM users
-                WHERE userID = " .$sellerID. "");
+                FROM users u
+                JOIN clients c ON u.userID = c.userID
+                WHERE u.userID = " .$sellerID. "");
                 $seller_query->execute();
                 $seller = $seller_query->fetch();
 
@@ -106,8 +107,9 @@ include "../../vendor/email.php";
 
                 //getting thhe previous highest bidder details
                 $older_bidder_query = $conn->prepare("SELECT firstName, lastName, email
-                FROM users
-                WHERE userID = " .$previous_buyerID. "");
+                FROM users u
+                JOIN clients c ON c.userID = u.userID
+                WHERE u.userID = " .$previous_buyerID. "");
                 $older_bidder_query->execute();
                 $old_bidder = $older_bidder_query->fetch();
 

@@ -47,30 +47,55 @@ require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
             <ul class="nav navbar-nav navbar-right">
 
+                <li class="dropdown nBox ">
+
+                    <a class="dropdown-toggle notiDropdown" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-star-empty"></span> Notifications</a>
+                                            <div class="dropdown-menu notiContent" style="padding: 15px; padding-bottom: 10px;">
+
                 <?php if ($_SESSION['notificationsCount'] > 0) { ?>
 
-                <?php if ($_SESSION['notificationsBoxRead'] == FALSE) { $_SESSION['notificationsBoxRead'] = TRUE;?>
+                <?php if ($_SESSION['notificationsBoxRead'] == FALSE) { ?>
 
+                    <script>
+                        $( ".nBox" ).addClass( "notificationsBox" );
 
-                    <li class="dropdown notificationsBox">
+                        $(".notificationsBox").click(function() {
+                            $( ".nBox" ).removeClass( "notificationsBox" );
+                            $( ".nBox" ).addClass( "readNotificationsBox" );
+                            $.post("../notifications/switchOffFlashing.php");
+                        });
+
+                    </script>
 
                     <?php } else { ?>
-                        <li class="dropdown readNotificationsBox">
+
+                    <script>
+                    $( ".nBox" ).addClass( "readNotificationsBox" );
+
+                    </script>
                                         <?php } ?>
 
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Notifications</a>
-                        <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;">
+
 
                             <?php foreach ($_SESSION['notifications'] as $notification) { ?>
-                                <p> <?php echo $notification['message'];?></p>
+                                <p> <?php echo "<b>" . date_format(date_create($notification['endDate']),"H:i:s") . "</b>:  " . $notification['message'];?></p>
                             <?php } ?>
 
-                        </div>
-                    </li>
+
+                <?php } else { ?>
+
+                    <script>
+                        $( ".nBox" ).addClass( "readNotificationsBox" );
+
+                    </script>
+
+                    <p>Nothing to display</p>
+
+
 
                 <?php } ?>
-
-
+                                            </div>
+                </li>
 
             <li><a class='blueTop' style='color: #bbc4cb;' href="<?php echo $siteroot ?>dashboard/dashboard.php">Dashboard</a></li>
             <li><a class='whiteTop' style='color: #b3b7b2;' href="../profile/logout.php">Log out</a></li>
@@ -323,6 +348,9 @@ if (isset($_SESSION['user_ID']) AND !is_null($_SESSION['user_ID'])) {
                             var time = t[3] + ":" + t[4] + ":" + t[5];
 
                            $(classID).find("span").delay(1000).html("<b>" + time +"</b>:  " + row.message);
+                           
+                           $(".notiContent").html("<b>" + time +"</b>:  " + row.message);
+                         
 
                           if (row.isBuyer) {
 

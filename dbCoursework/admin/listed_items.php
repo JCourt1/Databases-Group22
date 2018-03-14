@@ -17,7 +17,7 @@
   <h1 class="page-header">Listed Items</h1>
 
   <div class="container-fluid panel panel-success" style="padding-top: 30px; border: 3px solid transparent; border-color: #d6e9c6;">
-    
+
     <?php
 
         //create connection
@@ -25,7 +25,7 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // 1. Array of most recent bids on each item for the current user:
-        $query = "SELECT *   FROM items";
+        $query = "SELECT *   FROM items WHERE itemRemoved = 0";
         $statement = $conn->prepare($query);
         $statement->execute();
 
@@ -86,6 +86,3 @@ $(document).ready( function () {
         {"pageLength": 10, "order": [[ 3, "desc" ]], searching: false, "lengthChange": false});
 } );
 </script>
-
-
-

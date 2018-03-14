@@ -13,7 +13,7 @@ if(isset($_SESSION['user_ID'])){
 <div class="row placeholders">
     <?php
 
-    $statement = $conn->prepare("SELECT itemID, title, description, photo, endDate, startPrice
+    $statement = $conn->prepare("SELECT itemID, title, description, photo, endDate, startPrice, itemCondition
                                 FROM items
                                 WHERE endDate > NOW() AND itemRemoved = 0
                                 ORDER BY itemViewCount DESC LIMIT 8");
@@ -30,6 +30,7 @@ if(isset($_SESSION['user_ID'])){
         $photo = $searchResult['photo'];
         $description = $searchResult['description'];
         $startPrice = $searchResult['startPrice'];
+        $condition = $searchResult['itemCondition'];
 
         // Bid information:
         $bid_query = $conn->prepare("SELECT buyerID, bidAmount, bidDate

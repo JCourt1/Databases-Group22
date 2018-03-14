@@ -72,7 +72,7 @@ CREATE TABLE items (
    reservePrice decimal(7,2) DEFAULT 0,
    endDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
    itemViewCount INTEGER NOT NULL DEFAULT 0,
-   itemDeleted tinyint(1) NOT NULL DEFAULT 0, -- Deleted items are not removed altogether from the database
+   itemRemoved tinyint(1) NOT NULL DEFAULT 0, -- Deleted items are not removed altogether from the database
    notified tinyint(1) NOT NULL
 );
 

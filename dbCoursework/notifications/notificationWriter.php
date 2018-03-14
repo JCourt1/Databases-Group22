@@ -6,7 +6,7 @@ function writeOutbidNotification($receiver, $sendingUser, $currentPrice, $itemNa
 //    global $conn;
 
     try {
-                $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
+                $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
                                 "team22@ibe-database",
                                 "ILoveCS17");
             }
@@ -21,7 +21,8 @@ function writeOutbidNotification($receiver, $sendingUser, $currentPrice, $itemNa
 
                 $conn->beginTransaction();
 
-            $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, message) VALUES (".$_SESSION['user_ID'].", ".$receiver.", \"".$notification."\")");
+                // 6 is admin
+            $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, message) VALUES (6, ".$receiver.", \"".$notification."\")");
             $insertCommunication -> execute();
 
             $lastid = $conn->lastInsertId();
@@ -44,32 +45,27 @@ function writeOutbidNotification($receiver, $sendingUser, $currentPrice, $itemNa
 
 function updateSeller($sellerID, $sendingUser, $currentPrice, $itemName) {
 
-//    global $conn;
+    global $conn;
 
-    try {
-                $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_db;charset=utf8",
-                                "team22@ibe-database",
-                                "ILoveCS17");
-            }
-            catch (Exception $e) {
-                die('Erreur : ' . $e->getMessage());
-            }
+
 
     $notification = '' . $sendingUser . ' placed a bid of '.$currentPrice.' on your item: ' . $itemName;
-    $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message) VALUES (".$_SESSION['user_ID'].", ".$sellerID.", \"Notification\", \"".$notification."\")");
-    $insertCommunication->execute();
-
+    var_dump($notification);
+    echo $notification;
 
     try {
 
                     $conn->beginTransaction();
 
-                $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationtype, message) VALUES (".$_SESSION['user_ID'].", ".$receiver.", \"Notification\", \"".$notification."\")");
+//                    6 is admin
+                $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, message) 
+VALUES (6, ".$sellerID.", \"".$notification."\")");
+
                 $insertCommunication -> execute();
 
                 $lastid = $conn->lastInsertId();
 
-                $insertNotifications = $conn->prepare("INSERT INTO Notification (communicationID, unread, isBuyer) VALUES (".$lastid.", 0, 1)");
+                $insertNotifications = $conn->prepare("INSERT INTO notification (communicationID, unread, isBuyer) VALUES (".$lastid.", 1, 0)");
                 $insertNotifications -> execute();
 
                 $conn->commit();
@@ -78,6 +74,7 @@ function updateSeller($sellerID, $sendingUser, $currentPrice, $itemName) {
                     echo $e->getMessage();
                     $conn->rollBack();
         }
+
 
 }
 

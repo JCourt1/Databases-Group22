@@ -12,7 +12,7 @@ $tableRow = '
         </td>
 
         <td>
-            '.$row["companyName"].'
+            '.$companyName.'
         </td>
 
         <td>
@@ -23,13 +23,13 @@ $tableRow = '
         </td>
 
         <td>
-        <form class="form-horizontal" method="post" action="handle_deletion.php" accept-charset="UTF-8">
+        <form class="form-horizontal" method="post" action="handle_message_resolution.php" accept-charset="UTF-8">
         <button type="submit" name="delete" value="'.$row["communicationID"].'" ><span class="glyphicon glyphicon-check"></span></button>
-            
+
         </form>
         </td>
 
-        
+
 </tr>
 ';
 

@@ -28,28 +28,34 @@ echo '<script type="text/javascript"> console.log("sendMessageAdmin.php called")
         $userID = $_SESSION['user_ID'];
 
 
+        // $query = $conn->prepare("INSERT INTO communication (senderID, receiverID, communicationType, message) VALUES (:userID, 6, :message) ");
+        // $query->bindParam(':userID', $userID);
+        // $query->bindParam(':message', $message);
+        // $query->execute();
 
-     $conn->query("INSERT INTO communication (senderID, receiverID, communicationType, message) VALUES (".$userID.", '17', '".$message."') ");
 
 
-     try {
+        try {
 
-                 $conn->beginTransaction();
+            $conn->beginTransaction();
 
-             $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, message) VALUES (".$userID.", '17', '".$message."') ");
-             $insertCommunication -> execute();
+            $insertCommunication = $conn->prepare("INSERT INTO communication (senderID, receiverID, message) VALUES (?, 6, ?) ");
+            $insertCommunication -> execute([$userID, $message]);
 
-             $lastid = $conn->lastInsertId();
+            $lastid = $conn->lastInsertId();
 
-             $insertNotifications = $conn->prepare("INSERT INTO private_message (communicationID, messageSubject, messageResolved) VALUES (".$lastid.", '".$messageSubject."', 0)");
-             $insertNotifications -> execute();
+            $insertNotifications = $conn->prepare("INSERT INTO private_message (communicationID, messageSubject, messageResolved) VALUES (?, ?, 0)");
+            $insertNotifications -> execute([$lastid, $messageSubject]);
 
-             $conn->commit();
+            $conn->commit();
 
-     } catch (Exception $e) {
+
+        } catch (Exception $e) {
                  echo $e->getMessage();
                  $conn->rollBack();
-     }
+        }
+
+
 
 
 

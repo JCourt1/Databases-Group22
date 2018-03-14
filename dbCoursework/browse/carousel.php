@@ -33,27 +33,37 @@ function printCollaborativeFilteredCarousel($userID, $itemIDNotToDisplay, $conn)
     // nor any of the items that the user has already bid on, or any of the items the user is selling himself,
     // and also only picking other users who have bid on the same items as the user.
 
-    $query_result = $conn->prepare("SELECT DISTINCT (bids.itemID), items.title, items.description, items.photo, items.endDate, items.startPrice
-                    FROM bids JOIN items ON bids.itemID = items.itemID
-                    WHERE  items.endDate > NOW() AND items.itemRemoved = 0 AND items.itemID <> :itemCurrentlyDisplayed 
-                    AND items.itemID NOT IN (SELECT DISTINCT itemID
-        												FROM bids
-        												WHERE buyerID = :userInQuestion) 
-        		  
-        			AND items.itemID NOT IN (SELECT DISTINCT itemID 
-                                                        FROM items 
-                                                        WHERE sellerID = :userInQuestion)							
-        											
-        			AND buyerID IN
-    
-                    (SELECT buyerID FROM
-                    (SELECT COUNT(DISTINCT itemID) freq, buyerID
-                    FROM bids
-                    WHERE buyerID <> :userInQuestion AND itemID IN (SELECT DISTINCT itemID
-        												FROM bids 
-        												WHERE buyerID = :userInQuestion)
-                    GROUP BY buyerID
-                    ORDER BY freq desc)T)");
+    $query_result = $conn->prepare("SELECT DISTINCT (bids.itemID), 
+                                                      items.title, 
+                                                      items.description, 
+                                                      items.photo, 
+                                                      items.endDate, 
+                                                      items.startPrice
+                                    FROM bids 
+                                        JOIN items 
+                                        ON bids.itemID = items.itemID
+                                    WHERE  items.endDate > NOW() 
+                                        AND items.itemRemoved = 0 
+                                        AND items.itemID <> :itemCurrentlyDisplayed 
+                                        AND items.itemID NOT IN (SELECT DISTINCT itemID
+                                                         FROM bids
+                                                         WHERE buyerID = :userInQuestion) 
+                      
+                                        AND items.itemID NOT IN (SELECT DISTINCT itemID 
+                                                         FROM items 
+                                                         WHERE sellerID = :userInQuestion)							
+                                                        
+                                        AND buyerID IN (SELECT buyerID 
+                                                         FROM (SELECT COUNT(DISTINCT itemID) freq, 
+                                                                buyerID
+                                                                FROM bids
+                                                                WHERE buyerID <> :userInQuestion 
+                                                                AND itemID IN (SELECT DISTINCT itemID
+                                                                              FROM bids 
+                                                                              WHERE buyerID = :userInQuestion)
+                                                                GROUP BY buyerID
+                                                                ORDER BY freq desc)T     
+                                                           )");
 
     $query_result->bindParam(':userInQuestion', $userID);
     $query_result->bindParam(':itemCurrentlyDisplayed', $itemIDNotToDisplay);

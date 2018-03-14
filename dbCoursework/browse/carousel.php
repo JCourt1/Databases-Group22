@@ -34,7 +34,7 @@ function printCollaborativeFilteredCarousel($userID, $itemIDNotToDisplay, $conn)
 
     $query_result = $conn->prepare("SELECT DISTINCT (bids.itemID), items.title, items.description, items.photo, items.endDate, items.startPrice
             FROM bids JOIN items ON bids.itemID = items.itemID
-            WHERE items.itemRemoved = 0 AND items.endDate < NOW() AND items.itemID <> ? AND buyerID IN
+            WHERE items.itemRemoved = 0 AND items.endDate > NOW() AND items.itemID <> ? AND buyerID IN
             
             (SELECT buyerID FROM
             (SELECT COUNT(DISTINCT itemID) freq, buyerID

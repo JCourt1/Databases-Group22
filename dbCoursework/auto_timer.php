@@ -1,5 +1,5 @@
 <?php
-        
+
         include 'vendor\email.php';
         try {
             $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
@@ -34,7 +34,7 @@
                 continue;
             } else{
 
-                $bid_query = $conn->prepare("SELECT  bidAmount, bidDate
+                $bid_query = $conn->prepare("SELECT  bidAmount, bidDate, buyerID
                                             FROM bids b1
                                             INNER JOIN (
                                                 SELECT MAX(bidAmount) bidAmountA, itemID
@@ -49,10 +49,9 @@
                         $buyerID = $bid['buyerID'];
                         $bidAmount = $bid['bidAmount'];
                         $bidDate = $bid['bidDate'];
-                        $buyer_query = $conn->prepare(
-"SELECT u.email, c.firstName, c.lastName
-            FROM users u JOIN clients c ON c.userID = u.userID
-            WHERE u.userID = " .$buyerID. "");
+                        $buyer_query = $conn->prepare("SELECT u.email, c.firstName, c.lastName
+                                                        FROM users u JOIN clients c ON c.userID = u.userID
+                                                        WHERE u.userID = " .$buyerID. "");
 
 
 
@@ -62,10 +61,9 @@
                         $buyerFirstName = $buyer['firstName'];
                         $buyerLastName = $buyer['lastName'];
                         $buyerEmail = $buyer['email'];
-                        $seller_query = $conn->prepare(
-"SELECT u.email, c.firstName, c.lastName
-            FROM users u JOIN clients c ON c.userID = u.userID
-            WHERE u.userID = " .$sellerID. "");
+                        $seller_query = $conn->prepare("SELECT u.email, c.firstName, c.lastName
+                                                        FROM users u JOIN clients c ON c.userID = u.userID
+                                                        WHERE u.userID = " .$sellerID. "");
                         $seller_query->execute();
                         $seller = $seller_query->fetch();
 

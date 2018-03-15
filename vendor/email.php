@@ -32,7 +32,7 @@ try {
 
     echo '<script type="text/javascript"> console.log("PHPMailer object created"); </script>';
     //Server settings
-    $mail->SMTPDebug = 4;                                 // Enable verbose debug output
+    //$mail->SMTPDebug = 0;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.sendgrid.net';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication

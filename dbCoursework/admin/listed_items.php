@@ -83,6 +83,6 @@
 $.noConflict();
 $(document).ready( function () {
     $('.pageableTable').DataTable(
-        {"pageLength": 10, "order": [[ 3, "desc" ]], searching: false, "lengthChange": false});
+        {"pageLength": 10, "order": [[ 3, "desc" ]], searching: true, "lengthChange": false});
 } );
 </script>

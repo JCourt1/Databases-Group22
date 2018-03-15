@@ -9,7 +9,7 @@
   <body>
 
     <?php include ('baseHeader.php');?>
-    <?php include('sideMenu.php'); ?>
+    <?php include ('sideMenu.php'); ?>
 
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -36,8 +36,8 @@
 
     if(!empty($res)) { ?>
 
-      <!-- TABLE OF ITEMS CURRENTLY BIDDING ON -->
-      <table class="table table-dark" >
+      <!-- LIST OF MESSAGES -->
+      <table class="table table-dark pageableTable" >
           <thead>
               <tr scope="row">
                   <th scope="col">Username</th>
@@ -75,3 +75,12 @@
   </body>
 
 </html>
+
+<script>
+
+$.noConflict();
+$(document).ready( function () {
+    $('.pageableTable').DataTable(
+        {"pageLength": 10, "order": [[ 3, "desc" ]], searching: true, "lengthChange": false});
+} );
+</script>

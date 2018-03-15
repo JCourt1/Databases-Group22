@@ -195,7 +195,7 @@
                                     $feedbackHTML = "<span style='color: green;' class='glyphicon glyphicon-thumbs-up'></span>";
                                 }
                             } else {
-                                $feedbackHTML = "Not available";
+                                $feedbackHTML = "Not available yet";
                             }
                         }
 

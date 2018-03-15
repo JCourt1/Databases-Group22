@@ -45,7 +45,6 @@
                 $bid_query->execute();
                 $bid = $bid_query->fetch();
                 if(sizeof($bid)>0){
-                    //if($bid['bidAmount'] >= $reservePrice){
                         $buyerID = $bid['buyerID'];
                         $bidAmount = $bid['bidAmount'];
                         $bidDate = $bid['bidDate'];
@@ -68,7 +67,7 @@
                         $seller = $seller_query->fetch();
 
                             // THE ITEM WAS SOLD
-                            if ($reservePrice <= $bidAmount){
+                            if ($bidAmount >= $reservePrice){
 
                                 // EMAILS
                                 $sellerFirstName = $seller['firstName'];

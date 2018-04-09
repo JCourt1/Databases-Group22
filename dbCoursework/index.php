@@ -1,6 +1,7 @@
 <?php
 
 
-echo "testing1234";
+echo "dbCoursework/index.php";
+echo getcwd() . "\n";
 
 ?>

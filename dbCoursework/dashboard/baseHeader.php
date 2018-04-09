@@ -1,5 +1,7 @@
 
-<?php $siteroot = '/Databases-Group22/dbCoursework/';
+<!-- <?php $siteroot = '/Databases-Group22/dbCoursework/'; -->
+<?php $siteroot = '/dbCoursework';
+
 
 require_once $_SERVER['DOCUMENT_ROOT']."$siteroot/config.php";
 
@@ -348,9 +350,9 @@ if (isset($_SESSION['user_ID']) AND !is_null($_SESSION['user_ID'])) {
                             var time = t[3] + ":" + t[4] + ":" + t[5];
 
                            $(classID).find("span").delay(1000).html("<b>" + time +"</b>:  " + row.message);
-                           
+
                            $(".notiContent").html("<b>" + time +"</b>:  " + row.message);
-                         
+
 
                           if (row.isBuyer) {
 

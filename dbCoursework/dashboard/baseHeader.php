@@ -1,5 +1,4 @@
 
-<!-- <?php $siteroot = '/Databases-Group22/dbCoursework/'; -->
 <?php $siteroot = '/dbCoursework';
 
 

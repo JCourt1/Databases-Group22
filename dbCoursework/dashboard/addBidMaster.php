@@ -2,7 +2,7 @@
 
 
 
-$siteroot = '/Databases-Group22/dbCoursework/';
+$siteroot = '/dbCoursework';
 include "../../vendor/email.php";
 ?>
 

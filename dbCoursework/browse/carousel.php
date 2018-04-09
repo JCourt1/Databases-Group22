@@ -1,6 +1,6 @@
 <?php
 
-$siteroot = '/Databases-Group22/dbCoursework/';
+$siteroot = '/dbCoursework';
 
 
 # select 4 items to have been bid upon most recently

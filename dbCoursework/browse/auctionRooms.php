@@ -1,6 +1,6 @@
 <?php include("../dashboard/baseHead.php"); ?>
 
-<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+<?php $siteroot = '/dbCoursework'; ?>
 
 <link href="../resources/css/auctionRooms.css" rel="stylesheet">
 

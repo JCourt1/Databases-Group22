@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 
-<?php $siteroot = '/Databases-Group22/dbCoursework'; ?>
+<?php $siteroot = '/dbCoursework'; ?>
 
 
 <!DOCTYPE html>

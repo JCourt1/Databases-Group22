@@ -1,6 +1,6 @@
 <?php
 
-$siteroot = '/Databases-Group22/dbCoursework';
+$siteroot = '/dbCoursework';
 
 
 

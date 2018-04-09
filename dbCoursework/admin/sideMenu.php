@@ -1,5 +1,5 @@
 
-<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+<?php $siteroot = '/dbCoursework'; ?>
 <div class="container-fluid nav-side-menu col-sm-3 col-md-2">
 
   <div class="row">

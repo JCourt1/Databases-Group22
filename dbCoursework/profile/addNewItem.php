@@ -1,4 +1,4 @@
-<?php $siteroot = '/Databases-Group22/dbCoursework/';?>
+<?php $siteroot = '/dbCoursework';?>
 
 
 <?php include "../dashboard/baseHead.php";?>

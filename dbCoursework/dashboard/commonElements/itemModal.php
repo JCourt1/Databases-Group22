@@ -10,7 +10,7 @@
         $buyerID - session ID of the user (incase they want to post a bid)
         $condition - item's condition
 -->
-<?php $siteroot = '/Databases-Group22/dbCoursework/'; ?>
+<?php $siteroot = '/dbCoursework'; ?>
 
 <script type="text/javascript">
     $(document).ready(function(){

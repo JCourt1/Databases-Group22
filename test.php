@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 
-$siteroot = '/Databases-Group22/dbCoursework/';
+$siteroot = '/dbCoursework';
 
 //Load composer's autoloader
 require 'vendor/autoload.php';

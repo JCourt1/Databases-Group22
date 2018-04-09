@@ -16,7 +16,7 @@
 
 
 <?php
-$siteroot = '/Databases-Group22/dbCoursework/';
+$siteroot = '/dbCoursework';
 //establish the connection
 try {
     $conn = new PDO("mysql:host=ibe-database.mysql.database.azure.com;dbname=ibe_dbv3;charset=utf8",
